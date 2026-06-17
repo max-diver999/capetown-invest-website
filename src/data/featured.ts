@@ -3,7 +3,12 @@ export const FEATURED_PROJECT_SLUGS = [] as const;
 
 export const HOMEPAGE_HERO_PROJECT_SLUG = '' as const;
 
-export const FEATURED_GUIDE_SLUGS = [] as const;
+export const FEATURED_GUIDE_SLUGS = [
+  'cape-town-property-investment-guide',
+  'buy-cape-town-property-foreigner',
+  'atlantic-seaboard-property-investment-guide',
+  'cape-town-rental-yield-guide',
+] as const;
 
 export const FEATURED_AREA_SLUGS = [] as const;
 

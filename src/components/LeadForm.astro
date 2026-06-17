@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = 'Get your Cape Town property shortlist',
-  subtitle = 'Share your budget and target region — we respond within one business day.',
+  subtitle = 'Share your budget and target area — we respond within one business day.',
   context = '',
 } = Astro.props;
 ---
@@ -26,7 +26,7 @@ const {
       </div>
       <div>
         <label class="block text-xs font-medium mb-1" for="lf-phone">WhatsApp / Phone *</label>
-        <input type="tel" id="lf-phone" name="phone" required placeholder="+65 9123 4567" autocomplete="tel" />
+        <input type="tel" id="lf-phone" name="phone" required placeholder="+44 7700 900123" autocomplete="tel" />
       </div>
     </div>
     <div>
@@ -35,25 +35,26 @@ const {
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
-        <label class="block text-xs font-medium mb-1" for="lf-market">Target region</label>
+        <label class="block text-xs font-medium mb-1" for="lf-market">Target area</label>
         <select id="lf-market" name="market">
           <option value="">— Select —</option>
-          <option value="ccr">CCR (Orchard, River Valley, Bukit Timah)</option>
-          <option value="rcr">RCR (Queenstown, Bishan, East Coast fringe)</option>
-          <option value="ocr">OCR (Jurong, Punggol, Tampines, Tengah)</option>
-          <option value="new-launch">2026 new launch (any region)</option>
+          <option value="atlantic-seaboard">Atlantic Seaboard (Sea Point, Camps Bay, Clifton)</option>
+          <option value="city-bowl">City Bowl / Waterfront</option>
+          <option value="southern-suburbs">Southern Suburbs</option>
+          <option value="century-city">Century City / Blouberg</option>
+          <option value="winelands">Winelands / Stellenbosch</option>
           <option value="not-sure">Not sure yet</option>
         </select>
       </div>
       <div>
-        <label class="block text-xs font-medium mb-1" for="lf-budget">Budget (SGD, all-in)</label>
+        <label class="block text-xs font-medium mb-1" for="lf-budget">Budget (ZAR, all-in)</label>
         <select id="lf-budget" name="budget">
           <option value="">— Select —</option>
-          <option value="under-1.5m">Under S$1.5M</option>
-          <option value="1.5-2.5m">S$1.5M – S$2.5M</option>
-          <option value="2.5-4m">S$2.5M – S$4M</option>
-          <option value="4-6m">S$4M – S$6M</option>
-          <option value="6m+">S$6M+</option>
+          <option value="under-3m">Under R3M</option>
+          <option value="3-5m">R3M – R5M</option>
+          <option value="5-10m">R5M – R10M</option>
+          <option value="10-20m">R10M – R20M</option>
+          <option value="20m+">R20M+</option>
         </select>
       </div>
     </div>
@@ -62,15 +63,15 @@ const {
       <select id="lf-goal" name="goal">
         <option value="">— Select —</option>
         <option value="investment">Rental yield / investment</option>
-        <option value="own-stay">Own stay / relocation</option>
-        <option value="off-plan">New launch / off-plan</option>
-        <option value="fta-absd">US or Swiss FTA — transfer duty planning</option>
+        <option value="own-stay">Own stay / relocation / semigration</option>
+        <option value="holiday-home">Holiday home</option>
+        <option value="off-plan">New development / off-plan</option>
         <option value="explore">Just researching</option>
       </select>
     </div>
     <div>
       <label class="block text-xs font-medium mb-1" for="lf-message">Message (optional)</label>
-      <textarea id="lf-message" name="message" rows="3" placeholder="E.g. 2BR OCR near MRT, EP holder, budget S$2.2M all-in including transfer duty…"></textarea>
+      <textarea id="lf-message" name="message" rows="3" placeholder="E.g. 2-bed Sea Point apartment, foreign buyer, budget R4M all-in including transfer duty…"></textarea>
     </div>
     <label class="flex items-start gap-2 text-xs text-[var(--color-muted)] cursor-pointer">
       <input type="checkbox" name="consent" required class="mt-1 w-4 h-4" />
@@ -78,50 +79,45 @@ const {
     </label>
     <button type="submit" class="btn-primary w-full py-3">Request shortlist →</button>
     <p id="lf-success" class="hidden text-green-700 text-sm font-medium text-center">Thank you — redirecting…</p>
-    <p id="lf-error" class="hidden text-red-600 text-sm text-center">Something went wrong. Email {SITE.email} directly.</p>
+    <p id="lf-error" class="hidden text-red-700 text-sm font-medium text-center">Something went wrong. Please try again or email {SITE.email}.</p>
   </form>
 </section>
 
 <script>
-  document.querySelectorAll('form.ig-lead-form').forEach((formEl) => {
-    const form = formEl as HTMLFormElement;
+  const form = document.getElementById('ig-lead-form') as HTMLFormElement | null;
+  if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const data = new FormData(form);
-      const phone = String(data.get('phone') || '').trim();
-      const email = String(data.get('email') || '').trim();
-      if (phone.replace(/\D/g, '').length < 8) {
-        const err = document.getElementById('lf-error');
-        if (err) { err.textContent = 'Please enter a valid phone or WhatsApp number.'; err.classList.remove('hidden'); }
-        return;
-      }
+      const fd = new FormData(form);
       const payload = {
-        name: data.get('name'),
-        phone,
-        email,
-        contact: email ? `${phone} / ${email}` : phone,
-        budget: data.get('budget'),
-        goal: data.get('goal'),
-        message: data.get('message'),
-        context: form.dataset.context || '',
-        market: data.get('market'),
-        source: window.location.href,
-        page: window.location.pathname,
+        name: String(fd.get('name') || ''),
+        contact: String(fd.get('phone') || fd.get('email') || ''),
+        email: String(fd.get('email') || ''),
+        phone: String(fd.get('phone') || ''),
+        market: String(fd.get('market') || ''),
+        budget: String(fd.get('budget') || ''),
+        goal: String(fd.get('goal') || ''),
+        message: String(fd.get('message') || ''),
+        source: form.dataset.context || 'lead-form',
       };
+      const successEl = document.getElementById('lf-success');
+      const errorEl = document.getElementById('lf-error');
       try {
         const res = await fetch('/api/lead/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
-        if (!res.ok) throw new Error('fail');
-        document.getElementById('lf-success')?.classList.remove('hidden');
-        setTimeout(() => {
-          window.location.assign('/thanks/?lead=1');
-        }, 400);
+        if (res.ok) {
+          successEl?.classList.remove('hidden');
+          errorEl?.classList.add('hidden');
+          setTimeout(() => { window.location.href = '/thanks/'; }, 800);
+        } else {
+          errorEl?.classList.remove('hidden');
+        }
       } catch {
-        document.getElementById('lf-error')?.classList.remove('hidden');
+        errorEl?.classList.remove('hidden');
       }
     });
-  });
+  }
 </script>
