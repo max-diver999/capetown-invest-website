@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-17T20:57:08.293Z",
+  "updatedAt": "2026-06-17T23:29:10.982Z",
   "site": "https://invest-spain-property.com",
   "note": "Cleaned 2026-06-15: keep only URLs present in live sitemap.",
   "urls": [
@@ -27,16 +27,28 @@
     "https://capetown-invest.com/developers/guocoland",
     "https://capetown-invest.com/get-shortlist",
     "https://capetown-invest.com/guides",
+    "https://capetown-invest.com/guides/atlantic-seaboard-property-investment-guide",
+    "https://capetown-invest.com/guides/best-areas-invest-cape-town-2026",
+    "https://capetown-invest.com/guides/buy-cape-town-property-foreigner",
     "https://capetown-invest.com/guides/buy-property-singapore-foreigner",
     "https://capetown-invest.com/guides/can-foreigners-buy-property-singapore",
+    "https://capetown-invest.com/guides/can-foreigners-buy-property-south-africa",
+    "https://capetown-invest.com/guides/cape-town-property-investment-guide",
+    "https://capetown-invest.com/guides/cape-town-rental-yield-guide",
     "https://capetown-invest.com/guides/ccr-rcr-ocr-singapore-property-guide",
+    "https://capetown-invest.com/guides/cost-of-buying-property-cape-town",
     "https://capetown-invest.com/guides/cost-of-buying-property-singapore",
+    "https://capetown-invest.com/guides/due-diligence-cape-town-property",
+    "https://capetown-invest.com/guides/fica-requirements-foreign-property-buyers",
     "https://capetown-invest.com/guides/foreigner-mortgage-singapore",
     "https://capetown-invest.com/guides/fta-absd-remission-singapore-property",
     "https://capetown-invest.com/guides/gross-vs-net-rental-yield-singapore",
     "https://capetown-invest.com/guides/hdb-upgrader-private-condo-guide",
     "https://capetown-invest.com/guides/highest-rental-yield-districts-singapore",
+    "https://capetown-invest.com/guides/how-to-buy-property-cape-town-step-by-step",
+    "https://capetown-invest.com/guides/is-cape-town-property-good-investment-2026",
     "https://capetown-invest.com/guides/ltv-loan-to-value-singapore-property",
+    "https://capetown-invest.com/guides/non-resident-mortgage-cape-town",
     "https://capetown-invest.com/guides/off-plan-vs-resale-condo-singapore",
     "https://capetown-invest.com/guides/seller-stamp-duty-ssd-singapore",
     "https://capetown-invest.com/guides/singapore-absd-foreign-buyer-guide",
@@ -44,6 +56,8 @@
     "https://capetown-invest.com/guides/singapore-property-cooling-measures-guide",
     "https://capetown-invest.com/guides/singapore-property-investment-guide",
     "https://capetown-invest.com/guides/singapore-rental-yield-guide",
+    "https://capetown-invest.com/guides/south-africa-exchange-control-property",
+    "https://capetown-invest.com/guides/south-africa-transfer-duty-explained",
     "https://capetown-invest.com/guides/tdsr-mortgage-singapore-explained",
     "https://capetown-invest.com/guides/us-citizen-buying-property-singapore",
     "https://capetown-invest.com/methodology",
@@ -2022,6 +2036,91 @@
       "url": "https://capetown-invest.com/areas/district-7-beach-road-property",
       "channel": "google",
       "at": "2026-06-17T20:57:08.293Z"
+    },
+    {
+      "url": "https://capetown-invest.com",
+      "channel": "google",
+      "at": "2026-06-17T22:31:36.628Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides",
+      "channel": "google",
+      "at": "2026-06-17T22:31:36.628Z"
+    },
+    {
+      "url": "https://capetown-invest.com/contact",
+      "channel": "google",
+      "at": "2026-06-17T22:31:36.628Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-investment-guide",
+      "channel": "google",
+      "at": "2026-06-17T23:09:50.193Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/buy-cape-town-property-foreigner",
+      "channel": "google",
+      "at": "2026-06-17T23:09:50.193Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/can-foreigners-buy-property-south-africa",
+      "channel": "google",
+      "at": "2026-06-17T23:09:50.193Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/how-to-buy-property-cape-town-step-by-step",
+      "channel": "google",
+      "at": "2026-06-17T23:09:50.193Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cost-of-buying-property-cape-town",
+      "channel": "google",
+      "at": "2026-06-17T23:09:50.193Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-rental-yield-guide",
+      "channel": "google",
+      "at": "2026-06-17T23:09:50.193Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/atlantic-seaboard-property-investment-guide",
+      "channel": "google",
+      "at": "2026-06-17T23:09:50.193Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/south-africa-exchange-control-property",
+      "channel": "google",
+      "at": "2026-06-17T23:29:10.982Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/fica-requirements-foreign-property-buyers",
+      "channel": "google",
+      "at": "2026-06-17T23:29:10.982Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/due-diligence-cape-town-property",
+      "channel": "google",
+      "at": "2026-06-17T23:29:10.982Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/best-areas-invest-cape-town-2026",
+      "channel": "google",
+      "at": "2026-06-17T23:29:10.982Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/is-cape-town-property-good-investment-2026",
+      "channel": "google",
+      "at": "2026-06-17T23:29:10.982Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/non-resident-mortgage-cape-town",
+      "channel": "google",
+      "at": "2026-06-17T23:29:10.982Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/south-africa-transfer-duty-explained",
+      "channel": "google",
+      "at": "2026-06-17T23:29:10.982Z"
     }
   ]
 }
