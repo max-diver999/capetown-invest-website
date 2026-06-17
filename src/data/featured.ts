@@ -6,8 +6,8 @@ export const HOMEPAGE_HERO_PROJECT_SLUG = '' as const;
 export const FEATURED_GUIDE_SLUGS = [
   'cape-town-property-investment-guide',
   'buy-cape-town-property-foreigner',
-  'atlantic-seaboard-property-investment-guide',
-  'cape-town-rental-yield-guide',
+  'best-areas-invest-cape-town-2026',
+  'is-cape-town-property-good-investment-2026',
 ] as const;
 
 export const FEATURED_AREA_SLUGS = [] as const;
