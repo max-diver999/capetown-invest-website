@@ -1,0 +1,21 @@
+# Invest Spain Property
+
+> Independent research on Spain property investment for UK and European buyers.
+
+- Site: https://invest-spain-property.com
+- Contact: info@invest-spain-property.com
+- Markets: Costa Blanca, Costa del Sol, Balearic Islands
+- Focus: NIE, net rental yields, post-Golden Visa residency, off-plan bank guarantees
+- Not a developer, not a listing portal
+
+## Key guides (batch 1 — publishing)
+- /guides/spain-property-investment-guide/
+- /guides/buy-property-spain-foreigner/
+- /guides/spain-golden-visa-ended-2025/
+
+## Project reviews (live scaffold)
+- /projects/insur-scala/
+- /projects/the-kove/
+
+## Full corpus
+https://invest-spain-property.com/llms-full.txt
