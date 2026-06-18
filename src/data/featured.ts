@@ -8,15 +8,15 @@ export const FEATURED_PROJECT_SLUGS = [
 export const HOMEPAGE_HERO_PROJECT_SLUG = 'oneonr-de-waterkant' as const;
 
 export const FEATURED_GUIDE_SLUGS = [
-  'conveyancing-fees-cape-town',
-  'new-developments-cape-town-2026',
-  'off-plan-property-cape-town-guide',
+  'gross-vs-net-yield-cape-town',
+  'cape-town-rates-taxes-property',
+  'hidden-costs-buying-property-cape-town',
   'cape-town-property-investment-checklist',
 ] as const;
 
 export const FEATURED_AREA_SLUGS = [
-  'clifton-property-investment',
-  'fresnaye-property-investment',
+  'de-waterkant-property-investment',
+  'v-and-a-waterfront-property-investment',
 ] as const;
 
 export const FEATURED_DEVELOPER_SLUGS = [
