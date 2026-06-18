@@ -8,10 +8,10 @@ export const FEATURED_PROJECT_SLUGS = [
 export const HOMEPAGE_HERO_PROJECT_SLUG = 'oneonr-de-waterkant' as const;
 
 export const FEATURED_GUIDE_SLUGS = [
-  'gross-vs-net-yield-cape-town',
-  'cape-town-rates-taxes-property',
-  'hidden-costs-buying-property-cape-town',
-  'cape-town-property-investment-checklist',
+  'south-africa-capital-gains-tax-property',
+  'buy-to-let-cape-town-mortgage',
+  'uk-tax-south-africa-rental-property',
+  'sectional-title-vs-freehold-cape-town',
 ] as const;
 
 export const FEATURED_AREA_SLUGS = [
