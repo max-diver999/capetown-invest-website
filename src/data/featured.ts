@@ -4,15 +4,15 @@ export const FEATURED_PROJECT_SLUGS = [] as const;
 export const HOMEPAGE_HERO_PROJECT_SLUG = '' as const;
 
 export const FEATURED_GUIDE_SLUGS = [
-  'new-developments-cape-town-2026',
-  'german-buyers-cape-town-property',
-  'southern-suburbs-cape-town-property',
+  'us-buyers-cape-town-property',
+  'security-estates-cape-town-foreign-buyers',
+  'snagging-inspection-new-build-cape-town',
   'cape-town-property-investment-guide',
 ] as const;
 
 export const FEATURED_AREA_SLUGS = [
-  'newlands-property-investment',
-  'paarl-property-investment',
+  'gardens-property-investment',
+  'hermanus-property-investment',
 ] as const;
 
 export const HOMEPAGE_HERO_IMAGE =
