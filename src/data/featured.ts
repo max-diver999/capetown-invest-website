@@ -4,15 +4,19 @@ export const FEATURED_PROJECT_SLUGS = [] as const;
 export const HOMEPAGE_HERO_PROJECT_SLUG = '' as const;
 
 export const FEATURED_GUIDE_SLUGS = [
-  'us-buyers-cape-town-property',
-  'security-estates-cape-town-foreign-buyers',
-  'snagging-inspection-new-build-cape-town',
+  'cape-town-property-investment-checklist',
+  'nhbrc-warranty-south-africa-new-build',
+  'cape-town-water-security-property',
   'cape-town-property-investment-guide',
 ] as const;
 
 export const FEATURED_AREA_SLUGS = [
-  'gardens-property-investment',
-  'hermanus-property-investment',
+  'green-point-property-investment',
+  'bantry-bay-property-investment',
+] as const;
+
+export const FEATURED_DEVELOPER_SLUGS = [
+  'rabie-property-developers',
 ] as const;
 
 export const HOMEPAGE_HERO_IMAGE =
