@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-18T01:41:19.999Z",
+  "updatedAt": "2026-06-18T01:48:47.235Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -60,6 +60,7 @@
     "https://capetown-invest.com/guides/best-areas-invest-cape-town-2026",
     "https://capetown-invest.com/guides/buy-cape-town-property-foreigner",
     "https://capetown-invest.com/guides/buy-property-singapore-foreigner",
+    "https://capetown-invest.com/guides/buy-to-let-cape-town-mortgage",
     "https://capetown-invest.com/guides/can-foreigners-buy-property-singapore",
     "https://capetown-invest.com/guides/can-foreigners-buy-property-south-africa",
     "https://capetown-invest.com/guides/cape-town-city-bowl-property-investment",
@@ -67,6 +68,7 @@
     "https://capetown-invest.com/guides/cape-town-property-investment-guide",
     "https://capetown-invest.com/guides/cape-town-rates-taxes-property",
     "https://capetown-invest.com/guides/cape-town-rental-yield-guide",
+    "https://capetown-invest.com/guides/cape-town-vacancy-rates-rental",
     "https://capetown-invest.com/guides/cape-town-water-security-property",
     "https://capetown-invest.com/guides/ccr-rcr-ocr-singapore-property-guide",
     "https://capetown-invest.com/guides/century-city-property-investment-guide",
@@ -92,9 +94,12 @@
     "https://capetown-invest.com/guides/new-developments-cape-town-2026",
     "https://capetown-invest.com/guides/nhbrc-warranty-south-africa-new-build",
     "https://capetown-invest.com/guides/non-resident-mortgage-cape-town",
+    "https://capetown-invest.com/guides/non-resident-rental-income-tax-south-africa",
     "https://capetown-invest.com/guides/off-plan-property-cape-town-guide",
     "https://capetown-invest.com/guides/off-plan-vs-resale-condo-singapore",
+    "https://capetown-invest.com/guides/property-management-cape-town-cost",
     "https://capetown-invest.com/guides/sectional-title-levies-cape-town",
+    "https://capetown-invest.com/guides/sectional-title-vs-freehold-cape-town",
     "https://capetown-invest.com/guides/security-estates-cape-town-foreign-buyers",
     "https://capetown-invest.com/guides/seller-stamp-duty-ssd-singapore",
     "https://capetown-invest.com/guides/short-term-rental-rules-cape-town",
@@ -104,12 +109,14 @@
     "https://capetown-invest.com/guides/singapore-property-investment-guide",
     "https://capetown-invest.com/guides/singapore-rental-yield-guide",
     "https://capetown-invest.com/guides/snagging-inspection-new-build-cape-town",
+    "https://capetown-invest.com/guides/south-africa-capital-gains-tax-property",
     "https://capetown-invest.com/guides/south-africa-exchange-control-property",
     "https://capetown-invest.com/guides/south-africa-transfer-duty-explained",
     "https://capetown-invest.com/guides/southern-suburbs-cape-town-property",
     "https://capetown-invest.com/guides/stellenbosch-property-investment-guide",
     "https://capetown-invest.com/guides/tdsr-mortgage-singapore-explained",
     "https://capetown-invest.com/guides/uk-buyers-cape-town-property",
+    "https://capetown-invest.com/guides/uk-tax-south-africa-rental-property",
     "https://capetown-invest.com/guides/us-buyers-cape-town-property",
     "https://capetown-invest.com/guides/us-citizen-buying-property-singapore",
     "https://capetown-invest.com/methodology",
@@ -460,6 +467,41 @@
       "url": "https://capetown-invest.com/guides/hidden-costs-buying-property-cape-town",
       "channel": "google",
       "at": "2026-06-18T01:41:19.999Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/south-africa-capital-gains-tax-property",
+      "channel": "google",
+      "at": "2026-06-18T01:48:47.235Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/non-resident-rental-income-tax-south-africa",
+      "channel": "google",
+      "at": "2026-06-18T01:48:47.235Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/uk-tax-south-africa-rental-property",
+      "channel": "google",
+      "at": "2026-06-18T01:48:47.235Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/property-management-cape-town-cost",
+      "channel": "google",
+      "at": "2026-06-18T01:48:47.235Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/buy-to-let-cape-town-mortgage",
+      "channel": "google",
+      "at": "2026-06-18T01:48:47.235Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-vacancy-rates-rental",
+      "channel": "google",
+      "at": "2026-06-18T01:48:47.235Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/sectional-title-vs-freehold-cape-town",
+      "channel": "google",
+      "at": "2026-06-18T01:48:47.235Z"
     }
   ]
 }
