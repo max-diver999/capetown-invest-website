@@ -1,12 +1,13 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-18T00:29:01.266Z",
+  "updatedAt": "2026-06-18T00:44:58.872Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
     "https://capetown-invest.com/areas",
     "https://capetown-invest.com/areas/blouberg-property-investment",
     "https://capetown-invest.com/areas/camps-bay-property-investment",
+    "https://capetown-invest.com/areas/claremont-property-investment",
     "https://capetown-invest.com/areas/constantia-property-investment",
     "https://capetown-invest.com/areas/district-10-bukit-timah-property",
     "https://capetown-invest.com/areas/district-14-geylang-property",
@@ -18,12 +19,16 @@
     "https://capetown-invest.com/areas/district-6-city-hall-property",
     "https://capetown-invest.com/areas/district-7-beach-road-property",
     "https://capetown-invest.com/areas/district-9-orchard-property",
+    "https://capetown-invest.com/areas/milnerton-property-investment",
+    "https://capetown-invest.com/areas/newlands-property-investment",
+    "https://capetown-invest.com/areas/paarl-property-investment",
     "https://capetown-invest.com/areas/rondebosch-property-investment",
     "https://capetown-invest.com/areas/sea-point-property-investment",
     "https://capetown-invest.com/areas/somerset-west-property-investment",
     "https://capetown-invest.com/compare",
     "https://capetown-invest.com/compare/cape-town-vs-dubai-property-investment",
     "https://capetown-invest.com/compare/cape-town-vs-lisbon-property-investment",
+    "https://capetown-invest.com/compare/cape-town-vs-portugal-property-investment",
     "https://capetown-invest.com/compare/cape-town-vs-stellenbosch-property",
     "https://capetown-invest.com/compare/century-city-vs-sea-point-investment",
     "https://capetown-invest.com/compare/east-coast-vs-queenstown-property",
@@ -53,6 +58,7 @@
     "https://capetown-invest.com/guides/fica-requirements-foreign-property-buyers",
     "https://capetown-invest.com/guides/foreigner-mortgage-singapore",
     "https://capetown-invest.com/guides/fta-absd-remission-singapore-property",
+    "https://capetown-invest.com/guides/german-buyers-cape-town-property",
     "https://capetown-invest.com/guides/gross-vs-net-rental-yield-singapore",
     "https://capetown-invest.com/guides/hdb-upgrader-private-condo-guide",
     "https://capetown-invest.com/guides/highest-rental-yield-districts-singapore",
@@ -62,6 +68,7 @@
     "https://capetown-invest.com/guides/load-shedding-property-cape-town",
     "https://capetown-invest.com/guides/long-term-rental-cape-town-guide",
     "https://capetown-invest.com/guides/ltv-loan-to-value-singapore-property",
+    "https://capetown-invest.com/guides/new-developments-cape-town-2026",
     "https://capetown-invest.com/guides/non-resident-mortgage-cape-town",
     "https://capetown-invest.com/guides/off-plan-property-cape-town-guide",
     "https://capetown-invest.com/guides/off-plan-vs-resale-condo-singapore",
@@ -208,6 +215,41 @@
       "url": "https://capetown-invest.com/guides/uk-buyers-cape-town-property",
       "channel": "google",
       "at": "2026-06-18T00:29:01.266Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/newlands-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T00:44:58.872Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/claremont-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T00:44:58.872Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/milnerton-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T00:44:58.872Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/paarl-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T00:44:58.872Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-portugal-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T00:44:58.872Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/german-buyers-cape-town-property",
+      "channel": "google",
+      "at": "2026-06-18T00:44:58.872Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/new-developments-cape-town-2026",
+      "channel": "google",
+      "at": "2026-06-18T00:44:58.872Z"
     }
   ]
 }
