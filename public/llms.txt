@@ -16,6 +16,7 @@
 
 ## Collections
 - /guides/
+- /segments/
 - /areas/
 - /compare/
 - /projects/

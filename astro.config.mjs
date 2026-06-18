@@ -28,6 +28,9 @@ export default defineConfig({
         if (item.url.includes('/guides/')) {
           return { ...item, priority: 0.85, changefreq: 'weekly' };
         }
+        if (item.url.includes('/segments/')) {
+          return { ...item, priority: 0.82, changefreq: 'weekly' };
+        }
         if (item.url.includes('/areas/') || item.url.includes('/compare/')) {
           return { ...item, priority: 0.8, changefreq: 'weekly' };
         }

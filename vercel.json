@@ -6,6 +6,21 @@
       "has": [{ "type": "host", "value": "www.capetown-invest.com" }],
       "destination": "https://capetown-invest.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/guides/uk-buyers-cape-town-property/",
+      "destination": "/segments/uk-buyers-cape-town-property/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/german-buyers-cape-town-property/",
+      "destination": "/segments/german-buyers-cape-town-property/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/us-buyers-cape-town-property/",
+      "destination": "/segments/us-buyers-cape-town-property/",
+      "permanent": true
     }
   ],
   "headers": [

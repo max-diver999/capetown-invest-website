@@ -18,16 +18,26 @@ const articleSchema = z.object({
     .optional(),
 });
 
+const westernCapeRegion = z.enum([
+  'Atlantic Seaboard',
+  'City Bowl',
+  'Southern Suburbs',
+  'Northern Suburbs',
+  'Winelands',
+  'Helderberg',
+  'West Coast',
+]).optional();
+
 const projectSchema = articleSchema.extend({
   category: z.string().default('projects'),
   heroImage: z.string(),
-  priceFromSGD: z.number().optional(),
-  priceToSGD: z.number().optional(),
+  priceFromZAR: z.number().optional(),
+  priceToZAR: z.number().optional(),
   district: z.string().optional(),
-  region: z.enum(['CCR', 'RCR', 'OCR']).optional(),
+  region: westernCapeRegion,
   area: z.string().optional(),
   developer: z.string().optional(),
-  propertyType: z.string().default('condo'),
+  propertyType: z.string().default('apartment'),
   tenure: z.string().optional(),
   status: z.string().optional(),
   units: z.number().optional(),
@@ -37,6 +47,10 @@ export const collections = {
   guides: defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/guides' }),
     schema: articleSchema,
+  }),
+  segments: defineCollection({
+    loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/segments' }),
+    schema: articleSchema.extend({ category: z.string().default('segments') }),
   }),
   compare: defineCollection({
     loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/compare' }),

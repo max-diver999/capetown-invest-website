@@ -1,0 +1,36 @@
+---
+export const prerender = true;
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContentCard from '../../components/ContentCard.astro';
+
+const segments = (await getCollection('segments'))
+  .filter((s) => !s.data.noindex)
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+<BaseLayout
+  title="Buyer Segments — Cape Town Property"
+  description="Country-specific Cape Town property guides for UK, German, US, and EU buyers — currency, tax, FICA, and area fit."
+>
+  <section class="site-container py-14 md:py-20">
+    <header class="max-w-2xl mb-12">
+      <h1 class="text-3xl">Buyer segments</h1>
+      <p class="text-lg text-[var(--color-muted)] mt-3">
+        Nationality-specific planning layers on top of the foreign-buyer hub — exchange control, home-country tax, and where each cohort buys in Cape Town.
+      </p>
+      <p class="text-sm text-[var(--color-muted)] mt-2">{segments.length} segment guides.</p>
+    </header>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {segments.map((item) => (
+        <ContentCard
+          href={`/segments/${item.id}/`}
+          title={item.data.title}
+          description={item.data.description}
+          image={item.data.heroImage}
+          badges={['Segment', ...(item.data.tags?.slice(0, 1) ?? [])]}
+          meta={`${item.data.readingTime ?? 8} min read`}
+        />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

@@ -6,4 +6,15 @@ export const SITE = {
     'Independent guides to Cape Town property — Atlantic Seaboard, City Bowl, foreign ownership, transfer costs, rental yields, and new developments. Advisory only; transactions via licensed SA partner.',
   email: 'info@capetown-invest.com',
   editorial: 'Cape Town Invest Editorial',
+  /** Add Wikidata Q-id when entity is created — see _СИСТЕМА/GEO_WIKIDATA_SETUP.md */
+  wikidataId: null as string | null,
+  sameAs: [
+    'https://capetown-invest.com',
+    'https://moregroup.estate',
+  ],
+  address: {
+    locality: 'Cape Town',
+    region: 'Western Cape',
+    country: 'ZA',
+  },
 };

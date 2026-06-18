@@ -66,6 +66,7 @@ const COLLECTIONS = isRu
     }
   : {
       guides: { minWords: 2000, minFaq: 5, commercial: true },
+      segments: { minWords: 1800, minFaq: 5, commercial: true },
       areas: { minWords: 1800, minFaq: 4, commercial: true },
       comparisons: { minWords: 1800, minFaq: 4, commercial: true },
       markets: { minWords: 1800, minFaq: 4, commercial: true },
@@ -82,7 +83,7 @@ const COLLECTIONS = isRu
 const LAYOUT_PROVIDES_LEAD_FORM = new Set(
   isRu
     ? ['gajdy', 'rajony', 'sravneniya']
-    : ['guides', 'areas', 'comparisons', 'compare', 'projects', 'developers', 'markets', 'costs', 'finance', 'legal'],
+    : ['guides', 'areas', 'comparisons', 'compare', 'segments', 'projects', 'developers', 'markets', 'costs', 'finance', 'legal'],
 );
 
 const SEVERITY = {

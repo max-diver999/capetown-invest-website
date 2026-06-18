@@ -29,20 +29,32 @@ const fullTitle = title.includes('Cape Town Invest') ? title : `${title} | Cape 
 
 const orgSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': 'RealEstateAgent',
   name: SITE.name,
   url: SITE.url,
   description: SITE.description,
   email: SITE.email,
   logo: { '@type': 'ImageObject', url: `${SITE.url}/favicon.svg` },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: SITE.address.locality,
+    addressRegion: SITE.address.region,
+    addressCountry: SITE.address.country,
+  },
+  areaServed: {
+    '@type': 'City',
+    name: 'Cape Town',
+    containedInPlace: { '@type': 'AdministrativeArea', name: 'Western Cape' },
+  },
   contactPoint: {
     '@type': 'ContactPoint',
     email: SITE.email,
     contactType: 'customer service',
-    availableLanguage: ['English', 'Spanish'],
+    availableLanguage: ['English'],
   },
   sameAs: [
-    SITE.url,
+    ...SITE.sameAs,
+    ...(SITE.wikidataId ? [`https://www.wikidata.org/entity/${SITE.wikidataId}`] : []),
   ],
 };
 
