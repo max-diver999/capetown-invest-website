@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-18T00:44:58.872Z",
+  "updatedAt": "2026-06-18T00:55:17.522Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -19,12 +19,16 @@
     "https://capetown-invest.com/areas/district-6-city-hall-property",
     "https://capetown-invest.com/areas/district-7-beach-road-property",
     "https://capetown-invest.com/areas/district-9-orchard-property",
+    "https://capetown-invest.com/areas/franschhoek-property-investment",
+    "https://capetown-invest.com/areas/gardens-property-investment",
+    "https://capetown-invest.com/areas/hermanus-property-investment",
     "https://capetown-invest.com/areas/milnerton-property-investment",
     "https://capetown-invest.com/areas/newlands-property-investment",
     "https://capetown-invest.com/areas/paarl-property-investment",
     "https://capetown-invest.com/areas/rondebosch-property-investment",
     "https://capetown-invest.com/areas/sea-point-property-investment",
     "https://capetown-invest.com/areas/somerset-west-property-investment",
+    "https://capetown-invest.com/areas/woodstock-property-investment",
     "https://capetown-invest.com/compare",
     "https://capetown-invest.com/compare/cape-town-vs-dubai-property-investment",
     "https://capetown-invest.com/compare/cape-town-vs-lisbon-property-investment",
@@ -72,6 +76,7 @@
     "https://capetown-invest.com/guides/non-resident-mortgage-cape-town",
     "https://capetown-invest.com/guides/off-plan-property-cape-town-guide",
     "https://capetown-invest.com/guides/off-plan-vs-resale-condo-singapore",
+    "https://capetown-invest.com/guides/security-estates-cape-town-foreign-buyers",
     "https://capetown-invest.com/guides/seller-stamp-duty-ssd-singapore",
     "https://capetown-invest.com/guides/short-term-rental-rules-cape-town",
     "https://capetown-invest.com/guides/singapore-absd-foreign-buyer-guide",
@@ -79,12 +84,14 @@
     "https://capetown-invest.com/guides/singapore-property-cooling-measures-guide",
     "https://capetown-invest.com/guides/singapore-property-investment-guide",
     "https://capetown-invest.com/guides/singapore-rental-yield-guide",
+    "https://capetown-invest.com/guides/snagging-inspection-new-build-cape-town",
     "https://capetown-invest.com/guides/south-africa-exchange-control-property",
     "https://capetown-invest.com/guides/south-africa-transfer-duty-explained",
     "https://capetown-invest.com/guides/southern-suburbs-cape-town-property",
     "https://capetown-invest.com/guides/stellenbosch-property-investment-guide",
     "https://capetown-invest.com/guides/tdsr-mortgage-singapore-explained",
     "https://capetown-invest.com/guides/uk-buyers-cape-town-property",
+    "https://capetown-invest.com/guides/us-buyers-cape-town-property",
     "https://capetown-invest.com/guides/us-citizen-buying-property-singapore",
     "https://capetown-invest.com/methodology",
     "https://capetown-invest.com/news",
@@ -250,6 +257,41 @@
       "url": "https://capetown-invest.com/guides/new-developments-cape-town-2026",
       "channel": "google",
       "at": "2026-06-18T00:44:58.872Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/franschhoek-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T00:55:17.522Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/hermanus-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T00:55:17.522Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/gardens-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T00:55:17.522Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/woodstock-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T00:55:17.522Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/us-buyers-cape-town-property",
+      "channel": "google",
+      "at": "2026-06-18T00:55:17.522Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/security-estates-cape-town-foreign-buyers",
+      "channel": "google",
+      "at": "2026-06-18T00:55:17.522Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/snagging-inspection-new-build-cape-town",
+      "channel": "google",
+      "at": "2026-06-18T00:55:17.522Z"
     }
   ]
 }
