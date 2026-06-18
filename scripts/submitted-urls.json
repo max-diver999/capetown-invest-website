@@ -1,10 +1,11 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-18T00:55:17.522Z",
+  "updatedAt": "2026-06-18T01:19:01.092Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
     "https://capetown-invest.com/areas",
+    "https://capetown-invest.com/areas/bantry-bay-property-investment",
     "https://capetown-invest.com/areas/blouberg-property-investment",
     "https://capetown-invest.com/areas/camps-bay-property-investment",
     "https://capetown-invest.com/areas/claremont-property-investment",
@@ -21,6 +22,7 @@
     "https://capetown-invest.com/areas/district-9-orchard-property",
     "https://capetown-invest.com/areas/franschhoek-property-investment",
     "https://capetown-invest.com/areas/gardens-property-investment",
+    "https://capetown-invest.com/areas/green-point-property-investment",
     "https://capetown-invest.com/areas/hermanus-property-investment",
     "https://capetown-invest.com/areas/milnerton-property-investment",
     "https://capetown-invest.com/areas/newlands-property-investment",
@@ -28,6 +30,7 @@
     "https://capetown-invest.com/areas/rondebosch-property-investment",
     "https://capetown-invest.com/areas/sea-point-property-investment",
     "https://capetown-invest.com/areas/somerset-west-property-investment",
+    "https://capetown-invest.com/areas/tamboerskloof-property-investment",
     "https://capetown-invest.com/areas/woodstock-property-investment",
     "https://capetown-invest.com/compare",
     "https://capetown-invest.com/compare/cape-town-vs-dubai-property-investment",
@@ -42,6 +45,7 @@
     "https://capetown-invest.com/developers/capitaland-development",
     "https://capetown-invest.com/developers/city-developments-cdl",
     "https://capetown-invest.com/developers/guocoland",
+    "https://capetown-invest.com/developers/rabie-property-developers",
     "https://capetown-invest.com/get-shortlist",
     "https://capetown-invest.com/guides",
     "https://capetown-invest.com/guides/airbnb-investment-cape-town-guide",
@@ -52,8 +56,10 @@
     "https://capetown-invest.com/guides/can-foreigners-buy-property-singapore",
     "https://capetown-invest.com/guides/can-foreigners-buy-property-south-africa",
     "https://capetown-invest.com/guides/cape-town-city-bowl-property-investment",
+    "https://capetown-invest.com/guides/cape-town-property-investment-checklist",
     "https://capetown-invest.com/guides/cape-town-property-investment-guide",
     "https://capetown-invest.com/guides/cape-town-rental-yield-guide",
+    "https://capetown-invest.com/guides/cape-town-water-security-property",
     "https://capetown-invest.com/guides/ccr-rcr-ocr-singapore-property-guide",
     "https://capetown-invest.com/guides/century-city-property-investment-guide",
     "https://capetown-invest.com/guides/cost-of-buying-property-cape-town",
@@ -73,6 +79,7 @@
     "https://capetown-invest.com/guides/long-term-rental-cape-town-guide",
     "https://capetown-invest.com/guides/ltv-loan-to-value-singapore-property",
     "https://capetown-invest.com/guides/new-developments-cape-town-2026",
+    "https://capetown-invest.com/guides/nhbrc-warranty-south-africa-new-build",
     "https://capetown-invest.com/guides/non-resident-mortgage-cape-town",
     "https://capetown-invest.com/guides/off-plan-property-cape-town-guide",
     "https://capetown-invest.com/guides/off-plan-vs-resale-condo-singapore",
@@ -292,6 +299,41 @@
       "url": "https://capetown-invest.com/guides/snagging-inspection-new-build-cape-town",
       "channel": "google",
       "at": "2026-06-18T00:55:17.522Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/nhbrc-warranty-south-africa-new-build",
+      "channel": "google",
+      "at": "2026-06-18T01:19:01.092Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-water-security-property",
+      "channel": "google",
+      "at": "2026-06-18T01:19:01.092Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/tamboerskloof-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T01:19:01.092Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/green-point-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T01:19:01.092Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/bantry-bay-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T01:19:01.092Z"
+    },
+    {
+      "url": "https://capetown-invest.com/developers/rabie-property-developers",
+      "channel": "google",
+      "at": "2026-06-18T01:19:01.092Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-investment-checklist",
+      "channel": "google",
+      "at": "2026-06-18T01:19:01.092Z"
     }
   ]
 }
