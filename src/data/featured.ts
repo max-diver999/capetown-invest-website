@@ -4,15 +4,15 @@ export const FEATURED_PROJECT_SLUGS = [] as const;
 export const HOMEPAGE_HERO_PROJECT_SLUG = '' as const;
 
 export const FEATURED_GUIDE_SLUGS = [
-  'cape-town-city-bowl-property-investment',
-  'airbnb-investment-cape-town-guide',
-  'highest-rental-yield-suburbs-cape-town',
-  'cape-town-rental-yield-guide',
+  'stellenbosch-property-investment-guide',
+  'century-city-property-investment-guide',
+  'off-plan-property-cape-town-guide',
+  'cape-town-property-investment-guide',
 ] as const;
 
 export const FEATURED_AREA_SLUGS = [
-  'sea-point-property-investment',
-  'camps-bay-property-investment',
+  'constantia-property-investment',
+  'somerset-west-property-investment',
 ] as const;
 
 export const HOMEPAGE_HERO_IMAGE =
