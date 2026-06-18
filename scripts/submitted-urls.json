@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-18T02:01:02.934Z",
+  "updatedAt": "2026-06-18T02:08:04.498Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -46,6 +46,7 @@
     "https://capetown-invest.com/compare/jurong-vs-punggol-property-investment",
     "https://capetown-invest.com/compare/sea-point-vs-camps-bay-investment",
     "https://capetown-invest.com/compare/western-cape-vs-gauteng-property-investment",
+    "https://capetown-invest.com/consultation",
     "https://capetown-invest.com/contact",
     "https://capetown-invest.com/developers",
     "https://capetown-invest.com/developers/blok-urban-developers",
@@ -574,6 +575,11 @@
       "url": "https://capetown-invest.com/compare/western-cape-vs-gauteng-property-investment",
       "channel": "google",
       "at": "2026-06-18T02:01:02.934Z"
+    },
+    {
+      "url": "https://capetown-invest.com/consultation",
+      "channel": "google",
+      "at": "2026-06-18T02:08:04.498Z"
     }
   ]
 }
