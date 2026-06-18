@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-18T01:19:01.092Z",
+  "updatedAt": "2026-06-18T01:28:39.771Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -9,6 +9,7 @@
     "https://capetown-invest.com/areas/blouberg-property-investment",
     "https://capetown-invest.com/areas/camps-bay-property-investment",
     "https://capetown-invest.com/areas/claremont-property-investment",
+    "https://capetown-invest.com/areas/clifton-property-investment",
     "https://capetown-invest.com/areas/constantia-property-investment",
     "https://capetown-invest.com/areas/district-10-bukit-timah-property",
     "https://capetown-invest.com/areas/district-14-geylang-property",
@@ -21,6 +22,7 @@
     "https://capetown-invest.com/areas/district-7-beach-road-property",
     "https://capetown-invest.com/areas/district-9-orchard-property",
     "https://capetown-invest.com/areas/franschhoek-property-investment",
+    "https://capetown-invest.com/areas/fresnaye-property-investment",
     "https://capetown-invest.com/areas/gardens-property-investment",
     "https://capetown-invest.com/areas/green-point-property-investment",
     "https://capetown-invest.com/areas/hermanus-property-investment",
@@ -42,9 +44,11 @@
     "https://capetown-invest.com/compare/jurong-vs-punggol-property-investment",
     "https://capetown-invest.com/contact",
     "https://capetown-invest.com/developers",
+    "https://capetown-invest.com/developers/blok-urban-developers",
     "https://capetown-invest.com/developers/capitaland-development",
     "https://capetown-invest.com/developers/city-developments-cdl",
     "https://capetown-invest.com/developers/guocoland",
+    "https://capetown-invest.com/developers/prospekt-property-development",
     "https://capetown-invest.com/developers/rabie-property-developers",
     "https://capetown-invest.com/get-shortlist",
     "https://capetown-invest.com/guides",
@@ -113,10 +117,13 @@
     "https://capetown-invest.com/projects/lucerne-grand",
     "https://capetown-invest.com/projects/narra-residences",
     "https://capetown-invest.com/projects/newport-residences",
+    "https://capetown-invest.com/projects/on-park-century-city",
     "https://capetown-invest.com/projects/pinery-residences",
     "https://capetown-invest.com/projects/rivelle-tampines-ec",
     "https://capetown-invest.com/projects/river-modern",
+    "https://capetown-invest.com/projects/skywater-century-city",
     "https://capetown-invest.com/projects/tengah-garden-residences",
+    "https://capetown-invest.com/projects/the-charlotte-cape-town",
     "https://capetown-invest.com/projects/thomson-reserve",
     "https://capetown-invest.com/projects/vela-bay",
     "https://capetown-invest.com/terms"
@@ -334,6 +341,41 @@
       "url": "https://capetown-invest.com/guides/cape-town-property-investment-checklist",
       "channel": "google",
       "at": "2026-06-18T01:19:01.092Z"
+    },
+    {
+      "url": "https://capetown-invest.com/developers/blok-urban-developers",
+      "channel": "google",
+      "at": "2026-06-18T01:28:39.771Z"
+    },
+    {
+      "url": "https://capetown-invest.com/developers/prospekt-property-development",
+      "channel": "google",
+      "at": "2026-06-18T01:28:39.771Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/clifton-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T01:28:39.771Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/fresnaye-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T01:28:39.771Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/skywater-century-city",
+      "channel": "google",
+      "at": "2026-06-18T01:28:39.771Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/on-park-century-city",
+      "channel": "google",
+      "at": "2026-06-18T01:28:39.771Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/the-charlotte-cape-town",
+      "channel": "google",
+      "at": "2026-06-18T01:28:39.771Z"
     }
   ]
 }
