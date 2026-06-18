@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-18T01:28:39.771Z",
+  "updatedAt": "2026-06-18T01:34:16.283Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -66,6 +66,7 @@
     "https://capetown-invest.com/guides/cape-town-water-security-property",
     "https://capetown-invest.com/guides/ccr-rcr-ocr-singapore-property-guide",
     "https://capetown-invest.com/guides/century-city-property-investment-guide",
+    "https://capetown-invest.com/guides/conveyancing-fees-cape-town",
     "https://capetown-invest.com/guides/cost-of-buying-property-cape-town",
     "https://capetown-invest.com/guides/cost-of-buying-property-singapore",
     "https://capetown-invest.com/guides/due-diligence-cape-town-property",
@@ -106,6 +107,11 @@
     "https://capetown-invest.com/guides/us-citizen-buying-property-singapore",
     "https://capetown-invest.com/methodology",
     "https://capetown-invest.com/news",
+    "https://capetown-invest.com/news/cape-town-interest-rates-property-2026",
+    "https://capetown-invest.com/news/cape-town-luxury-sales-record-2025",
+    "https://capetown-invest.com/news/foreign-buyers-atlantic-seaboard-2025",
+    "https://capetown-invest.com/news/va-waterfront-granger-bay-development",
+    "https://capetown-invest.com/news/western-cape-property-forecast-2026",
     "https://capetown-invest.com/privacy-policy",
     "https://capetown-invest.com/projects",
     "https://capetown-invest.com/projects/amberwood-at-holland",
@@ -118,6 +124,7 @@
     "https://capetown-invest.com/projects/narra-residences",
     "https://capetown-invest.com/projects/newport-residences",
     "https://capetown-invest.com/projects/on-park-century-city",
+    "https://capetown-invest.com/projects/oneonr-de-waterkant",
     "https://capetown-invest.com/projects/pinery-residences",
     "https://capetown-invest.com/projects/rivelle-tampines-ec",
     "https://capetown-invest.com/projects/river-modern",
@@ -376,6 +383,41 @@
       "url": "https://capetown-invest.com/projects/the-charlotte-cape-town",
       "channel": "google",
       "at": "2026-06-18T01:28:39.771Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/oneonr-de-waterkant",
+      "channel": "google",
+      "at": "2026-06-18T01:34:16.283Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/conveyancing-fees-cape-town",
+      "channel": "google",
+      "at": "2026-06-18T01:34:16.283Z"
+    },
+    {
+      "url": "https://capetown-invest.com/news/cape-town-luxury-sales-record-2025",
+      "channel": "google",
+      "at": "2026-06-18T01:34:16.283Z"
+    },
+    {
+      "url": "https://capetown-invest.com/news/western-cape-property-forecast-2026",
+      "channel": "google",
+      "at": "2026-06-18T01:34:16.283Z"
+    },
+    {
+      "url": "https://capetown-invest.com/news/foreign-buyers-atlantic-seaboard-2025",
+      "channel": "google",
+      "at": "2026-06-18T01:34:16.283Z"
+    },
+    {
+      "url": "https://capetown-invest.com/news/cape-town-interest-rates-property-2026",
+      "channel": "google",
+      "at": "2026-06-18T01:34:16.283Z"
+    },
+    {
+      "url": "https://capetown-invest.com/news/va-waterfront-granger-bay-development",
+      "channel": "google",
+      "at": "2026-06-18T01:34:16.283Z"
     }
   ]
 }
