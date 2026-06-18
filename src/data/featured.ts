@@ -8,10 +8,10 @@ export const FEATURED_PROJECT_SLUGS = [
 export const HOMEPAGE_HERO_PROJECT_SLUG = 'oneonr-de-waterkant' as const;
 
 export const FEATURED_GUIDE_SLUGS = [
-  'south-africa-capital-gains-tax-property',
-  'buy-to-let-cape-town-mortgage',
-  'uk-tax-south-africa-rental-property',
-  'sectional-title-vs-freehold-cape-town',
+  'cape-town-semigration-property-guide',
+  'cape-town-property-market-forecast-2026-2027',
+  'does-buying-property-give-residency-south-africa',
+  'cape-town-property-scams-avoid',
 ] as const;
 
 export const FEATURED_AREA_SLUGS = [
