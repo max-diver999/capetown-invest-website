@@ -4,15 +4,15 @@ export const FEATURED_PROJECT_SLUGS = [] as const;
 export const HOMEPAGE_HERO_PROJECT_SLUG = '' as const;
 
 export const FEATURED_GUIDE_SLUGS = [
-  'stellenbosch-property-investment-guide',
-  'century-city-property-investment-guide',
-  'off-plan-property-cape-town-guide',
+  'southern-suburbs-cape-town-property',
+  'uk-buyers-cape-town-property',
+  'load-shedding-property-cape-town',
   'cape-town-property-investment-guide',
 ] as const;
 
 export const FEATURED_AREA_SLUGS = [
-  'constantia-property-investment',
-  'somerset-west-property-investment',
+  'rondebosch-property-investment',
+  'blouberg-property-investment',
 ] as const;
 
 export const HOMEPAGE_HERO_IMAGE =
