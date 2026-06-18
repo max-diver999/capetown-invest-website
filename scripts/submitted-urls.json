@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-18T01:48:47.235Z",
+  "updatedAt": "2026-06-18T01:53:45.246Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -59,6 +59,7 @@
     "https://capetown-invest.com/guides/atlantic-seaboard-property-investment-guide",
     "https://capetown-invest.com/guides/best-areas-invest-cape-town-2026",
     "https://capetown-invest.com/guides/buy-cape-town-property-foreigner",
+    "https://capetown-invest.com/guides/buy-cape-town-property-remotely",
     "https://capetown-invest.com/guides/buy-property-singapore-foreigner",
     "https://capetown-invest.com/guides/buy-to-let-cape-town-mortgage",
     "https://capetown-invest.com/guides/can-foreigners-buy-property-singapore",
@@ -66,8 +67,11 @@
     "https://capetown-invest.com/guides/cape-town-city-bowl-property-investment",
     "https://capetown-invest.com/guides/cape-town-property-investment-checklist",
     "https://capetown-invest.com/guides/cape-town-property-investment-guide",
+    "https://capetown-invest.com/guides/cape-town-property-market-forecast-2026-2027",
+    "https://capetown-invest.com/guides/cape-town-property-scams-avoid",
     "https://capetown-invest.com/guides/cape-town-rates-taxes-property",
     "https://capetown-invest.com/guides/cape-town-rental-yield-guide",
+    "https://capetown-invest.com/guides/cape-town-semigration-property-guide",
     "https://capetown-invest.com/guides/cape-town-vacancy-rates-rental",
     "https://capetown-invest.com/guides/cape-town-water-security-property",
     "https://capetown-invest.com/guides/ccr-rcr-ocr-singapore-property-guide",
@@ -75,7 +79,9 @@
     "https://capetown-invest.com/guides/conveyancing-fees-cape-town",
     "https://capetown-invest.com/guides/cost-of-buying-property-cape-town",
     "https://capetown-invest.com/guides/cost-of-buying-property-singapore",
+    "https://capetown-invest.com/guides/does-buying-property-give-residency-south-africa",
     "https://capetown-invest.com/guides/due-diligence-cape-town-property",
+    "https://capetown-invest.com/guides/eu-citizens-buying-cape-town-property",
     "https://capetown-invest.com/guides/fica-requirements-foreign-property-buyers",
     "https://capetown-invest.com/guides/foreigner-mortgage-singapore",
     "https://capetown-invest.com/guides/fta-absd-remission-singapore-property",
@@ -97,6 +103,7 @@
     "https://capetown-invest.com/guides/non-resident-rental-income-tax-south-africa",
     "https://capetown-invest.com/guides/off-plan-property-cape-town-guide",
     "https://capetown-invest.com/guides/off-plan-vs-resale-condo-singapore",
+    "https://capetown-invest.com/guides/power-of-attorney-property-south-africa",
     "https://capetown-invest.com/guides/property-management-cape-town-cost",
     "https://capetown-invest.com/guides/sectional-title-levies-cape-town",
     "https://capetown-invest.com/guides/sectional-title-vs-freehold-cape-town",
@@ -502,6 +509,41 @@
       "url": "https://capetown-invest.com/guides/sectional-title-vs-freehold-cape-town",
       "channel": "google",
       "at": "2026-06-18T01:48:47.235Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-semigration-property-guide",
+      "channel": "google",
+      "at": "2026-06-18T01:53:45.246Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-market-forecast-2026-2027",
+      "channel": "google",
+      "at": "2026-06-18T01:53:45.246Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/buy-cape-town-property-remotely",
+      "channel": "google",
+      "at": "2026-06-18T01:53:45.246Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/power-of-attorney-property-south-africa",
+      "channel": "google",
+      "at": "2026-06-18T01:53:45.246Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-scams-avoid",
+      "channel": "google",
+      "at": "2026-06-18T01:53:45.246Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/does-buying-property-give-residency-south-africa",
+      "channel": "google",
+      "at": "2026-06-18T01:53:45.246Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/eu-citizens-buying-cape-town-property",
+      "channel": "google",
+      "at": "2026-06-18T01:53:45.246Z"
     }
   ]
 }
