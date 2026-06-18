@@ -1,16 +1,17 @@
 /** Editorial picks for homepage featured grids (order preserved). */
 export const FEATURED_PROJECT_SLUGS = [
+  'oneonr-de-waterkant',
   'skywater-century-city',
   'the-charlotte-cape-town',
 ] as const;
 
-export const HOMEPAGE_HERO_PROJECT_SLUG = 'skywater-century-city' as const;
+export const HOMEPAGE_HERO_PROJECT_SLUG = 'oneonr-de-waterkant' as const;
 
 export const FEATURED_GUIDE_SLUGS = [
+  'conveyancing-fees-cape-town',
   'new-developments-cape-town-2026',
   'off-plan-property-cape-town-guide',
   'cape-town-property-investment-checklist',
-  'cape-town-property-investment-guide',
 ] as const;
 
 export const FEATURED_AREA_SLUGS = [
