@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-18T02:08:04.498Z",
+  "updatedAt": "2026-06-18T02:13:49.890Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -160,6 +160,10 @@
     "https://capetown-invest.com/projects/the-charlotte-cape-town",
     "https://capetown-invest.com/projects/thomson-reserve",
     "https://capetown-invest.com/projects/vela-bay",
+    "https://capetown-invest.com/segments",
+    "https://capetown-invest.com/segments/german-buyers-cape-town-property",
+    "https://capetown-invest.com/segments/uk-buyers-cape-town-property",
+    "https://capetown-invest.com/segments/us-buyers-cape-town-property",
     "https://capetown-invest.com/terms"
   ],
   "syncedAt": "2026-06-17T23:32:05.771Z",
@@ -580,6 +584,51 @@
       "url": "https://capetown-invest.com/consultation",
       "channel": "google",
       "at": "2026-06-18T02:08:04.498Z"
+    },
+    {
+      "url": "https://capetown-invest.com/segments",
+      "channel": "google",
+      "at": "2026-06-18T02:13:49.890Z"
+    },
+    {
+      "url": "https://capetown-invest.com/segments/uk-buyers-cape-town-property",
+      "channel": "google",
+      "at": "2026-06-18T02:13:49.890Z"
+    },
+    {
+      "url": "https://capetown-invest.com/segments/german-buyers-cape-town-property",
+      "channel": "google",
+      "at": "2026-06-18T02:13:49.890Z"
+    },
+    {
+      "url": "https://capetown-invest.com/segments/us-buyers-cape-town-property",
+      "channel": "google",
+      "at": "2026-06-18T02:13:49.890Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-remote-work-visa-property",
+      "channel": "google",
+      "at": "2026-06-18T02:13:49.890Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/retirement-visa-south-africa-property",
+      "channel": "google",
+      "at": "2026-06-18T02:13:49.890Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/financially-independent-visa-south-africa",
+      "channel": "google",
+      "at": "2026-06-18T02:13:49.890Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/does-buying-property-give-residency-south-africa",
+      "channel": "google",
+      "at": "2026-06-18T02:13:49.890Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/non-resident-rental-income-tax-south-africa",
+      "channel": "google",
+      "at": "2026-06-18T02:13:49.890Z"
     }
   ]
 }
