@@ -1,11 +1,12 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-17T23:45:45.594Z",
+  "updatedAt": "2026-06-18T00:11:39.211Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
     "https://capetown-invest.com/areas",
     "https://capetown-invest.com/areas/camps-bay-property-investment",
+    "https://capetown-invest.com/areas/constantia-property-investment",
     "https://capetown-invest.com/areas/district-10-bukit-timah-property",
     "https://capetown-invest.com/areas/district-14-geylang-property",
     "https://capetown-invest.com/areas/district-15-east-coast-property",
@@ -17,7 +18,10 @@
     "https://capetown-invest.com/areas/district-7-beach-road-property",
     "https://capetown-invest.com/areas/district-9-orchard-property",
     "https://capetown-invest.com/areas/sea-point-property-investment",
+    "https://capetown-invest.com/areas/somerset-west-property-investment",
     "https://capetown-invest.com/compare",
+    "https://capetown-invest.com/compare/cape-town-vs-lisbon-property-investment",
+    "https://capetown-invest.com/compare/cape-town-vs-stellenbosch-property",
     "https://capetown-invest.com/compare/east-coast-vs-queenstown-property",
     "https://capetown-invest.com/compare/jurong-vs-punggol-property-investment",
     "https://capetown-invest.com/contact",
@@ -38,6 +42,7 @@
     "https://capetown-invest.com/guides/cape-town-property-investment-guide",
     "https://capetown-invest.com/guides/cape-town-rental-yield-guide",
     "https://capetown-invest.com/guides/ccr-rcr-ocr-singapore-property-guide",
+    "https://capetown-invest.com/guides/century-city-property-investment-guide",
     "https://capetown-invest.com/guides/cost-of-buying-property-cape-town",
     "https://capetown-invest.com/guides/cost-of-buying-property-singapore",
     "https://capetown-invest.com/guides/due-diligence-cape-town-property",
@@ -53,6 +58,7 @@
     "https://capetown-invest.com/guides/long-term-rental-cape-town-guide",
     "https://capetown-invest.com/guides/ltv-loan-to-value-singapore-property",
     "https://capetown-invest.com/guides/non-resident-mortgage-cape-town",
+    "https://capetown-invest.com/guides/off-plan-property-cape-town-guide",
     "https://capetown-invest.com/guides/off-plan-vs-resale-condo-singapore",
     "https://capetown-invest.com/guides/seller-stamp-duty-ssd-singapore",
     "https://capetown-invest.com/guides/short-term-rental-rules-cape-town",
@@ -63,6 +69,7 @@
     "https://capetown-invest.com/guides/singapore-rental-yield-guide",
     "https://capetown-invest.com/guides/south-africa-exchange-control-property",
     "https://capetown-invest.com/guides/south-africa-transfer-duty-explained",
+    "https://capetown-invest.com/guides/stellenbosch-property-investment-guide",
     "https://capetown-invest.com/guides/tdsr-mortgage-singapore-explained",
     "https://capetown-invest.com/guides/us-citizen-buying-property-singapore",
     "https://capetown-invest.com/methodology",
@@ -124,6 +131,41 @@
       "url": "https://capetown-invest.com/areas/camps-bay-property-investment",
       "channel": "google",
       "at": "2026-06-17T23:45:45.594Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/stellenbosch-property-investment-guide",
+      "channel": "google",
+      "at": "2026-06-18T00:11:39.211Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/century-city-property-investment-guide",
+      "channel": "google",
+      "at": "2026-06-18T00:11:39.211Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/off-plan-property-cape-town-guide",
+      "channel": "google",
+      "at": "2026-06-18T00:11:39.211Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-stellenbosch-property",
+      "channel": "google",
+      "at": "2026-06-18T00:11:39.211Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-lisbon-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T00:11:39.211Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/constantia-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T00:11:39.211Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/somerset-west-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T00:11:39.211Z"
     }
   ]
 }
