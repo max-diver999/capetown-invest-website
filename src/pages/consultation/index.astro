@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LeadForm from '../../components/LeadForm.astro';
+---
+<BaseLayout
+  title="Cape Town Property Investment Consultation"
+  description="Book a free Cape Town property consultation: budget, area fit, yield vs growth, foreign buyer steps. Independent research — licensed SA partner follow-up."
+>
+  <section class="site-container py-12 md:py-16 max-w-2xl">
+    <header class="mb-8">
+      <h1 class="mb-3">Investment consultation</h1>
+      <p class="text-lg text-[var(--color-muted)]">
+        A short, structured call or written review of your Cape Town thesis: area fit, budget band, yield assumptions, and foreign-buyer compliance steps. No sales pitch from our editorial desk.
+      </p>
+    </header>
+    <div class="prose mb-8 text-sm">
+      <h2>What we cover</h2>
+      <ul>
+        <li>Area shortlist: Atlantic Seaboard, City Bowl, Southern Suburbs, Winelands, or Century City</li>
+        <li>Acquisition cost stack: transfer duty, conveyancing, levies, and FX funding</li>
+        <li>Rental strategy: long-let vs short-let feasibility and net yield sanity check</li>
+        <li>Visa context if relevant — property does not grant residence; we flag parallel immigration planning</li>
+      </ul>
+      <h2>What happens next</h2>
+      <p>
+        Cape Town Invest is editorial-only. If you want viewings or offers, we introduce a
+        <strong>licensed South African partner</strong> who can run FICA and show regulated stock.
+      </p>
+    </div>
+    <LeadForm
+      title="Request a consultation"
+      subtitle="Budget · target suburbs · yield or lifestyle goal · timeline"
+      context="Consultation page"
+    />
+    <p class="text-xs text-[var(--color-muted)] mt-6">
+      By submitting you agree to our <a href="/privacy-policy/">Privacy Policy</a>.
+      Not financial, tax, or legal advice.
+    </p>
+  </section>
+</BaseLayout>

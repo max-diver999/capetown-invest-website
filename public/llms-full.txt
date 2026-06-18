@@ -1,5 +1,18 @@
-Mexico Invest (https://mexico-invest.com) publishes independent English-language guides on Mexico coastal property investment.
+Cape Town Invest (https://capetown-invest.com) publishes independent English-language guides on Cape Town and Western Cape property investment for foreign buyers.
 
-Primary topics: foreign ownership via fideicomiso, transaction costs, capital gains tax context, short-term rental rules, area selection (Playa del Carmen vs Tulum vs Los Cabos vs Puerto Vallarta), and project due diligence.
+Primary topics: foreign ownership (no buyer surcharge), FICA and exchange control, transfer duty and conveyancing costs, sectional title vs freehold, rental yield (gross vs net, MODELED), semigration demand, Atlantic Seaboard and City Bowl area selection, remote work and retirement visa routes (separate from property purchase), and new-build due diligence (NHBRC, snagging).
 
-Contact: info@mexico-invest.com
+Contact: info@capetown-invest.com
+
+Editorial stance: research-first, not a developer or portal. Enquiries may be referred to licensed South African property partners for shortlists and viewings.
+
+Key data sources cited in guides: Lightstone, FNB, John Loos Western Cape research, Deeds Office commentary, SARS non-resident rental guidance, City of Cape Town STR bylaws. Figures are indicative and dated; buyers must verify live thresholds with conveyancers, tax advisers, and Home Affairs.
+
+Top money pages:
+- /guides/cape-town-property-investment-guide/
+- /guides/buy-cape-town-property-foreigner/
+- /guides/cape-town-rental-yield-guide/
+- /guides/is-cape-town-property-good-investment-2026/
+- /guides/best-areas-invest-cape-town-2026/
+- /guides/atlantic-seaboard-property-investment-guide/
+- /compare/western-cape-vs-gauteng-property-investment/

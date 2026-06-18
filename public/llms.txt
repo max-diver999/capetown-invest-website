@@ -1,21 +1,34 @@
-# Invest Spain Property
+# Cape Town Invest
 
-> Independent research on Spain property investment for UK and European buyers.
+> Independent research on Cape Town and Western Cape property investment for foreign buyers: ownership rules, transfer costs, rental yields, semigration, and area selection.
 
-- Site: https://invest-spain-property.com
-- Contact: info@invest-spain-property.com
-- Markets: Costa Blanca, Costa del Sol, Balearic Islands
-- Focus: NIE, net rental yields, post-Golden Visa residency, off-plan bank guarantees
-- Not a developer, not a listing portal
+- Site: https://capetown-invest.com
+- Contact: info@capetown-invest.com
+- Markets: Atlantic Seaboard, City Bowl, Southern Suburbs, Century City, Winelands
+- Focus: foreign buyers, FICA, exchange control, transfer duty, net rental yield, remote work visa
 
-## Key guides (batch 1 — publishing)
-- /guides/spain-property-investment-guide/
-- /guides/buy-property-spain-foreigner/
-- /guides/spain-golden-visa-ended-2025/
+## Key hubs
+- /guides/cape-town-property-investment-guide/
+- /guides/buy-cape-town-property-foreigner/
+- /guides/cape-town-rental-yield-guide/
+- /guides/cost-of-buying-property-cape-town/
+- /guides/cape-town-remote-work-visa-property/
 
-## Project reviews (live scaffold)
-- /projects/insur-scala/
-- /projects/the-kove/
+## Collections
+- /guides/
+- /areas/
+- /compare/
+- /projects/
+- /developers/
+- /news/
 
-## Full corpus
-https://invest-spain-property.com/llms-full.txt
+## Conversion
+- /get-shortlist/
+- /consultation/
+- /contact/
+- /methodology/
+
+## Not
+- Not a developer sales desk
+- Not a listing portal
+- Not financial, tax, or immigration advice

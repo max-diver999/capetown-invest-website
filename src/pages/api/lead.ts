@@ -39,7 +39,7 @@ async function sendAutoReply(to: string, name: string, context: string) {
       subject: 'We received your request — Cape Town Invest',
       html: `<p>${greeting}</p>
 <p>Thank you for contacting Cape Town Invest. We received your request regarding <strong>${topic}</strong>.</p>
-<p>A licensed CEA partner will review your enquiry and reply by email or WhatsApp, usually within one business day.</p>
+<p>A licensed South African property partner will review your enquiry and reply by email or WhatsApp, usually within one business day.</p>
 <p>— <strong>Cape Town Invest Editorial</strong><br><a href="${SITE.url}">${SITE.url.replace('https://', '')}</a></p>
 <p style="font-size:12px;color:#666;">Independent research — not financial or legal advice.</p>`,
     }),
@@ -64,7 +64,7 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const lines = [
-      isHealthcheck ? '🧪 <b>TEST capetown-invest.com</b>' : '🇸🇬 <b>New lead — Cape Town Invest</b>',
+      isHealthcheck ? '🧪 <b>TEST capetown-invest.com</b>' : '🇿🇦 <b>New lead — Cape Town Invest</b>',
       '',
       name ? `👤 <b>Name:</b> ${name}` : null,
       phoneText ? `📱 <b>Phone:</b> ${phoneText}` : null,
