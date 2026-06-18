@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-18T01:53:45.246Z",
+  "updatedAt": "2026-06-18T02:01:02.934Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -45,6 +45,7 @@
     "https://capetown-invest.com/compare/east-coast-vs-queenstown-property",
     "https://capetown-invest.com/compare/jurong-vs-punggol-property-investment",
     "https://capetown-invest.com/compare/sea-point-vs-camps-bay-investment",
+    "https://capetown-invest.com/compare/western-cape-vs-gauteng-property-investment",
     "https://capetown-invest.com/contact",
     "https://capetown-invest.com/developers",
     "https://capetown-invest.com/developers/blok-urban-developers",
@@ -67,9 +68,11 @@
     "https://capetown-invest.com/guides/cape-town-city-bowl-property-investment",
     "https://capetown-invest.com/guides/cape-town-property-investment-checklist",
     "https://capetown-invest.com/guides/cape-town-property-investment-guide",
+    "https://capetown-invest.com/guides/cape-town-property-market-data-lightstone",
     "https://capetown-invest.com/guides/cape-town-property-market-forecast-2026-2027",
     "https://capetown-invest.com/guides/cape-town-property-scams-avoid",
     "https://capetown-invest.com/guides/cape-town-rates-taxes-property",
+    "https://capetown-invest.com/guides/cape-town-remote-work-visa-property",
     "https://capetown-invest.com/guides/cape-town-rental-yield-guide",
     "https://capetown-invest.com/guides/cape-town-semigration-property-guide",
     "https://capetown-invest.com/guides/cape-town-vacancy-rates-rental",
@@ -83,6 +86,7 @@
     "https://capetown-invest.com/guides/due-diligence-cape-town-property",
     "https://capetown-invest.com/guides/eu-citizens-buying-cape-town-property",
     "https://capetown-invest.com/guides/fica-requirements-foreign-property-buyers",
+    "https://capetown-invest.com/guides/financially-independent-visa-south-africa",
     "https://capetown-invest.com/guides/foreigner-mortgage-singapore",
     "https://capetown-invest.com/guides/fta-absd-remission-singapore-property",
     "https://capetown-invest.com/guides/german-buyers-cape-town-property",
@@ -105,6 +109,7 @@
     "https://capetown-invest.com/guides/off-plan-vs-resale-condo-singapore",
     "https://capetown-invest.com/guides/power-of-attorney-property-south-africa",
     "https://capetown-invest.com/guides/property-management-cape-town-cost",
+    "https://capetown-invest.com/guides/retirement-visa-south-africa-property",
     "https://capetown-invest.com/guides/sectional-title-levies-cape-town",
     "https://capetown-invest.com/guides/sectional-title-vs-freehold-cape-town",
     "https://capetown-invest.com/guides/security-estates-cape-town-foreign-buyers",
@@ -544,6 +549,31 @@
       "url": "https://capetown-invest.com/guides/eu-citizens-buying-cape-town-property",
       "channel": "google",
       "at": "2026-06-18T01:53:45.246Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-remote-work-visa-property",
+      "channel": "google",
+      "at": "2026-06-18T02:01:02.934Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/retirement-visa-south-africa-property",
+      "channel": "google",
+      "at": "2026-06-18T02:01:02.934Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/financially-independent-visa-south-africa",
+      "channel": "google",
+      "at": "2026-06-18T02:01:02.934Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-market-data-lightstone",
+      "channel": "google",
+      "at": "2026-06-18T02:01:02.934Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/western-cape-vs-gauteng-property-investment",
+      "channel": "google",
+      "at": "2026-06-18T02:01:02.934Z"
     }
   ]
 }
