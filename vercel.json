@@ -21,6 +21,16 @@
       "source": "/guides/us-buyers-cape-town-property/",
       "destination": "/segments/us-buyers-cape-town-property/",
       "permanent": true
+    },
+    {
+      "source": "/guides/western-cape-vs-gauteng-property-investment/",
+      "destination": "/compare/western-cape-vs-gauteng-property-investment/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/nhbc-warranty-south-africa-new-build/",
+      "destination": "/guides/nhbrc-warranty-south-africa-new-build/",
+      "permanent": true
     }
   ],
   "headers": [
