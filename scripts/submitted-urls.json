@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-18T10:32:13.556Z",
+  "updatedAt": "2026-06-19T00:09:36.173Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -164,6 +164,7 @@
     "https://capetown-invest.com/segments/german-buyers-cape-town-property",
     "https://capetown-invest.com/segments/uk-buyers-cape-town-property",
     "https://capetown-invest.com/segments/us-buyers-cape-town-property",
+    "https://capetown-invest.com/site-report",
     "https://capetown-invest.com/terms"
   ],
   "syncedAt": "2026-06-17T23:32:05.771Z",
@@ -924,6 +925,61 @@
       "url": "https://capetown-invest.com/projects/the-charlotte-cape-town",
       "channel": "google",
       "at": "2026-06-18T10:32:13.556Z"
+    },
+    {
+      "url": "https://capetown-invest.com/site-report",
+      "channel": "google",
+      "at": "2026-06-19T00:09:36.173Z"
+    },
+    {
+      "url": "https://capetown-invest.com/segments/uk-buyers-cape-town-property",
+      "channel": "google",
+      "at": "2026-06-19T00:09:36.173Z"
+    },
+    {
+      "url": "https://capetown-invest.com/segments/german-buyers-cape-town-property",
+      "channel": "google",
+      "at": "2026-06-19T00:09:36.173Z"
+    },
+    {
+      "url": "https://capetown-invest.com/segments/us-buyers-cape-town-property",
+      "channel": "google",
+      "at": "2026-06-19T00:09:36.173Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/atlantic-seaboard-property-investment-guide",
+      "channel": "google",
+      "at": "2026-06-19T00:09:36.173Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-city-bowl-property-investment",
+      "channel": "google",
+      "at": "2026-06-19T00:09:36.173Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/sea-point-vs-camps-bay-investment",
+      "channel": "google",
+      "at": "2026-06-19T00:09:36.173Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/oneonr-de-waterkant",
+      "channel": "google",
+      "at": "2026-06-19T00:09:36.173Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/on-park-century-city",
+      "channel": "google",
+      "at": "2026-06-19T00:09:36.173Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/skywater-century-city",
+      "channel": "google",
+      "at": "2026-06-19T00:09:36.173Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/the-charlotte-cape-town",
+      "channel": "google",
+      "at": "2026-06-19T00:09:36.173Z"
     }
   ]
 }
