@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-19T00:09:36.173Z",
+  "updatedAt": "2026-06-19T11:08:06.701Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -49,9 +49,12 @@
     "https://capetown-invest.com/consultation",
     "https://capetown-invest.com/contact",
     "https://capetown-invest.com/developers",
+    "https://capetown-invest.com/developers/amdec-property-investments",
     "https://capetown-invest.com/developers/blok-urban-developers",
     "https://capetown-invest.com/developers/capitaland-development",
     "https://capetown-invest.com/developers/city-developments-cdl",
+    "https://capetown-invest.com/developers/devmco-group",
+    "https://capetown-invest.com/developers/growthpoint-waterfront",
     "https://capetown-invest.com/developers/guocoland",
     "https://capetown-invest.com/developers/prospekt-property-development",
     "https://capetown-invest.com/developers/rabie-property-developers",
@@ -141,25 +144,42 @@
     "https://capetown-invest.com/news/western-cape-property-forecast-2026",
     "https://capetown-invest.com/privacy-policy",
     "https://capetown-invest.com/projects",
+    "https://capetown-invest.com/projects/acacia-house-woodstock",
     "https://capetown-invest.com/projects/amberwood-at-holland",
+    "https://capetown-invest.com/projects/amdec-hout-bay-project",
+    "https://capetown-invest.com/projects/camps-bay-infinity",
+    "https://capetown-invest.com/projects/chestercourt-redevelopment",
     "https://capetown-invest.com/projects/chuan-grove",
     "https://capetown-invest.com/projects/coastal-cabana-ec",
     "https://capetown-invest.com/projects/dunearn-house",
+    "https://capetown-invest.com/projects/foreshore-place-cape-town",
+    "https://capetown-invest.com/projects/granger-bay-waterfront",
+    "https://capetown-invest.com/projects/green-village-val-de-vie",
     "https://capetown-invest.com/projects/hudson-place-residences",
+    "https://capetown-invest.com/projects/infinity-milnerton",
     "https://capetown-invest.com/projects/lentor-gardens-residences",
     "https://capetown-invest.com/projects/lucerne-grand",
     "https://capetown-invest.com/projects/narra-residences",
     "https://capetown-invest.com/projects/newport-residences",
+    "https://capetown-invest.com/projects/nine-palms-century-city",
+    "https://capetown-invest.com/projects/observatory-green",
     "https://capetown-invest.com/projects/on-park-century-city",
+    "https://capetown-invest.com/projects/onehundredonm-sea-point",
     "https://capetown-invest.com/projects/oneonr-de-waterkant",
+    "https://capetown-invest.com/projects/pearl-valley-nova",
     "https://capetown-invest.com/projects/pinery-residences",
+    "https://capetown-invest.com/projects/rhapsody-burgundy-estate",
     "https://capetown-invest.com/projects/rivelle-tampines-ec",
     "https://capetown-invest.com/projects/river-modern",
+    "https://capetown-invest.com/projects/silo-district-residences",
     "https://capetown-invest.com/projects/skywater-century-city",
     "https://capetown-invest.com/projects/tengah-garden-residences",
     "https://capetown-invest.com/projects/the-charlotte-cape-town",
     "https://capetown-invest.com/projects/thomson-reserve",
+    "https://capetown-invest.com/projects/three43onb-sea-point",
+    "https://capetown-invest.com/projects/two-oceans-beach",
     "https://capetown-invest.com/projects/vela-bay",
+    "https://capetown-invest.com/projects/venice-house-cbd",
     "https://capetown-invest.com/segments",
     "https://capetown-invest.com/segments/german-buyers-cape-town-property",
     "https://capetown-invest.com/segments/uk-buyers-cape-town-property",
@@ -980,6 +1000,291 @@
       "url": "https://capetown-invest.com/projects/the-charlotte-cape-town",
       "channel": "google",
       "at": "2026-06-19T00:09:36.173Z"
+    },
+    {
+      "url": "https://capetown-invest.com/site-report",
+      "channel": "google",
+      "at": "2026-06-19T00:20:06.151Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cost-of-buying-property-cape-town",
+      "channel": "google",
+      "at": "2026-06-19T00:37:47.637Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-investment-guide",
+      "channel": "google",
+      "at": "2026-06-19T00:37:47.637Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/skywater-century-city",
+      "channel": "google",
+      "at": "2026-06-19T00:37:47.637Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/on-park-century-city",
+      "channel": "google",
+      "at": "2026-06-19T00:37:47.637Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/oneonr-de-waterkant",
+      "channel": "google",
+      "at": "2026-06-19T00:37:47.637Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/nine-palms-century-city",
+      "channel": "google",
+      "at": "2026-06-19T00:37:47.637Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/rhapsody-burgundy-estate",
+      "channel": "google",
+      "at": "2026-06-19T00:37:47.637Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/onehundredonm-sea-point",
+      "channel": "google",
+      "at": "2026-06-19T00:37:47.637Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/three43onb-sea-point",
+      "channel": "google",
+      "at": "2026-06-19T00:37:47.637Z"
+    },
+    {
+      "url": "https://capetown-invest.com/developers/growthpoint-waterfront",
+      "channel": "google",
+      "at": "2026-06-19T00:47:32.518Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/foreshore-place-cape-town",
+      "channel": "google",
+      "at": "2026-06-19T00:47:32.518Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/silo-district-residences",
+      "channel": "google",
+      "at": "2026-06-19T00:47:32.518Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/granger-bay-waterfront",
+      "channel": "google",
+      "at": "2026-06-19T00:47:32.518Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/infinity-milnerton",
+      "channel": "google",
+      "at": "2026-06-19T00:54:12.162Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/observatory-green",
+      "channel": "google",
+      "at": "2026-06-19T00:54:12.162Z"
+    },
+    {
+      "url": "https://capetown-invest.com/developers/amdec-property-investments",
+      "channel": "google",
+      "at": "2026-06-19T00:54:12.162Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-investment-guide",
+      "channel": "google",
+      "at": "2026-06-19T00:54:12.162Z"
+    },
+    {
+      "url": "https://capetown-invest.com/developers/devmco-group",
+      "channel": "google",
+      "at": "2026-06-19T00:58:27.081Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/chestercourt-redevelopment",
+      "channel": "google",
+      "at": "2026-06-19T00:58:27.081Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/two-oceans-beach",
+      "channel": "google",
+      "at": "2026-06-19T00:58:27.081Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-investment-guide",
+      "channel": "google",
+      "at": "2026-06-19T00:58:27.081Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/green-village-val-de-vie",
+      "channel": "google",
+      "at": "2026-06-19T01:06:39.148Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/pearl-valley-nova",
+      "channel": "google",
+      "at": "2026-06-19T01:06:39.148Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/venice-house-cbd",
+      "channel": "google",
+      "at": "2026-06-19T01:06:39.148Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-investment-guide",
+      "channel": "google",
+      "at": "2026-06-19T01:06:39.148Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/camps-bay-infinity",
+      "channel": "google",
+      "at": "2026-06-19T01:18:07.638Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/acacia-house-woodstock",
+      "channel": "google",
+      "at": "2026-06-19T01:18:07.638Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/amdec-hout-bay-project",
+      "channel": "google",
+      "at": "2026-06-19T01:18:07.638Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-investment-guide",
+      "channel": "google",
+      "at": "2026-06-19T01:18:07.638Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/green-village-val-de-vie",
+      "channel": "google",
+      "at": "2026-06-19T01:34:41.186Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/pearl-valley-nova",
+      "channel": "google",
+      "at": "2026-06-19T01:34:41.186Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/venice-house-cbd",
+      "channel": "google",
+      "at": "2026-06-19T01:34:41.186Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/camps-bay-infinity",
+      "channel": "google",
+      "at": "2026-06-19T01:34:41.186Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/acacia-house-woodstock",
+      "channel": "google",
+      "at": "2026-06-19T01:34:41.186Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/amdec-hout-bay-project",
+      "channel": "google",
+      "at": "2026-06-19T01:34:41.186Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/green-village-val-de-vie",
+      "channel": "google",
+      "at": "2026-06-19T01:38:45.557Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/venice-house-cbd",
+      "channel": "google",
+      "at": "2026-06-19T01:38:45.557Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/acacia-house-woodstock",
+      "channel": "google",
+      "at": "2026-06-19T01:38:45.557Z"
+    },
+    {
+      "url": "https://capetown-invest.com",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/about",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/contact",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/developers",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/get-shortlist",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/buy-cape-town-property-foreigner",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-rental-yield-guide",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/due-diligence-cape-town-property",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/non-resident-mortgage-cape-town",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/south-africa-exchange-control-property",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/methodology",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/news",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/privacy-policy",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
+    },
+    {
+      "url": "https://capetown-invest.com/terms",
+      "channel": "google",
+      "at": "2026-06-19T11:08:06.701Z"
     }
   ]
 }
