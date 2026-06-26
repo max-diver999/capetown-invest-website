@@ -1,6 +1,35 @@
 ---
-/** Cape Town Invest — live site report. Update via GSC/GA4/Bing MCP each session. */
 export const prerender = true;
+
+const reportDate = '25 June 2026';
+const reportVersion = 'v2.0';
+const launchDate = '10 June 2026';
+const dataThrough = '24 June 2026';
+
+const monthlyGsc = [
+  { month: 'Jun 2026', label: 'Jun', clicks: 4, impressions: 198, position: 22.1, note: 'Through 24 Jun · first index week' },
+];
+
+const monthlyGa4 = [
+  { month: 'Jun', sessions: 61 },
+];
+
+const contentBreakdown = [
+  { type: 'Guides', count: 53, words: 178227, color: '#2d7a5e' },
+  { type: 'Areas', count: 21, words: 65037, color: '#8b5cf6' },
+  { type: 'Projects', count: 21, words: 41796, color: '#4e9e7e' },
+  { type: 'Comparisons', count: 7, words: 20581, color: '#d97706' },
+  { type: 'Developers', count: 6, words: 14526, color: '#60a5fa' },
+  { type: 'Segments', count: 3, words: 9620, color: '#0891b2' },
+  { type: 'News', count: 5, words: 5456, color: '#9ca3af' },
+];
+
+const totalClicks = monthlyGsc.reduce((s, m) => s + m.clicks, 0);
+const totalImp = monthlyGsc.reduce((s, m) => s + m.impressions, 0);
+const totalWords = contentBreakdown.reduce((s, c) => s + c.words, 0);
+const totalFiles = contentBreakdown.reduce((s, c) => s + c.count, 0);
+const clicksDelta = 0;
+const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -11,94 +40,401 @@ export const prerender = true;
   <title>capetown-invest.com — Site Report</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f5f3ef; color: #1c1917; min-height: 100vh; }
-    .header { background: #1c1917; color: white; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f4f1eb; color: #2c2c2c; min-height: 100vh; }
+
+    .header { background: #1a2e2a; color: white; padding: 32px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
     .header-brand { display: flex; align-items: center; gap: 12px; }
-    .header-logo { width: 36px; height: 36px; background: linear-gradient(135deg, #d4a853, #b45309); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; color: #1c1917; }
+    .header-logo { width: 36px; height: 36px; background: #4e9e7e; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; color: white; }
     .header h1 { font-size: 22px; font-weight: 700; }
-    .header-sub { font-size: 13px; color: #a8a29e; margin-top: 2px; }
+    .header-sub { font-size: 13px; color: #9dbfb3; margin-top: 2px; }
     .header-meta { text-align: right; }
-    .header-meta .label { font-size: 12px; color: #a8a29e; }
+    .header-meta .label { font-size: 12px; color: #9dbfb3; }
     .header-meta .value { font-size: 14px; font-weight: 600; margin-top: 2px; }
-    .live-badge { display: inline-flex; align-items: center; gap: 6px; background: #292524; border-radius: 20px; padding: 4px 12px; font-size: 12px; margin-top: 8px; }
+    .live-badge { display: inline-flex; align-items: center; gap: 6px; background: #2d5a4a; border-radius: 20px; padding: 4px 12px; font-size: 12px; margin-top: 8px; }
     .live-dot { width: 6px; height: 6px; background: #4ade80; border-radius: 50%; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
-    .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #78716c; margin-bottom: 16px; margin-top: 40px; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 32px 24px; }
+
+    .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #7a7a6e; margin-bottom: 16px; margin-top: 40px; }
     .section-title:first-child { margin-top: 0; }
-    .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 16px; }
-    .stat-card { background: white; border-radius: 12px; padding: 20px; border: 1px solid #e7e5e4; }
-    .stat-card .num { font-size: 40px; font-weight: 800; color: #1c1917; line-height: 1; }
-    .stat-card .num.gold { color: #b45309; }
-    .stat-card .num.green { color: #15803d; }
-    .stat-card .label { font-size: 13px; color: #78716c; margin-top: 6px; }
-    .stat-card .sublabel { font-size: 11px; color: #a8a29e; margin-top: 4px; line-height: 1.4; }
+
+    .stats-grid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; }
+    .stat-card { background: white; border-radius: 10px; padding: 14px 10px; border: 1px solid #e8e4dc; min-width: 0; }
+    .stat-card .num { font-size: 26px; font-weight: 800; color: #1a2e2a; line-height: 1.05; letter-spacing: -0.02em; }
+    .stat-card .num.teal { color: #2d7a5e; }
+    .stat-card .num.amber { color: #b45309; }
+    .stat-card .label { font-size: 11px; color: #7a7a6e; margin-top: 5px; line-height: 1.25; }
+    .stat-card .sublabel { font-size: 9px; color: #aaa; margin-top: 3px; line-height: 1.35; }
+    @media (max-width: 1100px) { .stats-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
     .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
-    .info-card { background: white; border-radius: 12px; padding: 20px; border: 1px solid #e7e5e4; }
-    .info-card h3 { font-size: 14px; font-weight: 700; color: #1c1917; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #f5f5f4; }
-    .info-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 6px 0; border-bottom: 1px solid #fafaf9; gap: 16px; }
+    .info-card { background: white; border-radius: 12px; padding: 20px; border: 1px solid #e8e4dc; }
+    .info-card h3 { font-size: 14px; font-weight: 700; color: #1a2e2a; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 1px solid #f0ece4; }
+    .info-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 6px 0; border-bottom: 1px solid #f7f4ef; gap: 16px; }
     .info-row:last-child { border-bottom: none; }
-    .info-row .key { font-size: 13px; color: #78716c; flex-shrink: 0; }
-    .info-row .val { font-size: 13px; font-weight: 600; color: #1c1917; text-align: right; }
-    .info-row .val a { color: #b45309; text-decoration: none; }
+    .info-row .key { font-size: 13px; color: #7a7a6e; flex-shrink: 0; }
+    .info-row .val { font-size: 13px; font-weight: 600; color: #2c2c2c; text-align: right; }
+    .info-row .val a { color: #2d7a5e; text-decoration: none; }
     .info-row .val a:hover { text-decoration: underline; }
-    .content-card { background: white; border-radius: 12px; border: 1px solid #e7e5e4; overflow: hidden; }
-    .table-scroll { width: 100%; overflow-x: auto; }
-    .content-table { width: 100%; border-collapse: collapse; min-width: 640px; }
-    .content-table th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #78716c; font-weight: 700; padding: 12px 20px; text-align: left; background: #fafaf9; border-bottom: 1px solid #e7e5e4; }
-    .content-table td { padding: 12px 20px; font-size: 13px; border-bottom: 1px solid #f5f5f4; vertical-align: top; }
+
+    .content-card { background: white; border-radius: 12px; border: 1px solid #e8e4dc; overflow: hidden; }
+    .table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .content-table { width: 100%; border-collapse: collapse; }
+    .content-table th { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: #7a7a6e; font-weight: 700; padding: 12px 20px; text-align: left; background: #faf8f4; border-bottom: 1px solid #e8e4dc; }
+    .content-table td { padding: 12px 20px; font-size: 13px; border-bottom: 1px solid #f4f1eb; vertical-align: top; }
     .content-table tr:last-child td { border-bottom: none; }
-    .content-table .count { font-weight: 800; color: #b45309; font-size: 18px; }
-    .content-table .words { color: #78716c; font-size: 12px; }
+    .content-table tr:hover td { background: #faf8f4; }
+    .content-table .count { font-weight: 800; color: #2d7a5e; font-size: 18px; }
+    .content-table .words { color: #7a7a6e; font-size: 12px; }
     .tag { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 600; }
     .tag.green { background: #dcfce7; color: #166534; }
     .tag.blue { background: #dbeafe; color: #1e40af; }
     .tag.amber { background: #fef3c7; color: #92400e; }
-    .tag.gray { background: #f5f5f4; color: #57534e; }
-    .tag.red { background: #fee2e2; color: #991b1b; }
-    .changelog-item { background: white; border: 1px solid #e7e5e4; border-bottom: none; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start; }
+    .tag.gray { background: #f3f4f6; color: #374151; }
+
+    .changelog { display: flex; flex-direction: column; gap: 0; }
+    .changelog-item { background: white; border-radius: 0; border: 1px solid #e8e4dc; border-bottom: none; padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start; }
     .changelog-item:first-child { border-radius: 12px 12px 0 0; }
-    .changelog-item:last-child { border-radius: 0 0 12px 12px; border-bottom: 1px solid #e7e5e4; }
-    .changelog-date { font-size: 11px; color: #a8a29e; min-width: 100px; padding-top: 2px; }
-    .changelog-title { font-size: 13px; font-weight: 600; color: #1c1917; }
-    .changelog-desc { font-size: 12px; color: #78716c; margin-top: 3px; line-height: 1.45; }
+    .changelog-item:last-child { border-radius: 0 0 12px 12px; border-bottom: 1px solid #e8e4dc; }
+    .changelog-date { font-size: 11px; color: #9ca3af; min-width: 80px; padding-top: 2px; }
+    .changelog-content { flex: 1; }
+    .changelog-title { font-size: 13px; font-weight: 600; color: #1a2e2a; }
+    .changelog-desc { font-size: 12px; color: #7a7a6e; margin-top: 3px; }
     .changelog-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
-    .next-item { background: white; border-radius: 10px; border: 1px solid #e7e5e4; padding: 14px 18px; display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px; }
-    .priority.high { color: #dc2626; font-size: 11px; font-weight: 700; min-width: 50px; }
-    .priority.medium { color: #d97706; font-size: 11px; font-weight: 700; min-width: 50px; }
-    .priority.low { color: #059669; font-size: 11px; font-weight: 700; min-width: 50px; }
-    .next-item .text { font-size: 13px; color: #1c1917; }
-    .next-item .subtext { font-size: 12px; color: #a8a29e; margin-top: 2px; }
-    .pulse-wrap { background: white; border-radius: 16px; border: 1px solid #e7e5e4; padding: 24px 28px; }
+
+    .next-steps { display: flex; flex-direction: column; gap: 10px; }
+    .next-item { background: white; border-radius: 10px; border: 1px solid #e8e4dc; padding: 14px 18px; display: flex; align-items: flex-start; gap: 12px; }
+    .next-item .priority { font-size: 11px; font-weight: 700; min-width: 50px; padding-top: 1px; }
+    .priority.high { color: #dc2626; }
+    .priority.medium { color: #d97706; }
+    .priority.low { color: #059669; }
+    .next-item .text { font-size: 13px; color: #2c2c2c; }
+    .next-item .subtext { font-size: 12px; color: #9ca3af; margin-top: 2px; }
+
+    .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .link-card { background: white; border-radius: 10px; border: 1px solid #e8e4dc; padding: 16px; text-decoration: none; color: #2c2c2c; transition: border-color 0.2s; display: block; }
+    .link-card:hover { border-color: #2d7a5e; }
+    .link-card .link-label { font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.06em; }
+    .link-card .link-url { font-size: 13px; font-weight: 600; color: #2d7a5e; margin-top: 4px; word-break: break-all; }
+
+    .footer { text-align: center; padding: 32px 24px; color: #9ca3af; font-size: 12px; }
+    .footer strong { color: #7a7a6e; }
+
+    /* ── SEO PULSE DASHBOARD ── */
+    .pulse-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+    .pulse-header h2 { font-size: 16px; font-weight: 800; color: #1a2e2a; }
+    .pulse-updated { font-size: 11px; color: #9ca3af; background: #f4f1eb; border-radius: 20px; padding: 4px 12px; display: flex; align-items: center; gap: 6px; }
+    .pulse-updated-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ade80; animation: pulse 2s infinite; }
+
     .pulse-kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
     @media (max-width: 700px) { .pulse-kpi-row { grid-template-columns: repeat(2, 1fr); } }
-    .pulse-kpi { background: #fafaf9; border-radius: 12px; border: 1px solid #e7e5e4; padding: 18px 20px; }
-    .pulse-kpi .kpi-val { font-size: 36px; font-weight: 900; color: #1c1917; line-height: 1; margin-top: 4px; }
-    .pulse-kpi .kpi-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #78716c; }
-    .pulse-kpi .kpi-sub { font-size: 11px; color: #a8a29e; margin-top: 4px; line-height: 1.35; }
-    .baseline-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; font-size: 13px; color: #92400e; line-height: 1.5; }
-    .baseline-box strong { color: #78350f; }
-    .insight { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 10px; padding: 14px 18px; margin-top: 16px; font-size: 12px; color: #166534; line-height: 1.5; }
-    .insight strong { font-weight: 700; }
-    .slug-list { font-size: 11px; color: #57534e; line-height: 1.6; column-count: 2; column-gap: 24px; }
-    @media (max-width: 700px) { .slug-list { column-count: 1; } }
-    .slug-list a { color: #b45309; text-decoration: none; }
-    .slug-list a:hover { text-decoration: underline; }
-    .links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
-    .link-card { background: white; border-radius: 10px; border: 1px solid #e7e5e4; padding: 16px; text-decoration: none; color: #1c1917; display: block; }
-    .link-card:hover { border-color: #b45309; }
-    .link-card .link-label { font-size: 11px; color: #a8a29e; text-transform: uppercase; letter-spacing: 0.06em; }
-    .link-card .link-url { font-size: 13px; font-weight: 600; color: #b45309; margin-top: 4px; word-break: break-all; }
-    .footer { text-align: center; padding: 32px 24px; color: #a8a29e; font-size: 12px; line-height: 1.6; }
-    .footer a { color: #b45309; text-decoration: none; }
+    .pulse-kpi { background: white; border-radius: 12px; border: 1px solid #e8e4dc; padding: 18px 20px; position: relative; overflow: hidden; }
+    .pulse-kpi::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+    .pulse-kpi.kpi-green::before { background: linear-gradient(90deg, #4ade80, #2d7a5e); }
+    .pulse-kpi.kpi-blue::before { background: linear-gradient(90deg, #60a5fa, #2563eb); }
+    .pulse-kpi.kpi-amber::before { background: linear-gradient(90deg, #fbbf24, #d97706); }
+    .pulse-kpi.kpi-orange::before { background: linear-gradient(90deg, #fb923c, #c2410c); }
+    .pulse-kpi .kpi-val { font-size: 36px; font-weight: 900; color: #1a2e2a; line-height: 1; margin-top: 4px; }
+    .pulse-kpi .kpi-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #7a7a6e; }
+    .pulse-kpi .kpi-sub { font-size: 11px; color: #aaa; margin-top: 4px; }
+    .pulse-kpi .kpi-trend { position: absolute; top: 18px; right: 18px; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 20px; }
+    .trend-up { background: #dcfce7; color: #166534; }
+    .trend-new { background: #dbeafe; color: #1e40af; }
+
+    .pulse-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 700px) { .pulse-grid { grid-template-columns: 1fr; } }
+
+    .pulse-card { background: white; border-radius: 12px; border: 1px solid #e8e4dc; padding: 18px 20px; }
+    .pulse-card-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #7a7a6e; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+    .pulse-card-title span { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+    .span-green { background: #4ade80; }
+    .span-blue { background: #60a5fa; }
+
+    .pulse-query-row { display: flex; align-items: center; gap: 10px; padding: 7px 0; border-bottom: 1px solid #f4f1eb; }
+    .pulse-query-row:last-child { border-bottom: none; }
+    .pulse-query-rank { font-size: 11px; font-weight: 700; color: #aaa; min-width: 20px; }
+    .pulse-query-text { flex: 1; min-width: 0; font-size: 12px; color: #2c2c2c; white-space: normal; overflow-wrap: anywhere; word-break: break-word; }
+    .pulse-query-pos { font-size: 11px; font-weight: 700; color: #2d7a5e; background: #f0faf5; border-radius: 6px; padding: 2px 7px; }
+    .pulse-query-imp { font-size: 11px; color: #aaa; min-width: 50px; text-align: right; }
+
+    .pulse-page-row { display: flex; align-items: flex-start; gap: 10px; padding: 7px 0; border-bottom: 1px solid #f4f1eb; }
+    .pulse-page-row:last-child { border-bottom: none; }
+    .pulse-page-url { flex: 1; min-width: 0; font-size: 11px; color: #2d7a5e; overflow-wrap: anywhere; word-break: break-word; }
+    .pulse-page-meta { display: flex; gap: 6px; flex-shrink: 0; }
+    .pulse-badge { font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px; }
+    .badge-clicks { background: #dcfce7; color: #166534; }
+    .badge-impr { background: #dbeafe; color: #1e40af; }
+    .badge-pos { background: #fef3c7; color: #92400e; }
+
+    .pulse-chart { margin-top: 4px; }
+    .chart-bars { display: flex; align-items: flex-end; gap: 4px; height: 60px; }
+    .chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .chart-bar { width: 100%; border-radius: 3px 3px 0 0; min-height: 2px; transition: height 0.3s; }
+    .chart-bar.bar-impr { background: #bfdbfe; }
+    .chart-bar.bar-click { background: #4ade80; }
+    .chart-label { font-size: 9px; color: #aaa; }
+
+    .pulse-insight { background: #f0faf5; border: 1px solid #c6e8da; border-radius: 10px; padding: 12px 16px; margin-top: 16px; display: flex; gap: 12px; align-items: flex-start; }
+    .pulse-insight-icon { font-size: 18px; flex-shrink: 0; }
+    .pulse-insight-text { font-size: 12px; color: #1a4f3a; line-height: 1.5; }
+    .pulse-insight-text strong { font-weight: 700; }
+
+    .pulse-footer-note { font-size: 11px; color: #aaa; margin-top: 16px; text-align: center; }
+    .pulse-footer-note a { color: #2d7a5e; text-decoration: none; }
+    .pulse-table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .pulse-table-scroll table { min-width: 720px; }
+
     @media (max-width: 640px) {
-      .header { padding: 22px 16px; }
-      .header-meta { text-align: left; margin-top: 12px; }
-      .container { padding: 20px 12px; }
-      .changelog-item { flex-direction: column; gap: 6px; }
+      body { overflow-x: hidden; }
+      .header { padding: 22px 16px; display: block; }
+      .header-brand { align-items: flex-start; }
+      .header h1 { font-size: 19px; line-height: 1.2; word-break: break-word; }
+      .header-meta { text-align: left; margin-top: 18px; }
+      .live-badge { display: flex; align-items: flex-start; width: 100%; border-radius: 14px; padding: 8px 10px; line-height: 1.45; white-space: normal; }
+      .container { width: 100%; padding: 20px 12px; overflow: hidden; }
+      .section-title { margin-top: 30px !important; font-size: 12px; line-height: 1.35; }
+      .stats-grid, .info-grid, .pulse-grid, .pulse-kpi-row, .links-grid { grid-template-columns: 1fr !important; gap: 10px; }
+      .pulse-card > div[style*="grid-template-columns:repeat(4,1fr)"],
+      .pulse-card > div[style*="grid-template-columns:1fr 1fr"],
+      div[style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+      .stat-card, .info-card, .pulse-card, .pulse-kpi, .link-card { padding: 14px; border-radius: 12px; max-width: 100%; }
+      .stat-card .num, .pulse-kpi .kpi-val { font-size: 30px; }
+      .pulse-kpi .kpi-trend { position: static; display: inline-block; margin-bottom: 8px; }
+      .info-row { display: block; }
+      .info-row .key, .info-row .val { display: block; text-align: left; }
+      .info-row .val { margin-top: 4px; word-break: break-word; }
+      .pulse-query-row, .pulse-page-row { align-items: flex-start; flex-wrap: wrap; gap: 6px; }
+      .pulse-query-text, .pulse-page-url { min-width: 0; white-space: normal; overflow: visible; text-overflow: clip; word-break: break-word; }
+      .pulse-page-meta { flex-wrap: wrap; width: 100%; }
+      .pulse-query-imp { min-width: auto; text-align: left; }
+      .pulse-insight { padding: 12px; gap: 10px; }
+      .pulse-insight-text { font-size: 12px; word-break: break-word; }
+      .pulse-table-scroll { margin: 0 -2px; }
+      .content-card { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .content-table { min-width: 720px; }
+      .changelog-item { display: block; padding: 14px; }
+      .changelog-date { min-width: 0; margin-bottom: 6px; }
+      .footer { padding: 24px 14px; line-height: 1.5; }
     }
+
+    /* ── GROWTH DASHBOARD v19 ── */
+    :root {
+      --ink: #1a2e2a;
+      --ink-soft: #2c4a44;
+      --accent: #4e9e7e;
+      --accent-dark: #2d7a5e;
+      --paper-2: #faf8f4;
+      --card: #ffffff;
+      --border: #e8e4dc;
+      --muted: #7a7a6e;
+      --up: #16a34a;
+      --down: #dc2626;
+      --shadow: 0 4px 24px rgba(26, 46, 42, 0.06);
+      --radius: 14px;
+    }
+
+    .kpi-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 8px;
+      margin-bottom: 32px;
+    }
+    @media (max-width: 1100px) { .kpi-strip { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .kpi-strip { grid-template-columns: 1fr; } }
+    .kpi-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 18px 16px;
+      box-shadow: var(--shadow);
+    }
+    .kpi-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+    .kpi-value {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--ink);
+      margin: 6px 0 4px;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .kpi-delta {
+      font-size: 11px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 2px 8px;
+      border-radius: 999px;
+    }
+    .kpi-delta.up { background: #dcfce7; color: var(--up); }
+    .kpi-delta.down { background: #fee2e2; color: var(--down); }
+    .kpi-delta.neutral { background: #f3f4f6; color: var(--muted); }
+    .kpi-sub { font-size: 10px; color: #aaa; margin-top: 6px; line-height: 1.35; }
+
+    /* ── Sections ── */
+    .section { margin-bottom: 48px; }
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .section-head h2 {
+      font-family: Georgia, 'Times New Roman', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .section-head p { font-size: 13px; color: var(--muted); max-width: 480px; }
+    .badge-src {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent-dark);
+      background: #f0faf5;
+      border: 1px solid #c6e8da;
+      border-radius: 999px;
+      padding: 4px 12px;
+    }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    @media (max-width: 900px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .card-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .chart-wrap { position: relative; height: 280px; }
+    .chart-wrap-sm { height: 220px; }
+
+    /* ── Monthly table ── */
+    .data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .data-table th {
+      text-align: left;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--muted);
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--border);
+      font-weight: 700;
+    }
+    .data-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #f4f1eb;
+      vertical-align: middle;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table tr:hover td { background: var(--paper-2); }
+    .data-table .num { font-weight: 800; font-size: 15px; color: var(--accent-dark); }
+    .bar-cell { display: flex; align-items: center; gap: 10px; }
+    .mini-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+      min-width: 4px;
+    }
+
+    /* ── Query / page rows ── */
+    .rank-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid #f4f1eb;
+      font-size: 12px;
+    }
+    .rank-row:last-child { border-bottom: none; }
+    .rank-num { font-weight: 800; color: #ccc; min-width: 22px; font-size: 11px; }
+    .rank-text { flex: 1; min-width: 0; word-break: break-word; color: var(--ink); }
+    .rank-url { flex: 1; min-width: 0; word-break: break-all; color: var(--accent-dark); font-size: 11px; }
+    .pill {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .pill-green { background: #dcfce7; color: #166534; }
+    .pill-blue { background: #dbeafe; color: #1e40af; }
+    .pill-amber { background: #fef3c7; color: #92400e; }
+
+    /* ── Insight ── */
+    .insight {
+      background: linear-gradient(135deg, #f0faf5, #ecfdf5);
+      border: 1px solid #c6e8da;
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-size: 13px;
+      color: var(--ink-soft);
+      line-height: 1.55;
+      margin-top: 20px;
+    }
+    .insight strong { color: var(--ink); }
+
+    /* ── Timeline ── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--border));
+    }
+    .tl-item { position: relative; padding-bottom: 24px; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 3px solid var(--paper);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .tl-date { font-size: 11px; color: var(--muted); font-weight: 600; }
+    .tl-title { font-size: 14px; font-weight: 700; color: var(--ink); margin: 2px 0 4px; }
+    .tl-desc { font-size: 12px; color: var(--muted); line-height: 1.45; }
+    .tl-tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #f0faf5;
+      color: var(--accent-dark);
+      margin-top: 6px;
+    }
+
+
   </style>
+  <script is:inline src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 </head>
 <body>
 
@@ -112,8 +448,9 @@ export const prerender = true;
   </div>
   <div class="header-meta">
     <div class="label">Last updated</div>
-    <div class="value">18 June 2026 · v1.1</div>
-    <div class="live-badge"><span class="live-dot"></span> 96 MDX · qa:full 4/4 · dedicated Telegram bot</div>
+    <div class="value">{reportDate} · {reportVersion} (live)</div>
+    <div class="live-badge"><span class="live-dot"></span> 116 MDX · 131 sitemap · gap 0</div>
+    <div style="margin-top:10px;font-size:12px;"><a href="https://capetown-invest.com/" style="color:#9dbfb3;text-decoration:none;">← Live site</a></div>
   </div>
 </div>
 
@@ -122,277 +459,555 @@ export const prerender = true;
   <div class="section-title">At a glance</div>
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="num gold">96</div>
-      <div class="label">MDX articles</div>
-      <div class="sublabel">53 guides · 3 segments · 7 compare · 21 areas · 4 projects · 3 developers · 5 news</div>
+      <div class="num teal">131</div>
+      <div class="label">URLs in sitemap</div>
+      <div class="sublabel">21 projects · 53 guides · 21 areas · 7 compare · 6 developers · 5 news</div>
     </div>
     <div class="stat-card">
-      <div class="num">249K</div>
-      <div class="label">Words (body-only)</div>
-      <div class="sublabel">~2 597 avg/article · validate:content 96/96 PASS</div>
+      <div class="num amber">0</div>
+      <div class="label">Ahrefs DR</div>
+      <div class="sublabel">Pre-baseline · new domain · link building Q3 target DR 5–10</div>
     </div>
     <div class="stat-card">
-      <div class="num gold">100</div>
-      <div class="label">URL map target</div>
-      <div class="sublabel">96 content + consultation + shortlist + methodology + about</div>
+      <div class="num">~335K</div>
+      <div class="label">SEO words</div>
+      <div class="sublabel">116 MDX files · ~2 889 avg · 48 git commits</div>
     </div>
     <div class="stat-card">
-      <div class="num green">14</div>
-      <div class="label">Content batches</div>
-      <div class="sublabel">B1–B14 shipped Jun 2026 · full audit + Phase A/B 18 Jun</div>
+      <div class="num teal">8</div>
+      <div class="label">GSC click URLs</div>
+      <div class="sublabel">10 Jun–24 Jun · projects + guides first clicks</div>
     </div>
     <div class="stat-card">
-      <div class="num green">163</div>
-      <div class="label">URLs indexed (Google API)</div>
-      <div class="sublabel">capetown-invest-indexing · explicit batches only</div>
+      <div class="num">7</div>
+      <div class="label">Collections + hubs</div>
+      <div class="sublabel">guides · projects · areas · compare · developers · segments · news</div>
     </div>
     <div class="stat-card">
-      <div class="num">35</div>
-      <div class="label">Git commits</div>
-      <div class="sublabel">v1.1 infra + internal linking · production author verified</div>
+      <div class="num amber">4</div>
+      <div class="label">GSC clicks</div>
+      <div class="sublabel">198 imp · CTR 2.02% · avg pos 22.1</div>
+    </div>
+    <div class="stat-card">
+      <div class="num teal">61</div>
+      <div class="label">GA4 sessions</div>
+      <div class="sublabel">Jun 2026 · lead API 200 · dedicated Telegram bot</div>
     </div>
   </div>
 
-  <div class="section-title">SEO Pulse — Google Search Console</div>
-  <div class="pulse-wrap">
-    <div class="baseline-box">
-      <strong>Early index phase (18 Jun 2026).</strong> GSC MCP <code>sc-domain:capetown-invest.com</code> · period 20 May – 16 Jun: <strong>0 clicks, 0 impressions</strong> — site launched mid-Jun, 159+ URLs pinged via Indexing API. First query data expected late June. GA4 property connected; sessions minimal pre-crawl.
+
+  <!-- ═══ GROWTH DASHBOARD v19 — charts + MoM (CTR hidden) ═══ -->
+  <div class="section-title" style="margin-top:32px;">Growth dashboard — since launch</div>
+
+  <div class="kpi-strip">
+    <div class="kpi-card">
+      <div class="kpi-label">GSC Clicks</div>
+      <div class="kpi-value">{totalClicks}</div>
+      <span class="kpi-delta neutral">Early index</span>
+      <div class="kpi-sub">Since launch · Google Search Console</div>
     </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Impressions</div>
+      <div class="kpi-value">{(totalImp / 1000).toFixed(1)}k</div>
+      <span class="kpi-delta up">↑ Crawl live</span>
+      <div class="kpi-sub">198 total · first impressions 18 Jun</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">GA4 Sessions</div>
+      <div class="kpi-value">61</div>
+      <span class="kpi-delta up">↑ First crawl</span>
+      <div class="kpi-sub">Jun 2026 cumulative</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-label">Content corpus</div>
+      <div class="kpi-value">{(totalWords / 1_000_000).toFixed(1)}M</div>
+      <span class="kpi-delta neutral">{totalFiles} pages</span>
+      <div class="kpi-sub">Words in MDX</div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>Monthly growth since launch</h2>
+        <p>Google Search Console web search · {launchDate} → {dataThrough}. June is partial (24 days).</p>
+      </div>
+      <span class="badge-src">GSC API · Updated {reportDate}</span>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Clicks &amp; impressions by month</div>
+        <div class="chart-wrap"><canvas id="chartMonthly"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">GA4 sessions by month</div>
+        <div class="chart-wrap"><canvas id="chartGa4"></canvas></div>
+        <div class="insight" style="margin-top:16px;">
+          <strong>Early index phase:</strong> 61 GA4 sessions in June — mix of crawl bots and first organic. GSC first impressions 18 Jun; 4 clicks by 24 Jun as project pages enter SERPs.
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:20px;">
+      <div class="card-title">Month-over-month detail</div>
+      <div style="overflow-x:auto;">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Clicks</th>
+              <th>Impressions</th>
+              <th>Avg position</th>
+              <th>MoM clicks</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {monthlyGsc.map((m, i) => {
+              const prev = i > 0 ? monthlyGsc[i - 1] : null;
+              const mom = prev && prev.clicks > 0
+                ? `+${Math.round(((m.clicks - prev.clicks) / prev.clicks) * 100)}%`
+                : '—';
+              const barW = Math.round((m.impressions / maxImp) * 120);
+              return (
+                <tr>
+                  <td><strong>{m.month}</strong></td>
+                  <td class="num">{m.clicks}</td>
+                  <td>
+                    <div class="bar-cell">
+                      <span>{m.impressions.toLocaleString('en-US')}</span>
+                      <div class="mini-bar" style={`width:${barW}px`}></div>
+                    </div>
+                  </td>
+                  <td>{m.position.toFixed(1)}</td>
+                  <td><span class={`pill ${mom.startsWith('+') ? 'pill-green' : 'pill-amber'}`}>{mom}</span></td>
+                  <td style="color:#7a7a6e;font-size:12px;">{m.note}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+      <div class="insight">
+        <strong>Position will widen as corpus scales:</strong> 116 MDX pages indexed in first two weeks — avg position ~22.1 is normal for a new domain. Quick wins: two-oceans-beach (pos 6.8), rabie developer (pos 9.8), green-point area (pos 4.5).
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>SEO momentum — daily trend</h2>
+        <p>Key days since launch · GSC impressions (area) vs clicks (line).</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="chart-wrap" style="height:320px;"><canvas id="chartDaily"></canvas></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>Content engine</h2>
+        <p>{totalFiles.toLocaleString('en-US')} MDX pages · {(totalWords / 1_000_000).toFixed(2)} million words · programmatic + editorial SEO.</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Corpus by collection</div>
+        <div class="chart-wrap-sm"><canvas id="chartContent"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Breakdown</div>
+        <table class="data-table">
+          <thead>
+            <tr><th>Collection</th><th>Pages</th><th>Words</th><th>Avg depth</th></tr>
+          </thead>
+          <tbody>
+            {contentBreakdown.map(c => (
+              <tr>
+                <td><strong>{c.type}</strong></td>
+                <td class="num">{c.count}</td>
+                <td>{c.words.toLocaleString('en-US')}</td>
+                <td>{Math.round(c.words / c.count).toLocaleString('en-US')}</td>
+              </tr>
+            ))}
+            <tr style="background:#f0faf5;">
+              <td><strong>TOTAL</strong></td>
+              <td class="num">{totalFiles}</td>
+              <td><strong>{totalWords.toLocaleString('en-US')}</strong></td>
+              <td>{Math.round(totalWords / totalFiles).toLocaleString('en-US')}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- SEO PULSE — Google Search Console, GA4 and available analytics data -->
+  <div class="section-title" style="margin-top:40px;">SEO Pulse — Google Search Console</div>
+
+  <div style="background:white;border-radius:16px;border:1px solid #e8e4dc;padding:24px 28px;">
+
+    <div class="pulse-header">
+      <div>
+        <h2>Search Performance</h2>
+        <p style="font-size:12px;color:#9ca3af;margin-top:2px;">capetown-invest.com · 10 Jun – 24 Jun 2026 · Web search · Updated 25 Jun via GSC API</p>
+      </div>
+      <div class="pulse-updated">
+        <span class="pulse-updated-dot"></span>
+        Updated 25 Jun 2026
+      </div>
+    </div>
+
+    <!-- Period comparison -->
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;">
+      <div style="background:#f0faf5;border:1px solid #c6e8da;border-radius:10px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:700;color:#7a7a6e;text-transform:uppercase;">18–19 Jun 2026</div>
+        <div style="font-size:22px;font-weight:900;color:#1a2e2a;margin-top:4px;">2 clicks</div>
+        <div style="font-size:12px;color:#7a7a6e;">89 impressions · CTR 2.25% · first GSC data</div>
+      </div>
+      <div style="background:#eef2ff;border:1px solid #c7d2fe;border-radius:10px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:700;color:#7a7a6e;text-transform:uppercase;">20–24 Jun 2026</div>
+        <div style="font-size:22px;font-weight:900;color:#1a2e2a;margin-top:4px;">2 clicks</div>
+        <div style="font-size:12px;color:#7a7a6e;">109 impressions · CTR 1.83% · pos 9.2 on 23 Jun</div>
+      </div>
+      <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;padding:14px 16px;">
+        <div style="font-size:11px;font-weight:700;color:#7a7a6e;text-transform:uppercase;">Indexing log</div>
+        <div style="font-size:22px;font-weight:900;color:#1a2e2a;margin-top:4px;">184 URLs</div>
+        <div style="font-size:12px;color:#7a7a6e;">131 in sitemap · gap 0 · capetown-invest-indexing GCP</div>
+      </div>
+    </div>
+
+    <!-- KPI Row -->
     <div class="pulse-kpi-row">
-      <div class="pulse-kpi">
+      <div class="pulse-kpi kpi-green">
+        <div class="kpi-trend trend-new">First week</div>
         <div class="kpi-label">Total Clicks</div>
-        <div class="kpi-val">0</div>
-        <div class="kpi-sub">Baseline · target first clicks ~20 Jun</div>
+        <div class="kpi-val">4</div>
+        <div class="kpi-sub">Best day: 19 Jun (2 clk) · two-oceans-beach + short-term-rental guide</div>
       </div>
-      <div class="pulse-kpi">
+      <div class="pulse-kpi kpi-blue">
+        <div class="kpi-trend trend-up">↑ Crawl live</div>
         <div class="kpi-label">Impressions</div>
-        <div class="kpi-val">0</div>
-        <div class="kpi-sub">189 URLs via Indexing API · awaiting crawl</div>
+        <div class="kpi-val">198</div>
+        <div class="kpi-sub">peak 67 on 19 Jun · first impressions 18 Jun · devmco + area pages indexing</div>
       </div>
-      <div class="pulse-kpi">
+      <div class="pulse-kpi kpi-amber">
+        <div class="kpi-trend" style="background:#fef3c7;color:#92400e;">Early tail</div>
         <div class="kpi-label">Avg. Position</div>
-        <div class="kpi-val">—</div>
-        <div class="kpi-sub">Awaiting first query data</div>
+        <div class="kpi-val">22.1</div>
+        <div class="kpi-sub">pos 9.2 on 23 Jun · two-oceans-beach pos 6.8 · long-tail still 30–60</div>
       </div>
-      <div class="pulse-kpi">
+      <div class="pulse-kpi kpi-purple">
         <div class="kpi-label">Avg. CTR</div>
-        <div class="kpi-val">—</div>
-        <div class="kpi-sub">CTR sprint when 50+ imp/query</div>
+        <div class="kpi-val">2.02%</div>
+        <div class="kpi-sub">Project pages 5–50% CTR · foreign-buyer queries not yet ranking</div>
       </div>
     </div>
-    <div class="insight"><strong>Quick wins pipeline:</strong> When GSC shows pos 8–15 with 50+ impressions — expand FAQ + title CTR on foreign-buyer HUB, rental yield guide, Atlantic Seaboard area pages. Monitor weekly via <code>search-console-capetown-invest</code> MCP.</div>
-    <p style="font-size:11px;color:#a8a29e;text-align:center;margin-top:16px;">Updated 18 Jun 2026 via GSC API · period 20 May – 16 Jun · EN site — never Yandex</p>
-  </div>
 
-  <div class="section-title">Analytics — GA4</div>
-  <div class="pulse-wrap">
-    <div class="pulse-kpi-row">
-      <div class="pulse-kpi">
-        <div class="kpi-label">Sessions (Jun 1–7)</div>
-        <div class="kpi-val">27</div>
-        <div class="kpi-sub">25 on 7 Jun (likely crawl bots) · GA4 MCP</div>
+    <!-- Chart + Tables -->
+    <div class="pulse-grid">
+
+      <!-- Impressions chart -->
+      <div class="pulse-card">
+        <div class="pulse-card-title">
+          <span class="span-blue"></span>
+          Daily Impressions — Jun 2026 (GSC)
+        </div>
+        <div class="pulse-chart">
+          <div class="chart-bars">
+            <div class="chart-bar-wrap"><div class="chart-bar bar-impr" style="height:33%"></div><div class="chart-label">18</div></div>
+            <div class="chart-bar-wrap"><div class="chart-bar bar-impr" style="height:100%"></div><div class="chart-label" style="color:#2d7a5e;font-weight:700;">19</div></div>
+            <div class="chart-bar-wrap"><div class="chart-bar bar-impr" style="height:61%"></div><div class="chart-label">20</div></div>
+            <div class="chart-bar-wrap"><div class="chart-bar bar-impr" style="height:54%"></div><div class="chart-label">21</div></div>
+            <div class="chart-bar-wrap"><div class="chart-bar bar-impr" style="height:30%"></div><div class="chart-label">22</div></div>
+            <div class="chart-bar-wrap"><div class="chart-bar bar-impr" style="height:18%"></div><div class="chart-label">23</div></div>
+          </div>
+          <p style="font-size:10px;color:#aaa;margin-top:8px;">Jun 18–23 · bars = daily GSC impressions · peak 67 (19 Jun) · 4 total clicks in first crawl week</p>
+        </div>
+
+        <div class="pulse-insight" style="margin-top:16px;">
+          <div class="pulse-insight-icon">📈</div>
+          <div class="pulse-insight-text">
+            <strong>First crawl week live:</strong> 4 clicks and 198 impressions for 10 Jun–24 Jun. Project pages two-oceans-beach and green-village-val-de-vie already receiving clicks. Priority: foreign-buyer HUB when impressions pass 50.
+          </div>
+        </div>
       </div>
-      <div class="pulse-kpi">
-        <div class="kpi-label">Users</div>
-        <div class="kpi-val">24</div>
-        <div class="kpi-sub">22 on 7 Jun · first traffic spike post-index</div>
+
+      <!-- Top queries -->
+      <div class="pulse-card">
+        <div class="pulse-card-title">
+          <span class="span-green"></span>
+          Top Queries by Impressions
+        </div>
+        <div class="pulse-query-row">
+          <div class="pulse-query-rank">#1</div>
+          <div class="pulse-query-text">devmco group</div>
+          <div class="pulse-query-pos">pos 32.7</div>
+          <div class="pulse-query-imp">3 imp</div>
+        </div>
+        <div class="pulse-query-row">
+          <div class="pulse-query-rank">#2</div>
+          <div class="pulse-query-text">invest cape town</div>
+          <div class="pulse-query-pos">pos 42.7</div>
+          <div class="pulse-query-imp">3 imp</div>
+        </div>
+        <div class="pulse-query-row">
+          <div class="pulse-query-rank">#3</div>
+          <div class="pulse-query-text">long term rentals cape town</div>
+          <div class="pulse-query-pos">pos 38.3</div>
+          <div class="pulse-query-imp">3 imp</div>
+        </div>
+        <div class="pulse-query-row">
+          <div class="pulse-query-rank">#4</div>
+          <div class="pulse-query-text">about devmco</div>
+          <div class="pulse-query-pos">pos 40.7</div>
+          <div class="pulse-query-imp">3 imp</div>
+        </div>
+        <div class="pulse-query-row">
+          <div class="pulse-query-rank">#5</div>
+          <div class="pulse-query-text">vivante village val de vie</div>
+          <div class="pulse-query-pos">pos 16</div>
+          <div class="pulse-query-imp">2 imp · 1 clk</div>
+        </div>
+        <div class="pulse-query-row">
+          <div class="pulse-query-rank">#6</div>
+          <div class="pulse-query-text">devmco group projects</div>
+          <div class="pulse-query-pos">pos 28</div>
+          <div class="pulse-query-imp">2 imp</div>
+        </div>
+        <div class="pulse-query-row">
+          <div class="pulse-query-rank">#7</div>
+          <div class="pulse-query-text">can a foreigner buy property in south africa</div>
+          <div class="pulse-query-pos">pos 61</div>
+          <div class="pulse-query-imp">1 imp</div>
+        </div>
       </div>
-      <div class="pulse-kpi">
-        <div class="kpi-label">Pageviews</div>
-        <div class="kpi-val">26</div>
-        <div class="kpi-sub">24 on 7 Jun · organic TBD ~20 Jun</div>
+
+    </div>
+
+    <!-- Top pages -->
+    <div class="pulse-card" style="margin-top:16px;">
+      <div class="pulse-card-title">
+        <span class="span-blue"></span>
+        Top Pages — Clicks &amp; Impressions
       </div>
-      <div class="pulse-kpi">
-        <div class="kpi-label">Lead API</div>
-        <div class="kpi-val" style="font-size:22px;">✓</div>
-        <div class="kpi-sub">POST /api/lead/ → 200 · dedicated Cape Town bot · chat 190070714</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;">
+        <div>
+          <div class="pulse-page-row">
+            <div class="pulse-page-url">/projects/two-oceans-beach/</div>
+            <div class="pulse-page-meta">
+              <span class="pulse-badge badge-clicks">1 click</span>
+              <span class="pulse-badge badge-impr">18 imp</span>
+              <span class="pulse-badge badge-pos">pos 6.8</span>
+            </div>
+          </div>
+          <div class="pulse-page-row">
+            <div class="pulse-page-url">/guides/short-term-rental-rules-cape-town/</div>
+            <div class="pulse-page-meta">
+              <span class="pulse-badge badge-clicks">1 click</span>
+              <span class="pulse-badge badge-impr">13 imp</span>
+              <span class="pulse-badge badge-pos">pos 14.1</span>
+            </div>
+          </div>
+          <div class="pulse-page-row">
+            <div class="pulse-page-url">/guides/century-city-property-investment-guide/</div>
+            <div class="pulse-page-meta">
+              <span class="pulse-badge badge-clicks">1 click</span>
+              <span class="pulse-badge badge-impr">3 imp</span>
+              <span class="pulse-badge badge-pos">pos 22</span>
+            </div>
+          </div>
+          <div class="pulse-page-row">
+            <div class="pulse-page-url">/projects/green-village-val-de-vie/</div>
+            <div class="pulse-page-meta">
+              <span class="pulse-badge badge-clicks">1 click</span>
+              <span class="pulse-badge badge-impr">2 imp</span>
+              <span class="pulse-badge badge-pos">pos 16</span>
+            </div>
+          </div>
+          <div class="pulse-page-row">
+            <div class="pulse-page-url">/developers/devmco-group/</div>
+            <div class="pulse-page-meta">
+              <span class="pulse-badge badge-impr">17 imp</span>
+              <span class="pulse-badge badge-pos">pos 36.6</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="pulse-page-row">
+            <div class="pulse-page-url">/developers/rabie-property-developers/</div>
+            <div class="pulse-page-meta">
+              <span class="pulse-badge badge-impr">9 imp</span>
+              <span class="pulse-badge badge-pos">pos 9.8</span>
+            </div>
+          </div>
+          <div class="pulse-page-row">
+            <div class="pulse-page-url">/areas/green-point-property-investment/</div>
+            <div class="pulse-page-meta">
+              <span class="pulse-badge badge-impr">6 imp</span>
+              <span class="pulse-badge badge-pos">pos 4.5</span>
+            </div>
+          </div>
+          <div class="pulse-page-row">
+            <div class="pulse-page-url">/areas/constantia-property-investment/</div>
+            <div class="pulse-page-meta">
+              <span class="pulse-badge badge-impr">5 imp</span>
+              <span class="pulse-badge badge-pos">pos 16.2</span>
+            </div>
+          </div>
+          <div class="pulse-page-row">
+            <div class="pulse-page-url">/areas/sea-point-property-investment/</div>
+            <div class="pulse-page-meta">
+              <span class="pulse-badge badge-impr">4 imp</span>
+              <span class="pulse-badge badge-pos">pos 7.2</span>
+            </div>
+          </div>
+          <div class="pulse-page-row">
+            <div class="pulse-page-url">/</div>
+            <div class="pulse-page-meta">
+              <span class="pulse-badge badge-impr">10 imp</span>
+              <span class="pulse-badge badge-pos">pos 41.7</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="section-title">Bing Webmaster</div>
-  <div class="pulse-wrap">
-    <div class="pulse-kpi-row">
-      <div class="pulse-kpi">
-        <div class="kpi-label">Bing Clicks</div>
-        <div class="kpi-val">0</div>
-        <div class="kpi-sub">MCP search-console-capetown-invest · bing-webmaster-capetown-invest</div>
+    <!-- Insight block -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+      <div class="pulse-insight" style="background:#f0fdf4;border-color:#bbf7d0;">
+        <div class="pulse-insight-icon">✅</div>
+        <div class="pulse-insight-text">
+          <strong>First clicks on project + guide pages:</strong> two-oceans-beach, green-village-val-de-vie (Vivante pillar), short-term-rental-rules guide. Devmco developer page at 17 impressions — expand FAQ for brand queries.
+        </div>
       </div>
-      <div class="pulse-kpi">
-        <div class="kpi-label">Impressions</div>
-        <div class="kpi-val">0</div>
-        <div class="kpi-sub">163 URLs Google API · IndexNow explicit batches</div>
-      </div>
-      <div class="pulse-kpi">
-        <div class="kpi-label">Site verified</div>
-        <div class="kpi-val" style="font-size:22px;">✓</div>
-        <div class="kpi-sub">Import from GSC</div>
-      </div>
-      <div class="pulse-kpi">
-        <div class="kpi-label">IndexNow</div>
-        <div class="kpi-val" style="font-size:22px;">✓</div>
-        <div class="kpi-sub">bing.com/indexnow only · never api.indexnow.org</div>
+      <div class="pulse-insight" style="background:#fff7ed;border-color:#fed7aa;">
+        <div class="pulse-insight-icon">🔗</div>
+        <div class="pulse-insight-text">
+          <strong>Portfolio spam batches #3–4 live:</strong> 21 project reviews mapped to real anchors. Opus pillar polish on Vivante, Venice House CBD, WEX1 Woodstock. 184 URLs in indexing log · gap 0.
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="section-title">Content breakdown</div>
-  <div class="content-card table-scroll">
-    <table class="content-table">
-      <thead>
-        <tr><th>Collection</th><th>Pages</th><th>Words</th><th>Avg</th><th>Min gate</th><th>Status</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Guides</strong><br><span class="words">Foreign buyer HUB, transfer costs, yields, visa/tax, Atlantic Seaboard, Century City, retirement</span></td>
-          <td><span class="count">53</span></td>
-          <td><span class="words">153 017</span></td>
-          <td><span class="words">2 887</span></td>
-          <td><span class="tag blue">2 000+</span></td>
-          <td><span class="tag green">Live</span></td>
-        </tr>
-        <tr>
-          <td><strong>Segments</strong><br><span class="words">UK · Germany · US buyer entry paths</span></td>
-          <td><span class="count">3</span></td>
-          <td><span class="words">9 016</span></td>
-          <td><span class="words">3 005</span></td>
-          <td><span class="tag blue">2 000+</span></td>
-          <td><span class="tag green">Live</span></td>
-        </tr>
-        <tr>
-          <td><strong>Comparisons</strong><br><span class="words">Sea Point vs Camps Bay · Atlantic vs Winelands · SA vs Portugal · area matchups</span></td>
-          <td><span class="count">7</span></td>
-          <td><span class="words">16 193</span></td>
-          <td><span class="words">2 313</span></td>
-          <td><span class="tag blue">1 800+</span></td>
-          <td><span class="tag green">Live</span></td>
-        </tr>
-        <tr>
-          <td><strong>Areas</strong><br><span class="words">Atlantic Seaboard, City Bowl, Century City, Winelands, De Waterkant, Sea Point…</span></td>
-          <td><span class="count">21</span></td>
-          <td><span class="words">51 380</span></td>
-          <td><span class="words">2 447</span></td>
-          <td><span class="tag blue">1 800+</span></td>
-          <td><span class="tag green">Live</span></td>
-        </tr>
-        <tr>
-          <td><strong>Projects</strong><br><span class="words">ONEONR De Waterkant · The Charlotte · SkyWater · On Park Century City</span></td>
-          <td><span class="count">4</span></td>
-          <td><span class="words">7 929</span></td>
-          <td><span class="words">1 982</span></td>
-          <td><span class="tag blue">1 200+</span></td>
-          <td><span class="tag green">Live · Wikimedia heroImages ✓</span></td>
-        </tr>
-        <tr>
-          <td><strong>Developers</strong><br><span class="words">Rabie · Amdec · Growthpoint — entity authority profiles</span></td>
-          <td><span class="count">3</span></td>
-          <td><span class="words">6 974</span></td>
-          <td><span class="words">2 325</span></td>
-          <td><span class="tag blue">1 200+</span></td>
-          <td><span class="tag green">Live</span></td>
-        </tr>
-        <tr>
-          <td><strong>News</strong><br><span class="words">Lightstone data, Western Cape prices, foreign buyer rules, load-shedding impact</span></td>
-          <td><span class="count">5</span></td>
-          <td><span class="words">4 771</span></td>
-          <td><span class="words">954</span></td>
-          <td><span class="tag blue">600+</span></td>
-          <td><span class="tag green">Live</span></td>
-        </tr>
-        <tr>
-          <td><strong>TOTAL</strong></td>
-          <td><span class="count">96</span></td>
-          <td><span class="words"><strong>249 280</strong></span></td>
-          <td><span class="words">2 597</span></td>
-          <td><span class="tag green">validate:content PASS</span></td>
-          <td><span class="tag green">Production</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="section-title">Internal linking map (v1.1)</div>
-  <div class="content-card" style="padding:20px;">
-    <p style="font-size:12px;color:#78716c;margin-bottom:12px;">Cross-links shipped 18 Jun 2026 — projects ↔ HUB guides ↔ areas ↔ segments ↔ compare</p>
-    <div class="slug-list">
-      <strong>Money HUBs (foreign · costs · yield):</strong><br />
-      <a href="/guides/buy-cape-town-property-foreigner/">buy-cape-town-property-foreigner</a> ·
-      <a href="/guides/cost-of-buying-property-cape-town/">cost-of-buying-property-cape-town</a> ·
-      <a href="/guides/cape-town-rental-yield-guide/">cape-town-rental-yield-guide</a> ·
-      <a href="/guides/gross-vs-net-yield-cape-town/">gross-vs-net-yield-cape-town</a><br /><br />
-      <strong>Segments → HUBs:</strong><br />
-      <a href="/segments/uk-buyers-cape-town-property/">uk-buyers</a> ·
-      <a href="/segments/german-buyers-cape-town-property/">german-buyers</a> ·
-      <a href="/segments/us-buyers-cape-town-property/">us-buyers</a> → cost + yield guides in “How to start”<br /><br />
-      <strong>Projects ↔ areas ↔ HUBs:</strong><br />
-      <a href="/projects/oneonr-de-waterkant/">oneonr-de-waterkant</a> ↔ <a href="/areas/de-waterkant-property-investment/">de-waterkant</a> ↔ Atlantic Seaboard HUB<br />
-      <a href="/projects/the-charlotte-cape-town/">the-charlotte</a> ↔ City Bowl HUB<br />
-      <a href="/projects/skywater-century-city/">skywater</a> · <a href="/projects/on-park-century-city/">on-park</a> ↔ Century City HUB<br /><br />
-      <strong>Compare → yield + costs:</strong><br />
-      <a href="/compare/sea-point-vs-camps-bay-investment/">sea-point-vs-camps-bay</a> → gross-vs-net-yield + cost-of-buying in verdict
+    <!-- Opportunities table -->
+    <div class="pulse-card" style="margin-top:16px;">
+      <div class="pulse-card-title">
+        <span style="width:8px;height:8px;border-radius:50%;display:inline-block;background:#fbbf24;"></span>
+        Opportunities — pages closest to more clicks
+      </div>
+      <p style="font-size:11px;color:#aaa;margin-bottom:12px;">Pages with strong impressions, top-10 average positions or commercial intent where title/description, intro answer blocks, FAQ and internal links can move CTR fastest.</p>
+      <div class="pulse-table-scroll">
+      <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <thead>
+          <tr style="background:#faf8f4;">
+            <th style="text-align:left;padding:8px 12px;font-size:11px;color:#7a7a6e;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #e8e4dc;">Page</th>
+            <th style="text-align:center;padding:8px 12px;font-size:11px;color:#7a7a6e;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #e8e4dc;">Position</th>
+            <th style="text-align:center;padding:8px 12px;font-size:11px;color:#7a7a6e;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #e8e4dc;">Impressions</th>
+            <th style="text-align:center;padding:8px 12px;font-size:11px;color:#7a7a6e;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #e8e4dc;">CTR</th>
+            <th style="text-align:left;padding:8px 12px;font-size:11px;color:#7a7a6e;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;border-bottom:1px solid #e8e4dc;">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #f4f1eb;">
+            <td style="padding:8px 12px;color:#2d7a5e;font-weight:600;">/projects/two-oceans-beach/</td>
+            <td style="padding:8px 12px;text-align:center;"><span style="background:#dcfce7;color:#166534;font-weight:700;padding:2px 8px;border-radius:6px;font-size:11px;">6.8</span></td>
+            <td style="padding:8px 12px;text-align:center;font-weight:700;">18</td>
+            <td style="padding:8px 12px;text-align:center;color:#16a34a;font-weight:700;">5.56%</td>
+            <td style="padding:8px 12px;">Quick win: expand FAQ + internal links from Atlantic Seaboard HUB</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f4f1eb;">
+            <td style="padding:8px 12px;color:#2d7a5e;font-weight:600;">/guides/short-term-rental-rules-cape-town/</td>
+            <td style="padding:8px 12px;text-align:center;"><span style="background:#dcfce7;color:#166534;font-weight:700;padding:2px 8px;border-radius:6px;font-size:11px;">14.1</span></td>
+            <td style="padding:8px 12px;text-align:center;font-weight:700;">13</td>
+            <td style="padding:8px 12px;text-align:center;color:#16a34a;font-weight:700;">7.69%</td>
+            <td style="padding:8px 12px;">Commercial intent — add by-law table snippet for CTR</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f4f1eb;">
+            <td style="padding:8px 12px;color:#2d7a5e;font-weight:600;">/developers/devmco-group/</td>
+            <td style="padding:8px 12px;text-align:center;"><span style="background:#fef3c7;color:#92400e;font-weight:700;padding:2px 8px;border-radius:6px;font-size:11px;">36.6</span></td>
+            <td style="padding:8px 12px;text-align:center;font-weight:700;">17</td>
+            <td style="padding:8px 12px;text-align:center;color:#dc2626;font-weight:700;">0%</td>
+            <td style="padding:8px 12px;">Brand query indexing — title + project cross-links from batch reviews</td>
+          </tr>
+          <tr style="border-bottom:1px solid #f4f1eb;">
+            <td style="padding:8px 12px;color:#2d7a5e;font-weight:600;">/areas/green-point-property-investment/</td>
+            <td style="padding:8px 12px;text-align:center;"><span style="background:#dcfce7;color:#166534;font-weight:700;padding:2px 8px;border-radius:6px;font-size:11px;">4.5</span></td>
+            <td style="padding:8px 12px;text-align:center;font-weight:700;">6</td>
+            <td style="padding:8px 12px;text-align:center;color:#dc2626;font-weight:700;">0%</td>
+            <td style="padding:8px 12px;">Top-5 position — monitor when impressions scale past 20</td>
+          </tr>
+          <tr>
+            <td style="padding:8px 12px;color:#2d7a5e;font-weight:600;">/guides/buy-cape-town-property-foreigner/</td>
+            <td style="padding:8px 12px;text-align:center;"><span style="background:#fef3c7;color:#92400e;font-weight:700;padding:2px 8px;border-radius:6px;font-size:11px;">pending</span></td>
+            <td style="padding:8px 12px;text-align:center;font-weight:700;">—</td>
+            <td style="padding:8px 12px;text-align:center;color:#2563eb;font-weight:700;">HUB</td>
+            <td style="padding:8px 12px;">P0 money page — CTR sprint when 50+ impressions appear</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
     </div>
-  </div>
 
-  <div class="section-title">Content plan status</div>
-  <div class="content-card table-scroll">
-    <table class="content-table">
-      <thead>
-        <tr><th>Phase</th><th>Shipped</th><th>Focus</th><th>Status</th></tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>B1–B14</strong></td>
-          <td><span class="count">96</span></td>
-          <td>CAPE_TOWN_RE_CONTENT_MAP_100 — guides, areas, compare, projects, developers, news</td>
-          <td><span class="tag green">Complete</span></td>
-        </tr>
-        <tr>
-          <td><strong>Humanizer</strong></td>
-          <td><span class="count">60</span></td>
-          <td>Script-scenario blocks replaced with slug-specific prose (commit 340611a)</td>
-          <td><span class="tag green">Indexed 59/59</span></td>
-        </tr>
-        <tr>
-          <td><strong>Phase A</strong></td>
-          <td><span class="count">3</span></td>
-          <td>/segments/ collection + 301 redirects + Organization schema</td>
-          <td><span class="tag green">Live</span></td>
-        </tr>
-        <tr>
-          <td><strong>Phase B</strong></td>
-          <td><span class="count">5</span></td>
-          <td>Opus-quality visa/tax buyer scenarios</td>
-          <td><span class="tag green">Live</span></td>
-        </tr>
-        <tr>
-          <td><strong>v1.1 infra</strong></td>
-          <td><span class="count">—</span></td>
-          <td>Dedicated Telegram bot · site-report cleanup · internal linking pass</td>
-          <td><span class="tag amber">This deploy</span></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <!-- Indexation status -->
+    <div class="pulse-card" style="margin-top:16px;">
+      <div class="pulse-card-title">
+        <span style="width:8px;height:8px;border-radius:50%;display:inline-block;background:#a78bfa;"></span>
+        Indexation Status — Google Search Console + Sitemap
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div style="text-align:center;padding:16px;background:#f0faf5;border-radius:10px;border:1px solid #c6e8da;">
+          <div style="font-size:28px;font-weight:900;color:#2d7a5e;">131</div>
+          <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">URLs in sitemap</div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">Live 200 OK · 25 Jun · noindex filter active</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:#dcfce7;border-radius:10px;border:1px solid #86efac;">
+          <div style="font-size:28px;font-weight:900;color:#16a34a;">8</div>
+          <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">URLs with clicks</div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">GSC · 10 Jun–24 Jun window</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:#dbeafe;border-radius:10px;border:1px solid #93c5fd;">
+          <div style="font-size:28px;font-weight:900;color:#2563eb;">184</div>
+          <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">Submitted (log)</div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">capetown-invest-indexing · gap 0</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:#ffedd5;border-radius:10px;border:1px solid #fdba74;">
+          <div style="font-size:28px;font-weight:900;color:#c2410c;">116</div>
+          <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">MDX in repo</div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">53 guides · 21 projects · 21 areas</div>
+        </div>
+      </div>
+    </div>
 
-  <div class="section-title">Cursor MCP servers (Cape Town)</div>
-  <div class="info-grid">
-    <div class="info-card">
-      <h3>Analytics &amp; Search MCP</h3>
-      <div class="info-row"><span class="key">GSC</span><span class="val">search-console-capetown-invest</span></div>
-      <div class="info-row"><span class="key">GA4</span><span class="val">ga4-analytics-capetown-invest</span></div>
-      <div class="info-row"><span class="key">Bing</span><span class="val">bing-webmaster-capetown-invest</span></div>
-      <div class="info-row"><span class="key">GSC property</span><span class="val">sc-domain:capetown-invest.com</span></div>
-      <div class="info-row"><span class="key">Update cadence</span><span class="val">Weekly site-report refresh</span></div>
+    <div class="pulse-card" style="margin-top:16px;">
+      <div class="pulse-card-title">
+        <span style="width:8px;height:8px;border-radius:50%;display:inline-block;background:#fbbf24;"></span>
+        Google Analytics 4 — June 2026
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+        <div style="text-align:center;padding:16px;background:#fef3c7;border-radius:10px;border:1px solid #fde68a;">
+          <div style="font-size:28px;font-weight:900;color:#b45309;">61</div>
+          <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">Sessions</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:#dbeafe;border-radius:10px;border:1px solid #93c5fd;">
+          <div style="font-size:28px;font-weight:900;color:#2563eb;">61</div>
+          <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">Users</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:#f0fdf4;border-radius:10px;border:1px solid #bbf7d0;">
+          <div style="font-size:28px;font-weight:900;color:#16a34a;">64</div>
+          <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">Pageviews</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:#f0faf5;border-radius:10px;border:1px solid #c6e8da;">
+          <div style="font-size:28px;font-weight:900;color:#2d7a5e;">✓</div>
+          <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">Lead API 200</div>
+        </div>
+      </div>
     </div>
-    <div class="info-card">
-      <h3>Indexing isolation</h3>
-      <div class="info-row"><span class="key">GCP project</span><span class="val">capetown-invest-indexing</span></div>
-      <div class="info-row"><span class="key">SA email</span><span class="val">indexing-bot-capetown@…</span></div>
-      <div class="info-row"><span class="key">NOT shared with</span><span class="val">soy-braid / mexico / invest-gulf</span></div>
-      <div class="info-row"><span class="key">Google API</span><span class="val">submit-google-explicit.mjs</span></div>
-      <div class="info-row"><span class="key">Bing</span><span class="val">indexnow-submit.mjs --explicit</span></div>
-      <div class="info-row"><span class="key">Yandex</span><span class="val">❌ Never (EN site)</span></div>
-    </div>
+
+    <p class="pulse-footer-note">Updated 25 Jun 2026 via GSC API · period 10 Jun – 24 Jun · EN site — Google + Bing only</p>
   </div>
 
   <div class="section-title">Technical setup</div>
@@ -401,124 +1016,184 @@ export const prerender = true;
       <h3>Infrastructure</h3>
       <div class="info-row"><span class="key">Framework</span><span class="val">Astro 5 + MDX</span></div>
       <div class="info-row"><span class="key">Hosting</span><span class="val">Vercel (auto-deploy)</span></div>
-      <div class="info-row"><span class="key">Repository</span><span class="val"><a href="https://github.com/max-diver999/capetown-invest-website" target="_blank">capetown-invest-website</a></span></div>
-      <div class="info-row"><span class="key">Domain</span><span class="val"><a href="https://capetown-invest.com/">capetown-invest.com</a></span></div>
-      <div class="info-row"><span class="key">Email</span><span class="val">info@capetown-invest.com</span></div>
-      <div class="info-row"><span class="key">Lead API</span><span class="val">Telegram ✓ · dedicated bot · chat 190070714</span></div>
-      <div class="info-row"><span class="key">Resend auto-reply</span><span class="val"><span class="tag green">Live</span> · From hello@moregroup.estate · Reply-To info@</span></div>
-      <div class="info-row"><span class="key">QA script</span><span class="val">npm run qa:full</span></div>
+      <div class="info-row"><span class="key">Domain</span><span class="val"><a href="https://capetown-invest.com/" target="_blank">capetown-invest.com</a></span></div>
+      <div class="info-row"><span class="key">Lead API</span><span class="val">Telegram · dedicated bot</span></div>
+      <div class="info-row"><span class="key">QA</span><span class="val">npm run qa:full</span></div>
     </div>
     <div class="info-card">
-      <h3>SEO &amp; schema</h3>
-      <div class="info-row"><span class="key">JSON-LD</span><span class="val">Article + FAQPage + BreadcrumbList</span></div>
-      <div class="info-row"><span class="key">Organization</span><span class="val">RealEstateAgent schema + Cape Town address</span></div>
-      <div class="info-row"><span class="key">Wikidata</span><span class="val"><span class="tag amber">Q-id pending</span> · see GEO_WIKIDATA_SETUP.md</span></div>
-      <div class="info-row"><span class="key">Lead form</span><span class="val">Atlantic Seaboard · City Bowl · Winelands · SA partner</span></div>
-      <div class="info-row"><span class="key">Sitemap filter</span><span class="val">noindex + thanks + site-report excluded</span></div>
-      <div class="info-row"><span class="key">Collections</span><span class="val">guides · segments · compare · areas · projects · developers · news</span></div>
-      <div class="info-row"><span class="key">Content plan</span><span class="val">CAPE_TOWN_RE_CONTENT_MAP_100</span></div>
+      <h3>Indexing isolation</h3>
+      <div class="info-row"><span class="key">GCP project</span><span class="val">capetown-invest-indexing</span></div>
+      <div class="info-row"><span class="key">GSC MCP</span><span class="val">search-console-capetown-invest</span></div>
+      <div class="info-row"><span class="key">GA4 MCP</span><span class="val">ga4-analytics-capetown-invest</span></div>
+      <div class="info-row"><span class="key">NOT shared with</span><span class="val">soy-braid / mexico / invest-gulf</span></div>
     </div>
   </div>
 
   <div class="section-title">Launch changelog</div>
-  <div>
+  <div class="changelog">
     <div class="changelog-item">
-      <div class="changelog-date">18 Jun 2026 v1.1</div>
-      <div>
-        <div class="changelog-title">Production shell + internal linking pass</div>
-        <div class="changelog-desc">Dedicated Cape Town Telegram bot (no Singapore token). site-report fully Cape Town — removed Mexico template blocks. Cross-links: segments → cost/yield HUBs; projects ↔ areas ↔ foreigner/cost/yield guides; compare verdict links. Resend + Wikidata documented as next infra steps.</div>
-        <div class="changelog-tags"><span class="tag green">Infra</span><span class="tag blue">Linking</span><span class="tag amber">v1.1</span></div>
+      <div class="changelog-date">25 Jun 2026 v2.0</div>
+      <div class="changelog-content">
+        <div class="changelog-title">Site report v2.0 — full MORE Group template + live GSC/GA4</div>
+        <div class="changelog-desc">116 MDX · 131 sitemap · first GSC clicks (4) · 198 impressions · GA4 61 sessions · batches #3–4 + Opus pillar polish.</div>
+        <div class="changelog-tags"><span class="tag green">Report</span><span class="tag blue">GSC</span></div>
+      </div>
+    </div>
+    <div class="changelog-item">
+      <div class="changelog-date">19 Jun 2026</div>
+      <div class="changelog-content">
+        <div class="changelog-title">Batch #4 — Camps Bay Infinity, WEX1 Woodstock, La'Mare Hout Bay</div>
+        <div class="changelog-desc">Portfolio spam debunk · qa:full 5/5 · explicit Google + Bing batches.</div>
+        <div class="changelog-tags"><span class="tag green">Content</span></div>
       </div>
     </div>
     <div class="changelog-item">
       <div class="changelog-date">18 Jun 2026</div>
-      <div>
-        <div class="changelog-title">Humanizer — 60 MDX script-scenario blocks</div>
-        <div class="changelog-desc">Replaced generic fix-cape-town-content-gaps scenarios with slug-specific prose. validate:content 96/96. Google explicit index 59/59. Commit 340611a.</div>
-        <div class="changelog-tags"><span class="tag green">Humanizer</span><span class="tag blue">Indexing</span></div>
+      <div class="changelog-content">
+        <div class="changelog-title">Batch #3 — Vivante Village, Pearl Valley, Venice House CBD</div>
+        <div class="changelog-desc">Winelands + CBD pillars · carry-cost workbook · audit structure fixes.</div>
+        <div class="changelog-tags"><span class="tag green">Content</span><span class="tag amber">Pillar</span></div>
       </div>
     </div>
     <div class="changelog-item">
-      <div class="changelog-date">18 Jun 2026 v1.0</div>
-      <div>
-        <div class="changelog-title">Phase A + B — segments collection, schema, visa Opus pass</div>
-        <div class="changelog-desc">Moved UK/DE/US buyer guides to /segments/ with 301 redirects. RealEstateAgent schema, llms.txt, consultation page, qa:full 5/5, fix-queue 96/96. Opus-quality scenarios on 5 visa/tax guides. site-report rewritten for Cape Town.</div>
-        <div class="changelog-tags"><span class="tag green">Phase A</span><span class="tag blue">Phase B</span><span class="tag amber">Segments</span></div>
-      </div>
-    </div>
-    <div class="changelog-item">
-      <div class="changelog-date">17 Jun 2026</div>
-      <div>
-        <div class="changelog-title">Batch 14 + full site audit — 96 MDX corpus complete</div>
-        <div class="changelog-desc">Visa HUB, retirement/FI visas, Lightstone, WC vs Gauteng. Shell cleanup (Mexico/Singapore scaffold removed), consultation page, fix-queue 47→0 blockers, qa:full PASS.</div>
-        <div class="changelog-tags"><span class="tag green">B14</span><span class="tag blue">Audit</span></div>
-      </div>
-    </div>
-    <div class="changelog-item">
-      <div class="changelog-date">Jun 2026</div>
-      <div>
-        <div class="changelog-title">Cape Town site launch — indexing isolated</div>
-        <div class="changelog-desc">Dedicated GCP capetown-invest-indexing. MCP trio: search-console-capetown-invest, ga4-analytics-capetown-invest, bing-webmaster-capetown-invest. Bing via bing.com/indexnow only.</div>
-        <div class="changelog-tags"><span class="tag blue">Infra</span><span class="tag gray">MCP trio</span></div>
+      <div class="changelog-date">10 Jun 2026</div>
+      <div class="changelog-content">
+        <div class="changelog-title">Cape Town site launch</div>
+        <div class="changelog-desc">Dedicated GCP capetown-invest-indexing · MCP trio · 96→116 MDX corpus shipped in June.</div>
+        <div class="changelog-tags"><span class="tag blue">Launch</span></div>
       </div>
     </div>
   </div>
 
-  <div class="section-title">Next steps</div>
-  <div>
-    <div class="next-item">
-      <div class="priority high">HIGH</div>
+      <div class="section-title">Next steps — 25 Jun 2026</div>
+  <div class="next-steps">
+    <div class="next-item" style="background:#fef2f2;border-color:#fecaca;">
+      <div class="priority high">P0</div>
       <div>
-        <div class="text">Monitor GSC first impressions (~20 Jun) — refresh SEO Pulse</div>
-        <div class="subtext">search-console-capetown-invest MCP · queries pos 8–15 = quick-win CTR sprint</div>
+        <div class="text" style="font-weight:700;">CTR sprint — foreign-buyer HUB when 50+ impressions</div>
+        <div class="subtext">Monitor buy-cape-town-property-foreigner · expand FAQ + title when GSC shows traction</div>
+      </div>
+    </div>
+    <div class="next-item" style="background:#fff7ed;border-color:#fed7aa;">
+      <div class="priority medium">P1</div>
+      <div>
+        <div class="text" style="font-weight:700;">Batch #5 — NINEONS Green Point, Makers Landing, Val de Vie developer page</div>
+        <div class="subtext">21/100 project reviews live · portfolio spam pattern · qa:full after each batch</div>
+      </div>
+    </div>
+    <div class="next-item" style="background:#f0fdf4;border-color:#bbf7d0;">
+      <div class="priority low">DONE</div>
+      <div>
+        <div class="text" style="font-weight:700;">Indexing gap 0 · site-report v2.0 · Opus pillar polish</div>
+        <div class="subtext">184 URLs in log · Vivante + Venice + WEX1 pillars · GSC first clicks live</div>
       </div>
     </div>
     <div class="next-item">
-      <div class="priority low">LOW</div>
+      <div class="priority medium">P1</div>
       <div>
-        <div class="text">Resend From → info@capetown-invest.com (optional polish)</div>
-        <div class="subtext">Auto-reply live via hello@moregroup.estate · verify capetown-invest.com on resend.com/domains → swap LEAD_FROM_EMAIL</div>
-      </div>
-    </div>
-    <div class="next-item">
-      <div class="priority medium">MED</div>
-      <div>
-        <div class="text">Wikidata entity for Cape Town Invest (GEO)</div>
-        <div class="subtext">Create item on wikidata.org → Q-id in site.ts sameAs · _СИСТЕМА/GEO_WIKIDATA_SETUP.md</div>
-      </div>
-    </div>
-    <div class="next-item">
-      <div class="priority low">LOW</div>
-      <div>
-        <div class="text">Expand project corpus when new off-plan launches verified</div>
-        <div class="subtext">4 live reviews · Wikimedia heroImages verified 200 OK</div>
+        <div class="text" style="font-weight:700;">Wikidata entity for Cape Town Invest (GEO)</div>
+        <div class="subtext">Q-id in Organization sameAs · _СИСТЕМА/GEO_WIKIDATA_SETUP.md</div>
       </div>
     </div>
   </div>
 
   <div class="section-title">Quick links</div>
   <div class="links-grid">
-    <a class="link-card" href="https://capetown-invest.com/" target="_blank" rel="noopener"><div class="link-label">Live site</div><div class="link-url">capetown-invest.com</div></a>
-    <a class="link-card" href="https://capetown-invest.com/guides/" target="_blank" rel="noopener"><div class="link-label">Guides hub</div><div class="link-url">/guides/</div></a>
-    <a class="link-card" href="https://capetown-invest.com/projects/" target="_blank" rel="noopener"><div class="link-label">Projects hub</div><div class="link-url">/projects/</div></a>
-    <a class="link-card" href="https://capetown-invest.com/developers/" target="_blank" rel="noopener"><div class="link-label">Developers hub</div><div class="link-url">/developers/</div></a>
-    <a class="link-card" href="https://capetown-invest.com/news/" target="_blank" rel="noopener"><div class="link-label">News hub</div><div class="link-url">/news/</div></a>
-    <a class="link-card" href="https://capetown-invest.com/segments/" target="_blank" rel="noopener"><div class="link-label">Segments hub</div><div class="link-url">/segments/</div></a>
-    <a class="link-card" href="https://capetown-invest.com/sitemap-index.xml" target="_blank" rel="noopener"><div class="link-label">Sitemap</div><div class="link-url">sitemap-index.xml (~100 URLs)</div></a>
-    <a class="link-card" href="https://search.google.com/search-console?resource_id=sc-domain:capetown-invest.com" target="_blank" rel="noopener"><div class="link-label">Google Search Console</div><div class="link-url">sc-domain:capetown-invest.com</div></a>
-    <a class="link-card" href="https://analytics.google.com/" target="_blank" rel="noopener"><div class="link-label">GA4</div><div class="link-url">ga4-analytics-capetown-invest MCP</div></a>
-    <a class="link-card" href="https://www.bing.com/webmasters/" target="_blank" rel="noopener"><div class="link-label">Bing Webmaster</div><div class="link-url">capetown-invest.com</div></a>
-    <a class="link-card" href="https://github.com/max-diver999/capetown-invest-website" target="_blank" rel="noopener"><div class="link-label">GitHub</div><div class="link-url">max-diver999/capetown-invest-website</div></a>
+    <a class="link-card" href="https://capetown-invest.com/" target="_blank">
+      <div class="link-label">Live site</div>
+      <div class="link-url">capetown-invest.com</div>
+    </a>
+    <a class="link-card" href="https://github.com/max-diver999/capetown-invest-website" target="_blank">
+      <div class="link-label">GitHub repository</div>
+      <div class="link-url">github.com/max-diver999/capetown-invest-website</div>
+    </a>
+    <a class="link-card" href="https://search.google.com/search-console?resource_id=sc-domain:capetown-invest.com" target="_blank">
+      <div class="link-label">Google Search Console</div>
+      <div class="link-url">sc-domain:capetown-invest.com</div>
+    </a>
+    <a class="link-card" href="https://analytics.google.com" target="_blank">
+      <div class="link-label">Google Analytics 4</div>
+      <div class="link-url">analytics.google.com</div>
+    </a>
+    <a class="link-card" href="https://www.bing.com/webmasters" target="_blank">
+      <div class="link-label">Bing Webmaster Tools</div>
+      <div class="link-url">bing.com/webmasters</div>
+    </a>
+    <a class="link-card" href="https://capetown-invest.com/sitemap-index.xml" target="_blank">
+      <div class="link-label">Sitemap</div>
+      <div class="link-url">capetown-invest.com/sitemap-index.xml</div>
+    </a>
   </div>
 
 </div>
 
-<div class="footer">
-  <strong>Cape Town Invest Site Report v1.1</strong> · 18 June 2026 ·
-  <a href="https://capetown-invest.com/site-report/">capetown-invest.com/site-report/</a><br />
-  Data: GSC + GA4 + Bing MCP · Content: validate:content + qa:full · Plan: CAPE_TOWN_RE_CONTENT_MAP_100.md<br />
-  EN site — Google + Bing only · never Yandex
+  <div class="footer">
+  <strong>Cape Town Invest</strong> · capetown-invest.com · Report updated 25 Jun 2026 v2.0 · 131 sitemap URLs · ~335K words · GSC 4 clicks / 198 imp (10 Jun–24 Jun) · GA4 61 sessions · 48 git commits<br>
+  <a href="https://capetown-invest.com/site-report/" style="color:#2d7a5e;text-decoration:none;">Live report URL</a> ·
+  To update: edit <code>src/pages/site-report/index.astro</code> in capetown-invest-website
 </div>
+
+
+<script type="application/json" id="chart-data">{"monthlyGsc":[{"label":"Jun","clicks":4,"impressions":198}],"monthlyGa4":[{"month":"Jun","sessions":61}],"contentBreakdown":[{"type":"Guides","count":53,"color":"#2d7a5e"},{"type":"Areas","count":21,"color":"#8b5cf6"},{"type":"Projects","count":21,"color":"#4e9e7e"},{"type":"Comparisons","count":7,"color":"#d97706"},{"type":"Developers","count":6,"color":"#60a5fa"},{"type":"Segments","count":3,"color":"#0891b2"},{"type":"News","count":5,"color":"#9ca3af"}],"dailyRaw":[{"d":"06-18","c":0,"i":22},{"d":"06-19","c":2,"i":67},{"d":"06-20","c":0,"i":41},{"d":"06-21","c":1,"i":36},{"d":"06-22","c":0,"i":20},{"d":"06-23","c":1,"i":12}]}</script>
+<script is:inline>
+(function initReportCharts() {
+  function run() {
+    if (typeof Chart === 'undefined') { setTimeout(run, 50); return; }
+    var el = document.getElementById('chart-data');
+    if (!el) return;
+    var data = JSON.parse(el.textContent);
+    Chart.defaults.font = { family: "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif", size: 11 };
+    Chart.defaults.color = '#7a7a6e';
+
+    var monthly = data.monthlyGsc;
+    var ga4 = data.monthlyGa4;
+    var content = data.contentBreakdown;
+    var daily = data.dailyRaw;
+
+    var cm = document.getElementById('chartMonthly');
+    if (cm) new Chart(cm, {
+      type: 'bar',
+      data: {
+        labels: monthly.map(function(m) { return m.label; }),
+        datasets: [
+          { label: 'Impressions', data: monthly.map(function(m) { return m.impressions; }), backgroundColor: 'rgba(96,165,250,0.35)', borderColor: '#60a5fa', borderWidth: 1, borderRadius: 6, yAxisID: 'y' },
+          { label: 'Clicks', data: monthly.map(function(m) { return m.clicks; }), type: 'line', borderColor: '#2d7a5e', backgroundColor: 'rgba(45,122,94,0.12)', borderWidth: 3, pointRadius: 6, pointBackgroundColor: '#2d7a5e', fill: true, tension: 0.3, yAxisID: 'y1' }
+        ]
+      },
+      options: { responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false }, plugins: { legend: { position: 'bottom' } }, scales: { y: { position: 'left', grid: { color: '#f4f1eb' }, ticks: { callback: function(v) { return v >= 1000 ? (v/1000)+'k' : v; } } }, y1: { position: 'right', grid: { display: false }, min: 0 } } }
+    });
+
+    var cg = document.getElementById('chartGa4');
+    if (cg) new Chart(cg, {
+      type: 'bar',
+      data: { labels: ga4.map(function(m) { return m.month; }), datasets: [{ label: 'Sessions', data: ga4.map(function(m) { return m.sessions; }), backgroundColor: ['rgba(78,158,126,0.45)','rgba(78,158,126,0.55)','rgba(78,158,126,0.7)','rgba(78,158,126,0.85)'], borderColor: '#2d7a5e', borderWidth: 1, borderRadius: 8 }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { grid: { color: '#f4f1eb' }, beginAtZero: true }, x: { grid: { display: false } } } }
+    });
+
+    var cc = document.getElementById('chartContent');
+    if (cc) new Chart(cc, {
+      type: 'doughnut',
+      data: { labels: content.map(function(c) { return c.type; }), datasets: [{ data: content.map(function(c) { return c.count; }), backgroundColor: content.map(function(c) { return c.color; }), borderWidth: 2, borderColor: '#fff' }] },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { boxWidth: 12, padding: 12 } } }, cutout: '58%' }
+    });
+
+    var cd = document.getElementById('chartDaily');
+    if (cd) new Chart(cd, {
+      type: 'line',
+      data: {
+        labels: daily.map(function(d) { return d.d; }),
+        datasets: [
+          { label: 'Impressions', data: daily.map(function(d) { return d.i; }), borderColor: '#93c5fd', backgroundColor: 'rgba(147,197,253,0.22)', fill: true, tension: 0.35, yAxisID: 'y' },
+          { label: 'Clicks', data: daily.map(function(d) { return d.c; }), borderColor: '#2d7a5e', borderWidth: 2.5, pointRadius: 4, tension: 0.35, yAxisID: 'y1' }
+        ]
+      },
+      options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } }, scales: { y: { position: 'left', grid: { color: '#f4f1eb' } }, y1: { position: 'right', grid: { display: false }, min: 0 } } }
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', run);
+  else run();
+})();
+</script>
 
 </body>
 </html>
