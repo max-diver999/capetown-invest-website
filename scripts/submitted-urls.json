@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-27T22:55:06.906Z",
+  "updatedAt": "2026-06-27T23:03:51.600Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -45,14 +45,19 @@
     "https://capetown-invest.com/compare/atlantic-seaboard-vs-winelands-investment",
     "https://capetown-invest.com/compare/cape-town-vs-dubai-property-investment",
     "https://capetown-invest.com/compare/cape-town-vs-durban-property-investment",
+    "https://capetown-invest.com/compare/cape-town-vs-johannesburg-property-investment",
     "https://capetown-invest.com/compare/cape-town-vs-lisbon-property-investment",
+    "https://capetown-invest.com/compare/cape-town-vs-mauritius-property-investment",
     "https://capetown-invest.com/compare/cape-town-vs-portugal-property-investment",
     "https://capetown-invest.com/compare/cape-town-vs-stellenbosch-property",
+    "https://capetown-invest.com/compare/century-city-vs-durbanville-investment",
     "https://capetown-invest.com/compare/century-city-vs-sea-point-investment",
     "https://capetown-invest.com/compare/east-coast-vs-queenstown-property",
     "https://capetown-invest.com/compare/jurong-vs-punggol-property-investment",
     "https://capetown-invest.com/compare/off-plan-vs-resale-cape-town-investment",
+    "https://capetown-invest.com/compare/paarl-vs-stellenbosch-property-investment",
     "https://capetown-invest.com/compare/sea-point-vs-camps-bay-investment",
+    "https://capetown-invest.com/compare/somerset-west-vs-constantia-investment",
     "https://capetown-invest.com/compare/western-cape-vs-gauteng-property-investment",
     "https://capetown-invest.com/consultation",
     "https://capetown-invest.com/contact",
@@ -4689,6 +4694,56 @@
       "url": "https://capetown-invest.com/guides/body-corporate-due-diligence-cape-town",
       "channel": "bing",
       "at": "2026-06-27T22:55:06.906Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-johannesburg-property-investment",
+      "channel": "google",
+      "at": "2026-06-27T23:03:50.643Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-mauritius-property-investment",
+      "channel": "google",
+      "at": "2026-06-27T23:03:50.643Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/paarl-vs-stellenbosch-property-investment",
+      "channel": "google",
+      "at": "2026-06-27T23:03:50.643Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/somerset-west-vs-constantia-investment",
+      "channel": "google",
+      "at": "2026-06-27T23:03:50.643Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/century-city-vs-durbanville-investment",
+      "channel": "google",
+      "at": "2026-06-27T23:03:50.643Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-johannesburg-property-investment",
+      "channel": "bing",
+      "at": "2026-06-27T23:03:51.600Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-mauritius-property-investment",
+      "channel": "bing",
+      "at": "2026-06-27T23:03:51.600Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/paarl-vs-stellenbosch-property-investment",
+      "channel": "bing",
+      "at": "2026-06-27T23:03:51.600Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/somerset-west-vs-constantia-investment",
+      "channel": "bing",
+      "at": "2026-06-27T23:03:51.600Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/century-city-vs-durbanville-investment",
+      "channel": "bing",
+      "at": "2026-06-27T23:03:51.600Z"
     }
   ]
 }
