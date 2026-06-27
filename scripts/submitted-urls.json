@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-27T22:45:14.088Z",
+  "updatedAt": "2026-06-27T22:55:06.906Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -72,6 +72,7 @@
     "https://capetown-invest.com/guides/airbnb-investment-cape-town-guide",
     "https://capetown-invest.com/guides/atlantic-seaboard-property-investment-guide",
     "https://capetown-invest.com/guides/best-areas-invest-cape-town-2026",
+    "https://capetown-invest.com/guides/body-corporate-due-diligence-cape-town",
     "https://capetown-invest.com/guides/buy-cape-town-property-foreigner",
     "https://capetown-invest.com/guides/buy-cape-town-property-remotely",
     "https://capetown-invest.com/guides/buy-property-singapore-foreigner",
@@ -79,12 +80,14 @@
     "https://capetown-invest.com/guides/can-foreigners-buy-property-singapore",
     "https://capetown-invest.com/guides/can-foreigners-buy-property-south-africa",
     "https://capetown-invest.com/guides/cape-town-city-bowl-property-investment",
+    "https://capetown-invest.com/guides/cape-town-digital-nomad-property-guide",
     "https://capetown-invest.com/guides/cape-town-property-investment-checklist",
     "https://capetown-invest.com/guides/cape-town-property-investment-guide",
     "https://capetown-invest.com/guides/cape-town-property-market-data-lightstone",
     "https://capetown-invest.com/guides/cape-town-property-market-forecast-2026-2027",
     "https://capetown-invest.com/guides/cape-town-property-prices-by-suburb-2026",
     "https://capetown-invest.com/guides/cape-town-property-scams-avoid",
+    "https://capetown-invest.com/guides/cape-town-property-under-500k-usd",
     "https://capetown-invest.com/guides/cape-town-rates-taxes-property",
     "https://capetown-invest.com/guides/cape-town-remote-work-visa-property",
     "https://capetown-invest.com/guides/cape-town-rental-yield-guide",
@@ -125,6 +128,7 @@
     "https://capetown-invest.com/guides/power-of-attorney-property-south-africa",
     "https://capetown-invest.com/guides/property-management-cape-town-cost",
     "https://capetown-invest.com/guides/retirement-visa-south-africa-property",
+    "https://capetown-invest.com/guides/returning-south-african-expat-property",
     "https://capetown-invest.com/guides/sectional-title-levies-cape-town",
     "https://capetown-invest.com/guides/sectional-title-vs-freehold-cape-town",
     "https://capetown-invest.com/guides/security-estates-cape-town-foreign-buyers",
@@ -199,6 +203,7 @@
     "https://capetown-invest.com/projects/venice-house-cbd",
     "https://capetown-invest.com/projects/zero2one-sea-point",
     "https://capetown-invest.com/segments",
+    "https://capetown-invest.com/segments/cape-town-property-for-uk-retirees",
     "https://capetown-invest.com/segments/german-buyers-cape-town-property",
     "https://capetown-invest.com/segments/uk-buyers-cape-town-property",
     "https://capetown-invest.com/segments/us-buyers-cape-town-property",
@@ -4634,6 +4639,56 @@
       "url": "https://capetown-invest.com/projects/azure-camps-bay-beach",
       "channel": "bing",
       "at": "2026-06-27T22:45:14.088Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-under-500k-usd",
+      "channel": "google",
+      "at": "2026-06-27T22:55:04.488Z"
+    },
+    {
+      "url": "https://capetown-invest.com/segments/cape-town-property-for-uk-retirees",
+      "channel": "google",
+      "at": "2026-06-27T22:55:04.488Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/returning-south-african-expat-property",
+      "channel": "google",
+      "at": "2026-06-27T22:55:04.488Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-digital-nomad-property-guide",
+      "channel": "google",
+      "at": "2026-06-27T22:55:04.488Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/body-corporate-due-diligence-cape-town",
+      "channel": "google",
+      "at": "2026-06-27T22:55:04.488Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-under-500k-usd",
+      "channel": "bing",
+      "at": "2026-06-27T22:55:06.906Z"
+    },
+    {
+      "url": "https://capetown-invest.com/segments/cape-town-property-for-uk-retirees",
+      "channel": "bing",
+      "at": "2026-06-27T22:55:06.906Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/returning-south-african-expat-property",
+      "channel": "bing",
+      "at": "2026-06-27T22:55:06.906Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-digital-nomad-property-guide",
+      "channel": "bing",
+      "at": "2026-06-27T22:55:06.906Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/body-corporate-due-diligence-cape-town",
+      "channel": "bing",
+      "at": "2026-06-27T22:55:06.906Z"
     }
   ]
 }
