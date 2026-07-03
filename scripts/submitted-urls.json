@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-06-27T23:03:51.600Z",
+  "updatedAt": "2026-07-03T12:15:56.509Z",
   "urls": [
     "https://capetown-invest.com",
     "https://capetown-invest.com/about",
@@ -215,7 +215,7 @@
     "https://capetown-invest.com/site-report",
     "https://capetown-invest.com/terms"
   ],
-  "syncedAt": "2026-06-17T23:32:05.771Z",
+  "syncedAt": "2026-06-28T23:05:04.344Z",
   "removedWrongDomains": 100,
   "sitemapCount": 27,
   "entries": [
@@ -4744,6 +4744,347 @@
       "url": "https://capetown-invest.com/compare/century-city-vs-durbanville-investment",
       "channel": "bing",
       "at": "2026-06-27T23:03:51.600Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/harbour-arch-amdec-foreshore",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/the-ridge-clifton",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/zero2one-sea-point",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/rockwell-tower-cape-town",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/azure-camps-bay-beach",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-under-500k-usd",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/segments/cape-town-property-for-uk-retirees",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/returning-south-african-expat-property",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-digital-nomad-property-guide",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/body-corporate-due-diligence-cape-town",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-johannesburg-property-investment",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-mauritius-property-investment",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/paarl-vs-stellenbosch-property-investment",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/somerset-west-vs-constantia-investment",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/century-city-vs-durbanville-investment",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/llandudno-property-investment",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/makers-landing-waterfront",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/nineons-green-point",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/developers/val-de-vie-estate",
+      "channel": "google",
+      "at": "2026-06-27T23:42:49.606Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/harbour-arch-amdec-foreshore",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/the-ridge-clifton",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/zero2one-sea-point",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/rockwell-tower-cape-town",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/azure-camps-bay-beach",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-under-500k-usd",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/segments/cape-town-property-for-uk-retirees",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/returning-south-african-expat-property",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-digital-nomad-property-guide",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/body-corporate-due-diligence-cape-town",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-johannesburg-property-investment",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-mauritius-property-investment",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/paarl-vs-stellenbosch-property-investment",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/somerset-west-vs-constantia-investment",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/century-city-vs-durbanville-investment",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/llandudno-property-investment",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/makers-landing-waterfront",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/nineons-green-point",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/developers/val-de-vie-estate",
+      "channel": "bing",
+      "at": "2026-06-27T23:42:50.284Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/body-corporate-due-diligence-cape-town",
+      "channel": "google",
+      "at": "2026-06-28T00:09:23.410Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/body-corporate-due-diligence-cape-town",
+      "channel": "bing",
+      "at": "2026-06-28T00:09:24.372Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/body-corporate-due-diligence-cape-town",
+      "channel": "google",
+      "at": "2026-06-28T00:18:19.338Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/body-corporate-due-diligence-cape-town",
+      "channel": "bing",
+      "at": "2026-06-28T00:18:20.421Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/body-corporate-due-diligence-cape-town",
+      "channel": "google",
+      "at": "2026-06-28T00:27:37.021Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/body-corporate-due-diligence-cape-town",
+      "channel": "bing",
+      "at": "2026-06-28T00:27:37.853Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-rates-taxes-property",
+      "channel": "google",
+      "at": "2026-07-03T12:15:54.774Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/short-term-rental-rules-cape-town",
+      "channel": "google",
+      "at": "2026-07-03T12:15:54.774Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/two-oceans-beach",
+      "channel": "google",
+      "at": "2026-07-03T12:15:54.774Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/airbnb-investment-cape-town-guide",
+      "channel": "google",
+      "at": "2026-07-03T12:15:54.774Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-market-forecast-2026-2027",
+      "channel": "google",
+      "at": "2026-07-03T12:15:54.774Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/constantia-property-investment",
+      "channel": "google",
+      "at": "2026-07-03T12:15:54.774Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/green-village-val-de-vie",
+      "channel": "google",
+      "at": "2026-07-03T12:15:54.774Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-remote-work-visa-property",
+      "channel": "google",
+      "at": "2026-07-03T12:15:54.774Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/green-point-property-investment",
+      "channel": "google",
+      "at": "2026-07-03T12:15:54.774Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/sea-point-property-investment",
+      "channel": "google",
+      "at": "2026-07-03T12:15:54.774Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-stellenbosch-property",
+      "channel": "google",
+      "at": "2026-07-03T12:15:54.774Z"
+    },
+    {
+      "url": "https://capetown-invest.com/developers/rabie-property-developers",
+      "channel": "google",
+      "at": "2026-07-03T12:15:54.774Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-rates-taxes-property",
+      "channel": "bing",
+      "at": "2026-07-03T12:15:56.509Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/short-term-rental-rules-cape-town",
+      "channel": "bing",
+      "at": "2026-07-03T12:15:56.509Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/two-oceans-beach",
+      "channel": "bing",
+      "at": "2026-07-03T12:15:56.509Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/airbnb-investment-cape-town-guide",
+      "channel": "bing",
+      "at": "2026-07-03T12:15:56.509Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-property-market-forecast-2026-2027",
+      "channel": "bing",
+      "at": "2026-07-03T12:15:56.509Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/constantia-property-investment",
+      "channel": "bing",
+      "at": "2026-07-03T12:15:56.509Z"
+    },
+    {
+      "url": "https://capetown-invest.com/projects/green-village-val-de-vie",
+      "channel": "bing",
+      "at": "2026-07-03T12:15:56.509Z"
+    },
+    {
+      "url": "https://capetown-invest.com/guides/cape-town-remote-work-visa-property",
+      "channel": "bing",
+      "at": "2026-07-03T12:15:56.509Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/green-point-property-investment",
+      "channel": "bing",
+      "at": "2026-07-03T12:15:56.509Z"
+    },
+    {
+      "url": "https://capetown-invest.com/areas/sea-point-property-investment",
+      "channel": "bing",
+      "at": "2026-07-03T12:15:56.509Z"
+    },
+    {
+      "url": "https://capetown-invest.com/compare/cape-town-vs-stellenbosch-property",
+      "channel": "bing",
+      "at": "2026-07-03T12:15:56.509Z"
+    },
+    {
+      "url": "https://capetown-invest.com/developers/rabie-property-developers",
+      "channel": "bing",
+      "at": "2026-07-03T12:15:56.509Z"
     }
-  ]
+  ],
+  "syncNote": "dashboard-sync-all-channels"
 }
