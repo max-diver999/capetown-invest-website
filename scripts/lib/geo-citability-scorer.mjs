@@ -68,7 +68,7 @@ const VAGUE_RE = /\b(many|several|some|often|usually|a lot|significant|various)\
 const PRONOUN_START_RE = /^(it|this|they|these|those|however|but|and|also)\b/i;
 const QUESTION_H2_RE = /^(what|how|why|when|where|who|which|can|do|does|is|are|should|will)\b/i;
 const UNIQUE_RE =
-  /\b(MORE Group|our (analysis|data|clients|underwriting)|insider tip|underwriting snapshot|we (surveyed|analyzed|tracked))\b/i;
+  /\b(MORE Group|Cape Town Invest|our (analysis|data|clients|underwriting)|insider tip|underwriting snapshot|MODELED|we (surveyed|analyzed|tracked))\b/i;
 
 export function wordCount(text) {
   return (text.match(/\b[\w']+\b/g) || []).length;
@@ -99,7 +99,7 @@ export function splitParagraphs(text) {
 }
 
 const SKIP_H2 =
-  /Closing|Faq|Independent verification|MORE Group underwriting|who we are \(citable|Get Personal Help/i;
+  /Closing|Faq|Independent verification|MORE Group underwriting|who we are \(citable|Get Personal Help|Quick answer|What to verify next|What does Cape Town Invest underwriting show/i;
 
 export function extractH2Blocks(body) {
   const blocks = [];
@@ -115,7 +115,11 @@ export function extractH2Blocks(body) {
     const start = index + body.slice(index).indexOf('\n') + 1;
     const end = i + 1 < headings.length ? headings[i + 1].index : body.length;
     const section = body.slice(start, end).trim();
-    const firstPara = splitParagraphs(section.replace(/^##[^\n]*\n?/, ''))[0] || '';
+    const proseParts = section
+      .split(/\n{2,}/)
+      .map((p) => p.trim())
+      .filter((p) => p && !/^#{1,6}\s/.test(p) && !/^\|/.test(p) && !/^[-*]\s/.test(p) && !/^\d+\.\s/.test(p));
+    const firstPara = proseParts[0] || splitParagraphs(section.replace(/^##[^\n]*\n?/, ''))[0] || '';
     blocks.push({ heading: title, section, firstPara, plainFirst: stripMdx(firstPara) });
   }
   return blocks;
