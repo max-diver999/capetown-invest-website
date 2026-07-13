@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { sendLeadNotifyEmail } from '../../lib/lead-notify-email';
+import { assessLeadSpam } from '../../lib/lead-spam-gate';
 import { SITE } from '../../data/site';
 
 export const prerender = false;
@@ -64,6 +65,26 @@ export const POST: APIRoute = async ({ request }) => {
       return new Response(JSON.stringify({ error: 'Valid phone required' }), { status: 400 });
     }
 
+    const spamVerdict = assessLeadSpam({
+      name: String(name || '').trim(),
+      email: emailText,
+      message: String(message || '').trim(),
+      website: String(body.website || body.hp || ''),
+      formLoadedAt:
+        typeof body.formLoadedAt === 'number' ? body.formLoadedAt : Number(body.formLoadedAt) || undefined,
+      formElapsedMs:
+        typeof body.formElapsedMs === 'number' ? body.formElapsedMs : Number(body.formElapsedMs) || undefined,
+      isHealthcheck,
+    });
+
+    if (spamVerdict.spam) {
+      console.info('lead spam blocked', spamVerdict.reason);
+      return new Response(JSON.stringify({ success: true, accepted: false }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
     const lines = [
       isHealthcheck ? '🧪 <b>TEST capetown-invest.com</b>' : '🇿🇦 <b>New lead — Cape Town Invest</b>',
       '',
@@ -100,7 +121,7 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }
 
-    return new Response(JSON.stringify({ success: true }), {
+    return new Response(JSON.stringify({ success: true, accepted: true }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });

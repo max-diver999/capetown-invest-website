@@ -77,15 +77,30 @@ const {
       <input type="checkbox" id="lf-consent" name="consent" required class="lead-form-consent__check" />
       <label class="lead-form-consent__label" for="lf-consent">I agree to be contacted about my enquiry. See our <a href="/privacy-policy/">Privacy Policy</a>.</label>
     </div>
+    <div class="lf-hp" aria-hidden="true">
+      <label for="lf-website">Company website</label>
+      <input type="text" tabindex="-1" autocomplete="off" id="lf-website" name="website" />
+    </div>
     <button type="submit" class="btn-primary w-full py-3">Request shortlist →</button>
     <p id="lf-success" class="hidden text-green-700 text-sm font-medium text-center">Thank you — redirecting…</p>
     <p id="lf-error" class="hidden text-red-700 text-sm font-medium text-center">Something went wrong. Please try again or email {SITE.email}.</p>
   </form>
 </section>
 
+<style>
+  .lf-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+</style>
+
 <script>
   const form = document.getElementById('ig-lead-form') as HTMLFormElement | null;
   if (form) {
+    const formLoadedAt = Date.now();
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const fd = new FormData(form);
@@ -98,7 +113,11 @@ const {
         budget: String(fd.get('budget') || ''),
         goal: String(fd.get('goal') || ''),
         message: String(fd.get('message') || ''),
+        website: String(fd.get('website') || ''),
+        formLoadedAt,
+        formElapsedMs: Date.now() - formLoadedAt,
         source: form.dataset.context || 'lead-form',
+        page: window.location.pathname,
       };
       const successEl = document.getElementById('lf-success');
       const errorEl = document.getElementById('lf-error');
