@@ -1,0 +1,9 @@
+# Broken images on top-impression MDX (404/400 only)
+
+Audit: audit-all-images.mjs. Many 429 from Wikimedia rate limit — ignore 429 for now; fix true 404/400 below.
+
+| Status | File | URL snippet |
+|--------|------|-------------|
+| 404 | `src/content/guides/buy-cape-town-property-foreigner.mdx` | [404] https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Kalk_Bay_Harbor_Boats.jpg/1280px-Kal |
+| 400 | `src/content/guides/airbnb-investment-cape-town-guide.mdx` | [400] https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Llandudno_Beach_Cape_Town.jpg/1200px |
+| 400 | `src/content/guides/can-foreigners-buy-property-south-africa.mdx` | [400] https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Llandudno_Beach_Cape_Town.jpg/1200px |

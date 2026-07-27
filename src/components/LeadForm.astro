@@ -156,10 +156,38 @@ const waHref = `${SITE.whatsapp}?text=${waText}`;
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload),
         });
+        let accepted = true;
+        if (res.ok) {
+          try {
+            const data = (await res.json()) as { accepted?: boolean };
+            if (data.accepted === false) accepted = false;
+          } catch {
+            accepted = true;
+          }
+        }
         if (res.ok) {
           successEl?.classList.remove('hidden');
           errorEl?.classList.add('hidden');
-          setTimeout(() => { window.location.href = '/thanks/'; }, 800);
+          if (accepted) {
+            try {
+              const track = (window as Window & { investGulfTrack?: (n: string, p?: Record<string, string>) => void })
+                .investGulfTrack;
+              if (typeof track === 'function') {
+                track('lead_submit', {
+                  form_source: payload.source,
+                  page_path: payload.page,
+                  market: payload.market || '',
+                  budget: payload.budget || '',
+                  goal: payload.goal || '',
+                });
+              }
+            } catch {
+              /* analytics must not block redirect */
+            }
+            setTimeout(() => { window.location.href = '/thanks/?lead=1'; }, 800);
+          } else {
+            setTimeout(() => { window.location.href = '/thanks/'; }, 800);
+          }
         } else {
           errorEl?.classList.remove('hidden');
         }
