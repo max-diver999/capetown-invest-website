@@ -1,27 +1,40 @@
 ---
 export const prerender = true;
 
-const reportDate = '25 June 2026';
-const reportVersion = 'v2.0';
+const reportDate = '27 July 2026';
+const reportVersion = 'v2.1';
 const launchDate = '10 June 2026';
-const dataThrough = '24 June 2026';
+const dataThrough = '24 July 2026';
 
 const monthlyGsc = [
-  { month: 'Jun 2026', label: 'Jun', clicks: 4, impressions: 198, position: 22.1, note: 'Through 24 Jun · first index week' },
+  { month: 'Jun 2026', label: 'Jun', clicks: 4, impressions: 432, position: 15.7, note: '18 Jun first impressions · avg pos improving late month' },
+  { month: 'Jul 2026', label: 'Jul', clicks: 18, impressions: 1327, position: 8.7, note: 'Through 24 Jul · GSC lag 2–3 days' },
 ];
 
 const monthlyGa4 = [
-  { month: 'Jun', sessions: 61 },
+  { month: 'Jun', sessions: 69 },
+  { month: 'Jul', sessions: 108 },
 ];
 
 const contentBreakdown = [
-  { type: 'Guides', count: 53, words: 178227, color: '#2d7a5e' },
-  { type: 'Areas', count: 21, words: 65037, color: '#8b5cf6' },
-  { type: 'Projects', count: 21, words: 41796, color: '#4e9e7e' },
-  { type: 'Comparisons', count: 7, words: 20581, color: '#d97706' },
-  { type: 'Developers', count: 6, words: 14526, color: '#60a5fa' },
-  { type: 'Segments', count: 3, words: 9620, color: '#0891b2' },
-  { type: 'News', count: 5, words: 5456, color: '#9ca3af' },
+  { type: 'Guides', count: 59, words: 276000, color: '#2d7a5e' },
+  { type: 'Areas', count: 26, words: 112001, color: '#8b5cf6' },
+  { type: 'Projects', count: 28, words: 91917, color: '#4e9e7e' },
+  { type: 'Comparisons', count: 15, words: 58913, color: '#d97706' },
+  { type: 'Developers', count: 7, words: 24363, color: '#60a5fa' },
+  { type: 'Segments', count: 4, words: 18167, color: '#0891b2' },
+  { type: 'News', count: 5, words: 9058, color: '#9ca3af' },
+];
+
+const weeklyMetrics = [
+  { week: '2–8 Jun', gscClicks: 0, gscImp: 0, gscPos: '—', ga4: 0, bingC: 0, aeoQueries: 0, aeoTop10: 0, geoScore: '—', geoMdx: '96+' },
+  { week: '9–15 Jun', gscClicks: 0, gscImp: 0, gscPos: '—', ga4: 0, bingC: 0, aeoQueries: 0, aeoTop10: 0, geoScore: '—', geoMdx: '110+' },
+  { week: '16–22 Jun', gscClicks: 3, gscImp: 186, gscPos: '22.8', ga4: 56, bingC: 0, aeoQueries: 28, aeoTop10: 4, geoScore: '—', geoMdx: '116' },
+  { week: '23–29 Jun', gscClicks: 1, gscImp: 206, gscPos: '10.0', ga4: 11, bingC: 0, aeoQueries: 7, aeoTop10: 0, geoScore: '—', geoMdx: '116' },
+  { week: '30 Jun – 6 Jul', gscClicks: 3, gscImp: 446, gscPos: '7.9', ga4: 17, bingC: 0, aeoQueries: 2, aeoTop10: 0, geoScore: '—', geoMdx: '116' },
+  { week: '7–13 Jul', gscClicks: 5, gscImp: 466, gscPos: '9.0', ga4: 23, bingC: 0, aeoQueries: 9, aeoTop10: 0, geoScore: '85→90', geoMdx: '144' },
+  { week: '14–20 Jul', gscClicks: 4, gscImp: 283, gscPos: '9.1', ga4: 35, bingC: 2, aeoQueries: 3, aeoTop10: 1, geoScore: '90', geoMdx: '144' },
+  { week: '21–27 Jul', gscClicks: 6, gscImp: 172, gscPos: '9.6', ga4: 35, bingC: 3, aeoQueries: 3, aeoTop10: 0, geoScore: '90', geoMdx: '144' },
 ];
 
 const totalClicks = monthlyGsc.reduce((s, m) => s + m.clicks, 0);
@@ -449,7 +462,7 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
   <div class="header-meta">
     <div class="label">Last updated</div>
     <div class="value">{reportDate} · {reportVersion} (live)</div>
-    <div class="live-badge"><span class="live-dot"></span> 116 MDX · 131 sitemap · gap 0</div>
+    <div class="live-badge"><span class="live-dot"></span> 144 MDX · 159 sitemap · GEO 90+ · spam gate live</div>
     <div style="margin-top:10px;font-size:12px;"><a href="https://capetown-invest.com/" style="color:#9dbfb3;text-decoration:none;">← Live site</a></div>
   </div>
 </div>
@@ -459,24 +472,24 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
   <div class="section-title">At a glance</div>
   <div class="stats-grid">
     <div class="stat-card">
-      <div class="num teal">131</div>
+      <div class="num teal">159</div>
       <div class="label">URLs in sitemap</div>
-      <div class="sublabel">21 projects · 53 guides · 21 areas · 7 compare · 6 developers · 5 news</div>
+      <div class="sublabel">28 projects · 59 guides · 26 areas · 15 compare · live 27 Jul</div>
     </div>
     <div class="stat-card">
       <div class="num amber">0</div>
       <div class="label">Ahrefs DR</div>
-      <div class="sublabel">Pre-baseline · new domain · link building Q3 target DR 5–10</div>
+      <div class="sublabel">Pre-baseline · link building Q3 target DR 5–10</div>
     </div>
     <div class="stat-card">
-      <div class="num">~335K</div>
+      <div class="num">~590K</div>
       <div class="label">SEO words</div>
-      <div class="sublabel">116 MDX files · ~2 889 avg · 48 git commits</div>
+      <div class="sublabel">144 MDX · ~4 100 avg · corpus GEO 90+</div>
     </div>
     <div class="stat-card">
-      <div class="num teal">8</div>
+      <div class="num teal">20</div>
       <div class="label">GSC click URLs</div>
-      <div class="sublabel">10 Jun–24 Jun · projects + guides first clicks</div>
+      <div class="sublabel">18 Jun–24 Jul · guides + areas + projects</div>
     </div>
     <div class="stat-card">
       <div class="num">7</div>
@@ -484,14 +497,14 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
       <div class="sublabel">guides · projects · areas · compare · developers · segments · news</div>
     </div>
     <div class="stat-card">
-      <div class="num amber">4</div>
+      <div class="num amber">22</div>
       <div class="label">GSC clicks</div>
-      <div class="sublabel">198 imp · CTR 2.02% · avg pos 22.1</div>
+      <div class="sublabel">1 759 imp · CTR 1.25% · avg pos 10.4</div>
     </div>
     <div class="stat-card">
-      <div class="num teal">61</div>
+      <div class="num teal">177</div>
       <div class="label">GA4 sessions</div>
-      <div class="sublabel">Jun 2026 · lead API 200 · dedicated Telegram bot</div>
+      <div class="sublabel">17 Jun–26 Jul · lead API 200 · spam filter 13 Jul</div>
     </div>
   </div>
 
@@ -503,20 +516,20 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
     <div class="kpi-card">
       <div class="kpi-label">GSC Clicks</div>
       <div class="kpi-value">{totalClicks}</div>
-      <span class="kpi-delta neutral">Early index</span>
-      <div class="kpi-sub">Since launch · Google Search Console</div>
+      <span class="kpi-delta up">↑ +350% Jul</span>
+      <div class="kpi-sub">22 total · 18 in Jul · Google Search Console</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Impressions</div>
       <div class="kpi-value">{(totalImp / 1000).toFixed(1)}k</div>
       <span class="kpi-delta up">↑ Crawl live</span>
-      <div class="kpi-sub">198 total · first impressions 18 Jun</div>
+      <div class="kpi-sub">1 759 total · peak day 105 imp (5 Jul)</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">GA4 Sessions</div>
-      <div class="kpi-value">61</div>
-      <span class="kpi-delta up">↑ First crawl</span>
-      <div class="kpi-sub">Jun 2026 cumulative</div>
+      <div class="kpi-value">177</div>
+      <span class="kpi-delta up">↑ Jul 108</span>
+      <div class="kpi-sub">17 Jun–26 Jul · GA4</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Content corpus</div>
@@ -589,7 +602,57 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
         </table>
       </div>
       <div class="insight">
-        <strong>Position will widen as corpus scales:</strong> 116 MDX pages indexed in first two weeks — avg position ~22.1 is normal for a new domain. Quick wins: two-oceans-beach (pos 6.8), rabie developer (pos 9.8), green-point area (pos 4.5).
+        <strong>Page-one cluster forming:</strong> 144 MDX · avg position 10.4 (Jul 8.7). CTR leaders: cape-town-rates-taxes-property (262 imp), short-term-rental-rules (194 imp), market-forecast guide (157 imp). Next: foreign-buyer hub + fix www/non-www duplicates in GSC.
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <div>
+        <h2>Weekly SEO / AEO / GEO (last 8 weeks)</h2>
+        <p>Calendar weeks Mon–Sun · GSC through {dataThrough} · GA4 through 26 Jul · GEO score from corpus audit (snapshot, not historical API).</p>
+      </div>
+      <span class="badge-src">GSC + GA4 + Bing MCP · {reportDate}</span>
+    </div>
+    <div class="card">
+      <div class="card-title">Week-over-week</div>
+      <div class="pulse-table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Week</th>
+              <th>GSC clicks</th>
+              <th>GSC imp</th>
+              <th>Avg pos</th>
+              <th>GA4 sessions</th>
+              <th>Bing clk</th>
+              <th>AEO queries</th>
+              <th>Top-10 queries</th>
+              <th>GEO score</th>
+              <th>MDX</th>
+            </tr>
+          </thead>
+          <tbody>
+            {weeklyMetrics.map(w => (
+              <tr>
+                <td><strong>{w.week}</strong></td>
+                <td class="num">{w.gscClicks}</td>
+                <td>{w.gscImp.toLocaleString('en-US')}</td>
+                <td>{w.gscPos}</td>
+                <td>{w.ga4}</td>
+                <td>{w.bingC}</td>
+                <td>{w.aeoQueries}</td>
+                <td>{w.aeoTop10}</td>
+                <td>{w.geoScore}</td>
+                <td>{w.geoMdx}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div class="insight">
+        <strong>Momentum:</strong> impressions scaled 7× from late June to early July; avg position moved from ~23 to ~9. GEO corpus lifted to 90/100 commercial min in mid-July. Bing first clicks from 14 Jul week.
       </div>
     </div>
   </section>
@@ -654,11 +717,11 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
     <div class="pulse-header">
       <div>
         <h2>Search Performance</h2>
-        <p style="font-size:12px;color:#9ca3af;margin-top:2px;">capetown-invest.com · 10 Jun – 24 Jun 2026 · Web search · Updated 25 Jun via GSC API</p>
+        <p style="font-size:12px;color:#9ca3af;margin-top:2px;">capetown-invest.com · 18 Jun – 24 Jul 2026 · Web search · Updated 27 Jul via GSC API</p>
       </div>
       <div class="pulse-updated">
         <span class="pulse-updated-dot"></span>
-        Updated 25 Jun 2026
+        Updated 27 Jul 2026
       </div>
     </div>
 
@@ -684,27 +747,27 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
     <!-- KPI Row -->
     <div class="pulse-kpi-row">
       <div class="pulse-kpi kpi-green">
-        <div class="kpi-trend trend-new">First week</div>
+        <div class="kpi-trend trend-up">↑ Jul +350%</div>
         <div class="kpi-label">Total Clicks</div>
-        <div class="kpi-val">4</div>
-        <div class="kpi-sub">Best day: 19 Jun (2 clk) · two-oceans-beach + short-term-rental guide</div>
+        <div class="kpi-val">22</div>
+        <div class="kpi-sub">Best day: 22 Jul (3 clk) · rates-taxes guide + century-city guide lead</div>
       </div>
       <div class="pulse-kpi kpi-blue">
-        <div class="kpi-trend trend-up">↑ Crawl live</div>
+        <div class="kpi-trend trend-up">↑ Scale</div>
         <div class="kpi-label">Impressions</div>
-        <div class="kpi-val">198</div>
-        <div class="kpi-sub">peak 67 on 19 Jun · first impressions 18 Jun · devmco + area pages indexing</div>
+        <div class="kpi-val">1.8k</div>
+        <div class="kpi-sub">peak 105 on 5 Jul · 99 URLs with impressions · short-term-rental + rates guides</div>
       </div>
       <div class="pulse-kpi kpi-amber">
-        <div class="kpi-trend" style="background:#fef3c7;color:#92400e;">Early tail</div>
+        <div class="kpi-trend trend-up">↑ Page 1</div>
         <div class="kpi-label">Avg. Position</div>
-        <div class="kpi-val">22.1</div>
-        <div class="kpi-sub">pos 9.2 on 23 Jun · two-oceans-beach pos 6.8 · long-tail still 30–60</div>
+        <div class="kpi-val">10.4</div>
+        <div class="kpi-sub">Jul avg 8.7 · claremont area pos 5.3 · compare vs Dubai pos 4.2</div>
       </div>
       <div class="pulse-kpi kpi-purple">
         <div class="kpi-label">Avg. CTR</div>
-        <div class="kpi-val">2.02%</div>
-        <div class="kpi-sub">Project pages 5–50% CTR · foreign-buyer queries not yet ranking</div>
+        <div class="kpi-val">1.25%</div>
+        <div class="kpi-sub">Head terms still building · project + area pages 4–15% CTR</div>
       </div>
     </div>
 
@@ -732,7 +795,7 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
         <div class="pulse-insight" style="margin-top:16px;">
           <div class="pulse-insight-icon">📈</div>
           <div class="pulse-insight-text">
-            <strong>First crawl week live:</strong> 4 clicks and 198 impressions for 10 Jun–24 Jun. Project pages two-oceans-beach and green-village-val-de-vie already receiving clicks. Priority: foreign-buyer HUB when impressions pass 50.
+            <strong>Growth phase:</strong> 22 clicks and 1 759 impressions (18 Jun–24 Jul). Tax and STR guides drive volume; 20 URLs earned clicks. Bing 5 clicks from mid-July. Lead spam gate live without blocking real enquiries.
           </div>
         </div>
       </div>
@@ -960,24 +1023,24 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
         <div style="text-align:center;padding:16px;background:#f0faf5;border-radius:10px;border:1px solid #c6e8da;">
-          <div style="font-size:28px;font-weight:900;color:#2d7a5e;">131</div>
+          <div style="font-size:28px;font-weight:900;color:#2d7a5e;">159</div>
           <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">URLs in sitemap</div>
-          <div style="font-size:10px;color:#aaa;margin-top:2px;">Live 200 OK · 25 Jun · noindex filter active</div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">Live 27 Jul · 144 MDX + hubs</div>
         </div>
         <div style="text-align:center;padding:16px;background:#dcfce7;border-radius:10px;border:1px solid #86efac;">
-          <div style="font-size:28px;font-weight:900;color:#16a34a;">8</div>
+          <div style="font-size:28px;font-weight:900;color:#16a34a;">20</div>
           <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">URLs with clicks</div>
-          <div style="font-size:10px;color:#aaa;margin-top:2px;">GSC · 10 Jun–24 Jun window</div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">GSC · 18 Jun–24 Jul</div>
         </div>
         <div style="text-align:center;padding:16px;background:#dbeafe;border-radius:10px;border:1px solid #93c5fd;">
-          <div style="font-size:28px;font-weight:900;color:#2563eb;">184</div>
+          <div style="font-size:28px;font-weight:900;color:#2563eb;">284+</div>
           <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">Submitted (log)</div>
-          <div style="font-size:10px;color:#aaa;margin-top:2px;">capetown-invest-indexing · gap 0</div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">+ top-100 batch Jul · capetown-invest-indexing</div>
         </div>
         <div style="text-align:center;padding:16px;background:#ffedd5;border-radius:10px;border:1px solid #fdba74;">
-          <div style="font-size:28px;font-weight:900;color:#c2410c;">116</div>
+          <div style="font-size:28px;font-weight:900;color:#c2410c;">144</div>
           <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">MDX in repo</div>
-          <div style="font-size:10px;color:#aaa;margin-top:2px;">53 guides · 21 projects · 21 areas</div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">59 guides · 28 projects · 26 areas · GEO min 90</div>
         </div>
       </div>
     </div>
@@ -985,19 +1048,19 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
     <div class="pulse-card" style="margin-top:16px;">
       <div class="pulse-card-title">
         <span style="width:8px;height:8px;border-radius:50%;display:inline-block;background:#fbbf24;"></span>
-        Google Analytics 4 — June 2026
+        Google Analytics 4 — Jun–Jul 2026
       </div>
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
         <div style="text-align:center;padding:16px;background:#fef3c7;border-radius:10px;border:1px solid #fde68a;">
-          <div style="font-size:28px;font-weight:900;color:#b45309;">61</div>
+          <div style="font-size:28px;font-weight:900;color:#b45309;">177</div>
           <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">Sessions</div>
         </div>
         <div style="text-align:center;padding:16px;background:#dbeafe;border-radius:10px;border:1px solid #93c5fd;">
-          <div style="font-size:28px;font-weight:900;color:#2563eb;">61</div>
+          <div style="font-size:28px;font-weight:900;color:#2563eb;">172</div>
           <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">Users</div>
         </div>
         <div style="text-align:center;padding:16px;background:#f0fdf4;border-radius:10px;border:1px solid #bbf7d0;">
-          <div style="font-size:28px;font-weight:900;color:#16a34a;">64</div>
+          <div style="font-size:28px;font-weight:900;color:#16a34a;">271</div>
           <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">Pageviews</div>
         </div>
         <div style="text-align:center;padding:16px;background:#f0faf5;border-radius:10px;border:1px solid #c6e8da;">
@@ -1007,7 +1070,7 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
       </div>
     </div>
 
-    <p class="pulse-footer-note">Updated 25 Jun 2026 via GSC API · period 10 Jun – 24 Jun · EN site — Google + Bing only</p>
+    <p class="pulse-footer-note">Updated 27 Jul 2026 via GSC + GA4 + Bing MCP · GSC 18 Jun – 24 Jul · GA4 through 26 Jul · EN site</p>
   </div>
 
   <div class="section-title">Technical setup</div>
@@ -1032,10 +1095,18 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
   <div class="section-title">Launch changelog</div>
   <div class="changelog">
     <div class="changelog-item">
+      <div class="changelog-date">27 Jul 2026 v2.1</div>
+      <div class="changelog-content">
+        <div class="changelog-title">Site report refresh + GEO 90 corpus + lead spam gate</div>
+        <div class="changelog-desc">144 MDX · 159 sitemap · GSC 22 clk / 1.8k imp · GA4 177 sessions · Bing 5 clk · weekly SEO/AEO/GEO table · top-100 indexing batch.</div>
+        <div class="changelog-tags"><span class="tag green">Report</span><span class="tag blue">GSC</span><span class="tag amber">GEO</span></div>
+      </div>
+    </div>
+    <div class="changelog-item">
       <div class="changelog-date">25 Jun 2026 v2.0</div>
       <div class="changelog-content">
         <div class="changelog-title">Site report v2.0 — full MORE Group template + live GSC/GA4</div>
-        <div class="changelog-desc">116 MDX · 131 sitemap · first GSC clicks (4) · 198 impressions · GA4 61 sessions · batches #3–4 + Opus pillar polish.</div>
+        <div class="changelog-desc">116 MDX · 131 sitemap · first GSC clicks (4) · 198 impressions · GA4 61 sessions.</div>
         <div class="changelog-tags"><span class="tag green">Report</span><span class="tag blue">GSC</span></div>
       </div>
     </div>
@@ -1128,13 +1199,13 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
 </div>
 
   <div class="footer">
-  <strong>Cape Town Invest</strong> · capetown-invest.com · Report updated 25 Jun 2026 v2.0 · 131 sitemap URLs · ~335K words · GSC 4 clicks / 198 imp (10 Jun–24 Jun) · GA4 61 sessions · 48 git commits<br>
+  <strong>Cape Town Invest</strong> · capetown-invest.com · Report updated 27 Jul 2026 v2.1 · 159 sitemap · ~590K words · GSC 22 clicks / 1 759 imp (18 Jun–24 Jul) · GA4 177 sessions · Bing 5 clicks<br>
   <a href="https://capetown-invest.com/site-report/" style="color:#2d7a5e;text-decoration:none;">Live report URL</a> ·
   To update: edit <code>src/pages/site-report/index.astro</code> in capetown-invest-website
 </div>
 
 
-<script type="application/json" id="chart-data">{"monthlyGsc":[{"label":"Jun","clicks":4,"impressions":198}],"monthlyGa4":[{"month":"Jun","sessions":61}],"contentBreakdown":[{"type":"Guides","count":53,"color":"#2d7a5e"},{"type":"Areas","count":21,"color":"#8b5cf6"},{"type":"Projects","count":21,"color":"#4e9e7e"},{"type":"Comparisons","count":7,"color":"#d97706"},{"type":"Developers","count":6,"color":"#60a5fa"},{"type":"Segments","count":3,"color":"#0891b2"},{"type":"News","count":5,"color":"#9ca3af"}],"dailyRaw":[{"d":"06-18","c":0,"i":22},{"d":"06-19","c":2,"i":67},{"d":"06-20","c":0,"i":41},{"d":"06-21","c":1,"i":36},{"d":"06-22","c":0,"i":20},{"d":"06-23","c":1,"i":12}]}</script>
+<script type="application/json" id="chart-data">{"monthlyGsc":[{"label":"Jun","clicks":4,"impressions":432},{"label":"Jul","clicks":18,"impressions":1327}],"monthlyGa4":[{"month":"Jun","sessions":69},{"month":"Jul","sessions":108}],"contentBreakdown":[{"type":"Guides","count":59,"color":"#2d7a5e"},{"type":"Areas","count":26,"color":"#8b5cf6"},{"type":"Projects","count":28,"color":"#4e9e7e"},{"type":"Comparisons","count":15,"color":"#d97706"},{"type":"Developers","count":7,"color":"#60a5fa"},{"type":"Segments","count":4,"color":"#0891b2"},{"type":"News","count":5,"color":"#9ca3af"}],"dailyRaw":[{"d":"06-18","c":0,"i":22},{"d":"06-19","c":2,"i":67},{"d":"06-20","c":0,"i":41},{"d":"06-21","c":1,"i":36},{"d":"06-22","c":0,"i":20},{"d":"06-23","c":1,"i":12},{"d":"06-24","c":0,"i":12},{"d":"06-25","c":0,"i":15},{"d":"06-26","c":0,"i":23},{"d":"06-27","c":0,"i":48},{"d":"06-28","c":0,"i":41},{"d":"06-29","c":0,"i":55},{"d":"06-30","c":0,"i":40},{"d":"07-01","c":0,"i":49},{"d":"07-02","c":1,"i":83},{"d":"07-03","c":0,"i":69},{"d":"07-04","c":1,"i":46},{"d":"07-05","c":1,"i":105},{"d":"07-06","c":0,"i":54},{"d":"07-07","c":0,"i":76},{"d":"07-08","c":1,"i":82},{"d":"07-09","c":1,"i":85},{"d":"07-10","c":0,"i":49},{"d":"07-11","c":0,"i":59},{"d":"07-12","c":2,"i":60},{"d":"07-13","c":1,"i":55},{"d":"07-14","c":0,"i":45},{"d":"07-15","c":0,"i":39},{"d":"07-16","c":1,"i":29},{"d":"07-17","c":1,"i":45},{"d":"07-18","c":0,"i":49},{"d":"07-19","c":0,"i":35},{"d":"07-20","c":2,"i":41},{"d":"07-21","c":1,"i":44},{"d":"07-22","c":3,"i":38},{"d":"07-23","c":2,"i":47},{"d":"07-24","c":0,"i":43}]}</script>
 <script is:inline>
 (function initReportCharts() {
   function run() {
