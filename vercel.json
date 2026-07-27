@@ -2,10 +2,10 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [{ "type": "host", "value": "www.capetown-invest.com" }],
-      "destination": "https://capetown-invest.com/:path*",
-      "permanent": true
+      "destination": "https://capetown-invest.com/$1",
+      "statusCode": 308
     },
     {
       "source": "/guides/uk-buyers-cape-town-property/",

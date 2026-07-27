@@ -12,7 +12,11 @@ import { isImageUrl } from './lib/image-url-detect.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = join(ROOT, 'src');
+// Bare/markdown URLs stop at ')' so that [alt](url) does not swallow the closing paren.
 const URL_RE = /https?:\/\/[^\s"'`)>\]]+/g;
+// Quoted values (frontmatter, JSX attributes, JSON) may legally contain ')', and a stray
+// one is exactly how a broken hero slipped past this gate as a truncated valid URL.
+const QUOTED_URL_RE = /["'`](https?:\/\/[^\s"'`]+)["'`]/g;
 const FAIL = process.argv.includes('--fail');
 
 // Wikimedia throttles hard; Cloudinary and friends do not. One global concurrency
@@ -80,8 +84,13 @@ async function mapPool(items, limit, fn) {
 const map = new Map();
 for (const file of walk(SRC)) {
   const text = readFileSync(file, 'utf8');
+  const quoted = new Set();
+  for (const m of text.matchAll(QUOTED_URL_RE)) quoted.add(m[1]);
   for (const m of text.matchAll(URL_RE)) {
-    const url = m[0].replace(/[.,;]+$/, '');
+    // Prefer the full quoted value when this bare match is a truncation of one.
+    const bare = m[0].replace(/[.,;]+$/, '');
+    const full = [...quoted].find((q) => q.startsWith(bare) && q !== bare);
+    const url = full ?? bare;
     if (!isImageUrl(url)) continue;
     if (!map.has(url)) map.set(url, new Set());
     map.get(url).add(file.replace(ROOT + '/', ''));
