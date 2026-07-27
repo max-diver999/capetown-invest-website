@@ -2,7 +2,8 @@
 /** Bing IndexNow — explicit URLs only (capetown-invest.com). Never api.indexnow.org. */
 import { readFileSync } from 'node:fs';
 
-const KEY = 'a7c3e91f2b584d6e8f0a1c3d5e7f9b2a';
+// Must match the verification file served at /<KEY>.txt (public/).
+const KEY = 'ed9b70276c0ff4672e566b062652592b';
 const HOST = 'capetown-invest.com';
 const BASE = `https://${HOST}`;
 
