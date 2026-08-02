@@ -4,6 +4,7 @@
 
 - Site: https://capetown-invest.com
 - Contact: info@capetown-invest.com
+- Wikidata: https://www.wikidata.org/wiki/Q140810037
 - Markets: Atlantic Seaboard, City Bowl, Southern Suburbs, Century City, Winelands
 - Focus: foreign buyers, FICA, exchange control, transfer duty, net rental yield, remote work visa
 

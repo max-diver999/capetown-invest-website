@@ -9,11 +9,11 @@ export const SITE = {
   whatsapp: 'https://wa.me/66651195327',
   whatsappDisplay: '+66 65 119 5327',
   editorial: 'Cape Town Invest Editorial',
-  /** Add Wikidata Q-id when entity is created — see _СИСТЕМА/GEO_WIKIDATA_SETUP.md */
-  wikidataId: null as string | null,
+  /** Wikidata entity — https://www.wikidata.org/wiki/Q140810037 */
+  wikidataId: 'Q140810037' as string | null,
   sameAs: [
-    'https://capetown-invest.com',
-    'https://moregroup.estate',
+    'https://capetown-invest.com/about/',
+    'https://moregroup.estate/about/',
   ],
   address: {
     locality: 'Cape Town',
