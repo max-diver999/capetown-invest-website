@@ -12,7 +12,6 @@ export const SITE = {
   /** Wikidata entity — https://www.wikidata.org/wiki/Q140810037 */
   wikidataId: 'Q140810037' as string | null,
   sameAs: [
-    'https://capetown-invest.com/about/',
     'https://moregroup.estate/about/',
   ],
   address: {

@@ -8,10 +8,10 @@ const currentPath = Astro.url.pathname;
 const isActive = (href: string) => currentPath === href || (href !== '/' && currentPath.startsWith(href));
 ---
 <header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[rgba(255,255,255,0.9)] backdrop-blur-md">
-  <div class="site-container flex items-center justify-between gap-4 py-4">
-    <a href="/" class="flex items-center gap-2 no-underline">
+  <div class="site-container flex items-center justify-between gap-3 py-4">
+    <a href="/" class="flex items-center gap-2 no-underline min-w-0">
       <img src="/favicon.svg?v=3" alt="" width="32" height="32" class="rounded-lg" />
-      <span class="text-lg font-semibold text-[var(--color-ink)]">{SITE.name}</span>
+      <span class="text-base sm:text-lg font-semibold text-[var(--color-ink)] truncate">{SITE.name}</span>
     </a>
 
     <nav class="hidden md:flex items-center gap-6 text-sm font-medium" aria-label="Main">
@@ -28,7 +28,9 @@ const isActive = (href: string) => currentPath === href || (href !== '/' && curr
     </nav>
 
     <div class="flex items-center gap-2">
-      <a href="/get-shortlist/" class="btn-primary text-sm px-4 py-2 shrink-0">Free shortlist</a>
+      <a href="/get-shortlist/" class="btn-primary text-sm px-3 sm:px-4 py-2 shrink-0 whitespace-nowrap">
+        <span class="sm:hidden">Shortlist</span><span class="hidden sm:inline">Free shortlist</span>
+      </a>
       <button
         type="button"
         id="nav-toggle"
