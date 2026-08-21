@@ -1,0 +1,80 @@
+content_os_version: "2.5.0-pilot"
+site_id: capetown-invest-website
+domain: capetown-invest.com
+github: max-diver999/capetown-invest-website
+program: capetown-invest
+
+pilot_goal: "More qualified Cape Town purchase-intent leads — full audit, hub UX, corpus polish, future topics"
+pilot_mode: full_audit_then_code_and_corpus
+pilot_started: "2026-08-21"
+
+reference_site: florida-estate-website
+reference_playbook: more-group-content-os/reference-sites/more-group-website/playbook.md
+note: "Florida post-audit UX as code reference — Cape Town brand independent (SA property)"
+
+full_audit:
+  mode: corpus_plus_rendered_plus_code
+  skill: more-group-content-os/policies/corpus-cleanup-mode.md
+  audit_report_output: .content-os/reports/AUDIT-REPORT-{date}.md
+  code_audit_output: .content-os/reports/CODE-AUDIT-{date}.md
+  roadmap_content: .content-os/batches/corpus-cleanup-roadmap-{date}.md
+  roadmap_code: .content-os/batches/code-improvements-roadmap-{date}.md
+  roadmap_topics: .content-os/batches/content-roadmap-{date}.md
+  batch_size_default: 25
+  section_priority:
+    - guides
+    - areas
+    - projects
+    - compare
+    - segments
+    - developers
+  geo_baseline:
+    commercial_avg: 90
+    commercial_below_min: 0
+    grade: A
+    rubric_weak: [self, unique]
+    command: npm run geo:audit
+  forbid:
+    - mass regex delete across corpus
+    - Astro/layout changes without code roadmap ok
+    - new slugs until Maxim ok on audit roadmaps
+
+topic_discovery:
+  mode: after_audit_ok
+  proposal_output: .content-os/batches/topics-proposal.json
+  batch_size_default: 5
+
+analytics:
+  snapshot: more-group-content-os/analytics-snapshots/capetown-invest-website/2026-08-21.json
+  gsc_property: "sc-domain:capetown-invest.com"
+  gsc_mcp: user-search-console-capetown-invest
+  ga4_mcp: user-ga4-analytics-capetown-invest
+  bing_mcp: user-bing-webmaster-capetown-invest
+  refresh: manual_via_cursor
+
+content:
+  mdx_count_approx: 144
+  collections:
+    guides: src/content/guides
+    projects: src/content/projects
+    areas: src/content/areas
+    compare: src/content/compare
+    segments: src/content/segments
+    developers: src/content/developers
+    news: src/content/news
+  serp_briefs: content-engine/serp-briefs/capetown-invest-website
+  site_data: src/data/site.ts
+  live_report: src/pages/site-report/
+
+indexing:
+  policy: more-group-content-os/policies/cursor-rules/capetown-invest-indexing-isolation.mdc
+  gcp_project: capetown-invest-indexing
+  key_preflight: scripts/google-indexing-key.json
+  cursor_only_after: Maxim says отправляй or выложи with indexing
+
+lead_funnels:
+  - /consultation/
+  - /get-shortlist/
+  - /contact/
+
+branch_prefix: cc/capetown-
