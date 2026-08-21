@@ -49,7 +49,7 @@ Confusing gross rent with collected rent is the most common yield mistake. Agent
 
 ## How to model vacancy in a yield spreadsheet
 
-Start with gross annual rent, then apply a vacancy allowance, then subtract operating costs. The formula is simple but the inputs are not.
+Start with gross annual rent, apply the vacancy allowance, then subtract operating costs, in that order. The sequence matters because every later cost comes off the reduced base rather than the headline rent. The formula is simple, the inputs are not, and a 10% assumption instead of 0% moves net yield by roughly a full percentage point.
 
 Effective gross income = gross annual rent x (1 minus vacancy rate)
 
@@ -95,7 +95,7 @@ Sea Point and the City Bowl tolerate STR better than purely residential family s
 
 ## Suburb comparison: Sea Point vs Camps Bay vs City Bowl
 
-These three suburbs illustrate how vacancy and yield interact. All three appear in the [highest rental yield suburbs Cape Town](/guides/highest-rental-yield-suburbs-cape-town/) rankings, but for different reasons.
+Sea Point, the City Bowl, and Camps Bay show how vacancy and yield interact, and each sits at a different point on the curve: Sea Point models about 9.7% gross against 8% to 10% long-term vacancy, the City Bowl about 8.5% with heavier levies, and Camps Bay about 6.8% with 9% to 11% vacancy on a thinner tenant pool. All three appear in the [highest rental yield suburbs Cape Town](/guides/highest-rental-yield-suburbs-cape-town/) rankings, for different reasons.
 
 Sea Point combines mid-priced entry, dense long-term demand, and strong STR potential. Long-term vacancy models at 8% to 10%. STR vacancy models at 25% to 35% if dynamic pricing and professional management are in place. Net yields on long-term models are among the city's strongest because price-to-rent ratios are favourable.
 
@@ -112,6 +112,8 @@ Camps Bay trades on luxury and views. Capital values are high relative to rent, 
 Every percentage here is modeled, not guaranteed. Your actual vacancy depends on price, furnishing, backup power, and management quality.
 
 ## Worked example: how vacancy hits net yield
+
+The two tables below run the same R4 million apartment twice, once at the 0% vacancy an agent's sheet implies and once at a realistic 10%, then repeat the exercise for a short-term let at 35% vacancy. Nothing else in the model changes. Only the vacancy line moves.
 
 | Line item | At 0% vacancy (wrong model) | At 10% vacancy (realistic) |
 | --- | --- | --- |
@@ -131,6 +133,8 @@ Every percentage here is modeled, not guaranteed. Your actual vacancy depends on
 | Effective gross | R327,600 |
 | Higher STR management at 18% | R58,968 |
 | Net before levies and rates | R268,632 |
+
+Read the two columns side by side and the cost of the vacancy line is exact. Gross annual rent of R387,600 on a R4 million apartment produces net operating income of R330,640 and a net yield of 8.3% when no allowance is made. Applying a 10% allowance removes R38,760 of income before a single levy is paid, leaving R291,880 and a net yield of 7.3%. A full percentage point of yield disappears with no change to levies of R32,400, rates of R15,600, or the R8,960 insurance and maintenance line. The short-term version is harsher: R504,000 at full occupancy falls to R327,600 effective at 35% vacancy, and management at 18% takes another R58,968 before levies and rates are reached at all.
 
 <CtaBox
   title="Want suburbs where the vacancy risk is lowest?"
@@ -159,6 +163,10 @@ Tenant quality. Rigorous referencing reduces default and early exit voids in lon
 | Furnishing quality | Faster STR and corporate lets | Target tenant type deliberately |
 
 ## Vacancy and financing: what banks assume
+
+Banks underwrite rental income more conservatively than owners do, and the gap is where financing plans break. A lender assessing a buy-to-let application discounts the rent schedule you present, stress-tests the instalment above the current prime rate near 10.5%, and for a non-resident caps the loan around 50% of purchase price, which fixes the equity requirement before the rent assumption is even discussed. An investor modelling 0% vacancy against a bank haircutting 15% is running two different deals on the same property. Align them by underwriting 8% to 10% vacancy on a long-term let from the first pass, testing coverage at a rate above today's, and treating the bank's number as the honest one. On a R4 million purchase that discipline changes the offer price, not only the spreadsheet.
+
+Insider tip: check how many units in the same block are advertised on the portals the week you view. Two or three simultaneous listings in one scheme is the clearest vacancy signal you will get, because they compete on price against each other and set the reletting rent for your unit too. Portals show it for free, and no agent will volunteer it.
 
 If you model 0% vacancy but the bank haircuts 15%, your financing plan can fail even when your spreadsheet looks fine. Align investor and bank assumptions by using 8% to 10% minimum on long-term models and checking coverage at stressed interest rates.
 
