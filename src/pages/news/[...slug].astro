@@ -27,6 +27,7 @@ const {
   heroImage,
   faq,
   noindex,
+  relatedSlugs,
 } = entry.data;
 ---
 <ArticleLayout
@@ -40,6 +41,10 @@ const {
   {faq}
   {noindex}
   {hasInlineFaqBlock}
+  {relatedSlugs}
+  collection="news"
+  entryId={entry.id}
+  articleType="NewsArticle"
   contextLabel={title}
   canonical={`${SITE.url}/news/${entry.id}/`}
 >

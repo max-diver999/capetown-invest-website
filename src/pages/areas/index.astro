@@ -1,39 +1,136 @@
 ---
 export const prerender = true;
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ContentCard from '../../components/ContentCard.astro';
-import { formatAreaLabel } from '../../lib/cardImage';
+import HubLayout, { type HubGroup } from '../../layouts/HubLayout.astro';
 
 const areas = (await getCollection('areas'))
   .filter((a) => !a.data.noindex)
   .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const bySlug = new Map(areas.map((a) => [a.id, a]));
+
+const REGIONS: { label: string; note: string; slugs: string[] }[] = [
+  {
+    label: 'Atlantic Seaboard',
+    note: 'Beachfront and slope suburbs. Capital preservation and scarcity rather than headline income.',
+    slugs: [
+      'camps-bay-property-investment',
+      'clifton-property-investment',
+      'bantry-bay-property-investment',
+      'fresnaye-property-investment',
+      'sea-point-property-investment',
+      'green-point-property-investment',
+      'llandudno-property-investment',
+      'hout-bay-property-investment',
+    ],
+  },
+  {
+    label: 'City Bowl and Waterfront',
+    note: 'Walkable central stock with the deepest short-let and corporate tenant demand.',
+    slugs: [
+      'v-and-a-waterfront-property-investment',
+      'de-waterkant-property-investment',
+      'gardens-property-investment',
+      'tamboerskloof-property-investment',
+      'woodstock-property-investment',
+    ],
+  },
+  {
+    label: 'Southern Suburbs',
+    note: 'School catchments and family long-let demand under the mountain.',
+    slugs: [
+      'constantia-property-investment',
+      'newlands-property-investment',
+      'claremont-property-investment',
+      'rondebosch-property-investment',
+    ],
+  },
+  {
+    label: 'Northern suburbs and West Coast',
+    note: 'Lower entry tickets, newer stock, and beach demand north of the city.',
+    slugs: [
+      'blouberg-property-investment',
+      'table-view-property-investment',
+      'milnerton-property-investment',
+      'durbanville-property-investment',
+    ],
+  },
+  {
+    label: 'Winelands and Helderberg',
+    note: 'Estate living, semigration families and wine-tourism rental demand.',
+    slugs: [
+      'somerset-west-property-investment',
+      'paarl-property-investment',
+      'franschhoek-property-investment',
+    ],
+  },
+  {
+    label: 'False Bay and Whale Coast',
+    note: 'Village markets with seasonal tourism and value pricing versus the Atlantic side.',
+    slugs: ['kalk-bay-false-bay-property-investment', 'hermanus-property-investment'],
+  },
+];
+
+const used = new Set<string>();
+const groups: HubGroup[] = [];
+const toCard = (a: NonNullable<ReturnType<typeof bySlug.get>>) => {
+  used.add(a.id);
+  return {
+    href: `/areas/${a.id}/`,
+    title: a.data.title,
+    description: a.data.description,
+    image: a.data.heroImage,
+    badges: a.data.tags?.slice(0, 2) ?? [],
+    meta: `${a.data.readingTime ?? 8} min read`,
+  };
+};
+
+for (const region of REGIONS) {
+  const cards = region.slugs
+    .map((slug) => bySlug.get(slug))
+    .filter((a): a is NonNullable<typeof a> => Boolean(a))
+    .map(toCard);
+  if (cards.length) groups.push({ label: region.label, note: region.note, cards });
+}
+
+const leftovers = areas.filter((a) => !used.has(a.id));
+if (leftovers.length) {
+  groups.push({
+    label: 'More areas',
+    note: 'Additional suburb research in this collection.',
+    cards: leftovers.map(toCard),
+  });
+}
+
+const faq = [
+  {
+    question: 'Which Cape Town area is best for rental income?',
+    answer:
+      'Income concentrates where entry prices sit closest to achievable rent. Woodstock, mid-market Sea Point, Century City and the Blouberg corridor model higher gross yields than trophy beachfront. Camps Bay and Clifton are capital-preservation plays where net yield compresses because purchase prices run at multiples of the metro median. Compare the modelled gross and net bands on each area page before shortlisting.',
+  },
+  {
+    question: 'Where do foreign buyers concentrate in Cape Town?',
+    answer:
+      'Foreign demand clusters on the Atlantic Seaboard and in the City Bowl, with Germany, the United Kingdom and the Netherlands among the leading source markets. Somerset West and the Winelands attract European buyers looking for estate living, while Blouberg and Table View draw buyers seeking lower entry prices with beach access.',
+  },
+  {
+    question: 'Can I short-let an apartment in any Cape Town suburb?',
+    answer:
+      'Zoning usually permits it, but the binding constraint is the building. A body corporate can restrict or ban stays under a set number of days with a 75% special resolution, so the registered conduct rules and the last two AGM minutes matter more than the suburb. Read the short-term rental rules guide before you buy for Airbnb income.',
+  },
+];
 ---
-<BaseLayout
-  title="Cape Town Investment Areas"
-  description="Area guides for Atlantic Seaboard, City Bowl, Southern Suburbs, and Winelands — yields, buyer profile, and micro-market risks."
->
-  <section class="site-container py-14 md:py-20">
-    <header class="max-w-2xl mb-12">
-      <h1 class="text-3xl">Investment areas</h1>
-      <p class="text-lg text-[var(--color-muted)] mt-3">
-        Micro-market research for foreign buyers — {areas.length} area guides with photos and yield data.
-      </p>
-    </header>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {areas.map((area) => (
-        <ContentCard
-          href={`/areas/${area.id}/`}
-          title={area.data.title}
-          description={area.data.description}
-          image={area.data.heroImage}
-          badges={['Area', formatAreaLabel(area.id)]}
-          meta={`${area.data.readingTime ?? 10} min read`}
-        />
-      ))}
-      {areas.length === 0 && (
-        <p class="text-[var(--color-muted)] col-span-full">Area guides publishing with Wave 1.</p>
-      )}
-    </div>
-  </section>
-</BaseLayout>
+<HubLayout
+  title="Cape Town Suburb Investment Guides: Prices and Yields"
+  description="Suburb-by-suburb Cape Town property research: prices per square metre, modelled gross and net yields, tenant demand and foreign buyer notes across 26 areas."
+  h1="Cape Town areas and suburbs"
+  intro={`Independent suburb research grouped by corridor, so you can compare like with like. Each page carries price bands, modelled yields, tenant profile and the local risks that move net income. If you are still choosing a corridor, start with <a href="/guides/best-areas-invest-cape-town-2026/">best areas to invest</a> or the <a href="/guides/cape-town-property-prices-by-suburb-2026/">prices by suburb table</a>.`}
+  sectionSlug="areas"
+  sectionName="Areas"
+  groups={groups}
+  total={areas.length}
+  updatedLabel="August 2026"
+  faq={faq}
+  leadTitle="Shortlist stock in your target suburb"
+  leadSubtitle="Tell us the corridor, budget and whether you want yield or lifestyle. We reply within one business day."
+/>

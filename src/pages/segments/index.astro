@@ -1,36 +1,49 @@
 ---
 export const prerender = true;
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ContentCard from '../../components/ContentCard.astro';
+import HubLayout, { type HubGroup } from '../../layouts/HubLayout.astro';
 
 const segments = (await getCollection('segments'))
   .filter((s) => !s.data.noindex)
   .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const groups: HubGroup[] = [
+  {
+    label: 'Guides by buyer profile',
+    note: 'Currency, home-country tax reporting and the paperwork that differs by passport.',
+    cards: segments.map((s) => ({
+      href: `/segments/${s.id}/`,
+      title: s.data.title,
+      description: s.data.description,
+      image: s.data.heroImage,
+      badges: s.data.tags?.slice(0, 2) ?? [],
+      meta: `${s.data.readingTime ?? 8} min read`,
+    })),
+  },
+];
+
+const faq = [
+  {
+    question: 'Do buying rules differ by nationality in South Africa?',
+    answer:
+      'The South African rules are the same for every foreign buyer: freehold and sectional title ownership is open to non-residents, there is no foreign buyer surcharge, and financing is typically capped near half the purchase price locally. What differs by nationality is your home-country tax reporting, the double taxation agreement that applies to your rental income, currency exposure, and the notarisation route for a power of attorney.',
+  },
+  {
+    question: 'Which paperwork differs most for foreign buyers?',
+    answer:
+      'The power of attorney and the FICA pack. Signing abroad usually requires notarisation and, depending on your country, an apostille. FICA requires certified identity documents, proof of address and a documented source of funds, and non-residents must have inward transfers recorded by an authorised dealer so proceeds can be repatriated cleanly when they sell.',
+  },
+];
 ---
-<BaseLayout
-  title="Buyer Segments — Cape Town Property"
-  description="Country-specific Cape Town property guides for UK, German, US, and EU buyers — currency, tax, FICA, and area fit."
->
-  <section class="site-container py-14 md:py-20">
-    <header class="max-w-2xl mb-12">
-      <h1 class="text-3xl">Buyer segments</h1>
-      <p class="text-lg text-[var(--color-muted)] mt-3">
-        Nationality-specific planning layers on top of the foreign-buyer hub — exchange control, home-country tax, and where each cohort buys in Cape Town.
-      </p>
-      <p class="text-sm text-[var(--color-muted)] mt-2">{segments.length} segment guides.</p>
-    </header>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {segments.map((item) => (
-        <ContentCard
-          href={`/segments/${item.id}/`}
-          title={item.data.title}
-          description={item.data.description}
-          image={item.data.heroImage}
-          badges={['Segment', ...(item.data.tags?.slice(0, 1) ?? [])]}
-          meta={`${item.data.readingTime ?? 8} min read`}
-        />
-      ))}
-    </div>
-  </section>
-</BaseLayout>
+<HubLayout
+  title="Cape Town Property Guides by Buyer Nationality"
+  description="Cape Town property guides for UK, US, German and retiree buyers: currency exposure, home-country tax reporting, financing limits and the paperwork that differs by passport."
+  h1="Guides by buyer profile"
+  intro={`South African purchase rules are identical for every foreign buyer. What changes is what happens in your home country: how rental income is reported, which double taxation agreement applies, how you sign remotely, and what currency risk you carry. These guides cover that half of the transaction. For the South African side, start with <a href="/guides/buy-cape-town-property-foreigner/">buying as a foreigner</a>.`}
+  sectionSlug="segments"
+  sectionName="Buyer guides"
+  groups={groups}
+  total={segments.length}
+  updatedLabel="August 2026"
+  faq={faq}
+/>

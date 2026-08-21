@@ -1,15 +1,11 @@
 ---
 import { SITE } from '../data/site';
+import { PRIMARY_NAV, UTILITY_NAV } from '../data/nav';
 
-const nav = [
-  { label: 'Guides', href: '/guides/' },
-  { label: 'Segments', href: '/segments/' },
-  { label: 'Projects', href: '/projects/' },
-  { label: 'Areas', href: '/areas/' },
-  { label: 'Compare', href: '/compare/' },
-  { label: 'About', href: '/about/' },
-  { label: 'Contact', href: '/contact/' },
-];
+/** Desktop bar keeps the five highest-intent sections; the rest live in the mobile panel and footer. */
+const desktopNav = PRIMARY_NAV.slice(0, 5);
+const currentPath = Astro.url.pathname;
+const isActive = (href: string) => currentPath === href || (href !== '/' && currentPath.startsWith(href));
 ---
 <header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[rgba(255,255,255,0.9)] backdrop-blur-md">
   <div class="site-container flex items-center justify-between gap-4 py-4">
@@ -17,11 +13,66 @@ const nav = [
       <img src="/favicon.svg?v=3" alt="" width="32" height="32" class="rounded-lg" />
       <span class="text-lg font-semibold text-[var(--color-ink)]">{SITE.name}</span>
     </a>
-    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-      {nav.map((item) => (
-        <a href={item.href} class="text-[var(--color-muted)] hover:text-[var(--color-ink)] no-underline">{item.label}</a>
+
+    <nav class="hidden md:flex items-center gap-6 text-sm font-medium" aria-label="Main">
+      {desktopNav.map((item) => (
+        <a
+          href={item.href}
+          aria-current={isActive(item.href) ? 'page' : undefined}
+          class:list={[
+            'no-underline hover:text-[var(--color-ink)]',
+            isActive(item.href) ? 'text-[var(--color-ink)] font-semibold' : 'text-[var(--color-muted)]',
+          ]}
+        >{item.label}</a>
       ))}
     </nav>
-    <a href="/get-shortlist/" class="btn-primary text-sm px-4 py-2 shrink-0">Free shortlist</a>
+
+    <div class="flex items-center gap-2">
+      <a href="/get-shortlist/" class="btn-primary text-sm px-4 py-2 shrink-0">Free shortlist</a>
+      <button
+        type="button"
+        id="nav-toggle"
+        class="md:hidden inline-flex items-center justify-center rounded-lg border border-[var(--color-border)] p-2"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
+      </button>
+    </div>
   </div>
+
+  <nav
+    id="mobile-nav"
+    class="hidden md:hidden border-t border-[var(--color-border)] bg-white"
+    aria-label="Mobile"
+  >
+    <div class="site-container py-4 grid gap-1">
+      {PRIMARY_NAV.map((item) => (
+        <a href={item.href} class="block rounded-lg px-3 py-2.5 no-underline hover:bg-[var(--color-paper-2,#faf8f4)]">
+          <span class="block text-sm font-semibold text-[var(--color-ink)]">{item.label}</span>
+          {item.note && <span class="block text-xs text-[var(--color-muted)]">{item.note}</span>}
+        </a>
+      ))}
+      <div class="mt-2 pt-3 border-t border-[var(--color-border)] flex flex-wrap gap-x-5 gap-y-2 px-3">
+        {UTILITY_NAV.map((item) => (
+          <a href={item.href} class="text-sm text-[var(--color-muted)] no-underline hover:text-[var(--color-ink)]">{item.label}</a>
+        ))}
+      </div>
+    </div>
+  </nav>
 </header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const panel = document.getElementById('mobile-nav');
+  if (toggle && panel) {
+    toggle.addEventListener('click', () => {
+      const open = panel.classList.toggle('hidden');
+      toggle.setAttribute('aria-expanded', String(!open));
+      toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    });
+  }
+</script>

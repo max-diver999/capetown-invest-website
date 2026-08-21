@@ -21,10 +21,10 @@ const isLead = Astro.url.searchParams.get('lead') === '1';
   </section>
   {isLead && (
     <script is:inline>
-      if (typeof window.investGulfTrack === 'function') {
-        window.investGulfTrack('generate_lead', { lead_type: 'shortlist_form', value: 1, currency: 'USD' });
+      if (typeof window.capeTownTrack === 'function') {
+        window.capeTownTrack('generate_lead', { lead_type: 'shortlist_form', value: 1, currency: 'ZAR' });
       } else if (typeof window.gtag === 'function') {
-        window.gtag('event', 'generate_lead', { lead_type: 'shortlist_form', value: 1, currency: 'USD' });
+        window.gtag('event', 'generate_lead', { lead_type: 'shortlist_form', value: 1, currency: 'ZAR' });
       }
     </script>
   )}

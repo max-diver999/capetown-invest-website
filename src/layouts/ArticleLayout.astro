@@ -2,7 +2,10 @@
 import BaseLayout from './BaseLayout.astro';
 import LeadForm from '../components/LeadForm.astro';
 import FaqBlock from '../components/FaqBlock.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
 import { SITE } from '../data/site';
+import { resolveRelatedSlugs, resolveRelatedEntities, type GraphCollection } from '../lib/content-graph';
 
 interface Props {
   title: string;
@@ -12,11 +15,16 @@ interface Props {
   author?: string;
   readingTime?: number;
   heroImage?: string;
+  heroAlt?: string;
   faq?: { question: string; answer: string }[];
   canonical?: string;
   noindex?: boolean;
   hasInlineFaqBlock?: boolean;
   contextLabel?: string;
+  collection?: GraphCollection;
+  entryId?: string;
+  relatedSlugs?: string[];
+  articleType?: 'Article' | 'NewsArticle';
 }
 
 const {
@@ -27,11 +35,16 @@ const {
   author = SITE.editorial,
   readingTime = 8,
   heroImage,
+  heroAlt,
   faq = [],
   canonical,
   noindex = false,
   hasInlineFaqBlock = false,
   contextLabel = title,
+  collection,
+  entryId,
+  relatedSlugs = [],
+  articleType = 'Article',
 } = Astro.props;
 
 const dateStr = (updatedDate || pubDate).toLocaleDateString('en-US', {
@@ -41,9 +54,34 @@ const dateStr = (updatedDate || pubDate).toLocaleDateString('en-US', {
 });
 const pageUrl = canonical || Astro.url.href;
 
+const SECTION_LABELS: Record<string, string> = {
+  guides: 'Guides',
+  areas: 'Areas',
+  projects: 'Projects',
+  compare: 'Comparisons',
+  segments: 'Buyer guides',
+  developers: 'Developers',
+  news: 'News',
+};
+
+const pathParts = Astro.url.pathname.split('/').filter(Boolean);
+const sectionSlug = collection ?? pathParts[0];
+const sectionName = SECTION_LABELS[sectionSlug] ?? (sectionSlug ? sectionSlug[0].toUpperCase() + sectionSlug.slice(1) : '');
+
+/** One array feeds both the visible trail and BreadcrumbList, so they cannot drift. */
+const crumbs = [
+  { name: 'Home', href: '/' },
+  ...(sectionSlug ? [{ name: sectionName, href: `/${sectionSlug}/` }] : []),
+  { name: title, href: pageUrl },
+];
+
+const curated = collection && entryId ? await resolveRelatedSlugs(relatedSlugs, entryId) : [];
+const entities = collection && entryId ? await resolveRelatedEntities(collection, entryId, 4) : [];
+const entityLinks = entities.filter((e) => !curated.some((c) => c.href === e.href)).slice(0, 4);
+
 const articleSchema = {
   '@context': 'https://schema.org',
-  '@type': 'Article',
+  '@type': articleType,
   headline: title,
   description,
   datePublished: pubDate.toISOString(),
@@ -52,7 +90,7 @@ const articleSchema = {
   publisher: {
     '@type': 'Organization',
     name: SITE.name,
-    logo: { '@type': 'ImageObject', url: `${SITE.url}/favicon.svg` },
+    logo: { '@type': 'ImageObject', url: `${SITE.url}/og-default.png` },
   },
   mainEntityOfPage: pageUrl,
   ...(heroImage ? { image: heroImage } : {}),
@@ -71,28 +109,19 @@ const faqSchema = faq.length > 0 ? {
   })),
 } : null;
 
-const pathParts = Astro.url.pathname.split('/').filter(Boolean);
 const breadcrumbSchema = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
-    ...(pathParts.length > 1 ? [{
-      '@type': 'ListItem',
-      position: 2,
-      name: pathParts[0].charAt(0).toUpperCase() + pathParts[0].slice(1),
-      item: `${SITE.url}/${pathParts[0]}/`,
-    }] : []),
-    {
-      '@type': 'ListItem',
-      position: pathParts.length > 1 ? 3 : 2,
-      name: title,
-      item: pageUrl,
-    },
-  ],
+  itemListElement: crumbs.map((crumb, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: crumb.name,
+    item: crumb.href.startsWith('http') ? crumb.href : `${SITE.url}${crumb.href}`,
+  })),
 };
 
 const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])];
+const resolvedHeroAlt = heroAlt || `${title} — Cape Town property research`;
 ---
 <BaseLayout
   title={title}
@@ -104,6 +133,8 @@ const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
   {schemas}
 >
   <article class="site-container py-10 md:py-14">
+    <Breadcrumbs items={crumbs} class="mb-6" />
+
     <header class="max-w-3xl mb-8">
       <span class="badge-pill mb-4">Research guide</span>
       <h1 class="mb-4 text-3xl md:text-4xl">{title}</h1>
@@ -114,7 +145,15 @@ const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
     </header>
 
     {heroImage && (
-      <img src={heroImage} alt="" class="w-full max-h-[420px] object-cover rounded-2xl mb-10 border border-[var(--color-border)]" loading="eager" />
+      <img
+        src={heroImage}
+        alt={resolvedHeroAlt}
+        width="1280"
+        height="720"
+        class="w-full max-h-[420px] object-cover rounded-2xl mb-10 border border-[var(--color-border)]"
+        loading="eager"
+        fetchpriority="high"
+      />
     )}
 
     <div class="prose mx-auto">
@@ -125,6 +164,15 @@ const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : 
       <div class="max-w-3xl mx-auto mt-10">
         <FaqBlock items={faq} />
       </div>
+    )}
+
+    <RelatedLinks items={curated} heading="Related research" />
+    {entityLinks.length > 0 && (
+      <RelatedLinks
+        items={entityLinks}
+        heading="Explore this market"
+        intro="Areas, developments and developer profiles connected to this page."
+      />
     )}
 
     <div class="max-w-3xl mx-auto mt-12">

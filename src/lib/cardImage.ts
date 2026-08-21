@@ -22,8 +22,8 @@ export function formatAreaLabel(area?: string): string {
     .join(' ');
 }
 
-export function formatUsd(price?: number): string {
+export function formatZar(price?: number): string {
   if (!price || price <= 0) return '';
-  if (price >= 1_000_000) return `$${(price / 1_000_000).toFixed(1)}M`;
-  return `$${Math.round(price / 1000)}K`;
+  if (price >= 1_000_000) return `R${(price / 1_000_000).toFixed(1)}m`;
+  return `R${Math.round(price / 1000)}k`;
 }

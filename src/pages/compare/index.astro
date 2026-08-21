@@ -1,35 +1,103 @@
 ---
 export const prerender = true;
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ContentCard from '../../components/ContentCard.astro';
+import HubLayout, { type HubGroup } from '../../layouts/HubLayout.astro';
 
 const comparisons = (await getCollection('compare'))
   .filter((c) => !c.data.noindex)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const bySlug = new Map(comparisons.map((c) => [c.id, c]));
+
+const CLUSTERS: { label: string; note: string; slugs: string[] }[] = [
+  {
+    label: 'Cape Town vs international markets',
+    note: 'How Cape Town prices, yields and buyer rules stack up against the markets foreign investors usually shortlist alongside it.',
+    slugs: [
+      'cape-town-vs-dubai-property-investment',
+      'cape-town-vs-lisbon-property-investment',
+      'cape-town-vs-portugal-property-investment',
+      'cape-town-vs-mauritius-property-investment',
+    ],
+  },
+  {
+    label: 'Cape Town vs other South African markets',
+    note: 'Provincial and metro comparisons for buyers weighing the Western Cape against the rest of the country.',
+    slugs: [
+      'cape-town-vs-johannesburg-property-investment',
+      'cape-town-vs-durban-property-investment',
+      'western-cape-vs-gauteng-property-investment',
+      'cape-town-vs-stellenbosch-property',
+    ],
+  },
+  {
+    label: 'Suburb head-to-heads',
+    note: 'Two shortlisted suburbs, same yield and cost assumptions applied to both.',
+    slugs: [
+      'sea-point-vs-camps-bay-investment',
+      'century-city-vs-sea-point-investment',
+      'century-city-vs-durbanville-investment',
+      'somerset-west-vs-constantia-investment',
+      'paarl-vs-stellenbosch-property-investment',
+      'atlantic-seaboard-vs-winelands-investment',
+    ],
+  },
+  {
+    label: 'Buying strategy',
+    note: 'Structural choices that change your cash flow more than the suburb does.',
+    slugs: ['off-plan-vs-resale-cape-town-investment'],
+  },
+];
+
+const used = new Set<string>();
+const groups: HubGroup[] = [];
+const toCard = (c: NonNullable<ReturnType<typeof bySlug.get>>) => {
+  used.add(c.id);
+  return {
+    href: `/compare/${c.id}/`,
+    title: c.data.title,
+    description: c.data.description,
+    image: c.data.heroImage,
+    badges: c.data.tags?.slice(0, 2) ?? [],
+    meta: `${c.data.readingTime ?? 8} min read`,
+  };
+};
+
+for (const cluster of CLUSTERS) {
+  const cards = cluster.slugs
+    .map((slug) => bySlug.get(slug))
+    .filter((c): c is NonNullable<typeof c> => Boolean(c))
+    .map(toCard);
+  if (cards.length) groups.push({ label: cluster.label, note: cluster.note, cards });
+}
+
+const leftovers = comparisons.filter((c) => !used.has(c.id));
+if (leftovers.length) {
+  groups.push({ label: 'More comparisons', note: 'Additional head-to-heads.', cards: leftovers.map(toCard) });
+}
+
+const faq = [
+  {
+    question: 'Is Cape Town or Dubai the better property investment?',
+    answer:
+      'They solve different problems. Dubai offers higher headline gross yields and no income tax on rent, with a purchase-linked residency route. Cape Town offers a lower entry price for comparable lifestyle stock, currency diversification for hard-currency earners, and freehold ownership with no foreign buyer surcharge, but it taxes rental income and has no residency-by-property route. Read the full comparison for the cost and tax stack on both sides.',
+  },
+  {
+    question: 'Do foreigners pay more tax buying in Cape Town than in Europe?',
+    answer:
+      'On purchase, usually less. South Africa charges no foreign buyer surcharge, unlike the 2% non-resident stamp duty premium in the UK. Transfer duty starts above R1,210,000 and rises on a sliding scale to 13%. On exit, non-resident sellers face a withholding of 7.5% for individuals, 10% for companies and 15% for trusts on prices above R2m, credited against the final capital gains liability.',
+  },
+];
 ---
-<BaseLayout
-  title="Cape Town Property Market Comparisons"
-  description="Side-by-side comparisons of Cape Town areas and global markets for property investors."
->
-  <section class="site-container py-14 md:py-20">
-    <header class="max-w-2xl mb-12">
-      <h1 class="text-3xl">Market comparisons</h1>
-      <p class="text-lg text-[var(--color-muted)] mt-3">
-        When two markets look similar on a brochure, these breakdowns show fees, yields, and buyer fit.
-      </p>
-    </header>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {comparisons.map((item) => (
-        <ContentCard
-          href={`/compare/${item.id}/`}
-          title={item.data.title}
-          description={item.data.description}
-          image={item.data.heroImage}
-          badges={['Comparison', ...(item.data.tags?.slice(0, 1) ?? [])]}
-          meta={`${item.data.readingTime ?? 8} min read`}
-        />
-      ))}
-    </div>
-  </section>
-</BaseLayout>
+<HubLayout
+  title="Cape Town Property Comparisons: Markets and Suburbs"
+  description="Side-by-side Cape Town property comparisons: versus Dubai, Lisbon, Mauritius and Johannesburg, plus suburb head-to-heads with the same yield and cost assumptions."
+  h1="Market and suburb comparisons"
+  intro={`Every comparison applies the same cost stack and modelled yield method to both sides, so the numbers are actually comparable. Use these when you have narrowed to two options and need the trade-off written down. For the underlying cost inputs, see <a href="/guides/cost-of-buying-property-cape-town/">cost of buying</a> and <a href="/guides/gross-vs-net-yield-cape-town/">gross versus net yield</a>.`}
+  sectionSlug="compare"
+  sectionName="Comparisons"
+  groups={groups}
+  total={comparisons.length}
+  updatedLabel="August 2026"
+  faq={faq}
+/>

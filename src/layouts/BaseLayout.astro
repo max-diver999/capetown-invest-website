@@ -26,7 +26,16 @@ const {
   schemas = [],
 } = Astro.props;
 
-const fullTitle = title.includes('Cape Town Invest') ? title : `${title} | Cape Town Invest`;
+/**
+ * Brand suffix only when it still fits Google's ~60-character SERP budget.
+ * Page titles are already written to stand alone, so truncating them to bolt
+ * the brand on costs more clicks than the brand earns.
+ */
+const BRAND_SUFFIX = ' | Cape Town Invest';
+const fullTitle =
+  title.includes('Cape Town Invest') || title.length + BRAND_SUFFIX.length > 60
+    ? title
+    : `${title}${BRAND_SUFFIX}`;
 
 const orgSchema = {
   '@context': 'https://schema.org',

@@ -1,42 +1,126 @@
 ---
 export const prerender = true;
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ProjectCard from '../../components/ProjectCard.astro';
-import { formatUsd } from '../../lib/cardImage';
+import HubLayout, { type HubGroup } from '../../layouts/HubLayout.astro';
+import { formatAreaLabel, formatZar } from '../../lib/cardImage';
 
 const projects = (await getCollection('projects'))
   .filter((p) => !p.data.noindex)
-  .sort((a, b) => (a.data.priceFromUsd ?? 0) - (b.data.priceFromUsd ?? 0));
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
 
-const priced = projects.map((p) => p.data.priceFromUsd).filter((v): v is number => !!v && v > 0);
-const minPrice = priced.length ? Math.min(...priced) : 150000;
+/** Region is optional on older entries, so fall back to the area slug. */
+const AREA_TO_REGION: Record<string, string> = {
+  'camps-bay': 'Atlantic Seaboard',
+  clifton: 'Atlantic Seaboard',
+  'sea-point': 'Atlantic Seaboard',
+  'green-point': 'Atlantic Seaboard',
+  'hout-bay': 'Atlantic Seaboard',
+  bakoven: 'Atlantic Seaboard',
+  'de-waterkant': 'City Bowl',
+  'v-and-a-waterfront': 'City Bowl',
+  waterfront: 'City Bowl',
+  'cape-town-cbd': 'City Bowl',
+  cbd: 'City Bowl',
+  foreshore: 'City Bowl',
+  woodstock: 'City Bowl',
+  observatory: 'City Bowl',
+  'century-city': 'Northern suburbs and West Coast',
+  milnerton: 'Northern suburbs and West Coast',
+  blouberg: 'Northern suburbs and West Coast',
+  bloubergstrand: 'Northern suburbs and West Coast',
+  'burgundy-estate': 'Northern suburbs and West Coast',
+  'val-de-vie': 'Winelands',
+  paarl: 'Winelands',
+  franschhoek: 'Winelands',
+};
+
+const regionOf = (p: (typeof projects)[number]) => {
+  if (p.data.region) return p.data.region;
+  const key = (p.data.area ?? '').toLowerCase();
+  return AREA_TO_REGION[key] ?? 'More developments';
+};
+
+const ORDER = [
+  'Atlantic Seaboard',
+  'City Bowl',
+  'Northern suburbs and West Coast',
+  'Winelands',
+  'Helderberg',
+  'Southern Suburbs',
+  'More developments',
+];
+
+const NOTES: Record<string, string> = {
+  'Atlantic Seaboard': 'Trophy and beachfront stock. Scarcity-led resale, lower modelled net yields.',
+  'City Bowl': 'Central apartments with the deepest short-let and corporate tenant demand.',
+  'Northern suburbs and West Coast': 'Newer precinct stock at lower entry tickets, usually the strongest modelled income.',
+  Winelands: 'Estate living, security and semigration family demand outside the metro.',
+  Helderberg: 'Gated estates and coastal towns favoured by European buyers.',
+  'Southern Suburbs': 'School catchments and long-let family stock.',
+  'More developments': 'Additional reviewed schemes.',
+};
+
+const toCard = (p: (typeof projects)[number]) => ({
+  href: `/projects/${p.id}/`,
+  title: p.data.title,
+  description: p.data.description,
+  image: p.data.heroImage,
+  badges: [
+    p.data.status === 'off-plan' ? 'Off-plan' : p.data.status === 'completed' ? 'Completed' : '',
+    formatAreaLabel(p.data.area),
+  ].filter(Boolean),
+  meta: [p.data.priceFromZAR ? `From ${formatZar(p.data.priceFromZAR)}` : '', p.data.developer]
+    .filter(Boolean)
+    .join(' · '),
+});
+
+const buckets = new Map<string, typeof projects>();
+for (const project of projects) {
+  const region = regionOf(project);
+  if (!buckets.has(region)) buckets.set(region, []);
+  buckets.get(region)!.push(project);
+}
+
+const groups: HubGroup[] = [];
+for (const region of ORDER) {
+  const entries = buckets.get(region);
+  if (!entries?.length) continue;
+  groups.push({ label: region, note: NOTES[region], cards: entries.map(toCard) });
+  buckets.delete(region);
+}
+for (const [region, entries] of buckets) {
+  groups.push({ label: region, cards: entries.map(toCard) });
+}
+
+const faq = [
+  {
+    question: 'Do you sell these developments?',
+    answer:
+      'No. Cape Town Invest is an editorial research site, not a developer or a licensed broker. These reviews exist to price the deal honestly, including levies, vacancy and exit costs that marketing packs leave out. If you want viewings or a shortlist, we refer enquiries to licensed South African property professionals.',
+  },
+  {
+    question: 'Do foreign buyers pay VAT or transfer duty on a new development?',
+    answer:
+      'One or the other, never both. If the seller is a VAT-registered developer selling new stock, the price includes 15% VAT and no transfer duty is payable. On a resale from a private seller, transfer duty applies on the SARS sliding scale, starting above R1,210,000 and rising to 13% on the top band. Confirm in writing which applies before you sign.',
+  },
+  {
+    question: 'What should I check before paying an off-plan deposit?',
+    answer:
+      'Confirm the developer entity is registered with the NHBRC and that enrolment covers your specific building, check that deposits are held in an attorney trust account rather than paid to the developer directly, read the levy projection against a comparable completed scheme, and get the practical completion definition and the late handover penalty written into the sale agreement.',
+  },
+];
 ---
-<BaseLayout
-  title="Mexico Real Estate Projects"
-  description="Independent project reviews for foreign buyers — Cape Town and Century City developments with prices and due diligence notes."
->
-  <section class="site-container py-14 md:py-20">
-    <header class="max-w-2xl mb-12">
-      <h1 class="text-3xl">Project reviews</h1>
-      <p class="text-lg text-[var(--color-muted)] mt-3">
-        <strong>{projects.length} projects</strong> with editorial analysis — from <strong>{formatUsd(minPrice) || '$150K'}</strong>, photos, and due diligence notes. Not developer marketing.
-      </p>
-    </header>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {projects.map((project) => (
-        <ProjectCard
-          href={`/projects/${project.id}/`}
-          title={project.data.title}
-          description={project.data.description}
-          image={project.data.heroImage}
-          area={project.data.area}
-          developer={project.data.developer}
-          propertyType={project.data.propertyType}
-          status={project.data.status}
-          priceFromUsd={project.data.priceFromUsd}
-        />
-      ))}
-    </div>
-  </section>
-</BaseLayout>
+<HubLayout
+  title="Cape Town Property Development Reviews 2026"
+  description="Independent reviews of Cape Town new developments and off-plan projects across the Atlantic Seaboard, City Bowl, Century City and the Winelands, with due diligence notes for foreign buyers."
+  h1="Development reviews"
+  intro={`Independent reviews of Cape Town developments, grouped by corridor. We check levy projections, developer track record and exit costs, and we label developer-claimed yields as claims rather than facts. Before shortlisting, read the <a href="/guides/off-plan-property-cape-town-guide/">off-plan buyer guide</a> and the <a href="/guides/nhbrc-warranty-south-africa-new-build/">NHBRC warranty rules</a>.`}
+  sectionSlug="projects"
+  sectionName="Projects"
+  groups={groups}
+  total={projects.length}
+  updatedLabel="August 2026"
+  faq={faq}
+  leadTitle="Get a matched development shortlist"
+  leadSubtitle="Share your budget, corridor and whether you want off-plan or completed stock. We reply within one business day."
+/>

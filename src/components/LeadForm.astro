@@ -5,43 +5,47 @@ interface Props {
   title?: string;
   subtitle?: string;
   context?: string;
+  submitLabel?: string;
 }
 
 const {
   title = 'Get your Cape Town property shortlist',
   subtitle = 'Share your budget and target area — we respond within one business day.',
   context = '',
+  submitLabel = 'Request shortlist →',
 } = Astro.props;
 
 const waText = encodeURIComponent(
   'Hi, I need help with a property enquiry from Cape Town Invest.',
 );
 const waHref = `${SITE.whatsapp}?text=${waText}`;
+/** Unique per instance so two forms on one page keep valid label/input pairs. */
+const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
 ---
 <section class="surface-card p-8 md:p-10" id="lead-form">
   <span class="badge-pill mb-3">Free · Independent advisory</span>
   <h2 class="text-2xl mb-1 text-[var(--color-ink)]">{title}</h2>
   <p class="text-[var(--color-muted)] mb-5 text-sm">{subtitle}</p>
 
-  <form class="grid gap-4 ig-lead-form" id="ig-lead-form" data-context={context} novalidate>
+  <form class="grid gap-4 ig-lead-form" data-context={context} novalidate>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
-        <label class="block text-xs font-medium mb-1" for="lf-name">Your name *</label>
-        <input type="text" id="lf-name" name="name" required placeholder="John Smith" autocomplete="name" />
+        <label class="block text-xs font-medium mb-1" for={`${uid}-name`}>Your name *</label>
+        <input type="text" id={`${uid}-name`} name="name" required placeholder="John Smith" autocomplete="name" />
       </div>
       <div>
-        <label class="block text-xs font-medium mb-1" for="lf-phone">WhatsApp / Phone *</label>
-        <input type="tel" id="lf-phone" name="phone" required placeholder="+44 7700 900123" autocomplete="tel" />
+        <label class="block text-xs font-medium mb-1" for={`${uid}-phone`}>WhatsApp / Phone *</label>
+        <input type="tel" id={`${uid}-phone`} name="phone" required placeholder="+44 7700 900123" autocomplete="tel" />
       </div>
     </div>
     <div>
-      <label class="block text-xs font-medium mb-1" for="lf-email">Email</label>
-      <input type="email" id="lf-email" name="email" placeholder="john@example.com" autocomplete="email" />
+      <label class="block text-xs font-medium mb-1" for={`${uid}-email`}>Email</label>
+      <input type="email" id={`${uid}-email`} name="email" placeholder="john@example.com" autocomplete="email" />
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
       <div>
-        <label class="block text-xs font-medium mb-1" for="lf-market">Target area</label>
-        <select id="lf-market" name="market">
+        <label class="block text-xs font-medium mb-1" for={`${uid}-market`}>Target area</label>
+        <select id={`${uid}-market`} name="market">
           <option value="">— Select —</option>
           <option value="atlantic-seaboard">Atlantic Seaboard (Sea Point, Camps Bay, Clifton)</option>
           <option value="city-bowl">City Bowl / Waterfront</option>
@@ -52,8 +56,8 @@ const waHref = `${SITE.whatsapp}?text=${waText}`;
         </select>
       </div>
       <div>
-        <label class="block text-xs font-medium mb-1" for="lf-budget">Budget (ZAR, all-in)</label>
-        <select id="lf-budget" name="budget">
+        <label class="block text-xs font-medium mb-1" for={`${uid}-budget`}>Budget (ZAR, all-in)</label>
+        <select id={`${uid}-budget`} name="budget">
           <option value="">— Select —</option>
           <option value="under-3m">Under R3M</option>
           <option value="3-5m">R3M – R5M</option>
@@ -64,8 +68,8 @@ const waHref = `${SITE.whatsapp}?text=${waText}`;
       </div>
     </div>
     <div>
-      <label class="block text-xs font-medium mb-1" for="lf-goal">Your goal</label>
-      <select id="lf-goal" name="goal">
+      <label class="block text-xs font-medium mb-1" for={`${uid}-goal`}>Your goal</label>
+      <select id={`${uid}-goal`} name="goal">
         <option value="">— Select —</option>
         <option value="investment">Rental yield / investment</option>
         <option value="own-stay">Own stay / relocation / semigration</option>
@@ -75,18 +79,18 @@ const waHref = `${SITE.whatsapp}?text=${waText}`;
       </select>
     </div>
     <div>
-      <label class="block text-xs font-medium mb-1" for="lf-message">Message (optional)</label>
-      <textarea id="lf-message" name="message" rows="3" placeholder="E.g. 2-bed Sea Point apartment, foreign buyer, budget R4M all-in including transfer duty…"></textarea>
+      <label class="block text-xs font-medium mb-1" for={`${uid}-message`}>Message (optional)</label>
+      <textarea id={`${uid}-message`} name="message" rows="3" placeholder="E.g. 2-bed Sea Point apartment, foreign buyer, budget R4M all-in including transfer duty…"></textarea>
     </div>
     <div class="lead-form-consent">
-      <input type="checkbox" id="lf-consent" name="consent" required class="lead-form-consent__check" />
-      <label class="lead-form-consent__label" for="lf-consent">I agree to be contacted about my enquiry. See our <a href="/privacy-policy/">Privacy Policy</a>.</label>
+      <input type="checkbox" id={`${uid}-consent`} name="consent" required class="lead-form-consent__check" />
+      <label class="lead-form-consent__label" for={`${uid}-consent`}>I agree to be contacted about my enquiry. See our <a href="/privacy-policy/">Privacy Policy</a>.</label>
     </div>
     <div class="lf-hp" aria-hidden="true">
-      <label for="lf-website">Company website</label>
-      <input type="text" tabindex="-1" autocomplete="off" id="lf-website" name="website" />
+      <label for={`${uid}-website`}>Company website</label>
+      <input type="text" tabindex="-1" autocomplete="off" id={`${uid}-website`} name="website" />
     </div>
-    <button type="submit" class="btn-primary w-full py-3">Request shortlist →</button>
+    <button type="submit" class="btn-primary w-full py-3">{submitLabel}</button>
 
     <p class="text-center text-sm text-[var(--color-muted)]">
       Prefer WhatsApp?
@@ -102,8 +106,8 @@ const waHref = `${SITE.whatsapp}?text=${waText}`;
       </a>
       ({SITE.whatsappDisplay})
     </p>
-    <p id="lf-success" class="hidden text-green-700 text-sm font-medium text-center">Thank you — redirecting…</p>
-    <p id="lf-error" class="hidden text-red-600 text-sm text-center">Something went wrong. Email {SITE.email} or{' '}
+    <p data-lf-success class="hidden text-green-700 text-sm font-medium text-center">Thank you — redirecting…</p>
+    <p data-lf-error class="hidden text-red-600 text-sm text-center">Something went wrong. Email {SITE.email} or{' '}
       <a
         href={SITE.whatsapp}
         target="_blank"
@@ -127,17 +131,32 @@ const waHref = `${SITE.whatsapp}?text=${waText}`;
 </style>
 
 <script>
-  const form = document.getElementById('ig-lead-form') as HTMLFormElement | null;
-  if (form) {
+  document.querySelectorAll<HTMLFormElement>('form.ig-lead-form').forEach((form) => {
     const formLoadedAt = Date.now();
+    const successEl = form.querySelector<HTMLElement>('[data-lf-success]');
+    const errorEl = form.querySelector<HTMLElement>('[data-lf-error]');
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const fd = new FormData(form);
+      const phone = String(fd.get('phone') || '');
+      const email = String(fd.get('email') || '');
+      const digits = phone.replace(/\D/g, '');
+
+      if (digits.length < 8 && !email.includes('@')) {
+        if (errorEl) {
+          errorEl.textContent = 'Please enter a phone number with at least 8 digits, or a valid email address.';
+          errorEl.classList.remove('hidden');
+        }
+        return;
+      }
+      errorEl?.classList.add('hidden');
+
       const payload = {
         name: String(fd.get('name') || ''),
-        contact: String(fd.get('phone') || fd.get('email') || ''),
-        email: String(fd.get('email') || ''),
-        phone: String(fd.get('phone') || ''),
+        contact: phone || email,
+        email,
+        phone,
         market: String(fd.get('market') || ''),
         budget: String(fd.get('budget') || ''),
         goal: String(fd.get('goal') || ''),
@@ -148,8 +167,7 @@ const waHref = `${SITE.whatsapp}?text=${waText}`;
         source: form.dataset.context || 'lead-form',
         page: window.location.pathname,
       };
-      const successEl = document.getElementById('lf-success');
-      const errorEl = document.getElementById('lf-error');
+
       try {
         const res = await fetch('/api/lead/', {
           method: 'POST',
@@ -170,8 +188,8 @@ const waHref = `${SITE.whatsapp}?text=${waText}`;
           errorEl?.classList.add('hidden');
           if (accepted) {
             try {
-              const track = (window as Window & { investGulfTrack?: (n: string, p?: Record<string, string>) => void })
-                .investGulfTrack;
+              const track = (window as Window & { capeTownTrack?: (n: string, p?: Record<string, string>) => void })
+                .capeTownTrack;
               if (typeof track === 'function') {
                 track('lead_submit', {
                   form_source: payload.source,
@@ -195,5 +213,5 @@ const waHref = `${SITE.whatsapp}?text=${waText}`;
         errorEl?.classList.remove('hidden');
       }
     });
-  }
+  });
 </script>
