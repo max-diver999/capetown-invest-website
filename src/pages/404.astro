@@ -1,0 +1,46 @@
+---
+export const prerender = true;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { PRIMARY_NAV, PILLAR_GUIDES } from '../data/nav';
+---
+<BaseLayout
+  title="Page not found"
+  description="That page does not exist on Cape Town Invest. Start from the guides, area research or development reviews instead."
+  noindex={true}
+>
+  <section class="site-container py-16 md:py-24">
+    <div class="max-w-2xl">
+      <span class="badge-pill mb-4">404</span>
+      <h1 class="text-3xl md:text-4xl mb-4">That page does not exist</h1>
+      <p class="text-lg text-[var(--color-muted)]">
+        The link may be outdated or mistyped. Everything on the site is reachable from the sections below,
+        or tell us what you are looking for and we will point you to it.
+      </p>
+    </div>
+
+    <div class="grid gap-8 md:grid-cols-2 mt-12">
+      <div>
+        <h2 class="text-xl mb-4">Browse by section</h2>
+        <ul class="grid gap-2 list-none p-0 m-0">
+          {PRIMARY_NAV.map((item) => (
+            <li>
+              <a href={item.href} class="no-underline font-medium text-[var(--color-ink)] hover:underline">{item.label}</a>
+              {item.note && <span class="text-sm text-[var(--color-muted)]"> · {item.note}</span>}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-xl mb-4">Most-read guides</h2>
+        <ul class="grid gap-2 list-none p-0 m-0">
+          {PILLAR_GUIDES.map((item) => (
+            <li><a href={item.href} class="no-underline text-[var(--color-ink)] hover:underline">{item.label}</a></li>
+          ))}
+        </ul>
+        <p class="mt-6">
+          <a href="/get-shortlist/" class="btn-primary inline-block px-5 py-3">Get a free shortlist →</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

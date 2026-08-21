@@ -20,7 +20,7 @@ const {
   title,
   description = SITE.description,
   canonical = Astro.url.href,
-  ogImage = `${SITE.url}/favicon.svg`,
+  ogImage = `${SITE.url}/og-default.png`,
   type = 'website',
   noindex = false,
   schemas = [],
@@ -44,7 +44,7 @@ const orgSchema = {
   url: SITE.url,
   description: SITE.description,
   email: SITE.email,
-  logo: { '@type': 'ImageObject', url: `${SITE.url}/favicon.svg` },
+  logo: { '@type': 'ImageObject', url: `${SITE.url}/og-default.png`, width: 1200, height: 630 },
   address: {
     '@type': 'PostalAddress',
     addressLocality: SITE.address.locality,
@@ -63,13 +63,25 @@ const orgSchema = {
     availableLanguage: ['English'],
   },
   sameAs: [
-    SITE.url,
     ...SITE.sameAs,
     ...(SITE.wikidataId ? [`https://www.wikidata.org/wiki/${SITE.wikidataId}`] : []),
   ],
 };
 
-const allSchemas = [orgSchema, ...schemas];
+/** Social scrapers need an absolute URL, and several ignore SVG entirely. */
+const absoluteOg = ogImage?.startsWith('http') ? ogImage : `${SITE.url}${ogImage ?? '/og-default.png'}`;
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: SITE.name,
+  url: SITE.url,
+  description: SITE.description,
+  inLanguage: 'en',
+  publisher: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+};
+
+const allSchemas = [orgSchema, websiteSchema, ...schemas];
 ---
 <!doctype html>
 <html lang="en" dir="ltr">
@@ -86,11 +98,13 @@ const allSchemas = [orgSchema, ...schemas];
   <meta property="og:title" content={fullTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonical} />
-  <meta property="og:image" content={ogImage} />
+  <meta property="og:image" content={absoluteOg} />
+  <meta property="og:image:alt" content={`${title} — ${SITE.name}`} />
   <meta property="og:site_name" content={SITE.name} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={fullTitle} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={absoluteOg} />
   <link rel="icon" href="/favicon.svg?v=3" type="image/svg+xml" />
   <link rel="icon" href="/favicon-32.png?v=3" type="image/png" sizes="32x32" />
   <link rel="icon" href="/favicon-16.png?v=3" type="image/png" sizes="16x16" />

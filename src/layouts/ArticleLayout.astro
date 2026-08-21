@@ -25,6 +25,7 @@ interface Props {
   entryId?: string;
   relatedSlugs?: string[];
   articleType?: 'Article' | 'NewsArticle';
+  extraSchemas?: object[];
 }
 
 const {
@@ -45,6 +46,7 @@ const {
   entryId,
   relatedSlugs = [],
   articleType = 'Article',
+  extraSchemas = [],
 } = Astro.props;
 
 const dateStr = (updatedDate || pubDate).toLocaleDateString('en-US', {
@@ -120,7 +122,7 @@ const breadcrumbSchema = {
   })),
 };
 
-const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])];
+const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : []), ...extraSchemas];
 const resolvedHeroAlt = heroAlt || `${title} — Cape Town property research`;
 ---
 <BaseLayout

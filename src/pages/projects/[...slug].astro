@@ -17,6 +17,35 @@ const { entry } = Astro.props;
 const { Content } = await render(entry);
 const hasInlineFaqBlock = entry.body?.includes('<FaqBlock') ?? false;
 
+/** Property-entity schema so developments can surface as places, not just articles. */
+const d = entry.data;
+const residenceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ApartmentComplex',
+  name: d.title,
+  description: d.description,
+  url: `${SITE.url}/projects/${entry.id}/`,
+  ...(d.heroImage ? { image: d.heroImage } : {}),
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: d.district ?? d.area ?? 'Cape Town',
+    addressRegion: d.region ?? 'Western Cape',
+    addressCountry: 'ZA',
+  },
+  ...(d.units ? { numberOfAccommodationUnits: d.units } : {}),
+  ...(d.developer ? { provider: { '@type': 'Organization', name: d.developer } } : {}),
+  ...(d.priceFromZAR
+    ? {
+        offers: {
+          '@type': 'AggregateOffer',
+          priceCurrency: 'ZAR',
+          lowPrice: d.priceFromZAR,
+          ...(d.priceToZAR ? { highPrice: d.priceToZAR } : {}),
+        },
+      }
+    : {}),
+};
+
 const {
   title,
   description,
@@ -45,6 +74,7 @@ const {
   collection="projects"
   entryId={entry.id}
   contextLabel={title}
+  extraSchemas={[residenceSchema]}
   canonical={`${SITE.url}/projects/${entry.id}/`}
 >
   <Content />
