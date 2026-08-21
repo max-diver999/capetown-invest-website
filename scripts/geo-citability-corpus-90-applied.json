@@ -1,0 +1,1012 @@
+{
+  "applied": "2026-07-04T07:36:37.814Z",
+  "target": 90,
+  "results": [
+    {
+      "file": "src/content/guides/best-areas-invest-cape-town-2026.mdx",
+      "changed": true,
+      "before": 78,
+      "after": 83,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/uk-tax-south-africa-rental-property.mdx",
+      "changed": true,
+      "before": 78,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/buy-cape-town-property-remotely.mdx",
+      "changed": true,
+      "before": 80,
+      "after": 84,
+      "cit": 2
+    },
+    {
+      "file": "src/content/news/va-waterfront-granger-bay-development.mdx",
+      "changed": true,
+      "before": 80,
+      "after": 84,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-water-security-property.mdx",
+      "changed": true,
+      "before": 81,
+      "after": 83,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/century-city-property-investment-guide.mdx",
+      "changed": true,
+      "before": 81,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/due-diligence-cape-town-property.mdx",
+      "changed": true,
+      "before": 81,
+      "after": 85,
+      "cit": 3
+    },
+    {
+      "file": "src/content/projects/pearl-valley-nova.mdx",
+      "changed": true,
+      "before": 81,
+      "after": 83,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/franschhoek-property-investment.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/green-point-property-investment.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/developers/blok-urban-developers.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/developers/devmco-group.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/developers/growthpoint-waterfront.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 84,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/atlantic-seaboard-property-investment-guide.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-property-investment-checklist.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-property-scams-avoid.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 85,
+      "cit": 3
+    },
+    {
+      "file": "src/content/guides/foreigner-property-tax-south-africa-hub.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/long-term-rental-cape-town-guide.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/retirement-visa-south-africa-property.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/security-estates-cape-town-foreign-buyers.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 84,
+      "cit": 4
+    },
+    {
+      "file": "src/content/guides/south-africa-exchange-control-property.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/news/foreign-buyers-atlantic-seaboard-2025.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/acacia-house-woodstock.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/silo-district-residences.mdx",
+      "changed": true,
+      "before": 82,
+      "after": 84,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/claremont-property-investment.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/clifton-property-investment.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/fresnaye-property-investment.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/sea-point-property-investment.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/somerset-west-property-investment.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/woodstock-property-investment.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-property-investment-guide.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-property-under-500k-usd.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/how-to-buy-property-cape-town-step-by-step.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/load-shedding-property-cape-town.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 84,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/non-resident-rental-income-tax-south-africa.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/off-plan-property-cape-town-guide.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/property-management-cape-town-cost.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/sectional-title-vs-freehold-cape-town.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/short-term-rental-rules-cape-town.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/camps-bay-infinity.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/foreshore-place-cape-town.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/granger-bay-waterfront.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 84,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/observatory-green.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/oneonr-de-waterkant.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/the-charlotte-cape-town.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/three43onb-sea-point.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 84,
+      "cit": 2
+    },
+    {
+      "file": "src/content/segments/german-buyers-cape-town-property.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 84,
+      "cit": 3
+    },
+    {
+      "file": "src/content/segments/uk-buyers-cape-town-property.mdx",
+      "changed": true,
+      "before": 83,
+      "after": 85,
+      "cit": 3
+    },
+    {
+      "file": "src/content/areas/bantry-bay-property-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/camps-bay-property-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/constantia-property-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/durbanville-property-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/gardens-property-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/hermanus-property-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/hout-bay-property-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 84,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/kalk-bay-false-bay-property-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/milnerton-property-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/rondebosch-property-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/tamboerskloof-property-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/cape-town-vs-dubai-property-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/off-plan-vs-resale-cape-town-investment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 4
+    },
+    {
+      "file": "src/content/developers/amdec-property-investments.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/developers/prospekt-property-development.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/developers/rabie-property-developers.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/developers/val-de-vie-estate.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/conveyancing-fees-cape-town.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/does-buying-property-give-residency-south-africa.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 84,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/eu-citizens-buying-cape-town-property.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 5
+    },
+    {
+      "file": "src/content/guides/fica-requirements-foreign-property-buyers.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/gross-vs-net-yield-cape-town.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/is-cape-town-property-good-investment-2026.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/new-developments-cape-town-2026.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/nhbrc-warranty-south-africa-new-build.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 4
+    },
+    {
+      "file": "src/content/guides/power-of-attorney-property-south-africa.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/southern-suburbs-cape-town-property.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/news/western-cape-property-forecast-2026.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/amdec-hout-bay-project.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/chestercourt-redevelopment.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 84,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/harbour-arch-amdec-foreshore.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/infinity-milnerton.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/makers-landing-waterfront.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/nine-palms-century-city.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/nineons-green-point.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/onehundredonm-sea-point.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/two-oceans-beach.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/venice-house-cbd.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/zero2one-sea-point.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/segments/cape-town-property-for-uk-retirees.mdx",
+      "changed": true,
+      "before": 84,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/newlands-property-investment.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 87,
+      "cit": 3
+    },
+    {
+      "file": "src/content/areas/paarl-property-investment.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/table-view-property-investment.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/v-and-a-waterfront-property-investment.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/cape-town-vs-johannesburg-property-investment.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/cape-town-vs-portugal-property-investment.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/cape-town-vs-stellenbosch-property.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 88,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/century-city-vs-sea-point-investment.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/paarl-vs-stellenbosch-property-investment.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/sea-point-vs-camps-bay-investment.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/somerset-west-vs-constantia-investment.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/airbnb-investment-cape-town-guide.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/buy-cape-town-property-foreigner.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-city-bowl-property-investment.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-property-market-forecast-2026-2027.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-rates-taxes-property.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-remote-work-visa-property.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-semigration-property-guide.mdx",
+      "changed": false,
+      "before": 85,
+      "after": 85
+    },
+    {
+      "file": "src/content/guides/cape-town-vacancy-rates-rental.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cost-of-buying-property-cape-town.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 88,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/financially-independent-visa-south-africa.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/hidden-costs-buying-property-cape-town.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/returning-south-african-expat-property.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/green-village-val-de-vie.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/rockwell-tower-cape-town.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/skywater-century-city.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 85,
+      "cit": 2
+    },
+    {
+      "file": "src/content/segments/us-buyers-cape-town-property.mdx",
+      "changed": true,
+      "before": 85,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/blouberg-property-investment.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/de-waterkant-property-investment.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/areas/llandudno-property-investment.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/cape-town-vs-durban-property-investment.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/cape-town-vs-lisbon-property-investment.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/cape-town-vs-mauritius-property-investment.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/century-city-vs-durbanville-investment.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/western-cape-vs-gauteng-property-investment.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/buy-to-let-cape-town-mortgage.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-property-prices-by-suburb-2026.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-rental-yield-guide.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/highest-rental-yield-suburbs-cape-town.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/non-resident-mortgage-cape-town.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/snagging-inspection-new-build-cape-town.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/south-africa-capital-gains-tax-property.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 88,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/south-africa-transfer-duty-explained.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 88,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/stellenbosch-property-investment-guide.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/azure-camps-bay-beach.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/on-park-century-city.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/rhapsody-burgundy-estate.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/projects/the-ridge-clifton.mdx",
+      "changed": true,
+      "before": 86,
+      "after": 86,
+      "cit": 2
+    },
+    {
+      "file": "src/content/compare/atlantic-seaboard-vs-winelands-investment.mdx",
+      "changed": true,
+      "before": 87,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/can-foreigners-buy-property-south-africa.mdx",
+      "changed": true,
+      "before": 87,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-digital-nomad-property-guide.mdx",
+      "changed": true,
+      "before": 87,
+      "after": 87,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/cape-town-property-market-data-lightstone.mdx",
+      "changed": true,
+      "before": 87,
+      "after": 88,
+      "cit": 2
+    },
+    {
+      "file": "src/content/guides/sectional-title-levies-cape-town.mdx",
+      "changed": true,
+      "before": 87,
+      "after": 88,
+      "cit": 2
+    },
+    {
+      "file": "src/content/news/cape-town-interest-rates-property-2026.mdx",
+      "changed": true,
+      "before": 87,
+      "after": 88,
+      "cit": 2
+    },
+    {
+      "file": "src/content/news/cape-town-luxury-sales-record-2025.mdx",
+      "changed": false,
+      "before": 87,
+      "after": 87
+    },
+    {
+      "file": "src/content/guides/body-corporate-due-diligence-cape-town.mdx",
+      "changed": true,
+      "before": 88,
+      "after": 89,
+      "cit": 3
+    }
+  ]
+}

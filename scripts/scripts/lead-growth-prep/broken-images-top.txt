@@ -1,0 +1,7 @@
+# Broken images on top-impression MDX (404/400 only)
+
+Audit: audit-all-images.mjs. Many 429 from Wikimedia rate limit — ignore 429 for now; fix true 404/400 below.
+
+No 404/400 on priority slugs in this run (or only 429 throttling).
+
+Manual check from full audit for forecast + airbnb guides (commons FilePath URLs).

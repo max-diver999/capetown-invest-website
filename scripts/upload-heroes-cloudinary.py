@@ -45,8 +45,19 @@ def env(name: str) -> str:
     return value
 
 
+def normalize_wikimedia_source(url: str) -> str:
+    """Full-resolution upload.wikimedia.org files can exceed Cloudinary's size cap."""
+    if "upload.wikimedia.org" not in url:
+        return url
+    if "Special:FilePath" in url:
+        return url if "width=" in url else f"{url}{'&' if '?' in url else '?'}width=1400"
+    name = urllib.parse.unquote(url.rsplit("/", 1)[-1])
+    return f"https://commons.wikimedia.org/wiki/Special:FilePath/{urllib.parse.quote(name)}?width=1400"
+
+
 def fetch(url: str) -> bytes:
     """Wikimedia rejects requests without a descriptive User-Agent."""
+    url = normalize_wikimedia_source(url)
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
         return resp.read()
