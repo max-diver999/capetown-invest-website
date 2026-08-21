@@ -4,7 +4,7 @@
 
 ## Источник правды
 
-- Репозиторий: `max-diver999/capetown-invest-website`, ветка **`main`**
+- Репозиторий: `max-diver999/capetown-invest-website`, ветка **`main`** (аудит смержен 21.08, hero Cloudinary 21.08)
 - Программа: `more-group-content-os/programs/capetown-invest.yaml`
 - Процесс: `docs/WORKFLOW-GITHUB.md`
 - **Цель пилота:** больше лидов с намерением купить в Кейптауне — полный аудит, улучшения кодом и корпуса, план контента
@@ -84,7 +84,7 @@ GEO-цифры не сравнимы с июльскими напрямую: т�
 
 ## Что дальше
 
-1. **Cursor: перенести 139 hero на Cloudinary.** Инструкция — `docs/HERO-IMAGES-CLOUDINARY.md`. У Claude в облаке нет ключей, всё остальное подготовлено: `npm run images:manifest` → `npm run images:mirror`. Код уже умеет Cloudinary-трансформации.
+1. ~~**Cursor: перенести 139 hero на Cloudinary.**~~ ✅ **21.08** — все 139 на `res.cloudinary.com/more-group/capetown/…`, external 0. Слияние `claude/capetown-content-audit-h6qbx7` → `main`, деплoy на Vercel.
 2. Волны нового контента C1–C10 по `content-roadmap-2026-08-21.md` (50 статей) — план на согласовании.
 
 ### Сделано после первой сводки
