@@ -67,8 +67,17 @@ export function hasStat(text) {
 const VAGUE_RE = /\b(many|several|some|often|usually|a lot|significant|various)\b/i;
 const PRONOUN_START_RE = /^(it|this|they|these|those|however|but|and|also)\b/i;
 const QUESTION_H2_RE = /^(what|how|why|when|where|who|which|can|do|does|is|are|should|will)\b/i;
+/**
+ * Signals that a section carries the site's own analysis rather than
+ * restating what every portal says.
+ *
+ * The previous version also rewarded "MORE Group" and "underwriting snapshot",
+ * which were artefacts of a generator that injected filler paragraphs. Scoring
+ * those as differentiation meant the filler paid for itself, so they are gone:
+ * what counts now is first-party framing, worked numbers and named specifics.
+ */
 const UNIQUE_RE =
-  /\b(MORE Group|Cape Town Invest|our (analysis|data|clients|underwriting)|insider tip|underwriting snapshot|MODELED|we (surveyed|analyzed|tracked))\b/i;
+  /\b(Cape Town Invest|our (analysis|data|review|underwriting|editors?)|insider tip|field notes?|MODELLED|MODELED|worked example|we (surveyed|analysed|analyzed|tracked|verified|rebuilt|model)|verify(ing)? (this|that|the) (figure|number|claim))\b/i;
 
 export function wordCount(text) {
   return (text.match(/\b[\w']+\b/g) || []).length;
