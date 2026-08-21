@@ -3,9 +3,14 @@ interface FaqItem { question: string; answer: string; }
 interface Props {
   items: FaqItem[];
   title?: string;
-  noSchema?: boolean;
+  /**
+   * Emit FAQPage JSON-LD from this component. Off by default: the page layout
+   * already emits one from the same frontmatter, and two FAQPage blocks on a
+   * page is a structured-data error.
+   */
+  withSchema?: boolean;
 }
-const { items, title = 'Frequently Asked Questions', noSchema = false } = Astro.props;
+const { items, title = 'Frequently Asked Questions', withSchema = false } = Astro.props;
 ---
 <section class="my-12" aria-label="FAQ">
   <h2 class="text-2xl mb-6 text-[var(--color-ink)]">{title}</h2>
@@ -24,7 +29,7 @@ const { items, title = 'Frequently Asked Questions', noSchema = false } = Astro.
   </div>
 </section>
 
-{!noSchema && items.length > 0 && (
+{withSchema && items.length > 0 && (
   <script type="application/ld+json" set:html={JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
