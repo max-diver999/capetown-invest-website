@@ -1,58 +1,190 @@
 ---
 export const prerender = true;
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ContentCard from '../../components/ContentCard.astro';
-import { FEATURED_GUIDE_SLUGS } from '../../data/featured';
+import HubLayout, { type HubGroup } from '../../layouts/HubLayout.astro';
 
 const guides = (await getCollection('guides'))
   .filter((g) => !g.data.noindex)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 
-const priority = FEATURED_GUIDE_SLUGS.map((slug) => guides.find((g) => g.id === slug)).filter(Boolean);
+const bySlug = new Map(guides.map((g) => [g.id, g]));
+
+/** Thematic clusters. Any guide missing here still ships under "More research" below. */
+const CLUSTERS: { label: string; note: string; slugs: string[] }[] = [
+  {
+    label: 'Start here',
+    note: 'The pillar guides most foreign buyers read first.',
+    slugs: [
+      'cape-town-property-investment-guide',
+      'buy-cape-town-property-foreigner',
+      'how-to-buy-property-cape-town-step-by-step',
+      'is-cape-town-property-good-investment-2026',
+      'can-foreigners-buy-property-south-africa',
+    ],
+  },
+  {
+    label: 'Costs and taxes',
+    note: 'What you pay once at purchase, and what recurs every year.',
+    slugs: [
+      'cape-town-rates-taxes-property',
+      'south-africa-transfer-duty-explained',
+      'cost-of-buying-property-cape-town',
+      'conveyancing-fees-cape-town',
+      'south-africa-capital-gains-tax-property',
+      'foreigner-property-tax-south-africa-hub',
+      'non-resident-rental-income-tax-south-africa',
+      'uk-tax-south-africa-rental-property',
+      'sectional-title-levies-cape-town',
+    ],
+  },
+  {
+    label: 'Rental income and short-term letting',
+    note: 'Yield mechanics, Airbnb rules, tenants and management costs.',
+    slugs: [
+      'short-term-rental-rules-cape-town',
+      'airbnb-investment-cape-town-guide',
+      'cape-town-rental-yield-guide',
+      'highest-rental-yield-suburbs-cape-town',
+      'gross-vs-net-yield-cape-town',
+      'long-term-rental-cape-town-guide',
+      'cape-town-vacancy-rates-rental',
+      'property-management-cape-town-cost',
+    ],
+  },
+  {
+    label: 'Market data and area selection',
+    note: 'Prices, forecasts and where the numbers point.',
+    slugs: [
+      'cape-town-property-market-data-lightstone',
+      'cape-town-property-prices-by-suburb-2026',
+      'cape-town-property-market-forecast-2026-2027',
+      'best-areas-invest-cape-town-2026',
+      'atlantic-seaboard-property-investment-guide',
+      'cape-town-city-bowl-property-investment',
+      'southern-suburbs-cape-town-property',
+      'century-city-property-investment-guide',
+      'stellenbosch-property-investment-guide',
+      'cape-town-property-under-500k-usd',
+    ],
+  },
+  {
+    label: 'Finance and money transfer',
+    note: 'Bonds for non-residents, exchange control and paperwork.',
+    slugs: [
+      'non-resident-mortgage-cape-town',
+      'buy-to-let-cape-town-mortgage',
+      'south-africa-exchange-control-property',
+      'fica-requirements-foreign-property-buyers',
+      'power-of-attorney-property-south-africa',
+      'buy-cape-town-property-remotely',
+    ],
+  },
+  {
+    label: 'Visas, residency and relocation',
+    note: 'Property does not grant residency. These are the routes that do.',
+    slugs: [
+      'does-buying-property-give-residency-south-africa',
+      'cape-town-remote-work-visa-property',
+      'retirement-visa-south-africa-property',
+      'financially-independent-visa-south-africa',
+      'cape-town-digital-nomad-property-guide',
+      'cape-town-semigration-property-guide',
+      'returning-south-african-expat-property',
+      'eu-citizens-buying-cape-town-property',
+    ],
+  },
+  {
+    label: 'New builds and due diligence',
+    note: 'Off-plan risk, warranties, body corporate checks and scams.',
+    slugs: [
+      'off-plan-property-cape-town-guide',
+      'new-developments-cape-town-2026',
+      'nhbrc-warranty-south-africa-new-build',
+      'snagging-inspection-new-build-cape-town',
+      'due-diligence-cape-town-property',
+      'body-corporate-due-diligence-cape-town',
+      'sectional-title-vs-freehold-cape-town',
+      'security-estates-cape-town-foreign-buyers',
+      'cape-town-property-scams-avoid',
+    ],
+  },
+  {
+    label: 'Living costs and infrastructure',
+    note: 'Load shedding, water and the running realities that move net yield.',
+    slugs: ['load-shedding-property-cape-town', 'cape-town-water-security-property'],
+  },
+];
+
+const used = new Set<string>();
+const groups: HubGroup[] = [];
+
+for (const cluster of CLUSTERS) {
+  const cards = cluster.slugs
+    .map((slug) => bySlug.get(slug))
+    .filter((g): g is NonNullable<typeof g> => Boolean(g))
+    .map((g) => {
+      used.add(g.id);
+      return {
+        href: `/guides/${g.id}/`,
+        title: g.data.title,
+        description: g.data.description,
+        image: g.data.heroImage,
+        badges: g.data.tags?.slice(0, 2) ?? [],
+        meta: `${g.data.readingTime ?? 8} min read`,
+      };
+    });
+  if (cards.length) groups.push({ label: cluster.label, note: cluster.note, cards });
+}
+
+/** Never silently drop a guide that is missing from the clusters above. */
+const leftovers = guides.filter((g) => !used.has(g.id));
+if (leftovers.length) {
+  groups.push({
+    label: 'More research',
+    note: 'Additional guides in this collection.',
+    cards: leftovers.map((g) => ({
+      href: `/guides/${g.id}/`,
+      title: g.data.title,
+      description: g.data.description,
+      image: g.data.heroImage,
+      badges: g.data.tags?.slice(0, 2) ?? [],
+      meta: `${g.data.readingTime ?? 8} min read`,
+    })),
+  });
+}
+
+const faq = [
+  {
+    question: 'Can foreigners buy property in Cape Town?',
+    answer:
+      'Yes. Non-residents can buy freehold and sectional title property in South Africa with no foreign buyer surcharge, unlike the UK or Singapore. You do not need a visa or residency to own property. Practical constraints are financing, where non-residents typically borrow up to about half the purchase price locally, and exchange control record-keeping so funds can be repatriated cleanly on sale.',
+  },
+  {
+    question: 'What does it cost to buy property in Cape Town beyond the price?',
+    answer:
+      'Budget transfer duty on the SARS sliding scale, which starts above R1,210,000 and rises to 13% on the top band, plus conveyancing fees, bond registration if you finance, and FICA compliance costs. Once you own, municipal rates run roughly 0.69 cents per rand of municipal value per year after the first R450,000 is exempt, and sectional title owners add a monthly levy.',
+  },
+  {
+    question: 'Which Cape Town suburbs give the best rental yield?',
+    answer:
+      'Income tends to concentrate away from trophy beachfront. Higher-yield nodes include Woodstock, Sea Point mid-market stock, Century City and Blouberg, where entry prices sit closer to achievable rents. Prime Atlantic Seaboard suburbs such as Camps Bay and Clifton model lower net yields because entry prices run at multiples of the metro median. All yields on this site are modelled and directional.',
+  },
+  {
+    question: 'Does buying property in South Africa give you residency?',
+    answer:
+      'No. Property ownership is not a residency route in South Africa. Buyers who want to live here apply separately through visa categories such as the remote work visa, the retired person visa, or the financially independent permit, each with its own income or net worth test. Plan the property purchase and the immigration application as two parallel tracks.',
+  },
+];
 ---
-<BaseLayout
-  title="Cape Town Property Investment Guides"
-  description="Independent guides on Cape Town property — foreign ownership, transfer costs, net yields, and due diligence."
->
-  <section class="site-container py-14 md:py-20">
-    <header class="max-w-2xl mb-12">
-      <h1 class="text-3xl">Investment guides</h1>
-      <p class="text-lg text-[var(--color-muted)] mt-3">
-        Research-first articles for foreign buyers. Not developer brochures — verify all figures before you transact.
-      </p>
-      <p class="text-sm text-[var(--color-muted)] mt-2">{guides.length} guides with photos and net-yield focus.</p>
-    </header>
-
-    {priority.length > 0 && (
-      <section class="mb-14">
-        <h2 class="text-xl mb-5">Start here</h2>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {priority.map((guide) => (
-            <ContentCard
-              href={`/guides/${guide.id}/`}
-              title={guide.data.title}
-              description={guide.data.description}
-              image={guide.data.heroImage}
-              badges={['Pillar', ...(guide.data.tags?.slice(0, 1) ?? [])]}
-              meta={`${guide.data.readingTime ?? 8} min read`}
-            />
-          ))}
-        </div>
-      </section>
-    )}
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {guides.map((guide) => (
-        <ContentCard
-          href={`/guides/${guide.id}/`}
-          title={guide.data.title}
-          description={guide.data.description}
-          image={guide.data.heroImage}
-          badges={guide.data.tags?.slice(0, 2) ?? []}
-          meta={`${guide.data.readingTime ?? 8} min read`}
-        />
-      ))}
-    </div>
-  </section>
-</BaseLayout>
+<HubLayout
+  title="Cape Town Property Investment Guides for Foreign Buyers"
+  description="Independent Cape Town property guides: foreign ownership rules, transfer duty and rates, rental yields, short-term letting law, visas, and new-build due diligence."
+  h1="Cape Town property investment guides"
+  intro={`Research-first guides for foreign and non-resident buyers, grouped by the decision you are making. Every figure is sourced or marked as modelled, and we are not a developer or a listing portal. Start with the <a href="/guides/cape-town-property-investment-guide/">pillar investment guide</a>, then price the deal with <a href="/guides/cape-town-rates-taxes-property/">rates and taxes</a> and check the rules that catch buyers out in <a href="/guides/short-term-rental-rules-cape-town/">short-term letting</a>.`}
+  sectionSlug="guides"
+  sectionName="Guides"
+  groups={groups}
+  total={guides.length}
+  updatedLabel="August 2026"
+  faq={faq}
+/>

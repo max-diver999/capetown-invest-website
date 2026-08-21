@@ -10,7 +10,7 @@ import {
   LIST_DASH_STEPS_MIN,
   analyzeHumanSignals,
 } from './human-signals.mjs';
-import { runCloudinaryDeliveryChecks } from '../../../scripts/lib/cloudinary-gate.mjs';
+import { runCloudinaryDeliveryChecks } from './cloudinary-gate.mjs';
 
 export const BANNED_PHRASES = [
   'Regional diversification',

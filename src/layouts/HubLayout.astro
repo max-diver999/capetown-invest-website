@@ -1,0 +1,160 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import LeadForm from '../components/LeadForm.astro';
+import FaqBlock from '../components/FaqBlock.astro';
+import ContentCard from '../components/ContentCard.astro';
+import { SITE } from '../data/site';
+
+export interface HubCard {
+  href: string;
+  title: string;
+  description?: string;
+  image?: string;
+  badges?: string[];
+  meta?: string;
+}
+
+export interface HubGroup {
+  label: string;
+  note?: string;
+  cards: HubCard[];
+}
+
+interface Props {
+  title: string;
+  description: string;
+  h1: string;
+  intro: string;
+  sectionSlug: string;
+  sectionName: string;
+  groups: HubGroup[];
+  total: number;
+  updatedLabel?: string;
+  faq?: { question: string; answer: string }[];
+  leadTitle?: string;
+  leadSubtitle?: string;
+}
+
+const {
+  title,
+  description,
+  h1,
+  intro,
+  sectionSlug,
+  sectionName,
+  groups,
+  total,
+  updatedLabel,
+  faq = [],
+  leadTitle = 'Get a Cape Town property shortlist',
+  leadSubtitle = 'Tell us budget, target area and goal. We reply within one business day with matched stock and next steps.',
+} = Astro.props;
+
+const hubUrl = `${SITE.url}/${sectionSlug}/`;
+const crumbs = [
+  { name: 'Home', href: '/' },
+  { name: sectionName, href: hubUrl },
+];
+
+const allCards = groups.flatMap((g) => g.cards);
+
+const collectionSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: title,
+  description,
+  url: hubUrl,
+  isPartOf: { '@type': 'WebSite', name: SITE.name, url: SITE.url },
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: allCards.length,
+    itemListElement: allCards.map((card, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: card.title,
+      url: `${SITE.url}${card.href}`,
+    })),
+  },
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((crumb, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: crumb.name,
+    item: crumb.href.startsWith('http') ? crumb.href : `${SITE.url}${crumb.href}`,
+  })),
+};
+
+const faqSchema = faq.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.map((item) => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: { '@type': 'Answer', text: item.answer },
+      })),
+    }
+  : null;
+
+const schemas = [collectionSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])];
+const showJumpNav = groups.length > 1;
+const anchor = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+---
+<BaseLayout {title} {description} canonical={hubUrl} {schemas}>
+  <section class="site-container py-10 md:py-16">
+    <Breadcrumbs items={crumbs} class="mb-6" />
+
+    <header class="max-w-3xl mb-10">
+      <h1 class="text-3xl md:text-4xl mb-4">{h1}</h1>
+      <div class="text-lg text-[var(--color-muted)] leading-relaxed" set:html={intro} />
+      <p class="text-sm text-[var(--color-muted)] mt-3">
+        {total} pages{updatedLabel ? ` · updated ${updatedLabel}` : ''}
+      </p>
+    </header>
+
+    {showJumpNav && (
+      <nav aria-label="Sections" class="flex flex-wrap gap-2 mb-12">
+        {groups.map((group) => (
+          <a
+            href={`#${anchor(group.label)}`}
+            class="badge-pill no-underline hover:border-[var(--color-accent,#2d7a5e)]"
+          >{group.label} ({group.cards.length})</a>
+        ))}
+      </nav>
+    )}
+
+    {groups.map((group) => (
+      <section class="mb-14" id={anchor(group.label)}>
+        <h2 class="text-xl mb-1">{group.label}</h2>
+        {group.note && <p class="text-sm text-[var(--color-muted)] mb-5">{group.note}</p>}
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4">
+          {group.cards.map((card) => (
+            <ContentCard
+              href={card.href}
+              title={card.title}
+              description={card.description}
+              image={card.image}
+              badges={card.badges ?? []}
+              meta={card.meta}
+            />
+          ))}
+        </div>
+      </section>
+    ))}
+
+    {faq.length > 0 && (
+      <div class="max-w-3xl mx-auto mt-4">
+        <FaqBlock items={faq} />
+      </div>
+    )}
+
+    <div class="max-w-3xl mx-auto mt-12">
+      <LeadForm title={leadTitle} subtitle={leadSubtitle} context={`${sectionName} hub`} />
+    </div>
+  </section>
+</BaseLayout>

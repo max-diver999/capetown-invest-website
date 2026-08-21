@@ -1,33 +1,37 @@
 ---
 export const prerender = true;
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import HubLayout, { type HubGroup } from '../../layouts/HubLayout.astro';
 
 const articles = (await getCollection('news'))
   .filter((n) => !n.data.noindex)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const dateLabel = (d: Date) => d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+
+const groups: HubGroup[] = [
+  {
+    label: 'Market updates',
+    note: 'What moved in the Western Cape market and what it means for a buyer underwriting a deal now.',
+    cards: articles.map((n) => ({
+      href: `/news/${n.id}/`,
+      title: n.data.title,
+      description: n.data.description,
+      image: n.data.heroImage,
+      badges: ['Market update'],
+      meta: dateLabel(n.data.updatedDate ?? n.data.pubDate),
+    })),
+  },
+];
 ---
-<BaseLayout
-  title="Mexico Real Estate News"
-  description="Market updates for foreign buyers — Cape Town prices, semigration demand, load-shedding, and Western Cape rental trends."
->
-  <section class="site-container py-14 md:py-20">
-    <header class="max-w-2xl mb-12">
-      <h1 class="text-3xl">Market news</h1>
-      <p class="text-lg text-[var(--color-muted)] mt-3">
-        Data-driven updates on Cape Town property markets — verify figures with counsel before investment decisions.
-      </p>
-    </header>
-    <div class="grid gap-5 max-w-3xl">
-      {articles.map((article) => (
-        <a href={`/news/${article.id}/`} class="surface-card p-6 block no-underline hover:border-[var(--color-teal)] transition-colors">
-          <time class="text-xs text-[var(--color-muted)]" datetime={article.data.pubDate.toISOString()}>
-            {article.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </time>
-          <h2 class="text-lg font-semibold mt-2 mb-2 text-[var(--color-ink)]">{article.data.title}</h2>
-          <p class="text-sm text-[var(--color-muted)]">{article.data.description}</p>
-        </a>
-      ))}
-    </div>
-  </section>
-</BaseLayout>
+<HubLayout
+  title="Cape Town Property Market News 2026"
+  description="Cape Town and Western Cape property market updates for foreign buyers: price records, interest rates, foreign buyer flows and the Waterfront development pipeline."
+  h1="Market news"
+  intro={`Dated market notes with the investor implication spelled out, not press releases. Figures come from named sources and should be re-verified before you transact. For the underlying data series, see the <a href="/guides/cape-town-property-market-data-lightstone/">Lightstone market data guide</a> and the <a href="/guides/cape-town-property-market-forecast-2026-2027/">2026 to 2027 forecast</a>.`}
+  sectionSlug="news"
+  sectionName="News"
+  groups={groups}
+  total={articles.length}
+  updatedLabel="August 2026"
+/>

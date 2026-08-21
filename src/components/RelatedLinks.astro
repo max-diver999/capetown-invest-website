@@ -1,0 +1,33 @@
+---
+import type { RelatedLink } from '../lib/content-graph';
+
+interface Props {
+  items: RelatedLink[];
+  heading?: string;
+  intro?: string;
+}
+
+const { items, heading = 'Related research', intro } = Astro.props;
+---
+{items.length > 0 && (
+  <aside class="max-w-3xl mx-auto mt-12">
+    <h2 class="text-xl mb-1 text-[var(--color-ink)]">{heading}</h2>
+    {intro && <p class="text-sm text-[var(--color-muted)] mb-4">{intro}</p>}
+    <ul class="grid gap-3 sm:grid-cols-2 list-none p-0 m-0 mt-4">
+      {items.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class="block h-full rounded-xl border border-[var(--color-border)] p-4 no-underline hover:border-[var(--color-accent,#2d7a5e)] transition-colors"
+          >
+            <span class="badge-pill text-xs">{item.label}</span>
+            <span class="block font-semibold text-[var(--color-ink)] mt-2 leading-snug">{item.title}</span>
+            {item.description && (
+              <span class="block text-sm text-[var(--color-muted)] mt-1 line-clamp-2">{item.description}</span>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </aside>
+)}

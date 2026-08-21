@@ -4,7 +4,7 @@
 
 import { readdirSync } from 'fs';
 import { fileURLToPath } from 'url';
-import { logIndexNowSuccess } from '../../scripts/lib/indexnow-log.mjs';
+import { logIndexNowSuccess } from './lib/indexnow-log.mjs';
 
 const INDEXNOW_SCRIPT = fileURLToPath(import.meta.url);
 

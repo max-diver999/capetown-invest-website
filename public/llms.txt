@@ -1,36 +1,35 @@
 # Cape Town Invest
 
-> Independent research on Cape Town and Western Cape property investment for foreign buyers: ownership rules, transfer costs, rental yields, semigration, and area selection.
+> Independent English-language research on Cape Town and Western Cape property investment for foreign and non-resident buyers: ownership rules, transfer duty and municipal rates, rental yields, short-term letting law, visas, and suburb-level data.
 
 - Site: https://capetown-invest.com
 - Contact: info@capetown-invest.com
 - Wikidata: https://www.wikidata.org/wiki/Q140810037
-- Markets: Atlantic Seaboard, City Bowl, Southern Suburbs, Century City, Winelands
-- Focus: foreign buyers, FICA, exchange control, transfer duty, net rental yield, remote work visa
+- Editorial stance: research-first. Not a developer, agency or listing portal. Enquiries may be referred to licensed South African professionals.
+- Corpus: 142 pages across 7 collections
 
-## Key hubs
-- /guides/cape-town-property-investment-guide/
-- /guides/buy-cape-town-property-foreigner/
-- /guides/cape-town-rental-yield-guide/
-- /guides/cost-of-buying-property-cape-town/
-- /guides/cape-town-remote-work-visa-property/
+## Start here
+- [Cape Town Property Investment Guide 2026, Yields & Costs](https://capetown-invest.com/guides/cape-town-property-investment-guide/)
+- [Buying Cape Town Property as a Foreigner: No Visa Needed](https://capetown-invest.com/guides/buy-cape-town-property-foreigner/)
+- [Cape Town Property Rates 2026: R892/Month on a R2m Flat](https://capetown-invest.com/guides/cape-town-rates-taxes-property/)
+- [Cape Town Airbnb Rules 2026: The 4 Layers to Check](https://capetown-invest.com/guides/short-term-rental-rules-cape-town/)
+- [South Africa Transfer Duty Explained: 2025 SARS Rates](https://capetown-invest.com/guides/south-africa-transfer-duty-explained/)
+- [Cape Town Rental Yield Guide: Gross vs Net by Suburb](https://capetown-invest.com/guides/cape-town-rental-yield-guide/)
+- [Cape Town Property Prices by Suburb 2026: R/m² Table](https://capetown-invest.com/guides/cape-town-property-prices-by-suburb-2026/)
 
 ## Collections
-- /guides/
-- /segments/
-- /areas/
-- /compare/
-- /projects/
-- /developers/
-- /news/
+- [Guides](https://capetown-invest.com/guides/) — Buying process, tax, yields, visas, due diligence (57)
+- [Areas](https://capetown-invest.com/areas/) — Suburb-level prices, modelled yields, tenant demand (26)
+- [Developments](https://capetown-invest.com/projects/) — Independent reviews of new and off-plan schemes (28)
+- [Comparisons](https://capetown-invest.com/compare/) — Cape Town against other markets and suburb head-to-heads (15)
+- [Buyer guides](https://capetown-invest.com/segments/) — Country-specific tax, currency and paperwork (4)
+- [Developers](https://capetown-invest.com/developers/) — Track record and warranty checks (7)
+- [Market news](https://capetown-invest.com/news/) — Dated market updates with investor implications (5)
 
-## Conversion
-- /get-shortlist/
-- /consultation/
-- /contact/
-- /methodology/
+## Ask us
+- [Free shortlist](https://capetown-invest.com/get-shortlist/)
+- [Consultation](https://capetown-invest.com/consultation/)
+- [Contact](https://capetown-invest.com/contact/)
 
-## Not
-- Not a developer sales desk
-- Not a listing portal
-- Not financial, tax, or immigration advice
+## Full index
+- [llms-full.txt](https://capetown-invest.com/llms-full.txt) lists every page with its summary.

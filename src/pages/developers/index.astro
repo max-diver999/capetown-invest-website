@@ -1,36 +1,49 @@
 ---
 export const prerender = true;
 import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import ContentCard from '../../components/ContentCard.astro';
+import HubLayout, { type HubGroup } from '../../layouts/HubLayout.astro';
 
 const developers = (await getCollection('developers'))
   .filter((d) => !d.data.noindex)
   .sort((a, b) => a.data.title.localeCompare(b.data.title));
+
+const groups: HubGroup[] = [
+  {
+    label: 'Developer track records',
+    note: 'Delivery history, warranty position and the entity questions to ask before a deposit.',
+    cards: developers.map((d) => ({
+      href: `/developers/${d.id}/`,
+      title: d.data.title,
+      description: d.data.description,
+      image: d.data.heroImage,
+      badges: ['Developer'],
+      meta: `${d.data.readingTime ?? 8} min read`,
+    })),
+  },
+];
+
+const faq = [
+  {
+    question: 'How do I check a South African developer before paying a deposit?',
+    answer:
+      'Confirm the developing entity is registered with the NHBRC and that enrolment covers the specific building you are buying into, not just the parent brand. Ask which legal entity signs the sale agreement, since a special purpose vehicle rather than the well-known parent often carries the obligation. Then inspect a previously delivered phase and speak to owners about handover quality and defect resolution.',
+  },
+  {
+    question: 'Is my off-plan deposit protected in South Africa?',
+    answer:
+      'Deposits should be held in an attorney trust account, not paid directly to the developer. Confirm the trust account details in writing with the conveyancer, and verify them by phone before transferring, because email interception fraud on deposits is a live risk. Interest arrangements on the deposit should be stated in the sale agreement.',
+  },
+];
 ---
-<BaseLayout
-  title="Mexico Real Estate Developers"
-  description="Developer profiles for Cape Town and Western Cape — track record, project links, and due diligence notes for foreign buyers."
->
-  <section class="site-container py-14 md:py-20">
-    <header class="max-w-2xl mb-12">
-      <h1 class="text-3xl">Developer profiles</h1>
-      <p class="text-lg text-[var(--color-muted)] mt-3">
-        Entity authority reviews — not sales brochures. Verify permits, delivery history, and escrow before any deposit.
-      </p>
-    </header>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {developers.map((dev) => (
-        <ContentCard
-          href={`/developers/${dev.id}/`}
-          title={dev.data.title}
-          description={dev.data.description}
-          image={dev.data.heroImage}
-          badges={['Developer']}
-          meta={`${dev.data.readingTime ?? 8} min read`}
-          placeholder="🏗️"
-        />
-      ))}
-    </div>
-  </section>
-</BaseLayout>
+<HubLayout
+  title="Cape Town Property Developers: Track Record Reviews"
+  description="Independent profiles of Cape Town and Western Cape property developers: delivery history, NHBRC position, project links, and the due diligence questions foreign buyers should ask."
+  h1="Developer profiles"
+  intro={`Entity-level reviews, not sales brochures. Each profile covers what the developer has delivered, which entity carries the warranty obligation, and what to verify before a deposit clears. Pair these with the <a href="/guides/nhbrc-warranty-south-africa-new-build/">NHBRC warranty guide</a> and the <a href="/guides/snagging-inspection-new-build-cape-town/">snagging inspection guide</a>.`}
+  sectionSlug="developers"
+  sectionName="Developers"
+  groups={groups}
+  total={developers.length}
+  updatedLabel="August 2026"
+  faq={faq}
+/>

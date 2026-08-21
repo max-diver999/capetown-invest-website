@@ -1,0 +1,984 @@
+{
+  "generated": "node scripts/hero-images-manifest.mjs",
+  "total": 139,
+  "external": 139,
+  "byHost": {
+    "upload.wikimedia.org": 75,
+    "commons.wikimedia.org": 64
+  },
+  "images": [
+    {
+      "collection": "areas",
+      "slug": "bantry-bay-property-investment",
+      "file": "src/content/areas/bantry-bay-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/5/58/Bantry_Bay_%281781098161%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "blouberg-property-investment",
+      "file": "src/content/areas/blouberg-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Bloubergstrand%2C_Cape_Town%2C_Western_Cape%2C_South_Africa_%2820318458068%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "camps-bay-property-investment",
+      "file": "src/content/areas/camps-bay-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Camps_Bay,_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "claremont-property-investment",
+      "file": "src/content/areas/claremont-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Claremont_aerial_view.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "clifton-property-investment",
+      "file": "src/content/areas/clifton-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Clifton_Beach_4.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "constantia-property-investment",
+      "file": "src/content/areas/constantia-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/48/GrootConstantiaHomestead.jpg",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "de-waterkant-property-investment",
+      "file": "src/content/areas/de-waterkant-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/7/78/Naspers_Centre%2C_Cape_Town_%28P1050752%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "durbanville-property-investment",
+      "file": "src/content/areas/durbanville-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/8/84/Sonstraal_Dam_Durbanville_2.jpg",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "franschhoek-property-investment",
+      "file": "src/content/areas/franschhoek-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Franschhoek_Valley.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "fresnaye-property-investment",
+      "file": "src/content/areas/fresnaye-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Sea_Point_-_From_Lions_Head.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "gardens-property-investment",
+      "file": "src/content/areas/gardens-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/View_Westwards_Up_Kloof_Street%2C_Towards_Table_Mountain%2C_in_Cape_Town_CBD%2C_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "green-point-property-investment",
+      "file": "src/content/areas/green-point-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Green_Point_Stadium_-_South_Africa_%284029380846%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "hermanus-property-investment",
+      "file": "src/content/areas/hermanus-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Hermanus_Old_Harbour.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "hout-bay-property-investment",
+      "file": "src/content/areas/hout-bay-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/1/16/Hout_Bay_%28ZA%29%2C_Hafen_--_2024_--_3248.jpg",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "kalk-bay-false-bay-property-investment",
+      "file": "src/content/areas/kalk-bay-false-bay-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/37/Kalk_Bay_Harbour%2C_Cape_Town_%28_1050513%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "llandudno-property-investment",
+      "file": "src/content/areas/llandudno-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Llandudno_beach%2C_Cape_Town.JPG",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "milnerton-property-investment",
+      "file": "src/content/areas/milnerton-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Old_Wooden_Bridge_over_the_Milnerton_Lagoon_Milnerton_Cape_Town_-_Table_Mountain_and_Milnerton_Lighthouse_as_back_drop_2.JPG",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "newlands-property-investment",
+      "file": "src/content/areas/newlands-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Newlands_Cricket_Ground.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "paarl-property-investment",
+      "file": "src/content/areas/paarl-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/35/PaarlRock-Aerial.jpg",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "rondebosch-property-investment",
+      "file": "src/content/areas/rondebosch-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Rhodes_Memorial,_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "sea-point-property-investment",
+      "file": "src/content/areas/sea-point-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Sea_Point,_Cape_Town,_South_Africa.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "somerset-west-property-investment",
+      "file": "src/content/areas/somerset-west-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Somerset_Wes_-_Strand_-_Gordon%27s_Bay_-_We_are_all_the_Helderberg.jpg",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "table-view-property-investment",
+      "file": "src/content/areas/table-view-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Cape_Town_%28ZA%29%2C_Table_Mountain_--_2024_--_2762%2B64%2B66%2B68%2B70%2B72.jpg",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "tamboerskloof-property-investment",
+      "file": "src/content/areas/tamboerskloof-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Tamboerskloof.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "v-and-a-waterfront-property-investment",
+      "file": "src/content/areas/v-and-a-waterfront-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/V%26A_Waterfront_Clock_Tower.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "areas",
+      "slug": "woodstock-property-investment",
+      "file": "src/content/areas/woodstock-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/WoodstockSouthCapeTown.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "atlantic-seaboard-vs-winelands-investment",
+      "file": "src/content/compare/atlantic-seaboard-vs-winelands-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Camps_Bay,_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "cape-town-vs-dubai-property-investment",
+      "file": "src/content/compare/cape-town-vs-dubai-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "cape-town-vs-durban-property-investment",
+      "file": "src/content/compare/cape-town-vs-durban-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/7/71/Umhlanga_Rocks_%282598286118%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "cape-town-vs-johannesburg-property-investment",
+      "file": "src/content/compare/cape-town-vs-johannesburg-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Cape_Town_City_Bowl_and_Table_Mountain_at_dawn.jpg",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "cape-town-vs-lisbon-property-investment",
+      "file": "src/content/compare/cape-town-vs-lisbon-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "cape-town-vs-mauritius-property-investment",
+      "file": "src/content/compare/cape-town-vs-mauritius-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/92/Le_Morne_Beach_Mauritius_%2853698222865%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "cape-town-vs-portugal-property-investment",
+      "file": "src/content/compare/cape-town-vs-portugal-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "cape-town-vs-stellenbosch-property",
+      "file": "src/content/compare/cape-town-vs-stellenbosch-property.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "century-city-vs-durbanville-investment",
+      "file": "src/content/compare/century-city-vs-durbanville-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/8/84/Sonstraal_Dam_Durbanville_2.jpg",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "century-city-vs-sea-point-investment",
+      "file": "src/content/compare/century-city-vs-sea-point-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Cape_Town_%28ZA%29%2C_Sea_Point_Promenade%2C_Sitzbank_--_2024_--_1813.jpg",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "off-plan-vs-resale-cape-town-investment",
+      "file": "src/content/compare/off-plan-vs-resale-cape-town-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "paarl-vs-stellenbosch-property-investment",
+      "file": "src/content/compare/paarl-vs-stellenbosch-property-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/35/PaarlRock-Aerial.jpg",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "sea-point-vs-camps-bay-investment",
+      "file": "src/content/compare/sea-point-vs-camps-bay-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Cape_Town_%28ZA%29%2C_Sea_Point_Promenade%2C_Sitzbank_--_2024_--_1813.jpg",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "somerset-west-vs-constantia-investment",
+      "file": "src/content/compare/somerset-west-vs-constantia-investment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Somerset_Wes_-_Strand_-_Gordon%27s_Bay_-_We_are_all_the_Helderberg.jpg",
+      "external": true
+    },
+    {
+      "collection": "compare",
+      "slug": "western-cape-vs-gauteng-property-investment",
+      "file": "src/content/compare/western-cape-vs-gauteng-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Johannesburg_skyline.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "developers",
+      "slug": "amdec-property-investments",
+      "file": "src/content/developers/amdec-property-investments.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/e5/View_of_Lion%27s_Head%2C_Table_Mountain%2C_and_Valley_In_Between%2C_from_Cape_Town_CBD.jpg",
+      "external": true
+    },
+    {
+      "collection": "developers",
+      "slug": "blok-urban-developers",
+      "file": "src/content/developers/blok-urban-developers.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/5/58/Cape_Town_%28ZA%29%2C_Sea_Point%2C_Nachtansicht_--_2024_--_1867-70_-_2.jpg",
+      "external": true
+    },
+    {
+      "collection": "developers",
+      "slug": "devmco-group",
+      "file": "src/content/developers/devmco-group.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/7/71/Umhlanga_Rocks_%282598286118%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "developers",
+      "slug": "growthpoint-waterfront",
+      "file": "src/content/developers/growthpoint-waterfront.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/V%26A_Waterfront_Clock_Tower.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "developers",
+      "slug": "prospekt-property-development",
+      "file": "src/content/developers/prospekt-property-development.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_CBD.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "developers",
+      "slug": "rabie-property-developers",
+      "file": "src/content/developers/rabie-property-developers.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Canal_Walk_Shopping_Centre.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "developers",
+      "slug": "val-de-vie-estate",
+      "file": "src/content/developers/val-de-vie-estate.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/35/PaarlRock-Aerial.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "airbnb-investment-cape-town-guide",
+      "file": "src/content/guides/airbnb-investment-cape-town-guide.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Cape_Town_%28ZA%29%2C_Sea_Point_Promenade_--_2024_--_3586.jpg/1920px-Cape_Town_%28ZA%29%2C_Sea_Point_Promenade_--_2024_--_3586.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "atlantic-seaboard-property-investment-guide",
+      "file": "src/content/guides/atlantic-seaboard-property-investment-guide.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Camps_Bay,_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "best-areas-invest-cape-town-2026",
+      "file": "src/content/guides/best-areas-invest-cape-town-2026.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "body-corporate-due-diligence-cape-town",
+      "file": "src/content/guides/body-corporate-due-diligence-cape-town.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_CBD.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "buy-cape-town-property-foreigner",
+      "file": "src/content/guides/buy-cape-town-property-foreigner.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "buy-cape-town-property-remotely",
+      "file": "src/content/guides/buy-cape-town-property-remotely.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "buy-to-let-cape-town-mortgage",
+      "file": "src/content/guides/buy-to-let-cape-town-mortgage.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "can-foreigners-buy-property-south-africa",
+      "file": "src/content/guides/can-foreigners-buy-property-south-africa.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Cape_Town_from_Table_Mountain.jpg/1920px-Cape_Town_from_Table_Mountain.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-city-bowl-property-investment",
+      "file": "src/content/guides/cape-town-city-bowl-property-investment.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_City_Bowl_and_Table_Mountain_at_dawn.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-digital-nomad-property-guide",
+      "file": "src/content/guides/cape-town-digital-nomad-property-guide.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Cape_Town_%28ZA%29%2C_Sea_Point_Promenade%2C_Sitzbank_--_2024_--_1813.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-property-investment-guide",
+      "file": "src/content/guides/cape-town-property-investment-guide.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-property-market-data-lightstone",
+      "file": "src/content/guides/cape-town-property-market-data-lightstone.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Table_Mountain_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-property-market-forecast-2026-2027",
+      "file": "src/content/guides/cape-town-property-market-forecast-2026-2027.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Table_Mountain_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-property-prices-by-suburb-2026",
+      "file": "src/content/guides/cape-town-property-prices-by-suburb-2026.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-property-scams-avoid",
+      "file": "src/content/guides/cape-town-property-scams-avoid.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Cape_Town_from_Table_Mountain.jpg/1920px-Cape_Town_from_Table_Mountain.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-property-under-500k-usd",
+      "file": "src/content/guides/cape-town-property-under-500k-usd.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Canal_Walk_Shopping_Centre.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-rates-taxes-property",
+      "file": "src/content/guides/cape-town-rates-taxes-property.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_City_Hall.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-remote-work-visa-property",
+      "file": "src/content/guides/cape-town-remote-work-visa-property.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Cape_Town_CBD.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-rental-yield-guide",
+      "file": "src/content/guides/cape-town-rental-yield-guide.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-semigration-property-guide",
+      "file": "src/content/guides/cape-town-semigration-property-guide.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-vacancy-rates-rental",
+      "file": "src/content/guides/cape-town-vacancy-rates-rental.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Camps_Bay,_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-water-security-property",
+      "file": "src/content/guides/cape-town-water-security-property.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Table%20Mountain%20DanieVDM.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "century-city-property-investment-guide",
+      "file": "src/content/guides/century-city-property-investment-guide.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Canal_Walk_Shopping_Centre.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "conveyancing-fees-cape-town",
+      "file": "src/content/guides/conveyancing-fees-cape-town.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_City_Hall.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "cost-of-buying-property-cape-town",
+      "file": "src/content/guides/cost-of-buying-property-cape-town.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Bo_Kaap%2C_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "does-buying-property-give-residency-south-africa",
+      "file": "src/content/guides/does-buying-property-give-residency-south-africa.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Cape_Town_from_Table_Mountain.jpg/1920px-Cape_Town_from_Table_Mountain.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "due-diligence-cape-town-property",
+      "file": "src/content/guides/due-diligence-cape-town-property.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Table%20Mountain%20DanieVDM.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "eu-citizens-buying-cape-town-property",
+      "file": "src/content/guides/eu-citizens-buying-cape-town-property.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "fica-requirements-foreign-property-buyers",
+      "file": "src/content/guides/fica-requirements-foreign-property-buyers.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Cape_Town_from_Table_Mountain.jpg/1920px-Cape_Town_from_Table_Mountain.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "financially-independent-visa-south-africa",
+      "file": "src/content/guides/financially-independent-visa-south-africa.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "foreigner-property-tax-south-africa-hub",
+      "file": "src/content/guides/foreigner-property-tax-south-africa-hub.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "gross-vs-net-yield-cape-town",
+      "file": "src/content/guides/gross-vs-net-yield-cape-town.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "highest-rental-yield-suburbs-cape-town",
+      "file": "src/content/guides/highest-rental-yield-suburbs-cape-town.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "how-to-buy-property-cape-town-step-by-step",
+      "file": "src/content/guides/how-to-buy-property-cape-town-step-by-step.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Table%20Mountain%20DanieVDM.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "is-cape-town-property-good-investment-2026",
+      "file": "src/content/guides/is-cape-town-property-good-investment-2026.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "load-shedding-property-cape-town",
+      "file": "src/content/guides/load-shedding-property-cape-town.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Table%20Mountain%20DanieVDM.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "long-term-rental-cape-town-guide",
+      "file": "src/content/guides/long-term-rental-cape-town-guide.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "new-developments-cape-town-2026",
+      "file": "src/content/guides/new-developments-cape-town-2026.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "nhbrc-warranty-south-africa-new-build",
+      "file": "src/content/guides/nhbrc-warranty-south-africa-new-build.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Table%20Mountain%20DanieVDM.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "non-resident-mortgage-cape-town",
+      "file": "src/content/guides/non-resident-mortgage-cape-town.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Camps_Bay,_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "non-resident-rental-income-tax-south-africa",
+      "file": "src/content/guides/non-resident-rental-income-tax-south-africa.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "off-plan-property-cape-town-guide",
+      "file": "src/content/guides/off-plan-property-cape-town-guide.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "power-of-attorney-property-south-africa",
+      "file": "src/content/guides/power-of-attorney-property-south-africa.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Table%20Mountain%20DanieVDM.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "property-management-cape-town-cost",
+      "file": "src/content/guides/property-management-cape-town-cost.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Cape_Town_%28ZA%29%2C_Sea_Point_Promenade_--_2024_--_3586.jpg/1920px-Cape_Town_%28ZA%29%2C_Sea_Point_Promenade_--_2024_--_3586.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "retirement-visa-south-africa-property",
+      "file": "src/content/guides/retirement-visa-south-africa-property.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Cape_Town_from_Table_Mountain.jpg/1920px-Cape_Town_from_Table_Mountain.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "returning-south-african-expat-property",
+      "file": "src/content/guides/returning-south-african-expat-property.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/d3/Cape_Town_%28ZA%29%2C_Wale_Street_--_2024_--_3536.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "sectional-title-levies-cape-town",
+      "file": "src/content/guides/sectional-title-levies-cape-town.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Mutual_Building_Cape_Town_011.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "sectional-title-vs-freehold-cape-town",
+      "file": "src/content/guides/sectional-title-vs-freehold-cape-town.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Mutual_Building_Cape_Town_011.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "security-estates-cape-town-foreign-buyers",
+      "file": "src/content/guides/security-estates-cape-town-foreign-buyers.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "short-term-rental-rules-cape-town",
+      "file": "src/content/guides/short-term-rental-rules-cape-town.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Table%20Mountain%20DanieVDM.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "snagging-inspection-new-build-cape-town",
+      "file": "src/content/guides/snagging-inspection-new-build-cape-town.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "south-africa-capital-gains-tax-property",
+      "file": "src/content/guides/south-africa-capital-gains-tax-property.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "south-africa-exchange-control-property",
+      "file": "src/content/guides/south-africa-exchange-control-property.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Cape_Town_from_Table_Mountain.jpg/1920px-Cape_Town_from_Table_Mountain.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "south-africa-transfer-duty-explained",
+      "file": "src/content/guides/south-africa-transfer-duty-explained.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "southern-suburbs-cape-town-property",
+      "file": "src/content/guides/southern-suburbs-cape-town-property.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Newlands2.jpg",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "stellenbosch-property-investment-guide",
+      "file": "src/content/guides/stellenbosch-property-investment-guide.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Stellenbosch%20University.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "uk-tax-south-africa-rental-property",
+      "file": "src/content/guides/uk-tax-south-africa-rental-property.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "news",
+      "slug": "cape-town-interest-rates-property-2026",
+      "file": "src/content/news/cape-town-interest-rates-property-2026.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Table%20Mountain%20DanieVDM.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "news",
+      "slug": "va-waterfront-granger-bay-development",
+      "file": "src/content/news/va-waterfront-granger-bay-development.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/V%26A_Waterfront_Clock_Tower.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "acacia-house-woodstock",
+      "file": "src/content/projects/acacia-house-woodstock.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/5/5f/WoodstockSouthCapeTown.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "amdec-hout-bay-project",
+      "file": "src/content/projects/amdec-hout-bay-project.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/1/11/Hout_Bay%2C_Cape_Town%2C_South_Africa_-_panoramio.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "azure-camps-bay-beach",
+      "file": "src/content/projects/azure-camps-bay-beach.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/04/Camps_Bay%2C_Cape_Town_%28P1050238%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "camps-bay-infinity",
+      "file": "src/content/projects/camps-bay-infinity.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Camps_Bay,_Victoria_Road_-_panoramio.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "chestercourt-redevelopment",
+      "file": "src/content/projects/chestercourt-redevelopment.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/e5/View_of_Lion%27s_Head%2C_Table_Mountain%2C_and_Valley_In_Between%2C_from_Cape_Town_CBD.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "foreshore-place-cape-town",
+      "file": "src/content/projects/foreshore-place-cape-town.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_CBD.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "granger-bay-waterfront",
+      "file": "src/content/projects/granger-bay-waterfront.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Green_Point_Stadium_-_South_Africa_%284029380846%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "green-village-val-de-vie",
+      "file": "src/content/projects/green-village-val-de-vie.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/35/PaarlRock-Aerial.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "harbour-arch-amdec-foreshore",
+      "file": "src/content/projects/harbour-arch-amdec-foreshore.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/e5/View_of_Lion%27s_Head%2C_Table_Mountain%2C_and_Valley_In_Between%2C_from_Cape_Town_CBD.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "infinity-milnerton",
+      "file": "src/content/projects/infinity-milnerton.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Old_Wooden_Bridge_over_the_Milnerton_Lagoon_Milnerton_Cape_Town_-_Table_Mountain_and_Milnerton_Lighthouse_as_back_drop_2.JPG",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "makers-landing-waterfront",
+      "file": "src/content/projects/makers-landing-waterfront.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/6/61/Cape_Town_%28ZA%29%2C_Waterfront%2C_Kran_--_2024_--_2907.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "nine-palms-century-city",
+      "file": "src/content/projects/nine-palms-century-city.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Century_City,_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "nineons-green-point",
+      "file": "src/content/projects/nineons-green-point.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/ec/Green_Point_Stadium_-_South_Africa_%284029380846%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "observatory-green",
+      "file": "src/content/projects/observatory-green.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/c/c8/Observetory_CT.png",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "on-park-century-city",
+      "file": "src/content/projects/on-park-century-city.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Canal_Walk_Shopping_Centre.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "onehundredonm-sea-point",
+      "file": "src/content/projects/onehundredonm-sea-point.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Cape_Town_%28ZA%29%2C_Sea_Point_Promenade%2C_Sitzbank_--_2024_--_1813.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "oneonr-de-waterkant",
+      "file": "src/content/projects/oneonr-de-waterkant.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Bo_Kaap%2C_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "pearl-valley-nova",
+      "file": "src/content/projects/pearl-valley-nova.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Cape_Town_2012_05_13_0272_%287365139028%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "rhapsody-burgundy-estate",
+      "file": "src/content/projects/rhapsody-burgundy-estate.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/43/Cape_Town_%28ZA%29%2C_Table_Mountain_--_2024_--_2825.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "rockwell-tower-cape-town",
+      "file": "src/content/projects/rockwell-tower-cape-town.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/7/78/Naspers_Centre%2C_Cape_Town_%28P1050752%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "silo-district-residences",
+      "file": "src/content/projects/silo-district-residences.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/V%26A_Waterfront_Clock_Tower.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "skywater-century-city",
+      "file": "src/content/projects/skywater-century-city.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Century_City,_Cape_Town.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "the-charlotte-cape-town",
+      "file": "src/content/projects/the-charlotte-cape-town.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_CBD.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "the-ridge-clifton",
+      "file": "src/content/projects/the-ridge-clifton.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Clifton_Beach_4.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "three43onb-sea-point",
+      "file": "src/content/projects/three43onb-sea-point.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/3b/Cape_Town_%28ZA%29%2C_Sea_Point_Promenade%2C_Sitzbank_--_2024_--_1813.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "two-oceans-beach",
+      "file": "src/content/projects/two-oceans-beach.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Bloubergstrand%2C_Cape_Town%2C_Western_Cape%2C_South_Africa_%2820318458068%29.jpg",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "venice-house-cbd",
+      "file": "src/content/projects/venice-house-cbd.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_CBD.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "projects",
+      "slug": "zero2one-sea-point",
+      "file": "src/content/projects/zero2one-sea-point.mdx",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_CBD.jpg?width=1280",
+      "external": true
+    },
+    {
+      "collection": "segments",
+      "slug": "cape-town-property-for-uk-retirees",
+      "file": "src/content/segments/cape-town-property-for-uk-retirees.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "segments",
+      "slug": "german-buyers-cape-town-property",
+      "file": "src/content/segments/german-buyers-cape-town-property.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "segments",
+      "slug": "uk-buyers-cape-town-property",
+      "file": "src/content/segments/uk-buyers-cape-town-property.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    },
+    {
+      "collection": "segments",
+      "slug": "us-buyers-cape-town-property",
+      "file": "src/content/segments/us-buyers-cape-town-property.mdx",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Cape_Town_Table_Mountain_07.jpg/1920px-Cape_Town_Table_Mountain_07.jpg",
+      "external": true
+    }
+  ]
+}

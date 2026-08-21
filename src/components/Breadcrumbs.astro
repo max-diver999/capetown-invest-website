@@ -1,0 +1,31 @@
+---
+/**
+ * Visible breadcrumb trail. Callers pass the same array they feed into
+ * BreadcrumbList JSON-LD, so markup and schema can never drift apart.
+ */
+export interface Crumb {
+  name: string;
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+  class?: string;
+}
+
+const { items, class: className = '' } = Astro.props;
+---
+<nav aria-label="Breadcrumb" class:list={['text-sm text-[var(--color-muted)]', className]}>
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 list-none p-0 m-0">
+    {items.map((item, i) => (
+      <li class="flex items-center gap-2">
+        {item.href && i < items.length - 1 ? (
+          <a href={item.href} class="no-underline hover:text-[var(--color-ink)]">{item.name}</a>
+        ) : (
+          <span aria-current="page" class="text-[var(--color-ink)]">{item.name}</span>
+        )}
+        {i < items.length - 1 && <span aria-hidden="true" class="opacity-50">/</span>}
+      </li>
+    ))}
+  </ol>
+</nav>

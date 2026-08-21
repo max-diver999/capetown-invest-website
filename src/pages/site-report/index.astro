@@ -1,8 +1,8 @@
 ---
 export const prerender = true;
 
-const reportDate = '27 July 2026';
-const reportVersion = 'v2.1';
+const reportDate = '21 August 2026';
+const reportVersion = 'v2.2';
 const launchDate = '10 June 2026';
 const dataThrough = '24 July 2026';
 
@@ -462,7 +462,7 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
   <div class="header-meta">
     <div class="label">Last updated</div>
     <div class="value">{reportDate} · {reportVersion} (live)</div>
-    <div class="live-badge"><span class="live-dot"></span> 144 MDX · 159 sitemap · GEO 90+ · spam gate live</div>
+    <div class="live-badge"><span class="live-dot"></span> 144 MDX · 159 sitemap · corpus rebuilt · hubs + content graph live</div>
     <div style="margin-top:10px;font-size:12px;"><a href="https://capetown-invest.com/" style="color:#9dbfb3;text-decoration:none;">← Live site</a></div>
   </div>
 </div>
@@ -1095,6 +1095,14 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
   <div class="section-title">Launch changelog</div>
   <div class="changelog">
         <div class="changelog-item">
+      <div class="changelog-date">21 Aug 2026 v2.2</div>
+      <div class="changelog-content">
+        <div class="changelog-title">Content OS audit + corpus rebuild: filler stripped, hubs and content graph shipped</div>
+        <div class="changelog-desc">Full Phase 0 audit (corpus, rendered HTML, code vs Florida, GSC) then execution: removed ~5,400 auto-generated filler blocks that the July GEO run had injected under nearly every H2, rewrote the 141 sections they left empty, and cleared the "MORE Group" brand leak. Fixed 18 broken internal links and all 14 orphan pages. Code: mobile navigation, content graph (relatedSlugs was dead in 125 files), HubLayout with CollectionPage/ItemList schema on all seven hubs, visible breadcrumbs, branded og image, sitemap lastmod, 404 page. Quality gates now run on a clean clone.</div>
+        <div class="changelog-tags"><span class="tag green">Corpus</span><span class="tag blue">Hubs</span><span class="tag amber">Schema</span><span class="tag gray">Nav</span></div>
+      </div>
+    </div>
+        <div class="changelog-item">
       <div class="changelog-date">27 Jul 2026</div>
       <div class="changelog-content">
         <div class="changelog-title">Lead growth pack: CTR, CTAs, GEO gaps, images, www/IndexNow</div>
@@ -1144,34 +1152,41 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
     </div>
   </div>
 
-      <div class="section-title">Next steps — 25 Jun 2026</div>
+      <div class="section-title">Next steps — 21 Aug 2026</div>
   <div class="next-steps">
     <div class="next-item" style="background:#fef2f2;border-color:#fecaca;">
       <div class="priority high">P0</div>
       <div>
-        <div class="text" style="font-weight:700;">CTR sprint — foreign-buyer HUB when 50+ impressions</div>
-        <div class="subtext">Monitor buy-cape-town-property-foreigner · expand FAQ + title when GSC shows traction</div>
+        <div class="text" style="font-weight:700;">Re-index the rebuilt corpus and watch CTR on the tax and STR guides</div>
+        <div class="subtext">Every page changed materially. Rates guide (468 imp) and Airbnb rules (378 imp) also carry corrected titles, so CTR should move before rankings do.</div>
       </div>
     </div>
     <div class="next-item" style="background:#fff7ed;border-color:#fed7aa;">
       <div class="priority medium">P1</div>
       <div>
-        <div class="text" style="font-weight:700;">Batch #5 — NINEONS Green Point, Makers Landing, Val de Vie developer page</div>
-        <div class="subtext">21/100 project reviews live · portfolio spam pattern · qa:full after each batch</div>
+        <div class="text" style="font-weight:700;">Move 141 hero images off Wikimedia hotlinks onto our own CDN</div>
+        <div class="subtext">Third-party redirect on every LCP image, and upstream renames break heroes silently.</div>
+      </div>
+    </div>
+    <div class="next-item" style="background:#fff7ed;border-color:#fed7aa;">
+      <div class="priority medium">P1</div>
+      <div>
+        <div class="text" style="font-weight:700;">Merge the cannibal pairs and 301 the retired slugs</div>
+        <div class="subtext">hidden-costs into cost-of-buying, checklist into step-by-step. Needs sign-off: it changes URLs.</div>
       </div>
     </div>
     <div class="next-item" style="background:#f0fdf4;border-color:#bbf7d0;">
       <div class="priority low">DONE</div>
       <div>
-        <div class="text" style="font-weight:700;">Indexing gap 0 · site-report v2.0 · Opus pillar polish</div>
-        <div class="subtext">184 URLs in log · Vivante + Venice + WEX1 pillars · GSC first clicks live</div>
+        <div class="text" style="font-weight:700;">Filler stripped · 141 sections rewritten · hubs, content graph and mobile nav shipped</div>
+        <div class="subtext">0 broken links, 0 orphan pages, 0 brand-leak markers. validate:content 144/144 on a clean clone.</div>
       </div>
     </div>
     <div class="next-item">
       <div class="priority medium">P1</div>
       <div>
-        <div class="text" style="font-weight:700;">Wikidata entity for Cape Town Invest (GEO)</div>
-        <div class="subtext">Q-id in Organization sameAs · _СИСТЕМА/GEO_WIKIDATA_SETUP.md</div>
+        <div class="text" style="font-weight:700;">Content roadmap: 50 new articles across 10 waves</div>
+        <div class="subtext">Seller lifecycle, ownership structures, country segments (NL, CH, UAE), STR by-law tracker, new area pages. See content-roadmap-2026-08-21.md</div>
       </div>
     </div>
   </div>

@@ -18,6 +18,7 @@ html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
 body {
   background: var(--color-page);
+  overflow-x: hidden;
   color: var(--color-muted);
   font-family: var(--font-sans);
   line-height: 1.65;
@@ -31,6 +32,15 @@ h1, h2, h3, h4 {
   font-weight: 600;
   letter-spacing: -0.02em;
 }
+
+/*
+ * Tailwind's reset strips heading sizes, so a heading without an explicit size
+ * class rendered at body size. :where() keeps specificity at zero, so any
+ * utility class on the element still wins.
+ */
+:where(h1) { font-size: clamp(1.875rem, 1.4rem + 2vw, 2.5rem); }
+:where(h2) { font-size: clamp(1.375rem, 1.15rem + 1vw, 1.75rem); }
+:where(h3) { font-size: 1.125rem; }
 
 a { color: var(--color-teal); text-decoration: none; }
 a:hover { color: var(--color-teal-dark); }
@@ -150,6 +160,10 @@ textarea:focus {
 .prose h3 { margin-top: 1.75rem; margin-bottom: 0.75rem; font-size: 1.1rem; }
 .prose p { margin-bottom: 1.1rem; }
 .prose ul, .prose ol { margin: 1rem 0 1.25rem 1.25rem; }
+/* Tailwind's reset removes list markers; article lists need them back. */
+.prose ul { list-style-type: disc; }
+.prose ol { list-style-type: decimal; }
+.prose li::marker { color: var(--color-muted); }
 .prose li { margin-bottom: 0.4rem; }
 .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.92rem; }
 .prose th, .prose td { border: 1px solid var(--color-border); padding: 0.55rem 0.75rem; text-align: left; }
