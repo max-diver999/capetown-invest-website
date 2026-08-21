@@ -84,9 +84,12 @@ GEO-цифры не сравнимы с июльскими напрямую: т�
 
 ## Что дальше
 
-1. Перевести 141 hero с хотлинка Wikimedia на собственный CDN.
-2. Слияния каннибалов (hidden-costs → cost-of-buying, checklist → step-by-step) + 301 в `vercel.json` — требует отдельного «ок», меняет slugs.
-3. Волны нового контента C1–C10 по `content-roadmap-2026-08-21.md` (50 статей).
+1. **Cursor: перенести 139 hero на Cloudinary.** Инструкция — `docs/HERO-IMAGES-CLOUDINARY.md`. У Claude в облаке нет ключей, всё остальное подготовлено: `npm run images:manifest` → `npm run images:mirror`. Код уже умеет Cloudinary-трансформации.
+2. Волны нового контента C1–C10 по `content-roadmap-2026-08-21.md` (50 статей) — план на согласовании.
+
+### Сделано после первой сводки
+
+- **Слияние каннибалов выполнено** (Максим, 21.08): `hidden-costs-buying-property-cape-town` → `cost-of-buying-property-cape-town`, `cape-town-property-investment-checklist` → `how-to-buy-property-cape-town-step-by-step`. Уникальный материал перенесён, FAQ объединены, внутренние ссылки перенаправлены, 301 в `vercel.json`. Обе страницы дают 79 и 80/100 при coverage 100%. Корпус: **142 MDX**.
 
 ## Индексация
 
