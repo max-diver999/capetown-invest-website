@@ -85,7 +85,21 @@ GEO-цифры не сравнимы с июльскими напрямую: т�
 ## Что дальше
 
 1. **Cursor: перенести 139 hero на Cloudinary.** Инструкция — `docs/HERO-IMAGES-CLOUDINARY.md`. У Claude в облаке нет ключей, всё остальное подготовлено: `npm run images:manifest` → `npm run images:mirror`. Код уже умеет Cloudinary-трансформации.
-2. Волны нового контента C1–C10 по `content-roadmap-2026-08-21.md` (50 статей) — план на согласовании.
+2. Волны нового контента C1–C10 по `content-roadmap-2026-08-21.md` (50 статей) — **Wave C1 опубликована 22.08** (см. ниже), C2 следующая.
+
+### Wave C1 — опубликована (2026-08-22, «ок» Максима)
+
+5 статей, каждая написана вручную и держит GEO ≥90/100 при coverage 100%:
+
+| Slug | GEO | Угол |
+|---|---|---|
+| guides/cape-town-str-bylaw-2026-registration | 90 | Драфт STR by-law (авг 2026): регистрация, comments до 5 Oct 2026 |
+| guides/airbnb-yields-by-suburb-cape-town | 90 | ROI-таблица: Airbtics/AirROI данные × наши цены покупки |
+| guides/body-corporate-airbnb-ban-rules | 90 | Paddock-прецедент, 75% special resolution, CSOS |
+| guides/cape-town-municipal-valuation-objection-gv | 90 | GV2025: новый счёт rates, апелляции, R620k exemption |
+| guides/cape-town-utilities-costs-owners-2026 | 90 | Тарифы 2026/27 + отмена fixed charges судом |
+
+Корпус: **147 MDX**, sitemap 162 URL. Новые страницы вписаны в кластеры хаба, получили 4–7 входящих ссылок каждая, llms.txt перегенерирован. Данные строятся на событиях после июня 2026 (драфт by-law, суд SAPOA/AfriForum, принятый бюджет 29.06), которых нет у конкурентов.
 
 ### Сделано после первой сводки
 
