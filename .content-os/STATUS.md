@@ -101,6 +101,20 @@ GEO-цифры не сравнимы с июльскими напрямую: т�
 
 Корпус: **147 MDX**, sitemap 162 URL. Новые страницы вписаны в кластеры хаба, получили 4–7 входящих ссылок каждая, llms.txt перегенерирован. Данные строятся на событиях после июня 2026 (драфт by-law, суд SAPOA/AfriForum, принятый бюджет 29.06), которых нет у конкурентов.
 
+### Wave C2 — опубликована (2026-08-22)
+
+5 статей seller/lifecycle-кластера, каждая написана вручную, GEO ≥90/100 при coverage 100%:
+
+| Slug | GEO | Угол |
+|---|---|---|
+| guides/selling-property-south-africa-non-resident | 90 | Хаб волны: 4 трека продажи, worked example CGT vs s35A |
+| guides/section-35a-withholding-tax-explained | 91 | 7.5/10/15% выше R2m, NR03-директива, цепочка ответственности |
+| guides/repatriating-property-sale-proceeds | 93 | AIT PIN / Manual Letter of Compliance (SARB late-2025), файл банка |
+| guides/cost-of-selling-compliance-certificates | 90 | Комиссия 5–7.5%+VAT, сертификаты R4–10k, rates clearance advance |
+| guides/property-transfer-timeline-delays | 91 | 8–12 недель transfer, 5 причин задержек, non-resident шаги |
+
+Корпус: **152 MDX**. Новый кластер хаба «Selling and exit», 9 существующих страниц получили входящие relatedSlugs, llms.txt перегенерирован (152 страницы). Волна закрывает exit-цикл: покупатель → арендодатель → продавец, чего нет ни у одного конкурента одним связанным кластером.
+
 ### Сделано после первой сводки
 
 - **Слияние каннибалов выполнено** (Максим, 21.08): `hidden-costs-buying-property-cape-town` → `cost-of-buying-property-cape-town`, `cape-town-property-investment-checklist` → `how-to-buy-property-cape-town-step-by-step`. Уникальный материал перенесён, FAQ объединены, внутренние ссылки перенаправлены, 301 в `vercel.json`. Обе страницы дают 79 и 80/100 при coverage 100%. Корпус: **142 MDX**.
