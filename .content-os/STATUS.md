@@ -84,8 +84,36 @@ GEO-цифры не сравнимы с июльскими напрямую: т�
 
 ## Что дальше
 
-1. ~~**Cursor: перенести 139 hero на Cloudinary.**~~ ✅ **21.08** — все 139 на `res.cloudinary.com/more-group/capetown/…`, external 0. Слияние `claude/capetown-content-audit-h6qbx7` → `main`, деплoy на Vercel.
-2. Волны нового контента C1–C10 по `content-roadmap-2026-08-21.md` (50 статей) — план на согласовании.
+1. ~~**Cursor: перенести 139 hero на Cloudinary.**~~ ✅ **21.08** — все 139 на Cloudinary, external 0.
+2. Волны нового контента C1–C10 по `content-roadmap-2026-08-21.md` (50 статей) — **Wave C1 опубликована 22.08** (см. ниже), **Wave C2 опубликована 22.08**, C3 следующая.
+
+### Wave C1 — опубликована (2026-08-22, «ок» Максима)
+
+5 статей, каждая написана вручную и держит GEO ≥90/100 при coverage 100%:
+
+| Slug | GEO | Угол |
+|---|---|---|
+| guides/cape-town-str-bylaw-2026-registration | 90 | Драфт STR by-law (авг 2026): регистрация, comments до 5 Oct 2026 |
+| guides/airbnb-yields-by-suburb-cape-town | 90 | ROI-таблица: Airbtics/AirROI данные × наши цены покупки |
+| guides/body-corporate-airbnb-ban-rules | 90 | Paddock-прецедент, 75% special resolution, CSOS |
+| guides/cape-town-municipal-valuation-objection-gv | 90 | GV2025: новый счёт rates, апелляции, R620k exemption |
+| guides/cape-town-utilities-costs-owners-2026 | 90 | Тарифы 2026/27 + отмена fixed charges судом |
+
+Корпус: **147 MDX**, sitemap 162 URL. Новые страницы вписаны в кластеры хаба, получили 4–7 входящих ссылок каждая, llms.txt перегенерирован. Данные строятся на событиях после июня 2026 (драфт by-law, суд SAPOA/AfriForum, принятый бюджет 29.06), которых нет у конкурентов.
+
+### Wave C2 — опубликована (2026-08-22)
+
+5 статей seller/lifecycle-кластера, каждая написана вручную, GEO ≥90/100 при coverage 100%:
+
+| Slug | GEO | Угол |
+|---|---|---|
+| guides/selling-property-south-africa-non-resident | 90 | Хаб волны: 4 трека продажи, worked example CGT vs s35A |
+| guides/section-35a-withholding-tax-explained | 91 | 7.5/10/15% выше R2m, NR03-директива, цепочка ответственности |
+| guides/repatriating-property-sale-proceeds | 93 | AIT PIN / Manual Letter of Compliance (SARB late-2025), файл банка |
+| guides/cost-of-selling-compliance-certificates | 90 | Комиссия 5–7.5%+VAT, сертификаты R4–10k, rates clearance advance |
+| guides/property-transfer-timeline-delays | 91 | 8–12 недель transfer, 5 причин задержек, non-resident шаги |
+
+Корпус: **152 MDX**. Новый кластер хаба «Selling and exit», 9 существующих страниц получили входящие relatedSlugs, llms.txt перегенерирован (152 страницы). Волна закрывает exit-цикл: покупатель → арендодатель → продавец, чего нет ни у одного конкурента одним связанным кластером.
 
 ### Сделано после первой сводки
 
