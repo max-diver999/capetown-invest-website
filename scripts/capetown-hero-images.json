@@ -1,6 +1,6 @@
 {
   "generated": "node scripts/hero-images-manifest.mjs",
-  "total": 139,
+  "total": 152,
   "external": 0,
   "byHost": {},
   "images": [
@@ -349,6 +349,13 @@
     },
     {
       "collection": "guides",
+      "slug": "airbnb-yields-by-suburb-cape-town",
+      "file": "src/content/guides/airbnb-yields-by-suburb-cape-town.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428309/more-group/capetown/guides/airbnb-yields-by-suburb-cape-town.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
       "slug": "atlantic-seaboard-property-investment-guide",
       "file": "src/content/guides/atlantic-seaboard-property-investment-guide.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356279/more-group/capetown/guides/atlantic-seaboard-property-investment-guide.jpg",
@@ -359,6 +366,13 @@
       "slug": "best-areas-invest-cape-town-2026",
       "file": "src/content/guides/best-areas-invest-cape-town-2026.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356281/more-group/capetown/guides/best-areas-invest-cape-town-2026.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
+      "slug": "body-corporate-airbnb-ban-rules",
+      "file": "src/content/guides/body-corporate-airbnb-ban-rules.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428316/more-group/capetown/guides/body-corporate-airbnb-ban-rules.jpg",
       "external": false
     },
     {
@@ -408,6 +422,13 @@
       "slug": "cape-town-digital-nomad-property-guide",
       "file": "src/content/guides/cape-town-digital-nomad-property-guide.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356294/more-group/capetown/guides/cape-town-digital-nomad-property-guide.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-municipal-valuation-objection-gv",
+      "file": "src/content/guides/cape-town-municipal-valuation-objection-gv.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428335/more-group/capetown/guides/cape-town-municipal-valuation-objection-gv.jpg",
       "external": false
     },
     {
@@ -482,6 +503,20 @@
     },
     {
       "collection": "guides",
+      "slug": "cape-town-str-bylaw-2026-registration",
+      "file": "src/content/guides/cape-town-str-bylaw-2026-registration.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428361/more-group/capetown/guides/cape-town-str-bylaw-2026-registration.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
+      "slug": "cape-town-utilities-costs-owners-2026",
+      "file": "src/content/guides/cape-town-utilities-costs-owners-2026.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428364/more-group/capetown/guides/cape-town-utilities-costs-owners-2026.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
       "slug": "cape-town-vacancy-rates-rental",
       "file": "src/content/guides/cape-town-vacancy-rates-rental.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356316/more-group/capetown/guides/cape-town-vacancy-rates-rental.jpg",
@@ -513,6 +548,13 @@
       "slug": "cost-of-buying-property-cape-town",
       "file": "src/content/guides/cost-of-buying-property-cape-town.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356324/more-group/capetown/guides/cost-of-buying-property-cape-town.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
+      "slug": "cost-of-selling-compliance-certificates",
+      "file": "src/content/guides/cost-of-selling-compliance-certificates.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428377/more-group/capetown/guides/cost-of-selling-compliance-certificates.jpg",
       "external": false
     },
     {
@@ -650,6 +692,20 @@
     },
     {
       "collection": "guides",
+      "slug": "property-transfer-timeline-delays",
+      "file": "src/content/guides/property-transfer-timeline-delays.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428427/more-group/capetown/guides/property-transfer-timeline-delays.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
+      "slug": "repatriating-property-sale-proceeds",
+      "file": "src/content/guides/repatriating-property-sale-proceeds.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428593/more-group/capetown/guides/repatriating-property-sale-proceeds.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
       "slug": "retirement-visa-south-africa-property",
       "file": "src/content/guides/retirement-visa-south-africa-property.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356358/more-group/capetown/guides/retirement-visa-south-africa-property.jpg",
@@ -660,6 +716,13 @@
       "slug": "returning-south-african-expat-property",
       "file": "src/content/guides/returning-south-african-expat-property.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356579/more-group/capetown/guides/returning-south-african-expat-property.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
+      "slug": "section-35a-withholding-tax-explained",
+      "file": "src/content/guides/section-35a-withholding-tax-explained.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428435/more-group/capetown/guides/section-35a-withholding-tax-explained.jpg",
       "external": false
     },
     {
@@ -681,6 +744,13 @@
       "slug": "security-estates-cape-town-foreign-buyers",
       "file": "src/content/guides/security-estates-cape-town-foreign-buyers.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356365/more-group/capetown/guides/security-estates-cape-town-foreign-buyers.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
+      "slug": "selling-property-south-africa-non-resident",
+      "file": "src/content/guides/selling-property-south-africa-non-resident.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428445/more-group/capetown/guides/selling-property-south-africa-non-resident.jpg",
       "external": false
     },
     {
@@ -748,9 +818,30 @@
     },
     {
       "collection": "news",
+      "slug": "cape-town-luxury-sales-record-2025",
+      "file": "src/content/news/cape-town-luxury-sales-record-2025.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428470/more-group/capetown/news/cape-town-luxury-sales-record-2025.jpg",
+      "external": false
+    },
+    {
+      "collection": "news",
+      "slug": "foreign-buyers-atlantic-seaboard-2025",
+      "file": "src/content/news/foreign-buyers-atlantic-seaboard-2025.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428473/more-group/capetown/news/foreign-buyers-atlantic-seaboard-2025.jpg",
+      "external": false
+    },
+    {
+      "collection": "news",
       "slug": "va-waterfront-granger-bay-development",
       "file": "src/content/news/va-waterfront-granger-bay-development.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356385/more-group/capetown/news/va-waterfront-granger-bay-development.jpg",
+      "external": false
+    },
+    {
+      "collection": "news",
+      "slug": "western-cape-property-forecast-2026",
+      "file": "src/content/news/western-cape-property-forecast-2026.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428478/more-group/capetown/news/western-cape-property-forecast-2026.jpg",
       "external": false
     },
     {
