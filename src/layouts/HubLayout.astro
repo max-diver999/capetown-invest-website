@@ -34,6 +34,7 @@ interface Props {
   faq?: { question: string; answer: string }[];
   leadTitle?: string;
   leadSubtitle?: string;
+  searchable?: boolean;
 }
 
 const {
@@ -49,6 +50,7 @@ const {
   faq = [],
   leadTitle = 'Get a Cape Town property shortlist',
   leadSubtitle = 'Tell us budget, target area and goal. We reply within one business day with matched stock and next steps.',
+  searchable = false,
 } = Astro.props;
 
 const hubUrl = `${SITE.url}/${sectionSlug}/`;
@@ -117,8 +119,16 @@ const anchor = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-'
       </p>
     </header>
 
+    {searchable && (
+      <div class="hub-search">
+        <label for="hub-search-input">Find a guide</label>
+        <input id="hub-search-input" type="search" placeholder={`Search ${allCards.length} guides`} autocomplete="off" />
+        <p id="hub-search-count" aria-live="polite">{allCards.length} guides</p>
+      </div>
+    )}
+
     {showJumpNav && (
-      <nav aria-label="Sections" class="flex flex-wrap gap-2 mb-12">
+      <nav aria-label="Sections" data-hub-nav class="flex flex-wrap gap-2 mb-12">
         {groups.map((group) => (
           <a
             href={`#${anchor(group.label)}`}
@@ -129,23 +139,27 @@ const anchor = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-'
     )}
 
     {groups.map((group) => (
-      <section class="mb-14" id={anchor(group.label)}>
+      <section class="mb-14" id={anchor(group.label)} data-hub-group>
         <h2 class="text-xl mb-1">{group.label}</h2>
         {group.note && <p class="text-sm text-[var(--color-muted)] mb-5">{group.note}</p>}
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4">
           {group.cards.map((card) => (
-            <ContentCard
-              href={card.href}
-              title={card.title}
-              description={card.description}
-              image={card.image}
-              badges={card.badges ?? []}
-              meta={card.meta}
-            />
+            <div data-hub-card data-search={`${card.title} ${card.description ?? ''} ${(card.badges ?? []).join(' ')}`.toLowerCase()}>
+              <ContentCard
+                href={card.href}
+                title={card.title}
+                description={card.description}
+                image={card.image}
+                badges={card.badges ?? []}
+                meta={card.meta}
+              />
+            </div>
           ))}
         </div>
       </section>
     ))}
+
+    {searchable && <p id="hub-search-empty" class="hub-search__empty" hidden>No guides match that search.</p>}
 
     {faq.length > 0 && (
       <div class="max-w-3xl mx-auto mt-4">
@@ -158,3 +172,62 @@ const anchor = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-'
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .hub-search {
+    max-width: 36rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    background: var(--color-surface);
+  }
+  .hub-search label {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: var(--color-ink);
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+  .hub-search input { width: 100%; }
+  .hub-search p {
+    margin: 0.45rem 0 0;
+    color: var(--color-muted);
+    font-size: 0.8rem;
+  }
+  [data-hub-card] { min-width: 0; }
+  [data-hub-card] > :global(*) { height: 100%; }
+  .hub-search__empty {
+    padding: 2rem 0;
+    color: var(--color-muted);
+    text-align: center;
+  }
+</style>
+
+<script>
+  (function () {
+    var input = document.getElementById('hub-search-input');
+    var count = document.getElementById('hub-search-count');
+    var empty = document.getElementById('hub-search-empty');
+    var nav = document.querySelector('[data-hub-nav]');
+    var cards = Array.prototype.slice.call(document.querySelectorAll('[data-hub-card]'));
+    var groups = Array.prototype.slice.call(document.querySelectorAll('[data-hub-group]'));
+    if (!input || !count || !empty) return;
+
+    input.addEventListener('input', function () {
+      var query = input.value.trim().toLowerCase();
+      var visible = 0;
+      cards.forEach(function (card) {
+        var show = !query || (card.dataset.search || '').includes(query);
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      groups.forEach(function (group) {
+        group.hidden = Boolean(query) && !group.querySelector('[data-hub-card]:not([hidden])');
+      });
+      if (nav) nav.hidden = Boolean(query);
+      count.textContent = visible + (visible === 1 ? ' guide' : ' guides');
+      empty.hidden = visible !== 0;
+    });
+  })();
+</script>

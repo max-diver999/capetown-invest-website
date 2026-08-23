@@ -1,6 +1,7 @@
 ---
 import { SITE } from '../data/site';
 import { PRIMARY_NAV, UTILITY_NAV } from '../data/nav';
+import CurrencyToggle from './CurrencyToggle.astro';
 
 /** Desktop bar keeps the five highest-intent sections; the rest live in the mobile panel and footer. */
 const desktopNav = PRIMARY_NAV.slice(0, 5);
@@ -14,7 +15,7 @@ const isActive = (href: string) => currentPath === href || (href !== '/' && curr
       <span class="text-base sm:text-lg font-semibold text-[var(--color-ink)] truncate">{SITE.name}</span>
     </a>
 
-    <nav class="hidden md:flex items-center gap-6 text-sm font-medium" aria-label="Main">
+    <nav class="hidden lg:flex items-center gap-5 text-sm font-medium" aria-label="Main">
       {desktopNav.map((item) => (
         <a
           href={item.href}
@@ -27,54 +28,172 @@ const isActive = (href: string) => currentPath === href || (href !== '/' && curr
       ))}
     </nav>
 
-    <div class="flex items-center gap-2">
-      <a href="/get-shortlist/" class="btn-primary text-sm px-3 sm:px-4 py-2 shrink-0 whitespace-nowrap">
-        <span class="sm:hidden">Shortlist</span><span class="hidden sm:inline">Free shortlist</span>
-      </a>
+    <div class="flex items-center gap-2 shrink-0">
+      <CurrencyToggle variant="header" />
+      <a href="/get-shortlist/" class="btn-primary mobile-header-cta text-sm px-4 py-2 shrink-0 whitespace-nowrap">Free shortlist</a>
       <button
         type="button"
-        id="nav-toggle"
-        class="md:hidden inline-flex items-center justify-center rounded-lg border border-[var(--color-border)] p-2"
+        id="site-nav-toggle"
+        class="site-nav-toggle"
         aria-label="Open menu"
         aria-expanded="false"
-        aria-controls="mobile-nav"
+        aria-controls="site-nav-drawer"
       >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
-          <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
-        </svg>
+        <span class="site-nav-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
       </button>
     </div>
   </div>
 
-  <nav
-    id="mobile-nav"
-    class="hidden md:hidden border-t border-[var(--color-border)] bg-white"
-    aria-label="Mobile"
-  >
-    <div class="site-container py-4 grid gap-1">
-      {PRIMARY_NAV.map((item) => (
-        <a href={item.href} class="block rounded-lg px-3 py-2.5 no-underline hover:bg-[var(--color-paper-2,#faf8f4)]">
-          <span class="block text-sm font-semibold text-[var(--color-ink)]">{item.label}</span>
-          {item.note && <span class="block text-xs text-[var(--color-muted)]">{item.note}</span>}
-        </a>
-      ))}
-      <div class="mt-2 pt-3 border-t border-[var(--color-border)] flex flex-wrap gap-x-5 gap-y-2 px-3">
-        {UTILITY_NAV.map((item) => (
-          <a href={item.href} class="text-sm text-[var(--color-muted)] no-underline hover:text-[var(--color-ink)]">{item.label}</a>
+  <div id="site-nav-drawer" class="site-nav-drawer" hidden>
+    <div class="site-nav-drawer__panel">
+      <a href="/get-shortlist/" class="site-nav-drawer__cta">Get a free shortlist</a>
+      <CurrencyToggle variant="drawer" />
+
+      <p class="site-nav-drawer__label">Browse</p>
+      <ul class="site-nav-drawer__list">
+        {PRIMARY_NAV.map((item) => (
+          <li>
+            <a href={item.href}>
+              <span class="site-nav-drawer__link">{item.label}</span>
+              {item.note && <span class="site-nav-drawer__note">{item.note}</span>}
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
+
+      <p class="site-nav-drawer__label">The site</p>
+      <ul class="site-nav-drawer__list site-nav-drawer__list--compact">
+        {UTILITY_NAV.map((item) => (
+          <li><a href={item.href}><span class="site-nav-drawer__link">{item.label}</span></a></li>
+        ))}
+      </ul>
     </div>
-  </nav>
+  </div>
 </header>
 
-<script>
-  const toggle = document.getElementById('nav-toggle');
-  const panel = document.getElementById('mobile-nav');
-  if (toggle && panel) {
-    toggle.addEventListener('click', () => {
-      const open = panel.classList.toggle('hidden');
-      toggle.setAttribute('aria-expanded', String(!open));
-      toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
-    });
+<style>
+  .site-nav-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-right: -0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 10px;
+    background: transparent;
+    color: var(--color-ink);
+    cursor: pointer;
   }
+  .site-nav-toggle__bars { display: block; width: 18px; }
+  .site-nav-toggle__bars span {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+  .site-nav-toggle__bars span + span { margin-top: 4px; }
+  .site-nav-toggle[aria-expanded='true'] .site-nav-toggle__bars span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+  .site-nav-toggle[aria-expanded='true'] .site-nav-toggle__bars span:nth-child(2) { opacity: 0; }
+  .site-nav-toggle[aria-expanded='true'] .site-nav-toggle__bars span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+  .site-nav-drawer {
+    position: fixed;
+    inset: 73px 0 0;
+    z-index: 60;
+    background: var(--color-surface);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .site-nav-drawer__panel {
+    width: min(100%, 44rem);
+    margin: 0 auto;
+    padding: 1.25rem clamp(1.25rem, 5vw, 2rem) 2rem;
+  }
+  .site-nav-drawer__cta {
+    display: flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    border-radius: 999px;
+    background: var(--color-teal);
+    color: #fff !important;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .site-nav-drawer__label {
+    margin: 1rem 0 0.5rem;
+    color: var(--color-muted);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .site-nav-drawer__list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.35rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .site-nav-drawer__list a {
+    display: block;
+    min-height: 72px;
+    padding: 0.8rem;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: var(--color-page);
+    text-decoration: none;
+  }
+  .site-nav-drawer__list--compact a { min-height: 48px; }
+  .site-nav-drawer__link {
+    display: block;
+    color: var(--color-ink);
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+  .site-nav-drawer__note {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--color-muted);
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
+  @media (min-width: 1101px) {
+    .site-nav-toggle { display: none; }
+    .site-nav-drawer { display: none !important; }
+  }
+  @media (max-width: 767px) {
+    .mobile-header-cta { display: none; }
+  }
+  @media (max-width: 440px) {
+    .site-nav-drawer__list { grid-template-columns: 1fr; }
+    .site-nav-drawer__list a { min-height: 0; }
+  }
+</style>
+
+<script>
+  (function () {
+    const toggle = document.getElementById('site-nav-toggle');
+    const drawer = document.getElementById('site-nav-drawer');
+    if (!toggle || !drawer) return;
+
+    function setOpen(open: boolean) {
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      drawer.hidden = !open;
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+    drawer.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') setOpen(false);
+    });
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1100) setOpen(false);
+    });
+  })();
 </script>
