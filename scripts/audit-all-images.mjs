@@ -91,6 +91,7 @@ for (const file of walk(SRC)) {
     const bare = m[0].replace(/[.,;]+$/, '');
     const full = [...quoted].find((q) => q.startsWith(bare) && q !== bare);
     const url = full ?? bare;
+    if (url.includes('${')) continue;
     if (!isImageUrl(url)) continue;
     if (!map.has(url)) map.set(url, new Set());
     map.get(url).add(file.replace(ROOT + '/', ''));

@@ -31,7 +31,12 @@
     "audit:images": "node scripts/audit-all-images.mjs --fail",
     "images:manifest": "node scripts/hero-images-manifest.mjs",
     "images:mirror:dry": "python3 scripts/upload-heroes-cloudinary.py --dry-run",
-    "images:mirror": "python3 scripts/upload-heroes-cloudinary.py --collection all"
+    "images:mirror": "python3 scripts/upload-heroes-cloudinary.py --collection all",
+    "aeo:verify": "node scripts/reference-infra/verify-reference-infra.mjs --config reference-infra.config.json --robots public/robots.txt",
+    "aeo:dates": "node scripts/reference-infra/restore-real-updated-dates.mjs --config reference-infra.config.json",
+    "aeo:markdown": "node scripts/reference-infra/fix-markdown-structure.mjs --config reference-infra.config.json",
+    "aeo:robots": "node scripts/reference-infra/generate-robots.mjs --config reference-infra.config.json",
+    "aeo:llms": "node scripts/reference-infra/generate-agent-markdown.mjs --config reference-infra.config.json --output-dir public"
   },
   "dependencies": {
     "google-auth-library": "^10.6.2",
