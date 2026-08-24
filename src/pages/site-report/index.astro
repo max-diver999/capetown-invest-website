@@ -1,10 +1,10 @@
 ---
 export const prerender = true;
 
-const reportDate = '21 August 2026';
-const reportVersion = 'v2.2';
+const reportDate = '23 August 2026';
+const reportVersion = 'v2.3';
 const launchDate = '10 June 2026';
-const dataThrough = '24 July 2026';
+const dataThrough = '20 August 2026';
 
 const monthlyGsc = [
   { month: 'Jun 2026', label: 'Jun', clicks: 4, impressions: 432, position: 15.7, note: '18 Jun first impressions · avg pos improving late month' },
@@ -1094,6 +1094,15 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
 
   <div class="section-title">Launch changelog</div>
   <div class="changelog">
+        <div class="changelog-item">
+      <div class="changelog-date">23 Aug 2026 (v2.3)</div>
+      <div class="changelog-content">
+        <div class="changelog-title">Site-report v2.3 · heroes CDN + mobile + Wave C</div>
+        <div class="changelog-desc">Report refreshed 23 Aug. Unique Cloudinary heroes on 152 pages with alt text. Mobile property research flow. Wave C guides got topic-specific scenario sections (no boilerplate). Lead forms duplicate to owner email. Prior GSC/GA4/Bing pulse retained (MCP refresh pending).</div>
+        <div class="changelog-tags"><span class="tag green">Report v2.3</span><span class="tag blue">Cloudinary heroes</span><span class="tag amber">Mobile UX</span><span class="tag purple">Wave C</span></div>
+      </div>
+    </div>
+
         <div class="changelog-item">
       <div class="changelog-date">21 Aug 2026 v2.2</div>
       <div class="changelog-content">
