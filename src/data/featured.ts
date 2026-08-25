@@ -25,4 +25,4 @@ export const FEATURED_DEVELOPER_SLUGS = [
 ] as const;
 
 export const HOMEPAGE_HERO_IMAGE =
-  'https://upload.wikimedia.org/wikipedia/commons/d/dd/Cape_Town_Skyline.jpg';
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Cape_Town_Skyline.jpg/1280px-Cape_Town_Skyline.jpg';

@@ -6,6 +6,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import { SITE } from '../data/site';
 import { resolveRelatedSlugs, resolveRelatedEntities, type GraphCollection } from '../lib/content-graph';
+import { responsiveCloudinary } from '../lib/cloudinary';
 
 interface Props {
   title: string;
@@ -124,6 +125,7 @@ const breadcrumbSchema = {
 
 const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : []), ...extraSchemas];
 const resolvedHeroAlt = heroAlt || `${title} — Cape Town property research`;
+const responsiveHero = heroImage ? responsiveCloudinary(heroImage) : null;
 ---
 <BaseLayout
   title={title}
@@ -146,12 +148,14 @@ const resolvedHeroAlt = heroAlt || `${title} — Cape Town property research`;
       </p>
     </header>
 
-    {heroImage && (
+    {responsiveHero && (
       <img
-        src={heroImage}
+        src={responsiveHero.src}
+        srcset={responsiveHero.srcset}
+        sizes={responsiveHero.sizes}
         alt={resolvedHeroAlt}
-        width="1280"
-        height="720"
+        width={responsiveHero.width || 1280}
+        height={responsiveHero.height || 720}
         class="w-full max-h-[420px] object-cover rounded-2xl mb-10 border border-[var(--color-border)]"
         loading="eager"
         fetchpriority="high"
