@@ -156,6 +156,29 @@ all, because otherwise a heading of `What are the transfer duty rates?` answered
 would score full marks for sharing no words with it. Six costs the hand-written set nothing — none of its
 openers is that short — so it functions as a precondition rather than as payment for length.
 
+### Two rules that were punishing correct writing
+
+Both were found the same way — a legitimate article capped at zero — and both were fixed by measuring the
+proposed exemption on the labelled sets rather than by arguing about it.
+
+**Implausible precision fired on interest rates.** The rule penalises percentages quoted to two decimals that
+appear nowhere else and in no registry, because giving every round figure fabricated precision is how a
+figure escapes provenance. It capped a rates article at zero for writing `7.00%`, `10.25%`, `10.50%` and
+`11.75%` — the convention for quoting a repo or prime rate, which moves in quarter points. Quarter-point
+quotes are now exempt. The measurement says this costs nothing: the machine corpus contains **no**
+quarter-point two-decimal percentages at all (0 against 8 arbitrary ones), while the hand-written set uses 6.
+An arbitrary two-decimal figure in the same article, `11.40%`, is still counted, which is the rule working.
+
+**The hedge detector was counting the month of May.** `HEDGE_RE` matched `may` case-insensitively, so an
+article quoting monetary policy committee dates was charged 12 points for writing "May 2026" seven times.
+`may` is now matched lowercase only: the month is always capitalised and hedging "may" is almost always
+mid-sentence. On the labelled sets the change moves the machine corpus from 5.83 to 5.77 hedges per 1000 and
+leaves the hand-written set at 1.87 exactly.
+
+Neither exemption was added because a page scored badly. Each was added because the page scored badly *for
+doing the right thing*, and in both cases the measurement had to show the exemption did not weaken the
+signal before it shipped.
+
 ### One exemption, deliberately bounded
 
 Only one class of text is removed before duplication is measured, and it is worth stating why the bar for

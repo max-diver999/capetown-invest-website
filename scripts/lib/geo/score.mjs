@@ -319,7 +319,17 @@ export function scoreDocument(docId, index, { requireRegistry = true } = {}) {
   // A figure quoted to two decimals that appears nowhere else and in no registry
   // is usually not a measurement. The attack it blocks is giving every round
   // figure fabricated precision so it stops being shared and escapes provenance.
+  //
+  // Quarter-point quotes are exempt, because in one whole class of figure two
+  // decimals are the convention rather than an affectation: interest rates move
+  // in quarter points and are written 7.00%, 10.25%, 10.50%, 11.75%. The rule
+  // was capping an entire rates article at zero for quoting the repo and prime
+  // rates correctly. Measured on the labelled sets, the exemption costs nothing:
+  // the machine corpus contains no quarter-point two-decimal percentages at all
+  // (0 against 8 arbitrary ones), while the hand-written set uses 6.
+  const QUARTER_POINT = /\.(?:00|25|50|75)%$/;
   const jittered = (doc.text.match(/\b\d+\.\d{2}%/g) || [])
+    .filter((f) => !QUARTER_POINT.test(f))
     .filter((f) => (index.figureCounts.get(f.toLowerCase()) || 0) < 2 && !factRegistry().has(f.toLowerCase()));
   if (jittered.length > 2) {
     add(jittered.length * 3, 'implausible-precision',

@@ -18,7 +18,15 @@ import { plainText, words, sentences } from './corpus-signals.mjs';
 /** Wreckage left by string-templating: "r," and "undefined" reached production in July. */
 const MALFORMED_RE = /\bundefined\b|\bNaN\b|\bR\s*,|\s,\s|\b(\w+)\s+\1\b(?!\s*(?:street|road|bay))/gi;
 
-const HEDGE_RE = /\b(may|might|could|generally|typically|usually|often|tends? to|somewhat|relatively)\b/gi;
+// "may" is matched lowercase only, deliberately. Case-insensitively it also
+// matches the month, and a news article quoting MPC meeting dates was charged
+// 12 points for writing "May 2026" seven times. The month is always
+// capitalised and hedging "may" is almost always mid-sentence, so lowercase is
+// a near-perfect discriminator: on the labelled sets the change moves the
+// machine corpus from 5.83 to 5.77 hedges per 1000 and leaves the
+// hand-written set at 1.87 exactly.
+const HEDGE_RE_I = /\b(might|could|generally|typically|usually|often|tends? to|somewhat|relatively)\b/gi;
+const HEDGE_RE_MAY = /\bmay\b/g;
 
 export function sections(raw) {
   const body = raw.replace(/^---\n[\s\S]*?\n---\n?/, '');
@@ -81,7 +89,8 @@ export function openerTemplateShare(raw) {
 export function hedgeDensity(raw) {
   const text = plainText(raw);
   const w = words(text).length || 1;
-  return ((text.match(HEDGE_RE) || []).length / w) * 1000;
+  const hits = (text.match(HEDGE_RE_I) || []).length + (text.match(HEDGE_RE_MAY) || []).length;
+  return (hits / w) * 1000;
 }
 
 /**
