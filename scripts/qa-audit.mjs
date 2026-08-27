@@ -1,4 +1,4 @@
-// QA audit for mexico-invest content — hard gate before publish
+// QA audit for capetown-invest content — hard gate before publish
 // Usage:
 //   node scripts/qa-audit.mjs
 //   node scripts/qa-audit.mjs --changed
@@ -246,7 +246,7 @@ for (const { coll, slug } of filesToAudit) {
   auditFile(coll, slug);
 }
 
-console.log('=== MEXICO-INVEST QA AUDIT ===');
+console.log('=== CAPE TOWN INVEST QA AUDIT ===');
 console.log(`Scope: ${changedOnly ? 'changed only' : singleFile ? singleFile : 'full corpus'}`);
 console.log(`Files audited: ${stats.total}`);
 if (stats.total) console.log(`Avg words: ${Math.round(stats.wordSum / stats.total)}`);

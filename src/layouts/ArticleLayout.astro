@@ -17,6 +17,13 @@ interface Props {
   readingTime?: number;
   heroImage?: string;
   heroAlt?: string;
+  heroCredit?: {
+    author: string;
+    authorUrl?: string;
+    licence: string;
+    licenceUrl: string;
+    sourceUrl: string;
+  };
   faq?: { question: string; answer: string }[];
   canonical?: string;
   noindex?: boolean;
@@ -38,6 +45,7 @@ const {
   readingTime = 8,
   heroImage,
   heroAlt,
+  heroCredit,
   faq = [],
   canonical,
   noindex = false,
@@ -149,6 +157,7 @@ const responsiveHero = heroImage ? responsiveCloudinary(heroImage) : null;
     </header>
 
     {responsiveHero && (
+      <figure class="article-hero-figure">
       <img
         src={responsiveHero.src}
         srcset={responsiveHero.srcset}
@@ -161,6 +170,14 @@ const responsiveHero = heroImage ? responsiveCloudinary(heroImage) : null;
         fetchpriority="high"
         data-hero-img
       />
+      {heroCredit && (
+        <figcaption class="article-hero-credit">
+          Photo <a href={heroCredit.authorUrl ?? heroCredit.sourceUrl} rel="noopener nofollow" target="_blank">{heroCredit.author}</a>,
+          <a href={heroCredit.licenceUrl} rel="license noopener nofollow" target="_blank">{heroCredit.licence}</a>,
+          via <a href={heroCredit.sourceUrl} rel="noopener nofollow" target="_blank">Wikimedia Commons</a>
+        </figcaption>
+      )}
+      </figure>
     )}
 
     <div class="prose">
@@ -209,6 +226,7 @@ const responsiveHero = heroImage ? responsiveCloudinary(heroImage) : null;
 
 <style>
   /* Square, unframed, and wide — the photograph is a stratum, not a framed plate. */
+  .article-hero-figure { position: relative; margin: 0 0 2.5rem; }
   .article-hero {
     display: block;
     width: 100%;
@@ -216,9 +234,22 @@ const responsiveHero = heroImage ? responsiveCloudinary(heroImage) : null;
     object-fit: cover;
     border: 0;
     border-radius: 0;
-    margin-bottom: 2.5rem;
   }
   @media (max-width: 640px) {
     .article-hero { height: 13rem; }
   }
+  /* Licence condition, so it is never hidden at small widths. */
+  .article-hero-credit {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    padding: 0.35rem 0.7rem;
+    background: var(--color-deep);
+    color: #b9c6cc;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.05em;
+    line-height: 1.5;
+  }
+  .article-hero-credit a { color: #f2efe8; text-decoration: underline; }
 </style>

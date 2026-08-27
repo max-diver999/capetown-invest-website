@@ -11,6 +11,20 @@ const articleSchema = z.object({
   tags: z.array(z.string()).default([]),
   heroImage: z.string().optional(),
   heroAlt: z.string().optional(),
+  /**
+   * Attribution for a hero licensed under CC BY / CC BY-SA. It is a licence
+   * condition rather than a caption, so ArticleLayout renders it at every
+   * breakpoint whenever it is present.
+   */
+  heroCredit: z
+    .object({
+      author: z.string(),
+      authorUrl: z.string().optional(),
+      licence: z.string(),
+      licenceUrl: z.string(),
+      sourceUrl: z.string(),
+    })
+    .optional(),
   readingTime: z.number().optional(),
   relatedSlugs: z.array(z.string()).default([]),
   noindex: z.boolean().default(false),
