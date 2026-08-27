@@ -13,7 +13,17 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { loadCorpus, scoreDocument, DETERMINISTIC_MAX, ABSOLUTE_MAX } from './lib/geo/score.mjs';
 
-const CORPUS_DIRS = ['src/content/guides', 'src/content/compare', 'src/content/areas', 'src/content/segments'];
+// Every collection, because duplication is measured against the whole site: a
+// passage shared between a guide and a project page is still a shared passage.
+const CORPUS_DIRS = [
+  'src/content/guides',
+  'src/content/compare',
+  'src/content/areas',
+  'src/content/segments',
+  'src/content/projects',
+  'src/content/developers',
+  'src/content/news',
+];
 
 function corpusFiles() {
   const out = [];
@@ -51,6 +61,7 @@ function printOne(r, explain) {
 
 const args = process.argv.slice(2);
 const explain = args.includes('--explain');
+const asJson = args.includes('--json');
 const target = args.find((a) => !a.startsWith('--'));
 const files = corpusFiles();
 
@@ -60,6 +71,14 @@ if (target) {
   if (!all.includes(abs)) all.push(abs);
   const index = loadCorpus(all);
   printOne(scoreDocument(path.basename(abs), index), explain);
+} else if (asJson) {
+  const index = loadCorpus(files);
+  const byId = new Map(files.map((f) => [path.basename(f), f]));
+  const rows = files.map((f) => {
+    const r = scoreDocument(path.basename(f), index);
+    return { ...r, path: byId.get(r.id) };
+  });
+  console.log(JSON.stringify(rows, null, 1));
 } else {
   const index = loadCorpus(files);
   const rows = files.map((f) => scoreDocument(path.basename(f), index)).sort((a, b) => a.deterministic - b.deterministic);
