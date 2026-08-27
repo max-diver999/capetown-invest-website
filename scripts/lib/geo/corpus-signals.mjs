@@ -76,6 +76,25 @@ export function plainText(raw) {
     .trim();
 }
 
+/**
+ * Text for duplication detection only.
+ *
+ * plainText drops table rows because table cells are not prose and wreck the
+ * rhythm and paragraph-length measures that score writing quality. But dropping
+ * them here would mean a comparison table cloned across eight pages costs
+ * nothing, which is exactly the mutation this detector exists to catch. So
+ * duplication runs over prose plus table cell text, and the quality rubrics run
+ * over prose alone.
+ */
+export function duplicationText(raw) {
+  const tableCells = raw
+    .split('\n')
+    .filter((l) => /^\s*\|/.test(l) && !/^\s*\|[\s:|-]*\|?\s*$/.test(l))
+    .map((l) => l.replace(/^\s*\|/, '').replace(/\|\s*$/, '').split('|').join(' '))
+    .join(' ');
+  return `${plainText(raw)} ${tableCells.replace(/\s+/g, ' ').trim()}`.trim();
+}
+
 export function words(text) {
   return text.match(/\b[\w']+\b/g) || [];
 }
@@ -107,7 +126,13 @@ function shingleSet(text) {
 export function buildCorpusIndex(docs) {
   const prepared = docs.map((d) => {
     const text = plainText(d.raw);
-    return { id: d.id, text, shingles: shingleSet(text), sentences: sentences(stripBoilerplate(text)) };
+    const dupText = duplicationText(d.raw);
+    return {
+      id: d.id,
+      text,
+      shingles: shingleSet(dupText),
+      sentences: sentences(stripBoilerplate(dupText)),
+    };
   });
 
   const shingleOwners = new Map();
