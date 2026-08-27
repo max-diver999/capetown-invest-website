@@ -282,6 +282,30 @@
       "statement": "Modelled net yield in De Waterkant, the softest in the City Bowl",
       "source": "Cape Town Invest model built from listing asking prices and observed long-let rents, not audited accounts. Net deducts levies, municipal rates, maintenance, letting commission and a vacancy allowance set by zone.",
       "asOf": "2026-08-27"
+    },
+    {
+      "figure": "0.005237",
+      "statement": "Overstrand Municipality residential rate in the rand for 2026/27, applying to Hermanus, up from 0.004988",
+      "source": "Overstrand Municipality approved 2026/27 budget, effective 1 July 2026",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "R350,000",
+      "statement": "Value below which residential property pays no rates in Overstrand and in Drakenstein, against R620,000 rates-free in the City of Cape Town",
+      "source": "Overstrand Municipality 2026/27 budget; Drakenstein Municipality 2026/27 budget proposals",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "3.7%",
+      "statement": "Cap Drakenstein Municipality proposed on property rate increases for 2026/27, covering Paarl",
+      "source": "Drakenstein Municipality 2026/27 budget, reported by Paarl Post",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "0.0064",
+      "statement": "City of Cape Town residential rate in the rand for 2026/27",
+      "source": "City of Cape Town budget 2026/27, adopted 29 June 2026",
+      "asOf": "2026-08-27"
     }
   ]
 }
