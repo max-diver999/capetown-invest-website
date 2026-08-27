@@ -204,6 +204,48 @@
       "statement": "Site convention: the standard worked-example price for a mid-market Cape Town purchase, used so cost comparisons across articles stay comparable",
       "source": "Editorial convention, not a market claim",
       "asOf": "2026-08-27"
+    },
+    {
+      "figure": "9.7%",
+      "statement": "Modelled gross yield on a Sea Point one-bedroom apartment",
+      "source": "Cape Town Invest model built from listing asking prices and platform revenue bands, not audited accounts. Method: annual achievable rent divided by purchase price for gross; net deducts levies, municipal rates, maintenance, letting commission and a vacancy allowance.",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "6.8%",
+      "statement": "Modelled gross yield on prime Camps Bay stock",
+      "source": "Cape Town Invest model built from listing asking prices and platform revenue bands, not audited accounts. Method: annual achievable rent divided by purchase price for gross; net deducts levies, municipal rates, maintenance, letting commission and a vacancy allowance.",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "4.4%",
+      "statement": "Modelled net yield on prime Camps Bay stock",
+      "source": "Cape Town Invest model built from listing asking prices and platform revenue bands, not audited accounts. Method: annual achievable rent divided by purchase price for gross; net deducts levies, municipal rates, maintenance, letting commission and a vacancy allowance.",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "3.5%",
+      "statement": "Modelled net yield in Llandudno, the lowest rung of the Atlantic Seaboard ladder",
+      "source": "Cape Town Invest model built from listing asking prices and platform revenue bands, not audited accounts. Method: annual achievable rent divided by purchase price for gross; net deducts levies, municipal rates, maintenance, letting commission and a vacancy allowance.",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "R4,500",
+      "statement": "Indicative peak-season nightly rate on prime Camps Bay short-let stock",
+      "source": "Airbtics and AirROI platform bands for Camps Bay, 2026",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "4%",
+      "statement": "Modelled net yield on Hout Bay house stock",
+      "source": "Cape Town Invest model built from listing asking prices and platform revenue bands, not audited accounts. Method: annual achievable rent divided by purchase price for gross; net deducts levies, municipal rates, maintenance, letting commission and a vacancy allowance.",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "20%",
+      "statement": "Typical short-let management fee charged as a share of collected revenue in Cape Town",
+      "source": "Cape Town short-let management market rates, 2026",
+      "asOf": "2026-08-27"
     }
   ]
 }
