@@ -50,6 +50,13 @@ function printOne(r, explain) {
     console.log('  gates:');
     for (const g of r.gates) console.log(`    [cap ${g.cap}] ${g.code}: ${g.detail}`);
   }
+  if (explain && r.components) {
+    const maxes = { openers: 20, evidence: 15, structure: 15, rhythm: 8, provenance: 10, floor: 7 };
+    const parts = Object.entries(r.components)
+      .map(([k, v]) => `${k} ${Math.round(v)}/${maxes[k]}`)
+      .join('  ');
+    console.log(`  base parts: ${parts}`);
+  }
   const shown = explain ? r.penalties : r.penalties.slice(0, 5);
   if (shown.length) {
     console.log('  penalties:');

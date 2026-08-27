@@ -99,8 +99,38 @@ re-adds them on intuition:
 | structural variety across sections | 0.28 | 0.52 | the middle set matched the garbage (0.26) |
 | diversity of sentence openers | 0.10 | 0.19 | too weak to separate, inverted against the middle set |
 | currency followed by a bare duration | fires | fires once | `R4,500 nights stack into R135,000 months` is ordinary English; a rule that caps a score has to be precise |
+| opener of 18–70 words | 90.5% of sections | 90.3% of sections | shipped for weeks inside the openers component and separated nothing: it paid for a shape, which is the exact failure of the July rubric |
+| opener not starting with a pronoun | 99.9% | 100.0% | both classes pass essentially always, so the rule was 5 free points for everyone |
+| a figure in the opening sentence | 89.6% | 58.1% | separates, but *backwards*: machine text front-loads numbers. Not usable as a reward, and too imprecise to be a penalty |
 
 The first rubric was built entirely out of rules like these: plausible, untested, and wrong.
+
+### The openers component, rebuilt on measurement
+
+The first three rows above were not hypotheticals: two of them shipped. `scoreOpeners` was worth 20 points
+and awarded them in three parts — 0.5 for an opener of 18–70 words, 0.25 for not starting with a pronoun,
+0.25 for not echoing the heading. Measured on the labelled sets, the first two parts separate the classes by
+**nothing** (90.5% against 90.3%, and 99.9% against 100.0%), so 15 of the 20 points were paid to every
+article regardless of quality, garbage included.
+
+The third part carries the entire signal. Machine openers restate their heading — median overlap 1.00, with
+75% of sections at 0.75 or above. Hand-written openers answer it — median 0.33, and 31% reuse none of the
+heading's words at all. The component is now that measure alone, ramped across the gap between the two
+distributions (full credit at 0.33 overlap, none at 0.85) rather than thresholded:
+
+| model | machine | hand-written | separation |
+|---|---|---|---|
+| as shipped | 15.4 | 17.9 | 2.5 |
+| overlap alone, hard threshold at 0.5 | 1.0 | 8.4 | 7.4 |
+| **overlap alone, ramped 0.33 → 0.85** | **3.7** | **15.3** | **11.6** |
+
+The ramp was chosen over the hard threshold because it separates further *and* is less punitive to good
+writing: a hand-written article now reaches about 15 of 20 here rather than 8.
+
+One guard survives from the old rule and it is not a reward. An opener under six words earns no credit at
+all, because otherwise a heading of `What are the transfer duty rates?` answered with an unrelated fragment
+would score full marks for sharing no words with it. Six costs the hand-written set nothing — none of its
+openers is that short — so it functions as a precondition rather than as payment for length.
 
 ### One exemption, deliberately bounded
 

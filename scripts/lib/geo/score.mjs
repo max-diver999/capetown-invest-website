@@ -88,7 +88,6 @@ export function factRegistryReport() {
 }
 
 const QUESTION_H2 = /^(what|how|why|when|where|who|which|can|do|does|is|are|should|will)\b/i;
-const PRONOUN_START = /^(it|this|they|these|those|however|but|and|also)\b/i;
 
 /* ---------------------------------------------------------------- base ---- */
 
@@ -96,21 +95,43 @@ const PRONOUN_START = /^(it|this|they|these|those|however|but|and|also)\b/i;
  * Openers are scored on whether they answer their own heading, which is the one
  * thing the generator could never do: it restated the heading instead.
  */
+/**
+ * Does the opener answer the heading, or restate it?
+ *
+ * This component was three rules and two of them were worthless. Measured on
+ * the labelled sets, an opener of 18-70 words appears in 90.5% of machine
+ * sections and 90.3% of hand-written ones, and an opener not starting with a
+ * pronoun appears in 99.9% and 100.0%. Together they were 15 of the 20 points
+ * and separated the two classes by nothing at all; the July rubric failed in
+ * exactly this way, by paying for a shape rather than for a quality.
+ *
+ * What does separate is heading overlap. Machine openers restate their heading:
+ * median overlap 1.00, with 75% of sections at 0.75 or above. Hand-written
+ * openers answer it: median 0.33, and 31% reuse none of the heading's words.
+ * So the whole component is now that one measure, ramped across the gap between
+ * the two distributions rather than thresholded, which lifts separation on this
+ * component from 2.5 points to 11.6 (bad 3.7, good 15.3, mid 15.4).
+ *
+ * The length floor is a precondition, not a reward: it stops a one-word opener
+ * scoring full marks for sharing no words with its heading. At six words it
+ * costs the hand-written set nothing, because none of its openers is that short.
+ */
+export const OPENER_MIN_WORDS = 6;
+const OPENER_FULL_CREDIT_OVERLAP = 0.33;
+const OPENER_ZERO_CREDIT_OVERLAP = 0.85;
+
 function scoreOpeners(secs) {
   if (!secs.length) return 0;
   let earned = 0;
   for (const s of secs) {
-    const w = words(s.firstSentence).length;
-    let p = 0;
-    if (w >= 18 && w <= 70) p += 0.5;
-    if (!PRONOUN_START.test(s.firstSentence)) p += 0.25;
+    if (words(s.firstSentence).length < OPENER_MIN_WORDS) continue;
     const headingWords = new Set(words(s.heading.toLowerCase()).filter((x) => x.length > 4));
     const openerWords = new Set(words(s.firstSentence.toLowerCase()));
     const overlap = headingWords.size
       ? [...headingWords].filter((x) => openerWords.has(x)).length / headingWords.size
       : 0;
-    if (overlap < 0.5) p += 0.25;
-    earned += Math.min(1, p);
+    const span = OPENER_ZERO_CREDIT_OVERLAP - OPENER_FULL_CREDIT_OVERLAP;
+    earned += Math.max(0, Math.min(1, (OPENER_ZERO_CREDIT_OVERLAP - overlap) / span));
   }
   return (earned / secs.length) * 20;
 }
@@ -223,13 +244,18 @@ export function scoreDocument(docId, index, { requireRegistry = true } = {}) {
   const corpus = analyseDoc(docId, index);
   const signals = documentSignals(raw);
 
-  const base =
-    scoreOpeners(secs) +
-    scoreEvidence(secs) +
-    scoreStructure(secs) +
-    scoreRhythm(secs) +
-    (requireRegistry ? scoreProvenance(docId, index) : 10) +
-    7;
+  // Kept as named parts rather than one sum so --explain can tell a writer
+  // where the base was lost. Reporting the components changes no arithmetic;
+  // it just stops "base 50" being an opaque number to work against.
+  const components = {
+    openers: scoreOpeners(secs),
+    evidence: scoreEvidence(secs),
+    structure: scoreStructure(secs),
+    rhythm: scoreRhythm(secs),
+    provenance: requireRegistry ? scoreProvenance(docId, index) : 10,
+    floor: 7,
+  };
+  const base = Object.values(components).reduce((a, b) => a + b, 0);
 
   const penalties = [];
   const add = (points, code, detail) => {
@@ -335,6 +361,7 @@ export function scoreDocument(docId, index, { requireRegistry = true } = {}) {
     max: DETERMINISTIC_MAX,
     ceiling: ABSOLUTE_MAX,
     base: Math.round(base),
+    components,
     penaltyTotal,
     penalties: penalties.sort((a, b) => b.points - a.points),
     gates,
