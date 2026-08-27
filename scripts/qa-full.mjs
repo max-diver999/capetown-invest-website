@@ -66,6 +66,15 @@ const steps = [
     cmd: 'node',
     args: ['scripts/qa-audit.mjs'],
   },
+  ...(existsSync(join(ROOT, 'scripts/facts-review.mjs'))
+    ? [
+        {
+          name: 'External claims review (PT/MU/AE figures past their review date)',
+          cmd: 'node',
+          args: ['scripts/facts-review.mjs'],
+        },
+      ]
+    : []),
   ...(existsSync(join(ROOT, 'scripts/audit-all-images.mjs'))
     ? [
         {
