@@ -28,12 +28,63 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 const REPO = path.resolve(HERE, '../../..');
 
 let registryCache = null;
-export function factRegistry() {
-  if (registryCache) return registryCache;
+let registryReport = null;
+
+/**
+ * The registry is the one component a scored agent can write to, so what it
+ * pays for has to be narrow.
+ *
+ * A red team scripted 372 invented entries in ninety seconds and lifted the
+ * corpus mean by 5.2 points, in a single-file diff no reviewer reads line by
+ * line. Two things follow. An entry without a real source and date buys
+ * nothing, because the entry is a claim about the world and those two fields
+ * are the claim. And a registry where one source string or one statement
+ * template covers a large share of entries is a generated registry rather than
+ * a researched one, so provenance credit is withheld from the whole corpus
+ * until a human fixes it: bulk poisoning has to cost points, not earn them.
+ *
+ * This does not make invention impossible. It makes it visible and unprofitable,
+ * which is the honest limit of a mechanism that lives in the repository.
+ */
+export const REGISTRY_TEMPLATE_SHARE = 0.35;
+
+function loadRegistry() {
   const p = path.join(REPO, '.content-os/facts.json');
   const raw = fs.existsSync(p) ? JSON.parse(fs.readFileSync(p, 'utf8')) : { facts: [] };
-  registryCache = new Map(raw.facts.map((f) => [f.figure.toLowerCase().replace(/\s+/g, ' '), f]));
+  const facts = Array.isArray(raw.facts) ? raw.facts : [];
+
+  const usable = facts.filter(
+    (f) => f && typeof f.figure === 'string' && typeof f.source === 'string' && f.source.trim().length >= 12
+      && typeof f.asOf === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(f.asOf)
+      && typeof f.statement === 'string' && f.statement.trim().length >= 20,
+  );
+  const rejected = facts.length - usable.length;
+
+  const bySource = new Map();
+  const byStatement = new Map();
+  for (const f of usable) {
+    bySource.set(f.source, (bySource.get(f.source) || 0) + 1);
+    const shape = f.statement.replace(/\d[\d,.]*/g, '#').slice(0, 60);
+    byStatement.set(shape, (byStatement.get(shape) || 0) + 1);
+  }
+  const topSource = Math.max(0, ...bySource.values());
+  const topStatement = Math.max(0, ...byStatement.values());
+  const templated =
+    usable.length >= 20 &&
+    (topSource / usable.length > REGISTRY_TEMPLATE_SHARE || topStatement / usable.length > REGISTRY_TEMPLATE_SHARE);
+
+  registryReport = { total: facts.length, usable: usable.length, rejected, templated, topSource, topStatement };
+  registryCache = new Map(usable.map((f) => [f.figure.toLowerCase().replace(/\s+/g, ' '), f]));
+}
+
+export function factRegistry() {
+  if (!registryCache) loadRegistry();
   return registryCache;
+}
+
+export function factRegistryReport() {
+  if (!registryReport) loadRegistry();
+  return registryReport;
 }
 
 const QUESTION_H2 = /^(what|how|why|when|where|who|which|can|do|does|is|are|should|will)\b/i;
@@ -106,6 +157,7 @@ function scoreRhythm(secs) {
  */
 function scoreProvenance(docId, index) {
   const registry = factRegistry();
+  if (factRegistryReport().templated) return 0;
   const doc = index.prepared.find((d) => d.id === docId);
   const re =
     /(?:(?<![A-Za-z])R\s?\d[\d,]*(?:\.\d+)?(?:\s*(?:million|bn|k))?|\d+(?:\.\d+)?%|\d[\d,]*\s*(?:business\s+)?(?:days?|weeks?|months?|years?))/gi;
@@ -184,6 +236,13 @@ export function scoreDocument(docId, index, { requireRegistry = true } = {}) {
     if (points > 0) penalties.push({ code, points: Math.round(points), detail });
   };
 
+  // Truncation defence: the share improves when you delete, the absolute count
+  // does not. A file carrying 400 duplicated 9-grams is carrying a template
+  // whether it is 1,000 words long or 5,000.
+  if (corpus.duplicatedWords > 150) {
+    add((corpus.duplicatedWords - 150) / 12, 'duplicated-volume',
+      `${corpus.duplicatedWords} nine-word sequences in this article also appear elsewhere in the corpus`);
+  }
   if (corpus.duplicateShare > 0.02) {
     add((corpus.duplicateShare - 0.02) * 320, 'duplicated-text',
       `${(corpus.duplicateShare * 100).toFixed(1)}% of this article's 9-word sequences also appear in ${corpus.topDuplicateSources.length} other file(s)`);
@@ -219,7 +278,27 @@ export function scoreDocument(docId, index, { requireRegistry = true } = {}) {
 
   const unregistered = requireRegistry ? unregisteredSharedFigures(docId, index) : [];
 
+  // A figure quoted to two decimals that appears nowhere else and in no registry
+  // is usually not a measurement. The attack it blocks is giving every round
+  // figure fabricated precision so it stops being shared and escapes provenance.
+  const jittered = (doc.text.match(/\b\d+\.\d{2}%/g) || [])
+    .filter((f) => (index.figureCounts.get(f.toLowerCase()) || 0) < 2 && !factRegistry().has(f.toLowerCase()));
+  if (jittered.length > 2) {
+    add(jittered.length * 3, 'implausible-precision',
+      `${jittered.length} percentages quoted to two decimals that appear nowhere else and in no registry: ${[...new Set(jittered)].slice(0, 4).join(', ')}`);
+  }
+
   const gates = [];
+  // Every section-level measure keys on H2. Demoting the headings would empty
+  // them all and silently return a shape the rubrics cannot see, so a file
+  // without a real section structure is refused rather than scored.
+  if (secs.length < 3) {
+    gates.push({ code: 'no-section-structure', cap: 20,
+      detail: `${secs.length} H2 section(s) found; the section rubrics cannot measure a page without them` });
+  }
+  if (signals.wordCount < 600) {
+    gates.push({ code: 'too-short-to-score', cap: 25, detail: `${signals.wordCount} words of prose` });
+  }
   if (signals.malformed.count > 0) {
     gates.push({ code: 'malformed-output', cap: 40, detail: `${signals.malformed.count} broken tokens: ${signals.malformed.samples.join(', ')}` });
   }
@@ -267,6 +346,7 @@ export function scoreDocument(docId, index, { requireRegistry = true } = {}) {
       saturatedFigures: corpus.saturatedFigures.length,
     },
     signals: {
+      duplicatedWords: corpus.duplicatedWords,
       headingEchoes: signals.headingEchoes.length,
       crossSectionEcho: Number(signals.crossSectionEcho.score.toFixed(3)),
       unitTypeViolations: signals.unitTypeViolations.length,

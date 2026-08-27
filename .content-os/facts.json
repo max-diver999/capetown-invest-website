@@ -63,8 +63,8 @@
     },
     {
       "figure": "10.5%",
-      "statement": "Prime lending rate",
-      "source": "SARB repo 7% plus 3.5%",
+      "statement": "Prime lending rate in South Africa, being the SARB repo rate of 7% plus 3.5%",
+      "source": "South African Reserve Bank repo rate plus the standard prime margin",
       "asOf": "2026-08-22"
     },
     {

@@ -25,6 +25,29 @@ import crypto from 'node:crypto';
 import { loadCorpus, scoreDocument, ABSOLUTE_MAX } from './lib/geo/score.mjs';
 
 const JUDGEMENTS = '.content-os/judgements';
+
+/**
+ * The judge's twenty points were forgeable in ninety seconds.
+ *
+ * `record` used to ingest whatever JSON it was handed and write the award to
+ * disk, and `final` trusted the file. A red team wrote {"substance":5,...} for
+ * every article and took the full twenty points with no model involved. The
+ * content hash bound the verdict to the article and nothing bound the verdict
+ * to a judge.
+ *
+ * So a verdict now carries an HMAC over (file hash, awarded points) keyed by a
+ * secret the scored agent does not hold. Where the secret is absent, `record`
+ * refuses to write and `final` reports the deterministic score alone: judge
+ * points are simply unavailable rather than assumed. That is the honest
+ * failure mode, because an unverifiable verdict is worth nothing.
+ */
+function judgeSecret() {
+  return process.env.GEO_JUDGE_SECRET || '';
+}
+
+function verdictSignature(fileHash, awarded, secret) {
+  return crypto.createHmac('sha256', secret).update(`${fileHash}:${awarded}`).digest('hex').slice(0, 32);
+}
 const EXEMPLARS = {
   good: ['src/content/guides/cape-town-utilities-costs-owners-2026.mdx', 'src/content/guides/section-35a-withholding-tax-explained.mdx'],
   bad: ['9cda569:src/content/guides/cape-town-rates-taxes-property.mdx'],
@@ -81,6 +104,15 @@ function packet(file) {
 }
 
 function record(file, verdictFile) {
+  const secret = judgeSecret();
+  if (!secret) {
+    console.error(
+      'refusing to record: GEO_JUDGE_SECRET is not set.\n' +
+        'The judge stage is only worth points when the verdict cannot be written by whoever is being scored.\n' +
+        'Run this step in CI with the secret in its environment, not in the session doing the writing.',
+    );
+    process.exit(2);
+  }
   const v = JSON.parse(fs.readFileSync(verdictFile, 'utf8'));
   const d = v.dimensions || {};
   const raw = ['substance', 'specificity', 'coherence', 'voice', 'honesty']
@@ -90,7 +122,17 @@ function record(file, verdictFile) {
   const penalty = (v.arithmeticErrors?.length || 0) * 4;
   const awarded = Math.max(0, Math.round((raw / 25) * JUDGE_MAX) - penalty);
   fs.mkdirSync(JUDGEMENTS, { recursive: true });
-  const out = { file: path.basename(file), hash: contentHash(file), awarded, raw, penalty, verdict: v, recordedAt: new Date().toISOString() };
+  const hash = contentHash(file);
+  const out = {
+    file: path.basename(file),
+    hash,
+    awarded,
+    raw,
+    penalty,
+    verdict: v,
+    recordedAt: new Date().toISOString(),
+    signature: verdictSignature(hash, awarded, secret),
+  };
   fs.writeFileSync(verdictPath(file), `${JSON.stringify(out, null, 2)}\n`);
   console.log(`recorded ${out.file}: judge ${awarded}/${JUDGE_MAX} (raw ${raw}/25, arithmetic penalty ${penalty})`);
 }
@@ -105,8 +147,17 @@ function final(file) {
   let note = 'no judge verdict on record';
   if (fs.existsSync(vp)) {
     const v = JSON.parse(fs.readFileSync(vp, 'utf8'));
-    if (v.hash !== contentHash(file)) note = 'judge verdict is stale: the article changed since it was judged';
-    else { judge = v.awarded; note = `judge ${judge}/${JUDGE_MAX}`; }
+    const secret = judgeSecret();
+    if (v.hash !== contentHash(file)) {
+      note = 'judge verdict is stale: the article changed since it was judged';
+    } else if (!secret) {
+      note = 'judge verdict present but unverifiable here: GEO_JUDGE_SECRET is not set, so no judge points are counted';
+    } else if (v.signature !== verdictSignature(v.hash, v.awarded, secret)) {
+      note = 'judge verdict REJECTED: signature does not match, the file was written by something other than the judge';
+    } else {
+      judge = v.awarded;
+      note = `judge ${judge}/${JUDGE_MAX}, signature verified`;
+    }
   }
   const total = Math.min(ABSOLUTE_MAX, det.deterministic + judge);
   console.log(`${path.basename(file)}`);

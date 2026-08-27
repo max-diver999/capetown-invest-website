@@ -11,27 +11,34 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { loadCorpus, scoreDocument, DETERMINISTIC_MAX, ABSOLUTE_MAX } from './lib/geo/score.mjs';
+import { loadCorpus, scoreDocument, factRegistryReport, DETERMINISTIC_MAX, ABSOLUTE_MAX } from './lib/geo/score.mjs';
 
-// Every collection, because duplication is measured against the whole site: a
-// passage shared between a guide and a project page is still a shared passage.
-const CORPUS_DIRS = [
-  'src/content/guides',
-  'src/content/compare',
-  'src/content/areas',
-  'src/content/segments',
-  'src/content/projects',
-  'src/content/developers',
-  'src/content/news',
-];
+/**
+ * The corpus is every MDX file Astro publishes, discovered the same way Astro
+ * discovers it.
+ *
+ * The previous version listed seven directories and read each one
+ * non-recursively, which meant `git mv` into a subdirectory removed a file from
+ * the corpus while leaving it on the site. A red team moved the thirty
+ * worst-scoring files one level deeper and lifted the corpus mean from 40.7 to
+ * 51 in four minutes, with a diff that reads as tidying. Recursive discovery
+ * from the collection root closes it: anything Astro publishes is scored, and
+ * anything moved out of src/content stops being a page at all.
+ */
+const CONTENT_ROOT = 'src/content';
 
 function corpusFiles() {
   const out = [];
-  for (const d of CORPUS_DIRS) {
-    if (!fs.existsSync(d)) continue;
-    for (const f of fs.readdirSync(d)) if (f.endsWith('.mdx')) out.push(path.join(d, f));
-  }
-  return out;
+  const walk = (dir) => {
+    if (!fs.existsSync(dir)) return;
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.name.endsWith('.mdx') || entry.name.endsWith('.md')) out.push(full);
+    }
+  };
+  walk(CONTENT_ROOT);
+  return out.sort();
 }
 
 function printOne(r, explain) {
@@ -87,8 +94,17 @@ if (target) {
   console.log(`=== GEO deterministic scores (max ${DETERMINISTIC_MAX}, ceiling ${ABSOLUTE_MAX} with judge) ===`);
   console.log(`corpus ${rows.length} files, mean ${mean.toFixed(1)}`);
   if (cov) {
-    console.log(`fact registry covers ${cov.known}/${cov.total} load-bearing figures (${Math.round(cov.share * 100)}%); the registry gate arms at 80%\n`);
+    console.log(`fact registry covers ${cov.known}/${cov.total} load-bearing figures (${Math.round(cov.share * 100)}%); the registry gate arms at 80%`);
   }
+  const reg = factRegistryReport();
+  if (reg.rejected) console.log(`${reg.rejected} registry entr(y/ies) ignored: a source of 12+ characters, a statement of 20+ and an ISO date are required`);
+  if (reg.templated) {
+    console.log(
+      `\n⚠ registry looks generated rather than researched: ${reg.topSource} of ${reg.usable} entries share one source string. ` +
+        'Provenance credit is withheld from every article until this is fixed.',
+    );
+  }
+  console.log('');
   for (const r of rows) {
     const flags = [
       r.gates.length ? `GATE:${r.gates.map((g) => g.code).join(',')}` : '',

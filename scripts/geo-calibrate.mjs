@@ -81,6 +81,7 @@ function stats(xs) {
 
 async function scoreSet(dir, scorer) {
   const files = fs.readdirSync(dir).filter((f) => f.endsWith('.mdx')).map((f) => path.join(dir, f));
+  if (!files.length) throw new Error(`labelled set ${dir} is empty; run --prepare`);
   const out = [];
   for (const f of files) out.push({ file: f, ...(await scorer(f, files)) });
   return out;

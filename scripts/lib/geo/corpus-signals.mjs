@@ -16,6 +16,7 @@
  */
 
 const SHINGLE_N = 9;
+export const MAX_BOILERPLATE_LINES = 8;
 
 /**
  * Passages that are meant to be identical everywhere (legal disclaimers, the
@@ -30,10 +31,25 @@ export function boilerplateLines() {
   try {
     lines = fs.readFileSync(p, 'utf8').split('\n');
   } catch { lines = []; }
-  boilerplateCache = lines
+  const declared = lines
     .map((l) => l.trim())
     .filter((l) => l && !l.startsWith('#'))
     .map((l) => l.toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim());
+
+  // A red team appended every colliding sentence in the corpus to this file and
+  // lifted the mean by 3.5 points in five minutes, because stripBoilerplate
+  // deletes whatever is declared here before anything is measured. So the file
+  // is capped: an exemption list long enough to hide a template is refused
+  // outright rather than trusted, and short fragments are ignored because a
+  // genuine disclaimer is a whole sentence.
+  const usable = declared.filter((l) => l.split(' ').length >= 12);
+  if (usable.length > MAX_BOILERPLATE_LINES) {
+    throw new Error(
+      `.content-os/boilerplate.txt declares ${usable.length} passages; the limit is ${MAX_BOILERPLATE_LINES}. ` +
+        'This file exempts text from duplication detection, so a long list defeats the check it belongs to.',
+    );
+  }
+  boilerplateCache = usable;
   return boilerplateCache;
 }
 
@@ -87,12 +103,22 @@ export function plainText(raw) {
  * over prose alone.
  */
 export function duplicationText(raw) {
+  // plainText drops JSX tags and backtick spans, so prose moved into a component
+  // prop or a code span disappears from the detector. Recover the human-readable
+  // parts of both: a red team hid 14,522 words this way for a 3.1 point gain.
+  const componentText = (raw.match(/(?:text|answer|question|description|title)\s*=\s*"([^"]{40,})"/g) || [])
+    .map((m) => m.replace(/^[^"]*"/, '').replace(/"$/, ''))
+    .join(' ');
+  const codeSpans = (raw.match(/`([^`]{40,})`/g) || []).map((m) => m.slice(1, -1)).join(' ');
   const tableCells = raw
     .split('\n')
     .filter((l) => /^\s*\|/.test(l) && !/^\s*\|[\s:|-]*\|?\s*$/.test(l))
     .map((l) => l.replace(/^\s*\|/, '').replace(/\|\s*$/, '').split('|').join(' '))
     .join(' ');
-  return `${plainText(raw)} ${tableCells.replace(/\s+/g, ' ').trim()}`.trim();
+  return [plainText(raw), tableCells, componentText, codeSpans]
+    .join(' ')
+    .replace(/\s+/g, ' ')
+    .trim();
 }
 
 export function words(text) {
@@ -179,6 +205,9 @@ export function analyseDoc(docId, index) {
     }
   }
   const duplicateShare = doc.shingles.size ? duplicated / doc.shingles.size : 0;
+  // Share alone rewards deletion: cut the page in half and the ratio improves.
+  // The absolute count is what an editor actually has to rewrite.
+  const duplicatedWords = duplicated;
 
   const sharedSkeletons = [];
   const seen = new Set();
@@ -205,6 +234,7 @@ export function analyseDoc(docId, index) {
   return {
     id: docId,
     duplicateShare,
+    duplicatedWords,
     duplicatedShingles: duplicated,
     totalShingles: doc.shingles.size,
     topDuplicateSources: [...duplicateSources.entries()].sort((a, b) => b[1] - a[1]).slice(0, 3),

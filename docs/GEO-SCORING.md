@@ -102,6 +102,26 @@ re-adds them on intuition:
 
 The first rubric was built entirely out of rules like these: plausible, untested, and wrong.
 
+## What the red team broke, and what closed it
+
+The rubric was attacked by three independent adversaries given read access to its source and the instruction
+to raise every article to 90. Six attacks worked against the shipped code, each one measured rather than
+argued. All six are closed:
+
+| Attack | Measured gain | What closes it |
+|---|---|---|
+| `git mv` files one directory deeper, out of a non-recursive `readdirSync` | corpus mean 40.7 → 51 in four minutes | Discovery walks `src/content` recursively, so anything Astro publishes is scored |
+| Forge the judge verdict, which was a JSON file the scored agent writes | +20 points per file, ninety seconds | Verdicts carry an HMAC over (content hash, award); without `GEO_JUDGE_SECRET` no judge points count at all |
+| Script every unregistered figure into the fact registry | corpus mean +5.2 | Entries need a real source, statement and ISO date; a registry where one source or statement shape covers over 35% of entries withholds provenance credit corpus-wide |
+| Append every colliding sentence to `boilerplate.txt` | corpus mean +3.5 | The file is capped at 8 declared passages of 12+ words; exceeding it throws rather than exempting |
+| Move prose into tables, JSX props and code spans, all stripped before measurement | corpus mean +3.1 | Duplication runs over its own extraction that recovers table cells, component text props and code spans |
+| Give every figure fabricated precision so it stops being shared | corpus mean +2.9 | Percentages quoted to two decimals appearing nowhere else and in no registry are penalised |
+
+Two further attacks were confirmed and are only partly closed, which is worth stating plainly. Deleting
+content improves any ratio, so an absolute duplicated-sequence penalty now sits alongside the share, but
+truncation still helps a page that has nothing to say. And a paraphrase farm with enough iterations defeats
+any fixed lexical detector: the answer there is the judge stage and provenance, not another regex.
+
 ## Calibration
 
 `scripts/geo-calibrate.mjs` rebuilds the labelled sets from git history and scores them. The
