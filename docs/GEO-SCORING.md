@@ -86,6 +86,30 @@ Passages that are meant to be identical everywhere (legal disclaimers, the stand
 yields) are declared in `.content-os/boilerplate.txt`. Declaring an exemption is a visible act; the
 detector does not guess.
 
+### Claims we cannot watch
+
+The registry is keyed by the bare figure, which is right for its job and wrong for another one. `7.5%` is the
+section 35A withholding on a non-resident individual's sale here and the flat IMT a non-resident pays in
+Portugal; `5%` is a Mauritian registration duty on one page and an agent's commission on twenty others.
+Grouping entries per figure fixes the first case, where one key silently replaced another and its sourcing
+vanished from the file with no error. It does not fix the second: registering `5%` for a Mauritian meaning
+would hand twenty unrelated pages a provenance they have not earned.
+
+So claims about jurisdictions nobody here monitors live in `.content-os/external-claims.json` instead,
+keyed by the claim rather than by the number. The reason is the failure this project already had: the corpus
+carried the previous year's City of Cape Town rates on thirty pages until somebody looked, and that was a
+figure with a South African source we can check on demand. Portuguese budget provisions, Mauritian
+Economic Development Board thresholds and UAE tax practice have no such watcher, so a stale figure there
+would sit on the site indefinitely under an `asOf` date quietly asserting it was current.
+
+Each claim carries a `reviewBy` date and `npm run facts:review` exits non-zero once one passes. It also
+reports claims whose listed files no longer exist, so a claim orphaned by a rewrite gets pruned rather than
+reviewed forever. Reviewing means re-reading the primary source and either moving the dates forward or
+correcting every file the claim names.
+
+This is a process, not a measurement, and it is in this document because the alternative was worse: the only
+other way to remove the risk is to stop publishing about those markets.
+
 ## What was tried and rejected
 
 Every rule here had to earn its place on the labelled sets. These did not, and are recorded so nobody

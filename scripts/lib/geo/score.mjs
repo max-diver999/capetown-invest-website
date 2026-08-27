@@ -73,8 +73,20 @@ function loadRegistry() {
     usable.length >= 20 &&
     (topSource / usable.length > REGISTRY_TEMPLATE_SHARE || topStatement / usable.length > REGISTRY_TEMPLATE_SHARE);
 
+  // One figure can carry more than one meaning across jurisdictions: 7.5% is
+  // the section 35A withholding on a non-resident individual's sale here and
+  // the flat IMT a non-resident pays in Portugal. Keyed one-to-one, the second
+  // entry silently replaced the first and its sourcing vanished from the file
+  // without any error, so entries are grouped per figure instead. Every
+  // consumer asks only whether a figure is registered, so grouping costs
+  // nothing and stops a source disappearing on a key collision.
   registryReport = { total: facts.length, usable: usable.length, rejected, templated, topSource, topStatement };
-  registryCache = new Map(usable.map((f) => [f.figure.toLowerCase().replace(/\s+/g, ' '), f]));
+  registryCache = new Map();
+  for (const f of usable) {
+    const key = f.figure.toLowerCase().replace(/\s+/g, ' ');
+    if (!registryCache.has(key)) registryCache.set(key, []);
+    registryCache.get(key).push(f);
+  }
 }
 
 export function factRegistry() {

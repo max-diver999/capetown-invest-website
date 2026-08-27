@@ -1,0 +1,119 @@
+{
+  "_readme": "Claims about jurisdictions outside South Africa. These sit in a separate file from facts.json for two reasons. First, facts.json is keyed by the bare figure and feeds GEO scoring, and several of these claims turn on numbers that mean something else elsewhere in the corpus (5% is a Mauritian registration duty here and an agent's commission on twenty other pages), so registering them there would hand unrelated articles a provenance they have not earned. Second, and the actual point: nobody on this project monitors the Portuguese State Budget, the Mauritian Economic Development Board or UAE tax practice the way we monitor SARS and the City of Cape Town budget. These figures will go out of date without anyone noticing. Each carries a reviewBy date; `npm run facts:review` fails once one is overdue, which is the whole mechanism. Reviewing means re-reading the primary source and either moving asOf and reviewBy forward or correcting every file listed.",
+  "reviewIntervalMonths": 6,
+  "claims": [
+    {
+      "id": "pt-imt-non-resident",
+      "jurisdiction": "PT",
+      "claim": "Portugal applies a flat 7.5% IMT to non-resident purchasers, charged on the whole purchase price rather than on slices of it",
+      "source": "Portugal 2026 State Budget property tax provisions",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "compare/cape-town-vs-portugal-property-investment.mdx",
+        "compare/cape-town-vs-lisbon-property-investment.mdx"
+      ]
+    },
+    {
+      "id": "pt-aimi-bands",
+      "jurisdiction": "PT",
+      "claim": "Portuguese AIMI applies to property value above EUR 600,000 at 0.7% for individuals, rising to 1% above EUR 1 million, on top of ordinary municipal IMI",
+      "source": "Portuguese AIMI provisions, Codigo do Imposto Municipal sobre Imoveis",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "compare/cape-town-vs-portugal-property-investment.mdx",
+        "compare/cape-town-vs-lisbon-property-investment.mdx"
+      ]
+    },
+    {
+      "id": "pt-aimi-lease-exemption",
+      "jurisdiction": "PT",
+      "claim": "A leased Portuguese residential property can be exempt from AIMI where the rent stays at or below EUR 2,300",
+      "source": "Portuguese AIMI leased-property exemption provisions for 2026",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "compare/cape-town-vs-lisbon-property-investment.mdx"
+      ]
+    },
+    {
+      "id": "pt-golden-visa-property-removed",
+      "jurisdiction": "PT",
+      "claim": "The real estate route was permanently removed from the Portuguese Golden Visa in October 2023; the programme continues through funds, cultural support, research, job creation and business investment, so a Lisbon apartment confers no immigration benefit",
+      "source": "Portuguese Golden Visa reform, October 2023",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "compare/cape-town-vs-lisbon-property-investment.mdx",
+        "compare/cape-town-vs-portugal-property-investment.mdx"
+      ]
+    },
+    {
+      "id": "pt-lisbon-yield",
+      "jurisdiction": "PT",
+      "claim": "Lisbon apartments averaged about 4.13% gross rental yield in August 2026, with districts spanning roughly 0.99% to 6.75%",
+      "source": "Lisbon rental yield market data, August 2026",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "compare/cape-town-vs-lisbon-property-investment.mdx"
+      ]
+    },
+    {
+      "id": "mu-edb-permit-threshold",
+      "jurisdiction": "MU",
+      "claim": "An investment at or above the Economic Development Board threshold, commonly cited at USD 375,000, in a qualifying Mauritian scheme supports a residence permit for the buyer and dependants while the property is held",
+      "source": "Mauritius Economic Development Board residence permit criteria",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "compare/cape-town-vs-mauritius-property-investment.mdx"
+      ]
+    },
+    {
+      "id": "mu-scheme-eligibility",
+      "jurisdiction": "MU",
+      "claim": "A non-citizen may acquire Mauritian residential property only inside a state-approved framework: an active Property Development Scheme, legacy Integrated Resort Scheme or Real Estate Scheme stock, a qualifying Smart City project, or a ground-floor apartment scheme",
+      "source": "Mauritius non-citizen property acquisition frameworks, Economic Development Board",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "compare/cape-town-vs-mauritius-property-investment.mdx"
+      ]
+    },
+    {
+      "id": "mu-duties",
+      "jurisdiction": "MU",
+      "claim": "Mauritius charges a non-citizen 5% registration duty on a scheme acquisition, levies no capital gains tax on a property disposal, and charges the seller a 5% land transfer tax",
+      "source": "Mauritius Registration Duty Act and Land (Duties and Taxes) Act",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "compare/cape-town-vs-mauritius-property-investment.mdx"
+      ]
+    },
+    {
+      "id": "ae-aed-peg",
+      "jurisdiction": "AE",
+      "claim": "The UAE dirham has been pegged to the US dollar since 1997, so a Dubai property is effectively a dollar-denominated asset earning dollar-linked rent",
+      "source": "UAE Central Bank dirham peg to the US dollar, in place since 1997",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "compare/cape-town-vs-dubai-property-investment.mdx"
+      ]
+    },
+    {
+      "id": "ae-no-personal-property-tax",
+      "jurisdiction": "AE",
+      "claim": "The UAE levies no personal income tax on rental income and no capital gains tax on an individual's property disposal, and runs no exchange control on funds entering or leaving",
+      "source": "UAE personal tax position for individuals, Federal Tax Authority",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "compare/cape-town-vs-dubai-property-investment.mdx"
+      ]
+    }
+  ]
+}
