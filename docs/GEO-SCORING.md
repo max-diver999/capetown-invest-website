@@ -102,6 +102,26 @@ re-adds them on intuition:
 
 The first rubric was built entirely out of rules like these: plausible, untested, and wrong.
 
+### One exemption, deliberately bounded
+
+Only one class of text is removed before duplication is measured, and it is worth stating why the bar for
+adding another is high. A `Sources:` trailer is a citation, not prose. Two articles resting on the same
+statute *should* cite it in the same words, and penalising that pushes a writer toward vaguer attribution
+purely to dodge a collision — the rubric would then be making the corpus worse. So the final block of a
+document is stripped from the duplication text when it opens with `Sources:` and runs to at most 120 words.
+
+The bound is the whole safeguard. A trailer longer than 120 words is measured **in full** rather than
+truncated, so an author who moves an article into its own bibliography earns no discount at all, and the
+worst available abuse is 120 exempt words at the end of a 1,800-word page. The exemption is applied to the
+prose before table and component text is appended, because the trailer ends the prose and not the
+concatenation — a detail that silently disabled the rule on first implementation.
+
+Note what is *not* exempt. Shared regulatory statements — the City rates formula, the AIMI thresholds, the
+section 35A rates — collide across pages constantly and are corrected editorially, by rewording each page,
+never by exemption. The figure may repeat; the sentence should not. A reader who lands on two of our pages
+must not read the same paragraph twice, and that is true whether the paragraph is about a law or about a
+suburb.
+
 ## What the red team broke, and what closed it
 
 The rubric was attacked by three independent adversaries given read access to its source and the instruction
