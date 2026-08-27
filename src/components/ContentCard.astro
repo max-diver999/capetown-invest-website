@@ -38,6 +38,7 @@ const photo = getCardImageUrl(image);
         decoding="async"
         width="640"
         height="360"
+        data-card-img
       />
     </div>
   ) : (
@@ -60,3 +61,10 @@ const photo = getCardImageUrl(image);
     )}
   </div>
 </a>
+
+<script>
+  /* A card whose thumbnail 404s falls back to the muted plate, not a broken-image glyph. */
+  document.querySelectorAll('img[data-card-img]').forEach((img) => {
+    img.addEventListener('error', () => img.closest('.content-card__media')?.remove(), { once: true });
+  });
+</script>

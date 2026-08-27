@@ -24,5 +24,20 @@ export const FEATURED_DEVELOPER_SLUGS = [
   'prospekt-property-development',
 ] as const;
 
+/**
+ * The "tablecloth" cloud pouring over Table Mountain — the image the whole
+ * design direction is built around. CC BY-SA 3.0, so the credit below is a
+ * licence condition, not decoration: it must stay visible on every breakpoint.
+ */
 export const HOMEPAGE_HERO_IMAGE =
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Cape_Town_Skyline.jpg/1280px-Cape_Town_Skyline.jpg';
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Cape_Town%2C_Table_Mountain%2C_Table_Cloth.jpg/1920px-Cape_Town%2C_Table_Mountain%2C_Table_Cloth.jpg';
+
+export const HOMEPAGE_HERO_CREDIT = {
+  place: 'Table Mountain · the tablecloth',
+  author: 'KodachromeFan',
+  authorUrl: 'https://commons.wikimedia.org/wiki/User:KodachromeFan',
+  sourceUrl:
+    'https://commons.wikimedia.org/wiki/File:Cape_Town,_Table_Mountain,_Table_Cloth.jpg',
+  licence: 'CC BY-SA 3.0',
+  licenceUrl: 'https://creativecommons.org/licenses/by-sa/3.0',
+} as const;

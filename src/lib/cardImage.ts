@@ -3,13 +3,18 @@
  */
 import { cloudinaryDeliveryUrl } from './cloudinary';
 
-export function getCardImageUrl(src: string | undefined, size: 'card' | 'hero' = 'card'): string {
+export function getCardImageUrl(src: string | undefined, size: 'card' | 'hero' | 'band' = 'card'): string {
   if (!src?.trim()) return '';
 
   const trimmed = src.trim();
 
   if (trimmed.includes('res.cloudinary.com') && trimmed.includes('/upload/')) {
-    const dims = size === 'hero' ? 'w_1400,h_560,c_fill,q_auto:eco,f_auto' : 'w_640,h_360,c_fill,q_auto:eco,f_auto';
+    const dims =
+      size === 'band'
+        ? 'w_2000,h_720,c_fill,q_auto:good,f_auto'
+        : size === 'hero'
+          ? 'w_1400,h_560,c_fill,q_auto:eco,f_auto'
+          : 'w_640,h_360,c_fill,q_auto:eco,f_auto';
     return cloudinaryDeliveryUrl(trimmed, dims);
   }
 

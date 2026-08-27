@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import LeadForm from '../components/LeadForm.astro';
 import { getCollection } from 'astro:content';
 import { SITE } from '../data/site';
-import { HOMEPAGE_HERO_IMAGE } from '../data/featured';
+import { HOMEPAGE_HERO_IMAGE, HOMEPAGE_HERO_CREDIT } from '../data/featured';
 import { getCardImageUrl } from '../lib/cardImage';
 
 const [guides, projects, areas] = await Promise.all([
@@ -16,74 +16,97 @@ const publishedGuides = guides.filter((g) => !g.data.noindex);
 const publishedProjects = projects.filter((p) => !p.data.noindex);
 const publishedAreas = areas.filter((a) => !a.data.noindex);
 
-const heroImage = getCardImageUrl(HOMEPAGE_HERO_IMAGE, 'hero');
+const heroImage = getCardImageUrl(HOMEPAGE_HERO_IMAGE, 'band');
 ---
 <BaseLayout
   title="Cape Town Property Investment for Foreign Buyers — 2026"
   description="Independent Cape Town property research for foreign buyers: no surcharge, 50% bond, Atlantic Seaboard yields, project reviews. Free shortlist within one business day."
 >
-  <section class="border-b border-[var(--color-border-soft)] bg-[var(--color-surface)]">
-    <div class="site-container py-14 md:py-20 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-      <div>
-        <span class="badge-pill mb-5">Independent · No developer pressure</span>
-        <h1 class="text-3xl md:text-[2.35rem] mb-5 leading-tight">
-          Cape Town property investment for foreign buyers
-        </h1>
-        <p class="text-base md:text-lg text-[var(--color-muted)] mb-6 max-w-xl">
-          Atlantic Seaboard, City Bowl, Winelands — ownership rules, transfer costs, rental yields, and vetted project reviews. Licensed South African partner for transactions; we do not sell developer stock.
-        </p>
-        <ul class="text-sm text-[var(--color-muted)] space-y-2 mb-8 max-w-xl">
-          <li>✓ No foreign buyer surcharge (vs UK 2% / Singapore 60%)</li>
-          <li>✓ Non-residents: up to 50% local bond, no visa required to buy</li>
-          <li>✓ Free shortlist — reply within one business day</li>
-        </ul>
-        <div class="flex flex-wrap gap-3 mb-10">
-          <a href="/get-shortlist/" class="btn-primary px-6 py-3">Get free shortlist →</a>
-          <a href="/guides/buy-cape-town-property-foreigner/" class="btn-secondary px-6 py-3">Foreign buyer guide</a>
-          <a href="/guides/" class="btn-secondary px-6 py-3">Browse guides</a>
+  <!--
+    The hero is one stack of horizontal bands: copy on limewash, then the
+    photograph full-bleed, then the figures rail flush under it. No vertical
+    rule anywhere, which is the whole point of the direction.
+  -->
+  <section class="home-hero">
+    <div class="site-container pt-10 md:pt-14 pb-8 md:pb-10">
+      <span class="eyebrow">Independent · no developer stock</span>
+      <div class="home-hero__row">
+        <div class="home-hero__lede">
+          <h1>Cape Town property for foreign buyers</h1>
+          <div class="home-hero__counts">
+            <div class="stat-pill">
+              <strong>{publishedGuides.length}</strong>
+              <span>Guides</span>
+            </div>
+            <div class="stat-pill">
+              <strong>{publishedProjects.length}</strong>
+              <span>Projects</span>
+            </div>
+            <div class="stat-pill">
+              <strong>{publishedAreas.length}</strong>
+              <span>Areas</span>
+            </div>
+          </div>
         </div>
-        <div class="grid grid-cols-3 gap-3 max-w-md">
-          <div class="stat-pill">
-            <strong>{publishedGuides.length}</strong>
-            <span>Guides</span>
-          </div>
-          <div class="stat-pill">
-            <strong>{publishedProjects.length}</strong>
-            <span>Projects</span>
-          </div>
-          <div class="stat-pill">
-            <strong>{publishedAreas.length}</strong>
-            <span>Areas</span>
+        <div class="home-hero__side">
+          <p class="home-hero__deck">
+            No foreign buyer surcharge. Non-residents borrow up to 50% locally, and no visa is
+            needed to own freehold. Atlantic Seaboard, City Bowl and the Winelands — ownership
+            rules, transfer costs and vetted project reviews.
+          </p>
+          <ul class="home-hero__points">
+            <li>No foreign buyer surcharge (vs UK 2% / Singapore 60%)</li>
+            <li>Non-residents: up to 50% local bond, no visa required to buy</li>
+            <li>Free shortlist — reply within one business day</li>
+          </ul>
+          <div class="home-hero__acts">
+            <a href="/get-shortlist/" class="btn-primary px-6 py-3">Get free shortlist</a>
+            <a href="/guides/buy-cape-town-property-foreigner/" class="btn-secondary px-6 py-3">Foreign buyer guide</a>
           </div>
         </div>
       </div>
-      <div class="hero-visual min-h-[280px] md:min-h-[380px] relative">
-        <img src={heroImage} alt="Cape Town skyline with Table Mountain" loading="eager" fetchpriority="high" width="1280" height="405" />
-        <div class="hero-visual__overlay" />
-        <p class="hero-visual__caption">Table Mountain · Atlantic Seaboard</p>
-      </div>
+      <div class="baseline"></div>
     </div>
-  </section>
 
-  <section class="border-b border-[var(--color-border-soft)] bg-[var(--color-brand)] text-white py-8">
-    <div class="site-container grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-      <div>
-        <p class="text-2xl md:text-3xl font-semibold">0%</p>
-        <p class="text-sm opacity-85 mt-1">Foreign buyer surcharge</p>
+    <div class="home-hero__photo">
+      <img
+        src={heroImage}
+        alt="The tablecloth cloud spilling over the sandstone strata of Table Mountain, Cape Town"
+        loading="eager"
+        fetchpriority="high"
+        width="1920"
+        height="1283"
+      />
+      <p class="home-hero__credit">
+        <span>{HOMEPAGE_HERO_CREDIT.place}</span>
+        <span aria-hidden="true">·</span>
+        <span>
+          Photo <a href={HOMEPAGE_HERO_CREDIT.authorUrl} rel="noopener nofollow" target="_blank">{HOMEPAGE_HERO_CREDIT.author}</a>,
+          <a href={HOMEPAGE_HERO_CREDIT.licenceUrl} rel="license noopener nofollow" target="_blank">{HOMEPAGE_HERO_CREDIT.licence}</a>,
+          via <a href={HOMEPAGE_HERO_CREDIT.sourceUrl} rel="noopener nofollow" target="_blank">Wikimedia Commons</a>
+        </span>
+      </p>
+    </div>
+
+    <div class="figure-rail">
+      <div class="figure-rail__cell">
+        <p class="figure-rail__value">0%</p>
+        <p class="figure-rail__label">Foreign buyer surcharge</p>
       </div>
-      <div>
-        <p class="text-2xl md:text-3xl font-semibold">50%</p>
-        <p class="text-sm opacity-85 mt-1">Typical non-resident bond cap</p>
+      <div class="figure-rail__cell">
+        <p class="figure-rail__value">50%</p>
+        <p class="figure-rail__label">Typical non-resident bond cap</p>
       </div>
-      <div>
-        <p class="text-2xl md:text-3xl font-semibold">6–9%</p>
-        <p class="text-sm opacity-85 mt-1">MODELED gross yields (prime)</p>
+      <div class="figure-rail__cell">
+        <p class="figure-rail__value">6–9%</p>
+        <p class="figure-rail__label">MODELED gross yields (prime)</p>
       </div>
-      <div>
-        <p class="text-2xl md:text-3xl font-semibold">$250K+</p>
-        <p class="text-sm opacity-85 mt-1">Entry from (USD)</p>
+      <div class="figure-rail__cell">
+        <p class="figure-rail__value">$250K+</p>
+        <p class="figure-rail__label">Entry from (USD)</p>
       </div>
     </div>
+
   </section>
 
   <section class="section bg-[var(--color-surface)] border-y border-[var(--color-border-soft)]">
@@ -116,3 +139,96 @@ const heroImage = getCardImageUrl(HOMEPAGE_HERO_IMAGE, 'hero');
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  .home-hero__row {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1.2rem;
+  }
+  .home-hero__lede { display: flex; flex-direction: column; }
+  .home-hero__lede h1 { margin: 0; }
+  .home-hero__counts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+    max-width: 24rem;
+  }
+  .home-hero__deck {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--color-muted);
+  }
+  .home-hero__points {
+    margin: 1rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 0.9rem;
+    color: var(--color-muted);
+  }
+  .home-hero__points li {
+    padding: 0.5rem 0;
+    border-top: 1px solid var(--color-border-soft);
+  }
+  .home-hero__acts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+  .home-hero__photo {
+    position: relative;
+    overflow: hidden;
+    max-height: 26rem;
+  }
+  .home-hero__photo img {
+    display: block;
+    width: 100%;
+    height: 26rem;
+    object-fit: cover;
+    /* Hold the cloud line and the ridge; the sky above is expendable. */
+    object-position: 50% 52%;
+  }
+  @media (max-width: 640px) {
+    .home-hero__photo, .home-hero__photo img { height: 15rem; max-height: 15rem; }
+  }
+
+  /*
+   * CC BY-SA attribution. It is a licence condition, so unlike a decorative
+   * caption it stays visible at every width.
+   */
+  .home-hero__credit {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.4rem;
+    margin: 0;
+    padding: 0.4rem 0.75rem;
+    background: var(--color-deep);
+    color: #b9c6cc;
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+  }
+  .home-hero__credit a { color: #f2efe8; text-decoration: underline; }
+
+  @media (min-width: 900px) {
+    .home-hero__row {
+      flex-direction: row;
+      /* Stretch, not flex-start: it is what lets the counts sink to the foot. */
+      align-items: stretch;
+      gap: 3.5rem;
+    }
+    .home-hero__lede { flex: 0 0 46%; }
+    .home-hero__side { flex: 1; min-width: 0; }
+    /* The counts sink to the foot of the column so both sides close on the rule. */
+    .home-hero__counts { margin-top: auto; padding-top: 2.5rem; }
+  }
+</style>

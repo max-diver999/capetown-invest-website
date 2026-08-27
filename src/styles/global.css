@@ -1,104 +1,256 @@
 @import "tailwindcss";
 
+/*
+ * Direction: "Tablecloth & Sandstone".
+ *
+ * Cape Town's signature is the cloud that pours over Table Mountain and the
+ * sandstone strata under it. The whole system is built from HORIZONTALS —
+ * bands, rules and rails. There are no vertical dividers anywhere: sections
+ * separate by hairline and by band colour, cards carry a top rule instead of
+ * a box, and figures sit in a full-width deep rail. Where a vertical edge is
+ * unavoidable (table cells) it stays as light as it can.
+ */
+
 @theme {
-  --color-page: #f7f8f6;
-  --color-surface: #ffffff;
-  --color-surface-muted: #f4f5f3;
-  --color-ink: #1f2421;
-  --color-muted: #5d645f;
-  --color-teal: #2c6b62;
-  --color-teal-dark: #235851;
-  --color-teal-light: #e6f0ed;
-  --color-border: #e6e6e3;
-  --color-border-soft: #eeeeec;
-  --font-sans: 'DM Sans', system-ui, sans-serif;
-}
+  /* Sandstone ground, from limewash to shadowed rock */
+  --color-page: #e8e4dc;
+  --color-surface: #f2efe8;
+  --color-surface-muted: #dcd6ca;
 
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  /* Wet slate — Table Mountain rock in shadow */
+  --color-ink: #22303a;
+  --color-muted: #4d5a62;
 
-body {
-  background: var(--color-page);
-  overflow-x: hidden;
-  color: var(--color-muted);
-  font-family: var(--font-sans);
-  line-height: 1.65;
-  font-size: 1rem;
-}
+  /* Deep band: figures rail, footer, primary action */
+  --color-deep: #1e3a47;
+  --color-deep-2: #162c37;
 
-h1, h2, h3, h4 {
-  font-family: var(--font-sans);
-  color: var(--color-ink);
-  line-height: 1.25;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  /* Cold Atlantic — the one accent */
+  --color-accent: #35606d;
+  --color-accent-strong: #24454f;
+  --color-accent-soft: #dbe4e6;
+
+  /* Sandstone brass, used sparingly on figures and focus */
+  --color-sand: #8a6832;
+  --color-sand-light: #c69a52;
+
+  --color-border: #cdc6b8;
+  --color-border-soft: #ded8cc;
+
+  /*
+   * Templates still reference these three names. They are kept as aliases so a
+   * missing token can never render an invisible band again (an undefined var in
+   * `background: var(--x)` is invalid at computed-value time, so the band paints
+   * transparent and white text lands on the page ground).
+   */
+  --color-brand: #1e3a47;
+  --color-teal: #35606d;
+  --color-teal-dark: #24454f;
+  --color-teal-light: #dbe4e6;
+
+  --font-sans: 'Archivo', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
 }
 
 /*
- * Tailwind's reset strips heading sizes, so a heading without an explicit size
- * class rendered at body size. :where() keeps specificity at zero, so any
- * utility class on the element still wins.
+ * Everything that styles a bare element lives in @layer base.
+ *
+ * Unlayered rules beat EVERY cascade layer, Tailwind utilities included. When
+ * `a { color: ... }` sat outside a layer it silently overrode `text-white` on
+ * every footer link on every page — teal on near-black, 2.54:1. Inside `base`,
+ * a utility always wins.
  */
-:where(h1) { font-size: clamp(1.875rem, 1.4rem + 2vw, 2.5rem); }
-:where(h2) { font-size: clamp(1.375rem, 1.15rem + 1vw, 1.75rem); }
-:where(h3) { font-size: 1.125rem; }
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
 
-a { color: var(--color-teal); text-decoration: none; }
-a:hover { color: var(--color-teal-dark); }
+  body {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-page);
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* Footer stays at the bottom on short pages without pinning it. */
+  body > main {
+    flex: 1 0 auto;
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.022em;
+    text-wrap: balance;
+  }
+
+  /*
+   * Tailwind's reset sets headings to `font-size: inherit`, so a heading with no
+   * size utility renders at body size. These are plain element selectors, NOT
+   * :where() — inside @layer base a zero-specificity selector loses to Preflight's
+   * own `h1,h2,...` rule and the scale silently never applies. Matching Preflight's
+   * specificity and coming later in the layer wins. Utilities still override, since
+   * @layer utilities outranks @layer base whatever the specificity.
+   */
+  h1 { font-size: clamp(2rem, 1.5rem + 2.2vw, 2.9rem); font-stretch: 112%; }
+  h2 { font-size: clamp(1.45rem, 1.2rem + 1.1vw, 1.9rem); font-stretch: 108%; }
+  h3 { font-size: 1.15rem; }
+  h4 { font-size: 1rem; }
+
+  a {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+  a:hover { color: var(--color-accent-strong); }
+
+  :focus-visible {
+    outline: 2px solid var(--color-sand-light);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-accent-soft);
+    color: var(--color-ink);
+  }
+}
+
+/* ---------------------------------------------------------------- layout */
+
+.site-container {
+  width: 100%;
+  max-width: 70rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+@media (min-width: 768px) {
+  .section { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+}
+/* Bands separate by a single hairline — never a vertical rule. */
+.section + .section { border-top: 1px solid var(--color-border-soft); }
+
+/*
+ * Strata: the three stacked hairlines that head a band. Purely decorative, so
+ * they are drawn on a container rather than as extra elements in the markup.
+ */
+.strata {
+  position: relative;
+}
+.strata::before,
+.strata::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-ink);
+  pointer-events: none;
+}
+.strata::before { top: 0; opacity: 0.16; }
+.strata::after { top: 0.6rem; opacity: 0.09; }
+
+/* ---------------------------------------------------------------- type */
+
+.eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* A flat rule under a headline — the horizontal that closes a block. */
+.baseline {
+  height: 2px;
+  background: var(--color-ink);
+  margin: 1.4rem 0 1.6rem;
+}
+
+/* ---------------------------------------------------------------- controls */
 
 .btn-primary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-teal);
-  color: #fff !important;
-  font-weight: 600;
-  border-radius: 999px;
-  border: none;
+  background: var(--color-deep);
+  color: #f2efe8 !important;
+  font-weight: 700;
+  font-stretch: 108%;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--color-deep);
+  border-radius: 0;
   cursor: pointer;
-  box-shadow: 0 1px 2px rgba(31, 36, 33, 0.08);
-  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  transition: background 0.18s ease, border-color 0.18s ease;
 }
 .btn-primary:hover {
-  background: var(--color-teal-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(44, 107, 98, 0.18);
-  color: #fff !important;
+  background: var(--color-deep-2);
+  border-color: var(--color-deep-2);
+  color: #f2efe8 !important;
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--color-surface);
+  background: transparent;
   color: var(--color-ink) !important;
-  font-weight: 600;
-  border-radius: 999px;
-  border: 1px solid var(--color-border);
+  font-weight: 700;
+  font-stretch: 108%;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 0;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s;
+  transition: background 0.18s ease, color 0.18s ease;
 }
 .btn-secondary:hover {
-  background: var(--color-surface-muted);
-  border-color: #d6d3d1;
-  color: var(--color-ink) !important;
+  background: var(--color-ink);
+  color: var(--color-surface) !important;
 }
 
 .badge-pill {
   display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--color-teal);
-  background: var(--color-teal-light);
-  padding: 0.25rem 0.65rem;
-  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 400;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--color-accent-strong);
+  background: var(--color-accent-soft);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0;
 }
+
+.link-arrow {
+  font-weight: 600;
+  color: var(--color-accent);
+}
+.link-arrow:hover { color: var(--color-accent-strong); }
 
 .card-icon {
   width: 2.5rem;
   height: 2.5rem;
-  border-radius: 10px;
-  background: var(--color-teal-light);
-  color: var(--color-teal);
+  border-radius: 0;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-strong);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,147 +259,98 @@ a:hover { color: var(--color-teal-dark); }
   flex-shrink: 0;
 }
 
-input:not([type="checkbox"]):not([type="radio"]), select, textarea {
-  width: 100%;
-  border: 1px solid var(--color-border);
-  border-radius: 0.625rem;
-  padding: 0.65rem 0.85rem;
-  background: #fff;
-  font-size: 0.95rem;
-  font-family: var(--font-sans);
-  color: var(--color-ink);
-}
-input[type="checkbox"],
-input[type="radio"] {
-  width: 1.125rem;
-  height: 1.125rem;
-  min-width: 1.125rem;
-  padding: 0;
-  flex-shrink: 0;
-  accent-color: var(--color-teal);
-  cursor: pointer;
-}
-input:not([type="checkbox"]):not([type="radio"]):focus,
-select:focus,
-textarea:focus {
-  outline: 2px solid rgba(15, 118, 110, 0.25);
-  border-color: var(--color-teal);
-}
+/* ---------------------------------------------------------------- surfaces */
 
-.lead-form-consent {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.625rem;
-}
-.lead-form-consent__check {
-  margin-top: 0.125rem;
-}
-.lead-form-consent__label {
-  flex: 1;
-  min-width: 0;
-  font-size: 0.75rem;
-  line-height: 1.55;
-  color: var(--color-muted);
-  cursor: pointer;
-}
-.lead-form-consent__label a {
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.prose { max-width: 72ch; }
-.prose h2 { margin-top: 2.5rem; margin-bottom: 1rem; font-size: 1.35rem; }
-.prose h3 { margin-top: 1.75rem; margin-bottom: 0.75rem; font-size: 1.1rem; }
-.prose p { margin-bottom: 1.1rem; }
-.prose ul, .prose ol { margin: 1rem 0 1.25rem 1.25rem; }
-/* Tailwind's reset removes list markers; article lists need them back. */
-.prose ul { list-style-type: disc; }
-.prose ol { list-style-type: decimal; }
-.prose li::marker { color: var(--color-muted); }
-.prose li { margin-bottom: 0.4rem; }
-.prose table {
-  display: block;
-  width: max-content;
-  min-width: 100%;
-  max-width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-  font-size: 0.92rem;
-}
-.prose th, .prose td { border: 1px solid var(--color-border); padding: 0.55rem 0.75rem; text-align: left; }
-.prose th { background: var(--color-surface-muted); font-weight: 600; color: var(--color-ink); }
-@media (max-width: 768px) {
-  .prose th,
-  .prose td { min-width: 8.5rem; }
-  .prose th:first-child,
-  .prose td:first-child { min-width: 7rem; }
-}
-.prose blockquote {
-  border-left: 3px solid var(--color-teal);
-  padding: 0.75rem 1rem;
-  margin: 1.5rem 0;
-  background: #fff;
-  border-radius: 0 0.5rem 0.5rem 0;
-  font-size: 0.95rem;
-}
-
-.faq-item { border-bottom: 1px solid var(--color-border); }
-.faq-question {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem 0;
-  font-weight: 600;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--color-ink);
-  font-family: var(--font-sans);
-  font-size: 0.95rem;
-}
-.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
-.faq-item.open .faq-answer { max-height: 500px; padding-bottom: 1rem; }
-.faq-item.open .faq-icon { transform: rotate(45deg); }
-
-.site-container {
-  width: 100%;
-  max-width: 68rem;
-  margin-inline: auto;
-  padding-inline: clamp(1.5rem, 4vw, 3.5rem);
-}
-
-main {
-  overflow-x: clip;
-}
-
+/*
+ * A card is a stratum: a band of surface with a rule laid across its top edge.
+ * No box, no radius, no vertical borders — separation in the grid comes from
+ * the gap alone.
+ */
 .surface-card {
   background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 14px;
-  box-shadow: 0 1px 2px rgba(31, 36, 33, 0.03);
+  border: 0;
+  border-top: 2px solid var(--color-ink);
+  border-radius: 0;
 }
 .surface-card.is-link {
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  transition: border-top-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
 }
 .surface-card.is-link:hover {
-  border-color: var(--color-teal);
-  box-shadow: 0 8px 24px rgba(31, 36, 33, 0.07);
+  border-top-color: var(--color-accent);
+  background: #f7f5f0;
   transform: translateY(-2px);
 }
 
-.section {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+.stat-pill {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: 0.85rem 0 0;
+  text-align: left;
 }
+.stat-pill strong {
+  display: block;
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-stretch: 112%;
+  line-height: 1;
+  color: var(--color-ink);
+  font-variant-numeric: tabular-nums;
+}
+.stat-pill span {
+  display: block;
+  margin-top: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+/*
+ * The figures rail: a full-width deep band. On the hero it sits flush under the
+ * photograph, which is the direction's signature move.
+ */
+.figure-rail {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  background: var(--color-deep);
+}
+@media (min-width: 768px) {
+  .figure-rail { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+.figure-rail__cell {
+  padding: 1.15rem clamp(1.25rem, 3vw, 2rem);
+  border-top: 1px solid rgba(242, 239, 232, 0.16);
+}
+.figure-rail__value {
+  display: block;
+  margin: 0;
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-stretch: 112%;
+  line-height: 1;
+  color: #f2efe8;
+  font-variant-numeric: tabular-nums;
+}
+.figure-rail__label {
+  display: block;
+  margin: 0.4rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #b9c6cc;
+}
+
+/* ---------------------------------------------------------------- cards */
 
 .content-card__media {
   position: relative;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   background: var(--color-surface-muted);
-  border-bottom: 1px solid var(--color-border-soft);
 }
 .content-card__media img {
   width: 100%;
@@ -255,9 +358,7 @@ main {
   object-fit: cover;
   transition: transform 0.45s ease;
 }
-.content-card:hover .content-card__media img {
-  transform: scale(1.04);
-}
+.content-card:hover .content-card__media img { transform: scale(1.04); }
 .content-card__media--placeholder {
   display: flex;
   align-items: center;
@@ -266,7 +367,7 @@ main {
   opacity: 0.35;
 }
 .content-card__body {
-  padding: 1.25rem 1.35rem 1.4rem;
+  padding: 1.15rem 1.3rem 1.4rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -279,12 +380,14 @@ main {
 }
 .content-card__title {
   font-size: 1.05rem;
-  line-height: 1.35;
+  line-height: 1.3;
   color: var(--color-ink);
   margin: 0;
 }
 .content-card__desc {
-  font-size: 0.875rem;
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  line-height: 1.5;
   color: var(--color-muted);
   margin: 0;
   display: -webkit-box;
@@ -293,21 +396,24 @@ main {
   overflow: hidden;
 }
 .content-card__meta {
-  font-size: 0.8rem;
-  color: var(--color-muted);
   margin: 0.25rem 0 0;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--color-muted);
 }
 .content-card__meta--accent {
-  color: var(--color-teal);
-  font-weight: 600;
+  color: var(--color-accent-strong);
+  font-weight: 700;
 }
+
+/* ---------------------------------------------------------------- hero */
 
 .hero-visual {
   position: relative;
   overflow: hidden;
-  border-radius: 1.25rem;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 12px 40px rgba(31, 36, 33, 0.1);
+  border: 0;
+  border-radius: 0;
 }
 .hero-visual img {
   width: 100%;
@@ -316,111 +422,217 @@ main {
   display: block;
   min-height: 280px;
 }
+/* Limewash fading into the photograph — the "tablecloth" pouring over the edge. */
 .hero-visual__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(31, 36, 33, 0.55) 100%);
+  background: linear-gradient(180deg, var(--color-page) 0%, rgba(232, 228, 220, 0) 30%);
   pointer-events: none;
 }
 .hero-visual__caption {
   position: absolute;
-  left: 1.25rem;
-  right: 1.25rem;
-  bottom: 6.5rem;
-  color: #fff;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.35);
+  left: 0;
+  bottom: 0;
+  padding: 0.5rem 1rem;
+  background: var(--color-deep);
+  color: #f2efe8;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
 .hero-project-card {
   position: absolute;
-  left: 1rem;
-  right: 1rem;
-  bottom: 1rem;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   align-items: center;
   gap: 1rem;
-  background: #fff;
-  border-radius: 12px;
-  padding: 0.9rem 1rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  background: var(--color-deep);
+  border-radius: 0;
+  padding: 0.9rem clamp(1rem, 3vw, 1.5rem);
 }
-
-.hero-project-card__copy {
-  flex: 1;
-  min-width: 0;
-}
-
+.hero-project-card__copy { flex: 1; min-width: 0; }
 .hero-project-card__eyebrow {
   margin: 0 0 0.2rem;
-  font-size: 0.65rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-brand);
+  color: #b9c6cc;
 }
-
 .hero-project-card__title {
   margin: 0 0 0.15rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--color-ink);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #f2efe8;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .hero-project-card__meta {
   margin: 0;
   font-size: 0.75rem;
-  color: var(--color-muted);
+  color: #b9c6cc;
 }
-
 .hero-project-card__cta {
   flex-shrink: 0;
-  background: var(--color-brand);
-  color: #fff !important;
-  font-size: 0.75rem;
+  background: var(--color-sand-light);
+  color: #162c37 !important;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.55rem 0.9rem;
-  border-radius: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.6rem 0.95rem;
+  border-radius: 0;
   text-decoration: none;
   white-space: nowrap;
 }
 
 @media (max-width: 640px) {
-  .hero-visual__caption {
-    display: none;
-  }
+  .hero-visual__caption { display: none; }
 }
 
-.stat-pill {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  padding: 1rem 1.25rem;
-  text-align: center;
+/* ---------------------------------------------------------------- prose */
+
+.prose {
+  max-width: 70ch;
+  font-family: var(--font-serif);
+  font-size: 1.03rem;
+  line-height: 1.7;
 }
-.stat-pill strong {
+.prose h2 {
+  margin-top: 2.75rem;
+  margin-bottom: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--color-border);
+  font-size: 1.45rem;
+}
+.prose h3 { margin-top: 1.9rem; margin-bottom: 0.7rem; font-size: 1.12rem; }
+.prose p { margin-bottom: 1.1rem; }
+.prose ul, .prose ol { margin: 1rem 0 1.25rem 1.25rem; }
+/* Tailwind's reset removes list markers; article lists need them back. */
+.prose ul { list-style-type: disc; }
+.prose ol { list-style-type: decimal; }
+.prose li::marker { color: var(--color-accent); }
+.prose li { margin-bottom: 0.4rem; }
+.prose a { text-decoration: underline; text-underline-offset: 0.15em; text-decoration-thickness: 1px; }
+.prose strong { color: var(--color-ink); font-weight: 700; }
+
+.prose table {
   display: block;
-  font-size: 1.5rem;
+  width: max-content;
+  min-width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: collapse;
+  margin: 1.75rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+/* Rows read as strata: horizontal rules only, verticals suppressed. */
+.prose th, .prose td {
+  border: 0;
+  border-bottom: 1px solid var(--color-border-soft);
+  padding: 0.6rem 0.85rem 0.6rem 0;
+  text-align: left;
+}
+.prose th {
+  border-bottom: 2px solid var(--color-ink);
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--color-ink);
-  line-height: 1.2;
+  white-space: nowrap;
 }
-.stat-pill span {
-  font-size: 0.8rem;
-  color: var(--color-muted);
-}
-@media (min-width: 768px) {
-  .section { padding-top: 5.5rem; padding-bottom: 5.5rem; }
-}
-.section + .section {
-  border-top: 1px solid var(--color-border-soft);
+.prose td:last-child, .prose th:last-child { padding-right: 0; }
+@media (max-width: 768px) {
+  .prose th, .prose td { min-width: 8.5rem; }
+  .prose th:first-child, .prose td:first-child { min-width: 7rem; }
 }
 
-.link-arrow {
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: var(--color-teal);
+.prose blockquote {
+  border: 0;
+  border-top: 2px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0.9rem 0;
+  margin: 1.75rem 0;
+  background: transparent;
+  border-radius: 0;
+  font-size: 0.98rem;
+  color: var(--color-ink);
 }
+
+/* ---------------------------------------------------------------- faq */
+
+.faq-item { border-bottom: 1px solid var(--color-border); }
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 700;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-ink);
+}
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
+.faq-item.open .faq-answer { max-height: 500px; padding-bottom: 1rem; }
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+
+/* ---------------------------------------------------------------- forms */
+
+input:not([type="checkbox"]):not([type="radio"]), select, textarea {
+  width: 100%;
+  border: 0;
+  border-bottom: 1.5px solid var(--color-border);
+  border-radius: 0;
+  padding: 0.6rem 0;
+  background: transparent;
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+}
+input:not([type="checkbox"]):not([type="radio"])::placeholder,
+textarea::placeholder { color: #7b858a; }
+input[type="checkbox"], input[type="radio"] {
+  width: 1.125rem;
+  height: 1.125rem;
+  min-width: 1.125rem;
+  padding: 0;
+  flex-shrink: 0;
+  accent-color: var(--color-deep);
+  cursor: pointer;
+}
+input:not([type="checkbox"]):not([type="radio"]):focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-bottom-color: var(--color-ink);
+  border-bottom-width: 2px;
+}
+
+.lead-form-consent { display: flex; align-items: flex-start; gap: 0.625rem; }
+.lead-form-consent__check { margin-top: 0.125rem; }
+.lead-form-consent__label {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.75rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+  cursor: pointer;
+}
+.lead-form-consent__label a { text-decoration: underline; text-underline-offset: 2px; }

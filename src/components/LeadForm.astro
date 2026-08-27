@@ -96,7 +96,7 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
       Prefer WhatsApp?
       <a
         href={waHref}
-        class="font-medium text-[#128C7E] hover:underline"
+        class="font-semibold underline hover:no-underline"
         target="_blank"
         rel="noopener noreferrer"
         data-wa-placement="inline_cta"
@@ -105,8 +105,8 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
         Message us on WhatsApp
       </a>
     </p>
-    <p data-lf-success class="hidden text-green-700 text-sm font-medium text-center">Thank you — redirecting…</p>
-    <p data-lf-error class="hidden text-red-600 text-sm text-center">Something went wrong. Email {SITE.email} or{' '}
+    <p data-lf-success class="hidden lf-status lf-status--ok text-sm font-semibold text-center">Thank you — redirecting…</p>
+    <p data-lf-error class="hidden lf-status lf-status--err text-sm text-center">Something went wrong. Email {SITE.email} or{' '}
       <a
         href={SITE.whatsapp}
         target="_blank"
@@ -120,6 +120,10 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
 </section>
 
 <style>
+  /* Status colours carry meaning, so they stay separate from the accent — but they are palette-tuned, not Tailwind defaults. */
+  .lf-status--ok { color: #1f5d3a; }
+  .lf-status--err { color: #8f2f26; }
+
   .lf-hp {
     position: absolute;
     left: -9999px;

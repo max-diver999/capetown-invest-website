@@ -132,7 +132,7 @@ const anchor = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-'
         {groups.map((group) => (
           <a
             href={`#${anchor(group.label)}`}
-            class="badge-pill no-underline hover:border-[var(--color-accent,#2d7a5e)]"
+            class="badge-pill no-underline hover:bg-[var(--color-accent)] hover:text-[var(--color-surface)]"
           >{group.label} ({group.cards.length})</a>
         ))}
       </nav>
@@ -162,12 +162,12 @@ const anchor = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-'
     {searchable && <p id="hub-search-empty" class="hub-search__empty" hidden>No guides match that search.</p>}
 
     {faq.length > 0 && (
-      <div class="max-w-3xl mx-auto mt-4">
+      <div class="max-w-3xl mt-4">
         <FaqBlock items={faq} />
       </div>
     )}
 
-    <div class="max-w-3xl mx-auto mt-12">
+    <div class="max-w-3xl mt-12">
       <LeadForm title={leadTitle} subtitle={leadSubtitle} context={`${sectionName} hub`} />
     </div>
   </section>
@@ -177,17 +177,21 @@ const anchor = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-'
   .hub-search {
     max-width: 36rem;
     margin-bottom: 2rem;
-    padding: 1rem;
-    border: 1px solid var(--color-border);
-    border-radius: 14px;
-    background: var(--color-surface);
+    padding: 1rem 0;
+    border: 0;
+    border-top: 2px solid var(--color-ink);
+    border-bottom: 1px solid var(--color-border);
+    border-radius: 0;
+    background: transparent;
   }
   .hub-search label {
     display: block;
     margin-bottom: 0.45rem;
     color: var(--color-ink);
-    font-size: 0.85rem;
-    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
   .hub-search input { width: 100%; }
   .hub-search p {

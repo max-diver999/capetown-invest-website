@@ -156,18 +156,19 @@ const responsiveHero = heroImage ? responsiveCloudinary(heroImage) : null;
         alt={resolvedHeroAlt}
         width={responsiveHero.width || 1280}
         height={responsiveHero.height || 720}
-        class="w-full max-h-[420px] object-cover rounded-2xl mb-10 border border-[var(--color-border)]"
+        class="article-hero"
         loading="eager"
         fetchpriority="high"
+        data-hero-img
       />
     )}
 
-    <div class="prose mx-auto">
+    <div class="prose">
       <slot />
     </div>
 
     {!hasInlineFaqBlock && faq.length > 0 && (
-      <div class="max-w-3xl mx-auto mt-10">
+      <div class="max-w-3xl mt-10">
         <FaqBlock items={faq} />
       </div>
     )}
@@ -181,7 +182,7 @@ const responsiveHero = heroImage ? responsiveCloudinary(heroImage) : null;
       />
     )}
 
-    <div class="max-w-3xl mx-auto mt-12">
+    <div class="max-w-3xl mt-12">
       <LeadForm
         title="Get a Cape Town property shortlist"
         subtitle="Share your budget, target area (Atlantic Seaboard, City Bowl, Winelands), and goal. We reply within one business day with matched stock and next steps."
@@ -189,9 +190,35 @@ const responsiveHero = heroImage ? responsiveCloudinary(heroImage) : null;
       />
     </div>
 
-    <aside class="max-w-3xl mx-auto mt-10 surface-card p-5 text-sm text-[var(--color-muted)]">
+    <aside class="max-w-3xl mt-10 surface-card p-5 text-sm text-[var(--color-muted)]">
       <strong>Disclaimer:</strong> Cape Town Invest is an independent editorial resource. We are not a developer or licensed broker.
       Enquiries may be referred to licensed South African property professionals. Transfer duty, exchange control, and visa rules change — verify with your conveyancer and immigration adviser before any transaction.
     </aside>
   </article>
 </BaseLayout>
+
+<script>
+  /*
+   * A hero that 404s used to leave a full-width dead band. Removing the element
+   * lets the page close up instead of framing a missing image.
+   */
+  document.querySelectorAll('img[data-hero-img]').forEach((img) => {
+    img.addEventListener('error', () => img.remove(), { once: true });
+  });
+</script>
+
+<style>
+  /* Square, unframed, and wide — the photograph is a stratum, not a framed plate. */
+  .article-hero {
+    display: block;
+    width: 100%;
+    height: 22rem;
+    object-fit: cover;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 2.5rem;
+  }
+  @media (max-width: 640px) {
+    .article-hero { height: 13rem; }
+  }
+</style>

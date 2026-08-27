@@ -8,7 +8,7 @@ const desktopNav = PRIMARY_NAV.slice(0, 5);
 const currentPath = Astro.url.pathname;
 const isActive = (href: string) => currentPath === href || (href !== '/' && currentPath.startsWith(href));
 ---
-<header class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[rgba(255,255,255,0.9)] backdrop-blur-md">
+<header class="site-header sticky top-0 z-50 border-b border-[var(--color-ink)]">
   <div class="site-container flex items-center justify-between gap-3 py-4">
     <a href="/" class="flex items-center gap-2 no-underline min-w-0">
       <img src="/favicon.svg?v=3" alt="" width="32" height="32" class="rounded-lg" />
@@ -72,6 +72,14 @@ const isActive = (href: string) => currentPath === href || (href !== '/' && curr
 </header>
 
 <style>
+  /*
+   * No backdrop-filter here. A filtered element becomes the containing block for
+   * any `position: fixed` descendant, which pinned the nav drawer inside the
+   * 73px-tall header and rendered it 3px high on every phone.
+   */
+  .site-header {
+    background: var(--color-page);
+  }
   .site-nav-toggle {
     display: inline-flex;
     align-items: center;
@@ -79,8 +87,8 @@ const isActive = (href: string) => currentPath === href || (href !== '/' && curr
     width: 44px;
     height: 44px;
     margin-right: -0.5rem;
-    border: 1px solid var(--color-border);
-    border-radius: 10px;
+    border: 1.5px solid var(--color-ink);
+    border-radius: 0;
     background: transparent;
     color: var(--color-ink);
     cursor: pointer;
@@ -89,7 +97,6 @@ const isActive = (href: string) => currentPath === href || (href !== '/' && curr
   .site-nav-toggle__bars span {
     display: block;
     height: 2px;
-    border-radius: 2px;
     background: currentColor;
     transition: transform 0.2s ease, opacity 0.2s ease;
   }
@@ -97,11 +104,17 @@ const isActive = (href: string) => currentPath === href || (href !== '/' && curr
   .site-nav-toggle[aria-expanded='true'] .site-nav-toggle__bars span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
   .site-nav-toggle[aria-expanded='true'] .site-nav-toggle__bars span:nth-child(2) { opacity: 0; }
   .site-nav-toggle[aria-expanded='true'] .site-nav-toggle__bars span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+  /* Height comes from the real header via --site-header-h; the literal is a fallback. */
   .site-nav-drawer {
     position: fixed;
-    inset: 73px 0 0;
+    left: 0;
+    right: 0;
+    top: var(--site-header-h, 73px);
+    bottom: 0;
     z-index: 60;
-    background: var(--color-surface);
+    background: var(--color-page);
+    border-top: 1px solid var(--color-ink);
     overflow-y: auto;
     overscroll-behavior: contain;
   }
@@ -116,43 +129,49 @@ const isActive = (href: string) => currentPath === href || (href !== '/' && curr
     align-items: center;
     justify-content: center;
     margin-bottom: 0.75rem;
-    border-radius: 999px;
-    background: var(--color-teal);
-    color: #fff !important;
-    font-weight: 600;
+    border-radius: 0;
+    background: var(--color-deep);
+    color: #f2efe8 !important;
+    font-weight: 700;
+    font-stretch: 108%;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
     text-decoration: none;
   }
   .site-nav-drawer__label {
-    margin: 1rem 0 0.5rem;
+    margin: 1.4rem 0 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--color-border);
     color: var(--color-muted);
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
   }
   .site-nav-drawer__list {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.35rem;
+    gap: 0;
     margin: 0;
     padding: 0;
     list-style: none;
   }
   .site-nav-drawer__list a {
     display: block;
-    min-height: 72px;
-    padding: 0.8rem;
-    border: 1px solid var(--color-border);
-    border-radius: 12px;
-    background: var(--color-page);
+    min-height: 68px;
+    padding: 0.8rem 0.8rem 0.8rem 0;
+    border: 0;
+    border-top: 1px solid var(--color-border-soft);
+    background: transparent;
     text-decoration: none;
   }
-  .site-nav-drawer__list--compact a { min-height: 48px; }
+  .site-nav-drawer__list--compact a { min-height: 44px; }
   .site-nav-drawer__link {
     display: block;
     color: var(--color-ink);
-    font-size: 0.92rem;
-    font-weight: 600;
+    font-size: 0.95rem;
+    font-weight: 700;
   }
   .site-nav-drawer__note {
     display: block;
@@ -180,7 +199,16 @@ const isActive = (href: string) => currentPath === href || (href !== '/' && curr
     const drawer = document.getElementById('site-nav-drawer');
     if (!toggle || !drawer) return;
 
+    const header = toggle.closest('header');
+
+    function syncHeight() {
+      if (header) {
+        document.documentElement.style.setProperty('--site-header-h', header.offsetHeight + 'px');
+      }
+    }
+
     function setOpen(open: boolean) {
+      if (open) syncHeight();
       toggle.setAttribute('aria-expanded', String(open));
       toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       drawer.hidden = !open;
@@ -194,6 +222,8 @@ const isActive = (href: string) => currentPath === href || (href !== '/' && curr
     });
     window.addEventListener('resize', () => {
       if (window.innerWidth > 1100) setOpen(false);
+      else if (toggle.getAttribute('aria-expanded') === 'true') syncHeight();
     });
+    syncHeight();
   })();
 </script>

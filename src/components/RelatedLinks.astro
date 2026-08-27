@@ -10,7 +10,7 @@ interface Props {
 const { items, heading = 'Related research', intro } = Astro.props;
 ---
 {items.length > 0 && (
-  <aside class="max-w-3xl mx-auto mt-12">
+  <aside class="max-w-3xl mt-12">
     <h2 class="text-xl mb-1 text-[var(--color-ink)]">{heading}</h2>
     {intro && <p class="text-sm text-[var(--color-muted)] mb-4">{intro}</p>}
     <ul class="grid gap-3 sm:grid-cols-2 list-none p-0 m-0 mt-4">
