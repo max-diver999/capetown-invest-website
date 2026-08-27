@@ -1,0 +1,20 @@
+{
+  "_readme": "Load-bearing figures. A figure phrase used in two or more articles is a corpus-wide claim and must be registered here with its source; a figure used once is a local worked example and needs no entry. Adding an entry is a claim about the world, so each needs a source and an asOf date, and the scorer reports every entry a change introduces so a reviewer sees them.",
+  "facts": [
+    { "figure": "7.5%", "statement": "Section 35A withholding on a sale above R2 million by a non-resident individual", "source": "Income Tax Act 58 of 1962 s35A; SARS external guide", "asOf": "2026-08-22" },
+    { "figure": "10%", "statement": "Section 35A withholding where the non-resident seller is a company", "source": "Income Tax Act 58 of 1962 s35A", "asOf": "2026-08-22" },
+    { "figure": "15%", "statement": "Section 35A withholding where the non-resident seller is a trust; also the standard VAT rate", "source": "Income Tax Act 58 of 1962 s35A; VAT Act", "asOf": "2026-08-22" },
+    { "figure": "R2 million", "statement": "Price threshold above which section 35A withholding applies", "source": "Income Tax Act 58 of 1962 s35A", "asOf": "2026-08-22" },
+    { "figure": "40%", "statement": "CGT inclusion rate for individuals", "source": "SARS capital gains tax guide", "asOf": "2026-08-22" },
+    { "figure": "80%", "statement": "CGT inclusion rate for companies and trusts", "source": "SARS capital gains tax guide", "asOf": "2026-08-22" },
+    { "figure": "R40,000", "statement": "Annual CGT exclusion for individuals", "source": "SARS capital gains tax guide", "asOf": "2026-08-22" },
+    { "figure": "R1,210,000", "statement": "Transfer duty nil-rate threshold, effective 1 April 2025", "source": "SARS transfer duty rates", "asOf": "2026-08-22" },
+    { "figure": "13%", "statement": "Top transfer duty band, above R13,310,000", "source": "SARS transfer duty rates", "asOf": "2026-08-22" },
+    { "figure": "R620,000", "statement": "City of Cape Town rates-free portion for homes valued at R8 million or less, 2026/27", "source": "City of Cape Town budget 2026/27, adopted 29 June 2026", "asOf": "2026-08-22" },
+    { "figure": "10.5%", "statement": "Prime lending rate", "source": "SARB repo 7% plus 3.5%", "asOf": "2026-08-22" },
+    { "figure": "75%", "statement": "Special resolution threshold under the STSMA for body corporate conduct rules", "source": "Sectional Titles Schemes Management Act 8 of 2011", "asOf": "2026-08-22" },
+    { "figure": "50%", "statement": "Typical maximum loan-to-value South African banks extend to non-residents", "source": "Bank non-resident lending policies, market practice", "asOf": "2026-08-22" },
+    { "figure": "21 days", "statement": "Period within which section 35A withholding must reach SARS after registration", "source": "Income Tax Act 58 of 1962 s35A", "asOf": "2026-08-22" },
+    { "figure": "8 to 12 weeks", "statement": "Typical accepted offer to registration transfer time in Cape Town", "source": "Western Cape conveyancing practice", "asOf": "2026-08-22" }
+  ]
+}
