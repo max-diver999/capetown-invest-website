@@ -246,6 +246,42 @@
       "statement": "Typical short-let management fee charged as a share of collected revenue in Cape Town",
       "source": "Cape Town short-let management market rates, 2026",
       "asOf": "2026-08-27"
+    },
+    {
+      "figure": "7.9%",
+      "statement": "Modelled gross yield across City Bowl long-let stock",
+      "source": "Cape Town Invest model built from listing asking prices and observed long-let rents, not audited accounts. Net deducts levies, municipal rates, maintenance, letting commission and a vacancy allowance set by zone.",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "7.8%",
+      "statement": "Modelled gross yield for Gardens, Tamboerskloof and De Waterkant long lets",
+      "source": "Cape Town Invest model built from listing asking prices and observed long-let rents, not audited accounts. Net deducts levies, municipal rates, maintenance, letting commission and a vacancy allowance set by zone.",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "6.0%",
+      "statement": "Modelled net yield in Woodstock, the firmest in the City Bowl",
+      "source": "Cape Town Invest model built from listing asking prices and observed long-let rents, not audited accounts. Net deducts levies, municipal rates, maintenance, letting commission and a vacancy allowance set by zone.",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "5.7%",
+      "statement": "Modelled net yield in Gardens",
+      "source": "Cape Town Invest model built from listing asking prices and observed long-let rents, not audited accounts. Net deducts levies, municipal rates, maintenance, letting commission and a vacancy allowance set by zone.",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "5.6%",
+      "statement": "Modelled net yield in Tamboerskloof",
+      "source": "Cape Town Invest model built from listing asking prices and observed long-let rents, not audited accounts. Net deducts levies, municipal rates, maintenance, letting commission and a vacancy allowance set by zone.",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "5.5%",
+      "statement": "Modelled net yield in De Waterkant, the softest in the City Bowl",
+      "source": "Cape Town Invest model built from listing asking prices and observed long-let rents, not audited accounts. Net deducts levies, municipal rates, maintenance, letting commission and a vacancy allowance set by zone.",
+      "asOf": "2026-08-27"
     }
   ]
 }
