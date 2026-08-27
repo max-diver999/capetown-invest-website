@@ -102,6 +102,30 @@ export function plainText(raw) {
  * duplication runs over prose plus table cell text, and the quality rubrics run
  * over prose alone.
  */
+export const MAX_CITATION_TRAILER_WORDS = 120;
+
+/**
+ * A source trailer is a citation, not prose, and two articles that rest on the
+ * same statute should cite it with the same words. Penalising that pushes a
+ * writer toward vaguer attribution to dodge a collision, which is the opposite
+ * of what this rubric is for, so the trailer is removed before duplication is
+ * measured.
+ *
+ * The exemption is deliberately narrow, because "text that does not count"
+ * is the shape of every hole a red team looks for. It applies only to the
+ * final block of the document, only when that block opens with "Sources:",
+ * and only up to MAX_CITATION_TRAILER_WORDS. A trailer longer than the bound
+ * is measured in full rather than truncated: an author who moves an article
+ * into its own bibliography gets no discount at all.
+ */
+export function stripCitationTrailer(text) {
+  const m = text.match(/\bSources:\s[^]*$/);
+  if (!m) return text;
+  const trailer = m[0];
+  if ((trailer.match(/\b[\w']+\b/g) || []).length > MAX_CITATION_TRAILER_WORDS) return text;
+  return text.slice(0, m.index).trim();
+}
+
 export function duplicationText(raw) {
   // plainText drops JSX tags and backtick spans, so prose moved into a component
   // prop or a code span disappears from the detector. Recover the human-readable
@@ -115,7 +139,11 @@ export function duplicationText(raw) {
     .filter((l) => /^\s*\|/.test(l) && !/^\s*\|[\s:|-]*\|?\s*$/.test(l))
     .map((l) => l.replace(/^\s*\|/, '').replace(/\|\s*$/, '').split('|').join(' '))
     .join(' ');
-  return [plainText(raw), tableCells, componentText, codeSpans]
+  // The trailer is stripped from the prose alone, before the table and component
+  // text is appended, because it is the end of the prose and not the end of the
+  // concatenation.
+  const prose = stripCitationTrailer(plainText(raw));
+  return [prose, tableCells, componentText, codeSpans]
     .join(' ')
     .replace(/\s+/g, ' ')
     .trim();
