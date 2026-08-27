@@ -306,6 +306,24 @@
       "statement": "City of Cape Town residential rate in the rand for 2026/27",
       "source": "City of Cape Town budget 2026/27, adopted 29 June 2026",
       "asOf": "2026-08-27"
+    },
+    {
+      "figure": "4.13%",
+      "statement": "Average gross rental yield across Lisbon apartments, August 2026, against a district range of about 0.99% to 6.75%",
+      "source": "Lisbon rental yield market data, August 2026",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "1%",
+      "statement": "Portugal AIMI annual rate for individuals on property value above EUR 1 million, with 0.7% applying from EUR 600,000",
+      "source": "Portugal AIMI rates, 2026",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "0.7%",
+      "statement": "Portugal AIMI annual rate for individuals on property value from EUR 600,000, rising to 1% above EUR 1 million",
+      "source": "Portugal AIMI rates, 2026",
+      "asOf": "2026-08-27"
     }
   ]
 }
