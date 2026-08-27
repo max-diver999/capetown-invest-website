@@ -114,6 +114,117 @@
       "files": [
         "compare/cape-town-vs-dubai-property-investment.mdx"
       ]
+    },
+    {
+      "id": "us-citizenship-based-taxation",
+      "jurisdiction": "US",
+      "claim": "The United States taxes citizens and green card holders on worldwide income regardless of where they live, so a foreign rental property creates a US filing position that does not end when the owner leaves the country",
+      "source": "US Internal Revenue Code, taxation of citizens and residents on worldwide income",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "segments/us-buyers-cape-town-property.mdx",
+        "segments/uk-buyers-cape-town-property.mdx"
+      ]
+    },
+    {
+      "id": "us-fbar-threshold",
+      "jurisdiction": "US",
+      "claim": "FBAR, FinCEN Form 114, is required when the aggregate value of all foreign financial accounts exceeds USD 10,000 at any point in the year; the property itself is not a financial account, but a South African bank account run for it is",
+      "source": "FinCEN Form 114 filing requirement, Bank Secrecy Act",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "segments/us-buyers-cape-town-property.mdx"
+      ]
+    },
+    {
+      "id": "us-fatca-8938",
+      "jurisdiction": "US",
+      "claim": "FATCA reporting on Form 8938 covers specified foreign financial assets on thresholds that vary by filing status and by whether the taxpayer lives abroad, and sits alongside FBAR rather than replacing it",
+      "source": "IRS Form 8938 reporting requirement under FATCA",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "segments/us-buyers-cape-town-property.mdx"
+      ]
+    },
+    {
+      "id": "us-1031-excludes-foreign",
+      "jurisdiction": "US",
+      "claim": "Real property located in the United States and real property located outside it are not like-kind to each other, so a section 1031 exchange cannot defer gain in either direction between a US property and a Cape Town one",
+      "source": "US Internal Revenue Code section 1031, domestic and foreign real property not like-kind",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "segments/us-buyers-cape-town-property.mdx"
+      ]
+    },
+    {
+      "id": "de-exemption-with-progression",
+      "jurisdiction": "DE",
+      "claim": "Double taxation agreements on the OECD model allocate the taxing right over income from immovable property to the state where the property sits, and Germany relieves that income by exemption with progression: it is outside the German tax base but still counted when fixing the rate on German income",
+      "source": "OECD Model Tax Convention article 6 and German exemption-with-progression method",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "segments/german-buyers-cape-town-property.mdx"
+      ]
+    },
+    {
+      "id": "de-ten-year-speculation-period",
+      "jurisdiction": "DE",
+      "claim": "Under German domestic law a gain on the private disposal of real property is taxable where the sale falls within a speculation period of ten years from acquisition, and outside the charge beyond it; business holdings are in a different regime",
+      "source": "German private disposal rules, ten-year speculation period for real property",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "segments/german-buyers-cape-town-property.mdx"
+      ]
+    },
+    {
+      "id": "uk-residence-basis",
+      "jurisdiction": "GB",
+      "claim": "The United Kingdom taxes residents on worldwide income and generally does not tax non-residents on foreign rental profit; residence is decided by a statutory test weighing days in the UK against connecting factors, not by nationality",
+      "source": "UK Statutory Residence Test and the residence basis of UK income tax",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "segments/uk-buyers-cape-town-property.mdx",
+        "guides/uk-tax-south-africa-rental-property.mdx"
+      ]
+    },
+    {
+      "id": "uk-dta-credit-relief",
+      "jurisdiction": "GB",
+      "claim": "Where a UK resident owns South African property, the South Africa-United Kingdom double tax agreement relieves double taxation on the same rental profit by credit for the South African tax already paid, so the owner bears the higher of the two rates rather than both",
+      "source": "South Africa-United Kingdom double taxation agreement, credit relief",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "segments/uk-buyers-cape-town-property.mdx",
+        "guides/uk-tax-south-africa-rental-property.mdx"
+      ]
+    },
+    {
+      "id": "uk-non-resident-sdlt-surcharge",
+      "jurisdiction": "GB",
+      "claim": "The United Kingdom charges non-residents a 2% stamp duty land tax surcharge and Singapore charges foreign buyers a 60% additional buyer's stamp duty; both are cited across this site only as the contrast with South Africa, which levies no foreign buyer surcharge at all",
+      "source": "UK non-resident SDLT surcharge; Singapore additional buyer's stamp duty for foreign buyers",
+      "asOf": "2026-08-27",
+      "reviewBy": "2027-02-27",
+      "files": [
+        "segments/uk-buyers-cape-town-property.mdx",
+        "developers/blok-urban-developers.mdx",
+        "developers/prospekt-property-development.mdx",
+        "projects/the-charlotte-cape-town.mdx",
+        "projects/nine-palms-century-city.mdx",
+        "news/foreign-buyers-atlantic-seaboard-2025.mdx",
+        "guides/can-foreigners-buy-property-south-africa.mdx",
+        "guides/is-cape-town-property-good-investment-2026.mdx",
+        "areas/v-and-a-waterfront-property-investment.mdx",
+        "areas/claremont-property-investment.mdx"
+      ]
     }
   ]
 }
