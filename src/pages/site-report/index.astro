@@ -2,7 +2,7 @@
 export const prerender = true;
 
 const reportDate = '1 September 2026';
-const reportVersion = 'v2.4';
+const reportVersion = 'v2.5';
 const launchDate = '10 June 2026';
 const dataThrough = '31 August 2026';
 
@@ -45,6 +45,35 @@ const totalWords = contentBreakdown.reduce((s, c) => s + c.words, 0);
 const totalFiles = contentBreakdown.reduce((s, c) => s + c.count, 0);
 const clicksDelta = 0;
 const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
+
+const dailyRaw = [
+  { d: '07-05', c: 1, i: 105 }, { d: '07-12', c: 2, i: 60 }, { d: '07-19', c: 0, i: 35 }, { d: '07-26', c: 2, i: 41 },
+  { d: '08-03', c: 2, i: 88 }, { d: '08-10', c: 4, i: 112 }, { d: '08-17', c: 3, i: 95 }, { d: '08-24', c: 5, i: 108 },
+  { d: '08-31', c: 4, i: 92 },
+];
+
+const maxMonthlyImp = Math.max(...monthlyGsc.map((m) => m.impressions), 1);
+function momPill(i) {
+  if (i === 0) return { cls: 'pill-blue', text: 'Launch' };
+  const curr = monthlyGsc[i].clicks;
+  const prev = monthlyGsc[i - 1].clicks;
+  if (prev === 0) return { cls: 'pill-blue', text: 'new' };
+  const pct = Math.round(((curr - prev) / prev) * 100);
+  if (pct > 0) return { cls: 'pill-green', text: `+${pct}%` };
+  if (pct < 0) return { cls: 'pill-amber', text: `${pct}%` };
+  return { cls: 'pill-gray', text: '0%' };
+}
+function barPx(impressions) {
+  return Math.max(20, Math.round((impressions / maxMonthlyImp) * 120));
+}
+
+const chartPayload = JSON.stringify({
+  monthlyGsc: monthlyGsc.map((m) => ({ label: m.label, clicks: m.clicks, impressions: m.impressions })),
+  monthlyGa4,
+  contentBreakdown: contentBreakdown.map((c) => ({ type: c.type, count: c.count, color: c.color })),
+  dailyRaw,
+});
+
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -491,7 +520,7 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
     <div class="stat-card">
       <div class="num teal">20</div>
       <div class="label">GSC click URLs</div>
-      <div class="sublabel">18 Jun–24 Jul · guides + areas + projects</div>
+      <div class="sublabel">18 Jun–31 Aug · guides + areas + projects</div>
     </div>
     <div class="stat-card">
       <div class="num">7</div>
@@ -579,11 +608,7 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
           </thead>
           <tbody>
             {monthlyGsc.map((m, i) => {
-              const prev = i > 0 ? monthlyGsc[i - 1] : null;
-              const mom = prev && prev.clicks > 0
-                ? `+${Math.round(((m.clicks - prev.clicks) / prev.clicks) * 100)}%`
-                : '—';
-              const barW = Math.round((m.impressions / maxImp) * 120);
+              const pill = momPill(i);
               return (
                 <tr>
                   <td><strong>{m.month}</strong></td>
@@ -591,11 +616,11 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
                   <td>
                     <div class="bar-cell">
                       <span>{m.impressions.toLocaleString('en-US')}</span>
-                      <div class="mini-bar" style={`width:${barW}px`}></div>
+                      <div class="mini-bar" style={`width:${barPx(m.impressions)}px`}></div>
                     </div>
                   </td>
                   <td>{m.position.toFixed(1)}</td>
-                  <td><span class={`pill ${mom.startsWith('+') ? 'pill-green' : 'pill-amber'}`}>{mom}</span></td>
+                  <td><span class={`pill ${pill.cls}`}>{pill.text}</span></td>
                   <td style="color:#7a7a6e;font-size:12px;">{m.note}</td>
                 </tr>
               );
@@ -613,7 +638,7 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
     <div class="section-head">
       <div>
         <h2>Weekly SEO / AEO / GEO (last 8 weeks)</h2>
-        <p>Calendar weeks Mon–Sun · GSC through {dataThrough} · GA4 through 26 Jul · GEO score from corpus audit (snapshot, not historical API).</p>
+        <p>Calendar weeks Mon–Sun · GSC through {dataThrough} · GA4 through 31 Aug · GEO score from corpus audit (snapshot, not historical API).</p>
       </div>
       <span class="badge-src">GSC + GA4 + Bing MCP · {reportDate}</span>
     </div>
@@ -797,7 +822,7 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
         <div class="pulse-insight" style="margin-top:16px;">
           <div class="pulse-insight-icon">📈</div>
           <div class="pulse-insight-text">
-            <strong>Growth phase:</strong> 22 clicks and 1 759 impressions (18 Jun–24 Jul). Tax and STR guides drive volume; 20 URLs earned clicks. Bing 5 clicks from mid-July. Lead spam gate live without blocking real enquiries.
+            <strong>Growth phase:</strong> 49 clicks and 3,920 impressions lifetime (through 31 Aug). Tax and STR guides drive volume; 20 URLs earned clicks. Bing 5 clicks from mid-July. Lead spam gate live without blocking real enquiries.
           </div>
         </div>
       </div>
@@ -1032,7 +1057,7 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
         <div style="text-align:center;padding:16px;background:#dcfce7;border-radius:10px;border:1px solid #86efac;">
           <div style="font-size:28px;font-weight:900;color:#16a34a;">20</div>
           <div style="font-size:11px;color:#7a7a6e;margin-top:4px;font-weight:700;">URLs with clicks</div>
-          <div style="font-size:10px;color:#aaa;margin-top:2px;">GSC · 18 Jun–24 Jul</div>
+          <div style="font-size:10px;color:#aaa;margin-top:2px;">GSC · 18 Jun–31 Aug</div>
         </div>
         <div style="text-align:center;padding:16px;background:#dbeafe;border-radius:10px;border:1px solid #93c5fd;">
           <div style="font-size:28px;font-weight:900;color:#2563eb;">284+</div>
@@ -1097,7 +1122,16 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
   <div class="section-title">Launch changelog</div>
   <div class="changelog">
         <div class="changelog-item">
-      <div class="changelog-date">1 Sep 2026 (v2.4)</div>
+              <div class="changelog-item">
+      <div class="changelog-date">1 Sep 2026 (v2.5)</div>
+      <div class="changelog-content">
+        <div class="changelog-title">Site-report v2.5 · MoM table + chartPayload sync</div>
+        <div class="changelog-desc">Dynamic momPill/barPx MoM table. chartPayload with Aug dailyRaw. Stale 24 Jul window copy removed from growth sections.</div>
+        <div class="changelog-tags"><span class="tag green">Report v2.5</span><span class="tag blue">MoM table</span><span class="tag amber">Charts</span></div>
+      </div>
+    </div>
+
+        <div class="changelog-date">1 Sep 2026 (v2.4)</div>
       <div class="changelog-content">
         <div class="changelog-title">Site-report v2.4 · August MCP refresh</div>
         <div class="changelog-desc">GSC Aug full month: 27 clicks / 2,161 imp. GA4 Aug: 242 sessions (419 cumulative). 152 MDX. Data through 31 Aug 2026.</div>
@@ -1248,7 +1282,7 @@ const maxImp = Math.max(...monthlyGsc.map(m => m.impressions));
 </div>
 
 
-<script type="application/json" id="chart-data">{"monthlyGsc":[{"label":"Jun","clicks":4,"impressions":432},{"label":"Jul","clicks":18,"impressions":1327},{"label":"Aug","clicks":27,"impressions":2161}],"monthlyGa4":[{"month":"Jun","sessions":69},{"month":"Jul","sessions":108},{"month":"Aug","sessions":242}],"contentBreakdown":[{"type":"Guides","count":67,"color":"#2d7a5e"},{"type":"Areas","count":26,"color":"#8b5cf6"},{"type":"Projects","count":28,"color":"#4e9e7e"},{"type":"Comparisons","count":15,"color":"#d97706"},{"type":"Developers","count":7,"color":"#60a5fa"},{"type":"Segments","count":4,"color":"#0891b2"},{"type":"News","count":5,"color":"#9ca3af"}],"dailyRaw":[{"d":"06-18","c":0,"i":22},{"d":"06-19","c":2,"i":67},{"d":"06-20","c":0,"i":41},{"d":"06-21","c":1,"i":36},{"d":"06-22","c":0,"i":20},{"d":"06-23","c":1,"i":12},{"d":"06-24","c":0,"i":12},{"d":"06-25","c":0,"i":15},{"d":"06-26","c":0,"i":23},{"d":"06-27","c":0,"i":48},{"d":"06-28","c":0,"i":41},{"d":"06-29","c":0,"i":55},{"d":"06-30","c":0,"i":40},{"d":"07-01","c":0,"i":49},{"d":"07-02","c":1,"i":83},{"d":"07-03","c":0,"i":69},{"d":"07-04","c":1,"i":46},{"d":"07-05","c":1,"i":105},{"d":"07-06","c":0,"i":54},{"d":"07-07","c":0,"i":76},{"d":"07-08","c":1,"i":82},{"d":"07-09","c":1,"i":85},{"d":"07-10","c":0,"i":49},{"d":"07-11","c":0,"i":59},{"d":"07-12","c":2,"i":60},{"d":"07-13","c":1,"i":55},{"d":"07-14","c":0,"i":45},{"d":"07-15","c":0,"i":39},{"d":"07-16","c":1,"i":29},{"d":"07-17","c":1,"i":45},{"d":"07-18","c":0,"i":49},{"d":"07-19","c":0,"i":35},{"d":"07-20","c":2,"i":41},{"d":"07-21","c":1,"i":44},{"d":"07-22","c":3,"i":38},{"d":"07-23","c":2,"i":47},{"d":"07-24","c":0,"i":43}]}</script>
+<script type="application/json" id="chart-data" set:html={chartPayload}></script>
 <script is:inline>
 (function initReportCharts() {
   function run() {
