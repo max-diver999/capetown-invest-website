@@ -244,6 +244,27 @@ function auditFile(c, slug) {
   const uniqueBad = [...new Set(badLinks)];
   if (uniqueBad.length) prob.push(`brokenInternalLinks:${uniqueBad.join('|')}`);
 
+  // The FAQPage JSON-LD is built from the frontmatter `faq`, while the visible
+  // accordion comes from the inline block. Authored twice, they drift: seven
+  // pages were serving structured questions that never appeared on the page,
+  // which is exactly what Google's FAQ policy forbids. Frontmatter is the
+  // source of truth; the inline block must mirror it question for question.
+  const norm = (x) => x.replace(/\s+/g, ' ').replace(/[\u201c\u201d]/g, '"').trim().toLowerCase();
+  const fmQuestions = [...(fmRaw || '').matchAll(/^\s*-\s*question:\s*"(.*)"\s*$/gm)].map((m) => norm(m[1]));
+  if (fmQuestions.length) {
+    const inlineSrc =
+      body.match(/export const faqItems\s*=\s*\[([\s\S]*?)\n\]/) ||
+      body.match(/<FaqBlock\s+items=\{\[([\s\S]*?)\]\}\s*\/>/);
+    if (inlineSrc) {
+      const inlineQuestions = [...inlineSrc[1].matchAll(/question:\s*"((?:[^"\\]|\\.)*)"/g)].map((m) => norm(m[1]));
+      const a = new Set(fmQuestions);
+      const b = new Set(inlineQuestions);
+      const onlyFm = [...a].filter((x) => !b.has(x)).length;
+      const onlyInline = [...b].filter((x) => !a.has(x)).length;
+      if (onlyFm || onlyInline) prob.push(`faqMismatch:frontmatter-only=${onlyFm},visible-only=${onlyInline}`);
+    }
+  }
+
   reportRows.push({ coll: c, slug, words, faq: fm.__faqCount, prob });
   if (prob.length) issues.push(`[${c}/${slug}] (${words}w) ${prob.join(', ')}`);
 }
