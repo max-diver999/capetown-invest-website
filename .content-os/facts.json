@@ -438,6 +438,30 @@
       "statement": "Effective transfer duty rate on a R4,000,000 purchase, being R217,356 of price",
       "source": "SARS transfer duty table effective 1 April 2025",
       "asOf": "2026-09-03"
+    },
+    {
+      "figure": "4.2%",
+      "statement": "Century City sectional title modelled NET yield, median of the site's own published assumption grid: prices R2.5m-R2.9m, rents R14,000-R17,000/month, levy R2,000-R2,500/month, City of Cape Town rates at 0.0064 in the rand above the R620,000 rates-free portion, management 8-10% of collected rent, one vacant month a year. Full range 3.2% to 5.4%, interquartile 3.8% to 4.6%. Replaces the previous 'mid 5% to low 6% net' claim, which was only reachable by omitting the management and vacancy the same sentence said were deducted.",
+      "source": "Computed from the prices, rents and cost assumptions published across the Century City pages; CoCT 2026/27 rates policy for the municipal component",
+      "asOf": "2026-09-03"
+    },
+    {
+      "figure": "R67,200",
+      "statement": "SARS transfer duty on a R2,500,000 residential purchase, 2026/27 sliding scale",
+      "source": "SARS transfer duty rates, 2026/27 year of assessment",
+      "asOf": "2026-09-03"
+    },
+    {
+      "figure": "R87,200",
+      "statement": "SARS transfer duty on a R2,750,000 residential purchase, 2026/27 sliding scale. The Nine Palms page previously stated 'near R89,000' for this price.",
+      "source": "SARS transfer duty rates, 2026/27 year of assessment",
+      "asOf": "2026-09-03"
+    },
+    {
+      "figure": "R99,200",
+      "statement": "SARS transfer duty on a R2,900,000 residential purchase, 2026/27 sliding scale",
+      "source": "SARS transfer duty rates, 2026/27 year of assessment",
+      "asOf": "2026-09-03"
     }
   ],
   "notClaims": [
