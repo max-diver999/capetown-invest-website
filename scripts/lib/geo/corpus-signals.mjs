@@ -161,10 +161,63 @@ export function sentences(text) {
 }
 
 /** Figure phrases: "R620,000", "7.5%", "14 business days" — the unit matters, the bare digit does not. */
+/**
+ * Normalise a rand amount so the same fact is one key, not several.
+ *
+ * "R2 million", "R2,000,000" and "R2m" are the same claim, and keying them
+ * literally meant a registered fact still counted as unregistered wherever an
+ * article happened to spell it differently. Everything collapses to the
+ * canonical "r<digits>" form.
+ */
+export function canonicalFigure(raw) {
+  const f = raw.trim().replace(/\s+/g, ' ').toLowerCase();
+  const m = f.match(/^r\s?([\d,]+(?:\.\d+)?)\s*(million|bn|k)?$/);
+  if (!m) return f;
+  let n = Number(m[1].replace(/,/g, ''));
+  if (!Number.isFinite(n)) return f;
+  if (m[2] === 'million') n *= 1e6;
+  else if (m[2] === 'bn') n *= 1e9;
+  else if (m[2] === 'k') n *= 1e3;
+  return 'r' + Math.round(n);
+}
+
+/**
+ * A figure that is a claim about the world, as distinct from a number that
+ * merely appears in many articles.
+ *
+ * Durations are excluded outright: "12 months" carries no source and never
+ * needed one. Round rand amounts are excluded because they are worked-example
+ * tickets — R3 million is the site's declared standard example, not an
+ * assertion — while computed and statutory amounts like R1,210,000, R107,356
+ * and R620,000 are kept, since those are exactly the numbers that must be
+ * sourced. Before this, 68 of the 102 unregistered "load-bearing" figures were
+ * example prices and durations, which made the 80% registry gate arithmetically
+ * unreachable no matter how much sourcing anybody did.
+ */
+/**
+ * Is this figure the kind of number that can carry a source at all?
+ *
+ * Only one exclusion survives measurement: a bare duration. "12 months" is
+ * ordinary English, appears in 30 files, and no source exists for it.
+ *
+ * Everything else is decided by DECLARATION, not by a heuristic. Three rules
+ * were tried on the corpus and each traded one false class for another —
+ * excluding round amounts kept R120,000 and dropped the R2,000,000 section 35A
+ * threshold; excluding non-round amounts let R9,000 monthly costs and a R18
+ * exchange rate back in. A frequency detector cannot tell a claim from a worked
+ * example, and guessing anyway is the same mistake the old rubric made. So a
+ * reviewer marks example figures in facts.json under `notClaims`, which is a
+ * visible, capped, reviewable act — the same design as boilerplate.txt.
+ */
+export function isSourceableFigure(figure) {
+  return !/(?:days?|weeks?|months?|years?)$/.test(figure.trim().toLowerCase());
+}
+
+
 export function figurePhrases(text) {
   const re =
     /(?:(?<![A-Za-z])R\s?\d[\d,]*(?:\.\d+)?(?:\s*(?:million|bn|k))?|\d+(?:\.\d+)?%|\d[\d,]*(?:\.\d+)?\s*(?:business\s+)?(?:days?|weeks?|months?|years?))/gi;
-  return (text.match(re) || []).map((m) => m.trim().replace(/\s+/g, ' ').toLowerCase());
+  return (text.match(re) || []).map((m) => canonicalFigure(m));
 }
 
 function shingleSet(text) {

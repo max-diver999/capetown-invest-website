@@ -378,6 +378,92 @@
       "statement": "Upper bound of the modelled gross yield range in Observatory, whose lower bound is 7.8%",
       "source": "Cape Town Invest model from listed prices against observed long-let rents",
       "asOf": "2026-09-03"
+    },
+    {
+      "figure": "7.7%",
+      "statement": "Modelled gross yield on Century City sectional title stock, compressing to the mid 5% to low 6% net band after levies, rates and management",
+      "source": "Cape Town Invest model built from listed prices against observed long-let rents, not audited returns",
+      "asOf": "2026-09-03"
+    },
+    {
+      "figure": "8.0%",
+      "statement": "Modelled gross yield in Green Point, settling near 6% net after the cost stack",
+      "source": "Cape Town Invest model built from listed prices against observed long-let rents, not audited returns",
+      "asOf": "2026-09-03"
+    },
+    {
+      "figure": "6.5%",
+      "statement": "Modelled gross yield on Blouberg family stock, against about 4.5% net",
+      "source": "Cape Town Invest model built from listed prices against observed long-let rents, not audited returns",
+      "asOf": "2026-09-03"
+    },
+    {
+      "figure": "4.5%",
+      "statement": "Modelled net yield on Blouberg family stock, and the lower bound of the modelled gross band on premium serviced Sea Point stock",
+      "source": "Cape Town Invest model built from listed prices against observed long-let rents, not audited returns",
+      "asOf": "2026-09-03"
+    },
+    {
+      "figure": "30%",
+      "statement": "Cash deposit Blok requires on signature of the Offer to Purchase, with the balance on transfer",
+      "source": "Blok published sales terms for its Cape Town schemes",
+      "asOf": "2026-09-03"
+    },
+    {
+      "figure": "7.4%",
+      "statement": "Lower bound of the Pam Golding forecast range for Western Cape house price growth, whose upper bound is 9.3%",
+      "source": "Pam Golding Properties Western Cape forecast, reported via Property24",
+      "asOf": "2026-09-03"
+    },
+    {
+      "figure": "8.5%",
+      "statement": "City-wide annual Cape Town house price growth cited alongside the metro median",
+      "source": "Lightstone data reported via Property24 market commentary",
+      "asOf": "2026-09-03"
+    },
+    {
+      "figure": "3.2%",
+      "statement": "Participation quota share of communal cost carried by each owner in a 31-unit scheme, used as the worked example for how a small body corporate divides a special levy",
+      "source": "Sectional Titles Schemes Management Act 8 of 2011; arithmetic on a 31-unit scheme",
+      "asOf": "2026-09-03"
+    },
+    {
+      "figure": "9.74%",
+      "statement": "Effective transfer duty rate on a R15,000,000 purchase, being R1,461,156 of price",
+      "source": "SARS transfer duty table effective 1 April 2025",
+      "asOf": "2026-09-03"
+    },
+    {
+      "figure": "5.43%",
+      "statement": "Effective transfer duty rate on a R4,000,000 purchase, being R217,356 of price",
+      "source": "SARS transfer duty table effective 1 April 2025",
+      "asOf": "2026-09-03"
+    }
+  ],
+  "notClaims": [
+    {
+      "figure": "5%",
+      "why": "Appears as a band edge in dozens of unrelated ranges (5% to 6%, 5% to 7%) and as an agent commission rate; not one claim"
+    },
+    {
+      "figure": "7%",
+      "why": "Band edge in yield ranges and the SARB repo rate, which is registered separately as the 10.5% prime it produces"
+    },
+    {
+      "figure": "9%",
+      "why": "Band edge in modelled yield ranges rather than a single asserted figure"
+    },
+    {
+      "figure": "12%",
+      "why": "Upper edge of the furnished short-let gross band and of several unrelated ranges"
+    },
+    {
+      "figure": "14%",
+      "why": "Two unrelated uses: once-off cost differential for a bonded buyer, and a pet-friendly listing share"
+    },
+    {
+      "figure": "0%",
+      "why": "Duty rate below the nil-rate threshold and a zero in several cost tables; carries no independent claim"
     }
   ]
 }

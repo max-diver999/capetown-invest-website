@@ -180,7 +180,7 @@ export function runStructuralChecks(opts) {
       errors.push(`${prefix} missing buyer scenarios or decision framework`);
     }
     const nums = countNumericFacts(body);
-    const minNums = Math.max(8, Math.floor((cfg.minWords || 2000) / 500) * 3);
+    const minNums = cfg.minNumericFacts ?? 8;
     if (nums < minNums) errors.push(`${prefix} low fact density: ${nums} numeric facts, need >=${minNums} (GEO)`);
     const bold = countBoldSpans(body);
     if (bold > 35) errors.push(`${prefix} over-bold: ${bold} ** spans (max 35)`);
@@ -206,8 +206,12 @@ export function runExtendedChecks(opts) {
   if (!/(pros|cons|плюс|минус|advantages|disadvantages)/i.test(body)) {
     errors.push(`${prefix} missing pros/cons`);
   }
+  // Explicit, not derived from the word floor. It used to be
+  // floor(minWords/500)*3, so making the word count honest would have silently
+  // relaxed fact density along with it — the requirement would have followed
+  // the measure rather than the intent.
   const nums = countNumericFacts(body);
-  const minNums = Math.max(8, Math.floor((cfg.minWords || 2000) / 500) * 3);
+  const minNums = cfg.minNumericFacts ?? 8;
   if (nums < minNums) errors.push(`${prefix} factDensity:${nums}<${minNums}`);
   const bold = countBoldSpans(body);
   if (bold > 35) errors.push(`${prefix} overBold:${bold}`);

@@ -110,6 +110,67 @@ correcting every file the claim names.
 This is a process, not a measurement, and it is in this document because the alternative was worse: the only
 other way to remove the risk is to stop publishing about those markets.
 
+## Two gates that were measuring the wrong thing
+
+Both were found by auditing the tooling rather than the corpus, and both were fixed by measurement.
+
+### The word gate counted markup
+
+`qa-audit.mjs` measured length with `body.split(/\s+/)`, which counts JSX props, table cells, import lines and
+code spans as words. On one compare page that read 1,860 against 1,018 words of actual prose — an 83%
+over-count — so a page could clear an 1,800-word gate on barely half that much writing.
+
+The count is now prose-only, and the floors were re-set from the corpus rather than carried across. The
+decisive check: the site's own hand-written C1/C2 exemplars run **1,333 to 1,423** prose words, so a guides
+floor of 1,500 would have failed the best articles on the site while passing padded ones. The floors sit
+below those exemplars deliberately — this gate is a floor against stubs, and quality is the scorer's job.
+
+| collection | prose floor | prose median |
+|---|---|---|
+| guides | 1,300 | 2,486 |
+| segments | 1,100 | 1,472 |
+| projects | 1,000 | 1,640 |
+| areas | 950 | 1,162 |
+| developers | 950 | 1,238 |
+| compare | 900 | 1,188 |
+| news | 750 | 983 |
+
+The fact-density requirement was derived from the word floor (`floor(minWords/500)*3`), so making the word
+count honest would have silently relaxed it too — the requirement would have followed the measure instead of
+the intent. It is now explicit per collection, held at the values the old formula produced.
+
+### The registry gate was arithmetically unreachable
+
+Provenance credit arms once the registry covers 80% of load-bearing figures. Coverage sat at 30% and could
+not be raised, because "load-bearing" meant "appears in five or more files" — which caught `12 months`
+(30 files), `R3,000,000` (13 files) and every other worked-example ticket. Sourcing work could never move it.
+
+Three heuristics were tried on the corpus and each traded one false class for another:
+
+| rule | what it wrongly kept | what it wrongly dropped |
+|---|---|---|
+| exclude round rand amounts | R120,000 monthly cost bands | R2,000,000, the section 35A threshold |
+| exclude non-round rand amounts | R9,000 costs, a R18 exchange rate | — |
+| exclude by magnitude | R100,000+ illustrative budgets | — |
+
+What separates them is not roundness but the **class of number**. Of the 91 unregistered load-bearing
+figures, 77 were rand amounts and every one was a worked example; all 14 percentages were genuine claims —
+yields, tax rates, market shares. So a percentage always needs a source, and a rand amount needs one once a
+reviewer has declared it a claim by registering it. That keeps R1,210,000, R620,000 and R11.3bn in the
+denominator and leaves R3,000,000 and R15,000 out.
+
+Registry keys are also canonicalised now: `R2 million`, `R2,000,000` and `R2m` were three keys for one fact,
+so a registered figure still counted as unregistered wherever an article spelled it differently.
+
+A `notClaims` list in `facts.json` handles the remainder — six percentages that are band edges rather than
+assertions (`5%` in "5% to 6%", `7%` as both a repo rate and a range edge). Each needs a written reason, and
+the list is capped at 60 for the same reason `boilerplate.txt` is capped: an exemption long enough to empty
+the denominator defeats the measure it belongs to.
+
+Coverage went 30% → 61% → 75% → **100%**, and the gate is armed for the first time. The corpus mean rose
+from 53.1 to 57.3, which is the provenance reward finally being measured against a denominator that means
+something rather than an unreachable one.
+
 ## What was tried and rejected
 
 Every rule here had to earn its place on the labelled sets. These did not, and are recorded so nobody

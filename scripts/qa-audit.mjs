@@ -121,7 +121,19 @@ function auditFile(c, slug) {
   const path = join(ROOT, c, slug + '.mdx');
   const raw = readFileSync(path, 'utf8');
   const { fm, body, fmRaw } = parseFrontmatter(raw);
-  const words = body.split(/\s+/).filter(Boolean).length;
+  // Two counts, because they answer different questions and the gate needs the
+  // honest one. `rawWords` splits everything, which is what this file used to
+  // measure and why a page could pass an 1,800-word gate on ~1,000 words of
+  // prose: JSX props, table cells, import lines and code spans all counted.
+  // `words` is prose only, so the floor below means what it says.
+  const rawWords = body.split(/\s+/).filter(Boolean).length;
+  const words = body
+    .replace(/^\s*(?:import|export)\s.+$/gm, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/^\s*\|.*$/gm, ' ')
+    .replace(/`[^`]+`/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .split(/\s+/).filter(Boolean).length;
   stats.wordSum += words;
   const prob = [];
 
@@ -148,16 +160,21 @@ function auditFile(c, slug) {
   if (!fm.__hasFaq) prob.push('no-faq-block');
   else if (fm.__faqCount < minFaq) prob.push(`faq:${fm.__faqCount}<${minFaq}`);
 
+  // Floors in PROSE words, not raw tokens. They are deliberately set below the
+  // corpus's own hand-written exemplars — the C1/C2 articles run 1,333 to 1,423
+  // prose words, and a threshold that fails those would be measuring padding
+  // rather than substance. This gate is a floor against stubs; quality is the
+  // scorer's job, not the word count's.
   const minW = {
-    guides: 2000,
-    segments: 1800,
-    projects: 1200,
-    compare: 1800,
-    areas: 1800,
-    developers: 1200,
-    news: 600,
-  }[c] ?? 1800;
-  if (words < minW) prob.push(`words:${words}<${minW}`);
+    guides: 1300,
+    segments: 1100,
+    projects: 1000,
+    compare: 900,
+    areas: 950,
+    developers: 950,
+    news: 750,
+  }[c] ?? 900;
+  if (words < minW) prob.push(`words:${words}<${minW} prose`);
 
   if (c !== 'news' && !/quick answer|tl;dr|\*\*quick answer|\*\*tl;dr/i.test(body)) {
     prob.push('no-quick-answer');
@@ -188,7 +205,13 @@ function auditFile(c, slug) {
   runExtendedChecks({
     prefix: `[${c}/${slug}]`,
     body,
-    cfg: { minWords: minW, label: c },
+    cfg: {
+      minWords: minW,
+      label: c,
+      // Held at the values the old word-derived formula produced, so the
+      // honest word count did not quietly lower the bar for figures.
+      minNumericFacts: { guides: 12, segments: 9, compare: 9, areas: 9, projects: 8, developers: 8, news: 8 }[c] ?? 9,
+    },
     legacyExempt: c === 'news',
     errors: extErr,
   });
@@ -265,8 +288,8 @@ function auditFile(c, slug) {
     }
   }
 
-  reportRows.push({ coll: c, slug, words, faq: fm.__faqCount, prob });
-  if (prob.length) issues.push(`[${c}/${slug}] (${words}w) ${prob.join(', ')}`);
+  reportRows.push({ coll: c, slug, words, rawWords, faq: fm.__faqCount, prob });
+  if (prob.length) issues.push(`[${c}/${slug}] (${words} prose / ${rawWords} raw) ${prob.join(', ')}`);
 }
 
 let filesToAudit = [];
