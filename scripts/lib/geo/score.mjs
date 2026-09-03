@@ -136,6 +136,31 @@ function needsSource(figure, registry) {
   return figure.endsWith('%') || registry.has(figure);
 }
 
+
+export const CONTENT_ROOT = 'src/content';
+
+/**
+ * The corpus, discovered once and identically by every caller.
+ *
+ * geo-judge.mjs used to build its index from the target file's own directory,
+ * so `final` measured duplication against 15 sibling files while geo-score
+ * measured it against 152 and the two printed different deterministic scores
+ * for the same article. One implementation, so they cannot drift again.
+ */
+export function corpusFiles(root = CONTENT_ROOT) {
+  const out = [];
+  const walk = (dir) => {
+    if (!fs.existsSync(dir)) return;
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.name.endsWith('.mdx') || entry.name.endsWith('.md')) out.push(full);
+    }
+  };
+  walk(root);
+  return out.sort();
+}
+
 export function factRegistry() {
   if (!registryCache) loadRegistry();
   return registryCache;

@@ -22,7 +22,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import { loadCorpus, scoreDocument, ABSOLUTE_MAX } from './lib/geo/score.mjs';
+import { loadCorpus, scoreDocument, corpusFiles, ABSOLUTE_MAX } from './lib/geo/score.mjs';
 
 const JUDGEMENTS = '.content-os/judgements';
 
@@ -114,9 +114,22 @@ function record(file, verdictFile) {
     process.exit(2);
   }
   const v = JSON.parse(fs.readFileSync(verdictFile, 'utf8'));
+  const DIMENSIONS = ['substance', 'specificity', 'coherence', 'voice', 'honesty'];
   const d = v.dimensions || {};
-  const raw = ['substance', 'specificity', 'coherence', 'voice', 'honesty']
-    .reduce((a, k) => a + Math.max(0, Math.min(5, Number(d[k]) || 0)), 0);
+  // A malformed verdict used to be recorded as zero, which is indistinguishable
+  // from a judge that read the article and hated it. In CI that would quietly
+  // mark good work as worthless, so a verdict missing any dimension is refused
+  // rather than scored.
+  const missing = DIMENSIONS.filter((k) => !Number.isFinite(Number(d[k])));
+  if (missing.length) {
+    console.error(
+      `refusing to record: verdict is missing dimension(s) ${missing.join(', ')}.\n` +
+        'Expected shape: {"dimensions":{"substance":0-5,"specificity":0-5,"coherence":0-5,' +
+        '"voice":0-5,"honesty":0-5},"arithmeticErrors":[],"note":"..."}',
+    );
+    process.exit(2);
+  }
+  const raw = DIMENSIONS.reduce((a, k) => a + Math.max(0, Math.min(5, Number(d[k]))), 0);
   // 25 raw points map onto 20, and any arithmetic error found costs 4 of them:
   // a number that does not add up is the one defect a reader always notices.
   const penalty = (v.arithmeticErrors?.length || 0) * 4;
@@ -138,9 +151,10 @@ function record(file, verdictFile) {
 }
 
 function final(file) {
-  const dir = path.dirname(file);
-  const peers = fs.readdirSync(dir).filter((f) => f.endsWith('.mdx')).map((f) => path.join(dir, f));
-  const index = loadCorpus(peers);
+  // The whole corpus, not the file's own directory. Scoring against 15 siblings
+  // instead of 152 files gave this command a different deterministic score from
+  // geo-score.mjs for the same article.
+  const index = loadCorpus(corpusFiles());
   const det = scoreDocument(path.basename(file), index);
   const vp = verdictPath(file);
   let judge = 0;

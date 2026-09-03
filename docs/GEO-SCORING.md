@@ -280,6 +280,38 @@ content improves any ratio, so an absolute duplicated-sequence penalty now sits 
 truncation still helps a page that has nothing to say. And a paraphrase farm with enough iterations defeats
 any fixed lexical detector: the answer there is the judge stage and provenance, not another regex.
 
+## The judge stage, and why every score here is out of 75
+
+The judge is the twenty points between the deterministic 75 and the 95 ceiling. It has never run on this
+repository: there are no verdicts on record and `GEO_JUDGE_SECRET` is set nowhere, so **every score in this
+corpus is deterministic-only and the effective ceiling today is 75, not 95**. `geo-score.mjs` now says so in
+its own output rather than letting the headline be read as "out of 95".
+
+Two defects were fixed before it could be trusted:
+
+- `final` built its corpus index from the target file's own directory, so it measured duplication against
+  15 sibling files while `geo-score.mjs` measured against 152 — the two printed different deterministic
+  scores for the same article (72 against 71). Both now use one `corpusFiles()` implementation.
+- `record` scored a malformed verdict as zero, which is indistinguishable from a judge that read the article
+  and hated it. In CI that would quietly mark good work as worthless. A verdict missing any dimension is now
+  refused with the expected shape printed.
+
+Verified end to end: a valid verdict takes `cape-town-vs-portugal` from 71 to **86/95**; a malformed one is
+refused; and with the secret absent the verdict is present but uncounted, so the score falls back to 71.
+
+To open the top twenty points, run the judge somewhere the scored agent cannot reach the secret:
+
+```bash
+export GEO_JUDGE_SECRET=...            # in CI, not in the writing session
+node scripts/geo-judge.mjs packet <file.mdx>          # emit the judging packet
+node scripts/geo-judge.mjs record <file.mdx> v.json   # verdict shape is printed on refusal
+node scripts/geo-judge.mjs final  <file.mdx>          # deterministic + judge
+```
+
+The secret is the whole mechanism. Recording a verdict in the same session that wrote the article is the
+attack the HMAC exists to stop, so if the secret ever lives beside the writer, the twenty points are
+decorative again.
+
 ## Calibration
 
 `scripts/geo-calibrate.mjs` rebuilds the labelled sets from git history and scores them. The
