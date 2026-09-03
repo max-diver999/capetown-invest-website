@@ -11,6 +11,12 @@ import { runExtendedChecks } from './lib/more-content-gate.mjs';
 
 const ROOT = decodeURIComponent(new URL('../src/content/', import.meta.url).pathname);
 const COLLECTIONS = ['guides', 'segments', 'compare', 'areas', 'projects', 'developers', 'news'];
+// Top-level pages under src/pages/. Kept explicit rather than globbed so that a
+// deleted page fails the gate instead of quietly becoming an accepted target.
+const STATIC_ROUTES = new Set([
+  'about', 'consultation', 'contact', 'get-shortlist', 'methodology',
+  'privacy-policy', 'site-report', 'terms', 'thanks',
+]);
 
 const BANNED_PHRASES = [
   'Regional diversification',
@@ -115,7 +121,28 @@ function auditFile(c, slug) {
   const path = join(ROOT, c, slug + '.mdx');
   const raw = readFileSync(path, 'utf8');
   const { fm, body, fmRaw } = parseFrontmatter(raw);
-  const words = body.split(/\s+/).filter(Boolean).length;
+  // Two counts, because they answer different questions and the gate needs the
+  // honest one. `rawWords` splits everything, which is what this file used to
+  // measure and why a page could pass an 1,800-word gate on ~1,000 words of
+  // prose: JSX props, table cells, import lines and code spans all counted.
+  // `words` is prose only, so the floor below means what it says.
+  // The FAQ lives in frontmatter and the layout renders it, so it is real,
+  // visible content on the page. It has to be measured, or collapsing the
+  // duplicate copy would silently shrink every page's word count, fact density
+  // and pros/cons detection — the gates would tighten as a side effect of a
+  // structural cleanup rather than by decision.
+  const faqText = [...(fmRaw || '').matchAll(/^\s*(?:-\s*question|answer):\s*"(.*)"\s*$/gm)]
+    .map((m) => m[1])
+    .join(' ');
+  const measured = `${body}\n${faqText}`;
+  const rawWords = measured.split(/\s+/).filter(Boolean).length;
+  const words = measured
+    .replace(/^\s*(?:import|export)\s.+$/gm, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/^\s*\|.*$/gm, ' ')
+    .replace(/`[^`]+`/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .split(/\s+/).filter(Boolean).length;
   stats.wordSum += words;
   const prob = [];
 
@@ -142,16 +169,21 @@ function auditFile(c, slug) {
   if (!fm.__hasFaq) prob.push('no-faq-block');
   else if (fm.__faqCount < minFaq) prob.push(`faq:${fm.__faqCount}<${minFaq}`);
 
+  // Floors in PROSE words, not raw tokens. They are deliberately set below the
+  // corpus's own hand-written exemplars — the C1/C2 articles run 1,333 to 1,423
+  // prose words, and a threshold that fails those would be measuring padding
+  // rather than substance. This gate is a floor against stubs; quality is the
+  // scorer's job, not the word count's.
   const minW = {
-    guides: 2000,
-    segments: 1800,
-    projects: 1200,
-    compare: 1800,
-    areas: 1800,
-    developers: 1200,
-    news: 600,
-  }[c] ?? 1800;
-  if (words < minW) prob.push(`words:${words}<${minW}`);
+    guides: 1300,
+    segments: 1100,
+    projects: 1000,
+    compare: 900,
+    areas: 950,
+    developers: 950,
+    news: 750,
+  }[c] ?? 900;
+  if (words < minW) prob.push(`words:${words}<${minW} prose`);
 
   if (c !== 'news' && !/quick answer|tl;dr|\*\*quick answer|\*\*tl;dr/i.test(body)) {
     prob.push('no-quick-answer');
@@ -181,8 +213,14 @@ function auditFile(c, slug) {
   const extErr = [];
   runExtendedChecks({
     prefix: `[${c}/${slug}]`,
-    body,
-    cfg: { minWords: minW, label: c },
+    body: measured,
+    cfg: {
+      minWords: minW,
+      label: c,
+      // Held at the values the old word-derived formula produced, so the
+      // honest word count did not quietly lower the bar for figures.
+      minNumericFacts: { guides: 12, segments: 9, compare: 9, areas: 9, projects: 8, developers: 8, news: 8 }[c] ?? 9,
+    },
     legacyExempt: c === 'news',
     errors: extErr,
   });
@@ -214,14 +252,38 @@ function auditFile(c, slug) {
     if (bad.length) prob.push(`relatedSlugsBad:${bad.join('|')}`);
   }
 
-  const bodySlugs = [
-    ...body.matchAll(/\]\(\/(?:guides|compare|areas|projects|developers|news)\/([a-z0-9\-]+)\/?\)/gi),
-  ].map((m) => m[1]);
-  const badLinks = [...new Set(bodySlugs.filter((s) => !allSlugs.has(s)))];
-  if (badLinks.length) prob.push(`brokenInternalLinks:${badLinks.join('|')}`);
+  // Every internal link is validated against the real route set, not against a
+  // hand-listed subset of collections. The previous version omitted `segments`
+  // and ignored any path without a collection prefix, so a live 404 on a
+  // rewritten page — /cape-town-property-for-uk-retirees/ instead of
+  // /segments/cape-town-property-for-uk-retirees/ — passed the gate silently.
+  const badLinks = [];
+  for (const m of body.matchAll(/\]\((\/[^)#\s]*)\)/g)) {
+    const href = m[1];
+    if (href.startsWith('/api/') || href.startsWith('/_') || href.includes('.')) continue;
+    const parts = href.split('/').filter(Boolean);
+    if (!parts.length) continue;
+    if (COLLECTIONS.includes(parts[0])) {
+      if (parts.length !== 2 || !allSlugs.has(parts[1])) badLinks.push(href);
+    } else if (STATIC_ROUTES.has(parts[0])) {
+      if (parts.length !== 1) badLinks.push(href);
+    } else {
+      // A first segment that is neither a collection nor a static route is
+      // almost always a collection prefix someone forgot.
+      badLinks.push(href);
+    }
+  }
+  const uniqueBad = [...new Set(badLinks)];
+  if (uniqueBad.length) prob.push(`brokenInternalLinks:${uniqueBad.join('|')}`);
 
-  reportRows.push({ coll: c, slug, words, faq: fm.__faqCount, prob });
-  if (prob.length) issues.push(`[${c}/${slug}] (${words}w) ${prob.join(', ')}`);
+  // The FAQ was authored twice — frontmatter for the JSON-LD, an inline block
+  // for the visible accordion — and the two drifted on seven pages, serving
+  // structured questions that never appeared. The inline blocks are gone and
+  // the layout renders from frontmatter, so there is one copy and nothing to
+  // keep in step.
+
+  reportRows.push({ coll: c, slug, words, rawWords, faq: fm.__faqCount, prob });
+  if (prob.length) issues.push(`[${c}/${slug}] (${words} prose / ${rawWords} raw) ${prob.join(', ')}`);
 }
 
 let filesToAudit = [];

@@ -38,17 +38,6 @@ faq:
     answer: "Yes, for any UK tax resident with overseas rental income. A UK tax adviser handles Self Assessment, Foreign Tax Credit Relief and residence questions, while a South African accountant handles SARS registration, local deductions and provisional tax. This guide is general information only, not personal tax advice, and your facts may differ."
 ---
 import TldrBlock from '../../components/TldrBlock.astro';
-import FaqBlock from '../../components/FaqBlock.astro';
-
-export const faqItems = [
-  { question: "Do UK tax residents pay tax on Cape Town rental income?", answer: "Yes. UK tax residents are taxed on worldwide income, which includes rental profit from a South African property. You report the net rental income on your UK Self Assessment return. South Africa also taxes the same income locally, but the SA-UK double tax treaty generally prevents double taxation through Foreign Tax Credit Relief for SA tax already paid." },
-  { question: "How does Foreign Tax Credit Relief work for SA rental tax?", answer: "Foreign Tax Credit Relief lets you offset South African income tax paid on Cape Town rental profit against your UK tax bill on the same income. You claim the relief on your Self Assessment return, usually in the foreign pages section. The credit is limited to the UK tax attributable to that foreign income, so you cannot create a refund by over-claiming." },
-  { question: "Do non-UK-resident owners pay UK tax on Cape Town rent?", answer: "Generally no on the rental income itself. A person who is not UK tax resident is usually outside the scope of UK income tax on foreign rental profit. South African tax still applies because the property sits in SA. On a future sale, a non-UK-resident is also generally outside UK capital gains tax on foreign property, though South African CGT and withholding still apply." },
-  { question: "What is the UK property income allowance?", answer: "The property income allowance is a UK tax relief of up to £1,000 per tax year against gross property income. If your total UK and foreign property income is under £1,000, you may not need to report it. Above that threshold, or if you claim expenses instead, you report the full rental profit on Self Assessment. Most Cape Town landlords with meaningful rent exceed £1,000 quickly." },
-  { question: "Do I need to file a UK Self Assessment for Cape Town rent?", answer: "If you are UK tax resident and your total property income exceeds the property allowance, or you want to claim full expenses rather than the allowance, you must register for Self Assessment and file annually. The deadline for online filing is 31 January following the tax year. Keep SA tax certificates and SARS assessments as evidence for Foreign Tax Credit Relief." },
-  { question: "Does the SA-UK double tax treaty stop me paying tax twice?", answer: "The treaty allocates taxing rights so rental income from South African property is primarily taxed in South Africa, while the UK retains the right to tax its residents on worldwide income. In practice a UK resident pays SA tax first, then claims Foreign Tax Credit Relief in the UK. The treaty does not eliminate tax; it coordinates it so the same profit is not fully taxed in both countries." },
-  { question: "Should I use a UK accountant for Cape Town rental tax?", answer: "Yes, for any UK tax resident with overseas rental income. A UK tax adviser handles Self Assessment, Foreign Tax Credit Relief and residence questions, while a South African accountant handles SARS registration, local deductions and provisional tax. This guide is general information only, not personal tax advice, and your facts may differ." },
-];
 
 <TldrBlock text="UK tax residents must report Cape Town rental profit to HMRC on worldwide income rules, even though South Africa taxes the same rent locally. The SA-UK double tax treaty coordinates the two systems: pay SA income tax first, then claim Foreign Tax Credit Relief on your UK Self Assessment to avoid taxing the same profit twice. Non-UK-resident owners are generally outside UK tax on foreign rental income and UK CGT on a future sale, with caveats around temporary non-residence and UK property ties. Use the £1,000 property income allowance only if it genuinely fits your numbers. This is general information, not personal tax advice: confirm your residence status and filing obligations with a UK accountant and a South African tax adviser before the first tenant moves in." />
 
@@ -90,7 +79,7 @@ Provisional tax may apply if your SA rental profit exceeds the threshold, meanin
 
 For yield planning before tax, model gross and net rent using the [Cape Town rental yield guide](/guides/cape-town-rental-yield-guide/) and the [gross vs net yield guide](/guides/gross-vs-net-yield-cape-town/). Tax sits below the net yield line and can remove another 1 to 2 percentage points of return depending on your rate band and deductions.
 
-UK tax residents who let a Cape Town one-bedroom at modeled Sea Point rents near R32,300 per month often gross roughly R387,600 per year before voids, then face South African income tax on net profit after levies near R2,700 monthly, rates near R1,300 monthly, management at 8 to 10 percent, and maintenance, followed by UK Self Assessment on the same profit with Foreign Tax Credit Relief for SA tax already paid under the SA-UK double tax agreement. On illustrative net rental profit near R263,904 before bond interest, SA income tax at 25 percent might take R65,976, leaving UK tax on the sterling equivalent with credit capped at the UK tax attributable to that foreign slice rather than creating a refund against other income. Non-UK-residents generally skip the UK rental layer but still register with SARS, pay local income tax, and repatriate through an authorised dealer under the non-resident endorsement recorded at purchase.
+UK tax residents who let a Cape Town one-bedroom at modelled Sea Point rents near R32,300 per month often gross roughly R387,600 per year before voids, then face South African income tax on net profit after levies near R2,700 monthly, rates near R1,300 monthly, management at 8 to 10 percent, and maintenance, followed by UK Self Assessment on the same profit with Foreign Tax Credit Relief for SA tax already paid under the SA-UK double tax agreement. On illustrative net rental profit near R263,904 before bond interest, SA income tax at 25 percent might take R65,976, leaving UK tax on the sterling equivalent with credit capped at the UK tax attributable to that foreign slice rather than creating a refund against other income. Non-UK-residents generally skip the UK rental layer but still register with SARS, pay local income tax, and repatriate through an authorised dealer under the non-resident endorsement recorded at purchase.
 
 ## The sa-UK double tax agreement in plain terms
 
@@ -129,7 +118,7 @@ Payments on account may apply if your UK tax bill is large enough. Many Cape Tow
 
 The UK property income allowance lets you earn up to £1,000 of gross property income in a tax year without reporting it, if you do not claim expenses against that income. It applies to UK and foreign property combined. The UK tax year runs from 6 April 2025 to 5 April 2026 for 2025-26 filings, and the online Self Assessment deadline is 31 January 2026 for that year.
 
-For a Cape Town one-bedroom let at modeled Sea Point rents near R32,300 per month, gross annual income often converts to well over £12,000 even after voids, far above the £1,000 threshold. In practice most UK owners with a serious Cape Town let exceed the allowance in the first quarter of the year.
+For a Cape Town one-bedroom let at modelled Sea Point rents near R32,300 per month, gross annual income often converts to well over £12,000 even after voids, far above the £1,000 threshold. In practice most UK owners with a serious Cape Town let exceed the allowance in the first quarter of the year.
 
 You can elect to deduct actual expenses instead of using the allowance. That is almost always the right choice when you pay levies, rates, management at 8% to 10% of rent, maintenance and bond interest. The allowance is a simplification for small UK-side micro-lets, not a strategy for an offshore investment flat.
 
@@ -154,7 +143,7 @@ A worked example makes the two tax layers concrete, though it is illustrative ra
 
 | Line item | Amount (ZAR) | Note |
 |---|---|---|
-| Gross annual rent | 387,600 | Modeled Sea Point one-bedroom at R32,300 per month |
+| Gross annual rent | 387,600 | Modelled Sea Point one-bedroom at R32,300 per month |
 | Less voids and costs | 88,000 | Vacancy, levy, rates, maintenance |
 | Net rental profit (SA) | 299,600 | Before management and bond |
 | Less management (10%) | 35,656 | Outsourced letting |
@@ -164,7 +153,7 @@ A worked example makes the two tax layers concrete, though it is illustrative ra
 | UK tax on same profit (illustrative) | Varies by band | Report on Self Assessment |
 | Foreign Tax Credit Relief | Up to SA tax paid | Offsets UK charge on same income |
 
-At modeled yields, a 9.7% gross and 7.5% net Sea Point apartment can deliver mid-single-digit cash yield in rand before either country's income tax. Layer SA tax, then UK tax net of treaty relief, and the take-home narrows further. That is not an argument against buying. It is an argument for modeling tax before you rely on a gross yield headline from an agent.
+At modelled yields, a 9.7% gross and 7.5% net Sea Point apartment can deliver mid-single-digit cash yield in rand before either country's income tax. Layer SA tax, then UK tax net of treaty relief, and the take-home narrows further. That is not an argument against buying. It is an argument for modeling tax before you rely on a gross yield headline from an agent.
 
 ## Exchange control, repatriation and tax records
 
@@ -244,4 +233,3 @@ Keep six years of UK records where possible, matching HMRC guidance, and retain 
 
 If you are at the start of the journey, read the [UK buyers Cape Town property guide](/segments/uk-buyers-cape-town-property/), the [foreigner buying hub](/guides/buy-cape-town-property-foreigner/) and the [non-resident rental income tax South Africa guide](/guides/non-resident-rental-income-tax-south-africa/) alongside this page. Model rent using the [Cape Town rental yield guide](/guides/cape-town-rental-yield-guide/), stress-test net figures in the [gross vs net yield guide](/guides/gross-vs-net-yield-cape-town/), and confirm repatriation through the [exchange control guide](/guides/south-africa-exchange-control-property/) before you treat headline yield as spendable income.
 
-<FaqBlock items={faqItems} />

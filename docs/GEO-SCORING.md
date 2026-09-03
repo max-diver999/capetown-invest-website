@@ -110,6 +110,123 @@ correcting every file the claim names.
 This is a process, not a measurement, and it is in this document because the alternative was worse: the only
 other way to remove the risk is to stop publishing about those markets.
 
+## Two gates that were measuring the wrong thing
+
+Both were found by auditing the tooling rather than the corpus, and both were fixed by measurement.
+
+### The word gate counted markup
+
+`qa-audit.mjs` measured length with `body.split(/\s+/)`, which counts JSX props, table cells, import lines and
+code spans as words. On one compare page that read 1,860 against 1,018 words of actual prose — an 83%
+over-count — so a page could clear an 1,800-word gate on barely half that much writing.
+
+The count is now prose-only, and the floors were re-set from the corpus rather than carried across. The
+decisive check: the site's own hand-written C1/C2 exemplars run **1,333 to 1,423** prose words, so a guides
+floor of 1,500 would have failed the best articles on the site while passing padded ones. The floors sit
+below those exemplars deliberately — this gate is a floor against stubs, and quality is the scorer's job.
+
+| collection | prose floor | prose median |
+|---|---|---|
+| guides | 1,300 | 2,486 |
+| segments | 1,100 | 1,472 |
+| projects | 1,000 | 1,640 |
+| areas | 950 | 1,162 |
+| developers | 950 | 1,238 |
+| compare | 900 | 1,188 |
+| news | 750 | 983 |
+
+The fact-density requirement was derived from the word floor (`floor(minWords/500)*3`), so making the word
+count honest would have silently relaxed it too — the requirement would have followed the measure instead of
+the intent. It is now explicit per collection, held at the values the old formula produced.
+
+### The registry gate was arithmetically unreachable
+
+Provenance credit arms once the registry covers 80% of load-bearing figures. Coverage sat at 30% and could
+not be raised, because "load-bearing" meant "appears in five or more files" — which caught `12 months`
+(30 files), `R3,000,000` (13 files) and every other worked-example ticket. Sourcing work could never move it.
+
+Three heuristics were tried on the corpus and each traded one false class for another:
+
+| rule | what it wrongly kept | what it wrongly dropped |
+|---|---|---|
+| exclude round rand amounts | R120,000 monthly cost bands | R2,000,000, the section 35A threshold |
+| exclude non-round rand amounts | R9,000 costs, a R18 exchange rate | — |
+| exclude by magnitude | R100,000+ illustrative budgets | — |
+
+What separates them is not roundness but the **class of number**. Of the 91 unregistered load-bearing
+figures, 77 were rand amounts and every one was a worked example; all 14 percentages were genuine claims —
+yields, tax rates, market shares. So a percentage always needs a source, and a rand amount needs one once a
+reviewer has declared it a claim by registering it. That keeps R1,210,000, R620,000 and R11.3bn in the
+denominator and leaves R3,000,000 and R15,000 out.
+
+Registry keys are also canonicalised now: `R2 million`, `R2,000,000` and `R2m` were three keys for one fact,
+so a registered figure still counted as unregistered wherever an article spelled it differently.
+
+A `notClaims` list in `facts.json` handles the remainder — six percentages that are band edges rather than
+assertions (`5%` in "5% to 6%", `7%` as both a repo rate and a range edge). Each needs a written reason, and
+the list is capped at 60 for the same reason `boilerplate.txt` is capped: an exemption long enough to empty
+the denominator defeats the measure it belongs to.
+
+Coverage went 30% → 61% → 75% → **100%**, and the gate is armed for the first time. The corpus mean rose
+from 53.1 to 57.3, which is the provenance reward finally being measured against a denominator that means
+something rather than an unreachable one.
+
+## The instrument was misreading a third of the corpus's money
+
+Every gate and penalty that compares figures across articles rests on one
+function, `canonicalFigure`, which reduces a written amount to a key so that
+`R2 million`, `R2,000,000` and `R2m` count as the same number. It handled the
+first two. It did not handle the third.
+
+The extraction regex accepted `million`, `bn` and `k` as magnitude suffixes and
+nothing else, so `R18m` matched only as far as `R18` and the `m` was dropped on
+the floor. Two consequences, both silent:
+
+| Written | Extracted as | Meaning assigned |
+|---|---|---|
+| `R18m` average transaction | `r18` | merged with the R18/USD exchange rate |
+| `R2.695m` off-plan ticket | `r3` | rounded to R3 |
+| `R3.4m` flat | `r3` | same key as the R2.695m ticket |
+| `R25.8m` residence | `r26` | R26 |
+
+Two failures at once. Amounts three orders of magnitude apart were merged, and
+`R2.695m` and `R3.4m` — genuinely different prices — became one figure. The
+corpus writes `R…m` 631 times, so this was not an edge case: it was most of the
+money on the site.
+
+The visible symptom was the registry gate firing on 37 files for figures that
+did not exist. `r18` looked load-bearing "in 5 articles" because an exchange
+rate and four transaction prices had been stacked on one key, and no amount of
+sourcing could clear it, because there was nothing there to source.
+
+Fixing the suffix took gated files from 42 to 13 and left calibration exactly
+where it was: separation 68.1, bad set still 0/59. That is the signature of an
+instrument defect rather than a signal change — correcting it moved the corpus
+and moved neither labelled set.
+
+## A penalty that charged for work already done
+
+`notClaims` is the reviewer's written finding that a figure is not a claim at
+all. "5%" appears in 39 articles as the edge of unrelated ranges — yield bands,
+commission rates, a deposit tier — and is not one assertion repeated. A reviewer
+examined it, wrote down why, and the registry gate honoured that.
+
+The `stamped-figure` penalty did not. It filtered on the fact registry alone, so
+an article that correctly wrote "5% to 7%" lost four points for a figure that had
+already been cleared, and the writer had no move available: the figure cannot be
+registered, because it is not a claim. The two mechanisms disagreed about the
+same declaration.
+
+Aligning them cost nothing on the labelled sets — separation stayed 68.1, the bad
+set stayed at 0/59, because those files are gated to zero and a penalty below a
+gate rescues nobody. The corpus mean moved 58.1 to 59.3.
+
+The rule this leaves: a reviewer's finding binds every part of the scorer, or it
+binds none of them. A declaration that only some rules honour is worse than no
+declaration, because it looks like relief and is not.
+
+Both changes together: corpus mean 57.6 to 59.3, gated files 42 to 3.
+
 ## What was tried and rejected
 
 Every rule here had to earn its place on the labelled sets. These did not, and are recorded so nobody
@@ -126,8 +243,17 @@ re-adds them on intuition:
 | opener of 18–70 words | 90.5% of sections | 90.3% of sections | shipped for weeks inside the openers component and separated nothing: it paid for a shape, which is the exact failure of the July rubric |
 | opener not starting with a pronoun | 99.9% | 100.0% | both classes pass essentially always, so the rule was 5 free points for everyone |
 | a figure in the opening sentence | 89.6% | 58.1% | separates, but *backwards*: machine text front-loads numbers. Not usable as a reward, and too imprecise to be a penalty |
+| page must contain a "scenarios" block | 129 of 144 pass | failed 34 of the rewrite | backwards. The generator stamped the label — "scenario" 61 times, "for investors" 36, "buyer profile" 27 — while a writer answering the question writes "Which one should you buy?" and got flagged |
+| page must mention risks | 144 of 144 pass | failed 6 | asks only whether the word "risk" appears anywhere, which any property article satisfies by accident |
+| page must have a pros/cons section | 144 of 144 pass | failed 42 when bounded | the pattern had no word boundaries and matched "considerations" and "constraints"; bounded it still passes 112 of 144 garbage, because "Pros / Cons" is generator boilerplate |
 
 The first rubric was built entirely out of rules like these: plausible, untested, and wrong.
+
+The last three were still live in `fix-batch-queue.mjs` and `lib/more-content-gate.mjs` long after the
+scorer was rebuilt, and `more-content-gate.mjs` runs against **new** articles. Left alone they would
+have told the next wave of writing to reinstate the boilerplate the rewrite had just removed — a gate
+whose net effect is to push writing back toward the machine that failed. A checklist gate is only ever
+as good as its worst rule, because a writer clears it by satisfying every one of them.
 
 ### The openers component, rebuilt on measurement
 
@@ -218,6 +344,38 @@ Two further attacks were confirmed and are only partly closed, which is worth st
 content improves any ratio, so an absolute duplicated-sequence penalty now sits alongside the share, but
 truncation still helps a page that has nothing to say. And a paraphrase farm with enough iterations defeats
 any fixed lexical detector: the answer there is the judge stage and provenance, not another regex.
+
+## The judge stage, and why every score here is out of 75
+
+The judge is the twenty points between the deterministic 75 and the 95 ceiling. It has never run on this
+repository: there are no verdicts on record and `GEO_JUDGE_SECRET` is set nowhere, so **every score in this
+corpus is deterministic-only and the effective ceiling today is 75, not 95**. `geo-score.mjs` now says so in
+its own output rather than letting the headline be read as "out of 95".
+
+Two defects were fixed before it could be trusted:
+
+- `final` built its corpus index from the target file's own directory, so it measured duplication against
+  15 sibling files while `geo-score.mjs` measured against 152 — the two printed different deterministic
+  scores for the same article (72 against 71). Both now use one `corpusFiles()` implementation.
+- `record` scored a malformed verdict as zero, which is indistinguishable from a judge that read the article
+  and hated it. In CI that would quietly mark good work as worthless. A verdict missing any dimension is now
+  refused with the expected shape printed.
+
+Verified end to end: a valid verdict takes `cape-town-vs-portugal` from 71 to **86/95**; a malformed one is
+refused; and with the secret absent the verdict is present but uncounted, so the score falls back to 71.
+
+To open the top twenty points, run the judge somewhere the scored agent cannot reach the secret:
+
+```bash
+export GEO_JUDGE_SECRET=...            # in CI, not in the writing session
+node scripts/geo-judge.mjs packet <file.mdx>          # emit the judging packet
+node scripts/geo-judge.mjs record <file.mdx> v.json   # verdict shape is printed on refusal
+node scripts/geo-judge.mjs final  <file.mdx>          # deterministic + judge
+```
+
+The secret is the whole mechanism. Recording a verdict in the same session that wrote the article is the
+attack the HMAC exists to stop, so if the secret ever lives beside the writer, the twenty points are
+decorative again.
 
 ## Calibration
 

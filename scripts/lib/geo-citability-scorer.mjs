@@ -1,4 +1,16 @@
 /**
+ * SUPERSEDED RUBRIC — KEPT ONLY AS A CALIBRATION REFERENCE.
+ *
+ * Do not grade anything with this. Measured on the labelled sets it separates
+ * machine-generated from hand-written text by 0.3 points (garbage 90.2,
+ * hand-written 90.5), and every one of the 59 garbage files scored at or above
+ * the worst hand-written article. It is retained solely so
+ * scripts/geo-calibrate.mjs --old can demonstrate that failure on demand.
+ *
+ * The scorer in use is scripts/lib/geo/score.mjs, driven by
+ * scripts/geo-score.mjs. See docs/GEO-SCORING.md.
+ */
+/**
  * GEO citability scoring (geo-seo-claude rubric adapted for MORE Group MDX).
  * Weights: answer 30%, self-containment 25%, structure 20%, stats 15%, uniqueness 10%.
  */

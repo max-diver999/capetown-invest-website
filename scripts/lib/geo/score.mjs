@@ -18,7 +18,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { buildCorpusIndex, analyseDoc, plainText, words, sentences } from './corpus-signals.mjs';
+import { buildCorpusIndex, analyseDoc, plainText, words, sentences, canonicalFigure, isSourceableFigure } from './corpus-signals.mjs';
 import { documentSignals, sections } from './document-signals.mjs';
 
 export const DETERMINISTIC_MAX = 75;
@@ -29,6 +29,8 @@ const REPO = path.resolve(HERE, '../../..');
 
 let registryCache = null;
 let registryReport = null;
+let notClaimsCache = null;
+export const MAX_NOT_CLAIMS = 60;
 
 /**
  * The registry is the one component a scored agent can write to, so what it
@@ -80,13 +82,83 @@ function loadRegistry() {
   // without any error, so entries are grouped per figure instead. Every
   // consumer asks only whether a figure is registered, so grouping costs
   // nothing and stops a source disappearing on a key collision.
-  registryReport = { total: facts.length, usable: usable.length, rejected, templated, topSource, topStatement };
+  // Figures a reviewer has judged to be worked examples rather than claims.
+  // Capped for the same reason boilerplate.txt is: a list long enough to empty
+  // the denominator would defeat the coverage measure it belongs to.
+  const declaredNot = Array.isArray(raw.notClaims) ? raw.notClaims : [];
+  const notClaims = new Set(
+    declaredNot
+      .filter((n) => n && typeof n.figure === 'string' && typeof n.why === 'string' && n.why.trim().length >= 12)
+      .map((n) => canonicalFigure(n.figure)),
+  );
+  if (notClaims.size > MAX_NOT_CLAIMS) {
+    throw new Error(
+      `.content-os/facts.json declares ${notClaims.size} notClaims; the limit is ${MAX_NOT_CLAIMS}. ` +
+        'This list removes figures from the provenance denominator, so a long one defeats the measure it belongs to.',
+    );
+  }
+  notClaimsCache = notClaims;
+
+  registryReport = { total: facts.length, usable: usable.length, rejected, templated, topSource, topStatement, notClaims: notClaims.size };
   registryCache = new Map();
   for (const f of usable) {
-    const key = f.figure.toLowerCase().replace(/\s+/g, ' ');
+    const key = canonicalFigure(f.figure);
     if (!registryCache.has(key)) registryCache.set(key, []);
     registryCache.get(key).push(f);
   }
+}
+
+export function notClaims() {
+  if (!notClaimsCache) loadRegistry();
+  return notClaimsCache;
+}
+
+
+/**
+ * Does this figure have to carry a source?
+ *
+ * Measured on the corpus rather than guessed: of the 91 unregistered
+ * load-bearing figures, 77 are rand amounts and every one of them is a worked
+ * example — a ticket price, a monthly cost, a renovation budget — while all 14
+ * percentages are genuine claims: yields, tax rates, market shares. The class
+ * of the number separates them where roundness could not.
+ *
+ * So a percentage always needs a source. A rand amount needs one only once a
+ * reviewer has declared it a claim by registering it, which keeps R1,210,000,
+ * R620,000 and R11.3bn in the denominator while leaving R3,000,000 and
+ * R15,000 out. Unregistered rand amounts are still reported to the writer as
+ * advisory, and the stamped-figure penalty still fires on saturated ones, so
+ * nothing is hidden — only the coverage denominator is made answerable.
+ */
+function needsSource(figure, registry) {
+  if (!isSourceableFigure(figure)) return false;
+  if (notClaims().has(figure)) return false;
+  return figure.endsWith('%') || registry.has(figure);
+}
+
+
+export const CONTENT_ROOT = 'src/content';
+
+/**
+ * The corpus, discovered once and identically by every caller.
+ *
+ * geo-judge.mjs used to build its index from the target file's own directory,
+ * so `final` measured duplication against 15 sibling files while geo-score
+ * measured it against 152 and the two printed different deterministic scores
+ * for the same article. One implementation, so they cannot drift again.
+ */
+export function corpusFiles(root = CONTENT_ROOT) {
+  const out = [];
+  const walk = (dir) => {
+    if (!fs.existsSync(dir)) return;
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full);
+      else if (entry.name.endsWith('.mdx') || entry.name.endsWith('.md')) out.push(full);
+    }
+  };
+  walk(root);
+  return out.sort();
 }
 
 export function factRegistry() {
@@ -195,7 +267,12 @@ function scoreProvenance(docId, index) {
   const re =
     /(?:(?<![A-Za-z])R\s?\d[\d,]*(?:\.\d+)?(?:\s*(?:million|bn|k))?|\d+(?:\.\d+)?%|\d[\d,]*\s*(?:business\s+)?(?:days?|weeks?|months?|years?))/gi;
   const mine = new Set((doc.text.match(re) || []).map((m) => m.trim().replace(/\s+/g, ' ').toLowerCase()));
-  const loadBearing = [...mine].filter((f) => (index.figureCounts.get(f) || 0) >= LOAD_BEARING_MIN_FILES);
+  // A figure needs a source when it is carried by enough articles AND is the
+  // kind of number that asserts something. Anything already registered counts
+  // regardless: somebody declared it a claim, so it stays in the denominator.
+  const loadBearing = [...mine].filter(
+    (f) => (index.figureCounts.get(f) || 0) >= LOAD_BEARING_MIN_FILES && needsSource(f, registry),
+  );
   if (!loadBearing.length) return 10;
   const known = loadBearing.filter((f) => registry.has(f)).length;
   return (known / loadBearing.length) * 10;
@@ -218,7 +295,7 @@ export function unregisteredSharedFigures(docId, index) {
   const out = [];
   for (const f of mine) {
     const sharedWith = index.figureCounts.get(f) || 0;
-    if (sharedWith >= 2 && !registry.has(f)) out.push({ figure: f, files: sharedWith });
+    if (sharedWith >= 2 && !registry.has(f) && isSourceableFigure(f) && !notClaims().has(f)) out.push({ figure: f, files: sharedWith });
   }
   return out.sort((a, b) => b.files - a.files);
 }
@@ -241,6 +318,7 @@ export function registryCoverage(index) {
   let known = 0;
   for (const [figure, files] of index.figureCounts) {
     if (files < LOAD_BEARING_MIN_FILES) continue;
+    if (!needsSource(figure, registry)) continue;
     total += 1;
     if (registry.has(figure)) known += 1;
   }
@@ -292,8 +370,15 @@ export function scoreDocument(docId, index, { requireRegistry = true } = {}) {
   // A figure repeated across the corpus is only suspicious when nothing stands
   // behind it. The section 35A rate belongs in sixty articles; "14 business days"
   // in four hundred and forty-two, sourced nowhere, is the July signature.
+  // notClaims is the reviewer's written finding that a figure is not a claim at
+  // all — "5%" is a band edge in dozens of unrelated ranges, not one assertion
+  // repeated. The gate already honours that finding. This penalty did not, so a
+  // writer who correctly wrote "5% to 7%" was charged four points for a figure a
+  // reviewer had already examined and cleared, with no action available to them:
+  // the figure cannot be registered, because it is not a claim.
   const registry = factRegistry();
-  for (const f of corpus.saturatedFigures.filter((x) => !registry.has(x.figure)).slice(0, 6)) {
+  const cleared = notClaims();
+  for (const f of corpus.saturatedFigures.filter((x) => !registry.has(x.figure) && !cleared.has(x.figure)).slice(0, 6)) {
     add(4, 'stamped-figure', `"${f.figure}" appears in ${f.files} articles and is in no source registry: stamped, not researched`);
   }
   for (const e of signals.headingEchoes) {

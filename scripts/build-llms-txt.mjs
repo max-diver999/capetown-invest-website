@@ -100,7 +100,7 @@ const full = [
   '- Non-residents typically borrow up to about 50% of the purchase price from South African banks.',
   '- Non-resident sellers face a withholding of 7.5% (individuals), 10% (companies) or 15% (trusts) on prices above R2m, credited against the final capital gains liability.',
   '- Capital gains inclusion is 40% for individuals and 80% for trusts and companies; the primary residence exclusion is R2m.',
-  '- City of Cape Town rates exempt the first R450,000 of municipal value, then charge roughly 0.69 cents per rand per year.',
+  '- City of Cape Town rates for 2026/27 grant a rates-free portion of R620,000 on homes valued at R8,000,000 or less, then charge about 0.0064 in the rand per year; above R8,000,000 no rates-free portion applies.',
   '- A sectional title body corporate can restrict short-term letting by 75% special resolution under the STSMA.',
   '- Property ownership does not grant residency. Visa routes are separate.',
   '- Rental yields on this site are modelled and directional, not guaranteed.',
