@@ -370,8 +370,15 @@ export function scoreDocument(docId, index, { requireRegistry = true } = {}) {
   // A figure repeated across the corpus is only suspicious when nothing stands
   // behind it. The section 35A rate belongs in sixty articles; "14 business days"
   // in four hundred and forty-two, sourced nowhere, is the July signature.
+  // notClaims is the reviewer's written finding that a figure is not a claim at
+  // all — "5%" is a band edge in dozens of unrelated ranges, not one assertion
+  // repeated. The gate already honours that finding. This penalty did not, so a
+  // writer who correctly wrote "5% to 7%" was charged four points for a figure a
+  // reviewer had already examined and cleared, with no action available to them:
+  // the figure cannot be registered, because it is not a claim.
   const registry = factRegistry();
-  for (const f of corpus.saturatedFigures.filter((x) => !registry.has(x.figure)).slice(0, 6)) {
+  const cleared = notClaims();
+  for (const f of corpus.saturatedFigures.filter((x) => !registry.has(x.figure) && !cleared.has(x.figure)).slice(0, 6)) {
     add(4, 'stamped-figure', `"${f.figure}" appears in ${f.files} articles and is in no source registry: stamped, not researched`);
   }
   for (const e of signals.headingEchoes) {

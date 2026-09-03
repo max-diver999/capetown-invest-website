@@ -169,16 +169,15 @@ export function sentences(text) {
  * article happened to spell it differently. Everything collapses to the
  * canonical "r<digits>" form.
  */
+const MAGNITUDE = { k: 1e3, m: 1e6, million: 1e6, b: 1e9, bn: 1e9, billion: 1e9 };
+
 export function canonicalFigure(raw) {
   const f = raw.trim().replace(/\s+/g, ' ').toLowerCase();
-  const m = f.match(/^r\s?([\d,]+(?:\.\d+)?)\s*(million|bn|k)?$/);
+  const m = f.match(/^r\s?([\d,]+(?:\.\d+)?)\s*(million|billion|bn|[mkb])?$/);
   if (!m) return f;
-  let n = Number(m[1].replace(/,/g, ''));
+  const n = Number(m[1].replace(/,/g, ''));
   if (!Number.isFinite(n)) return f;
-  if (m[2] === 'million') n *= 1e6;
-  else if (m[2] === 'bn') n *= 1e9;
-  else if (m[2] === 'k') n *= 1e3;
-  return 'r' + Math.round(n);
+  return 'r' + Math.round(n * (MAGNITUDE[m[2]] || 1));
 }
 
 /**
@@ -216,7 +215,7 @@ export function isSourceableFigure(figure) {
 
 export function figurePhrases(text) {
   const re =
-    /(?:(?<![A-Za-z])R\s?\d[\d,]*(?:\.\d+)?(?:\s*(?:million|bn|k))?|\d+(?:\.\d+)?%|\d[\d,]*(?:\.\d+)?\s*(?:business\s+)?(?:days?|weeks?|months?|years?))/gi;
+    /(?:(?<![A-Za-z])R\s?\d[\d,]*(?:\.\d+)?(?:\s*(?:million|billion)\b|(?:bn|[mkb])\b)?|\d+(?:\.\d+)?%|\d[\d,]*(?:\.\d+)?\s*(?:business\s+)?(?:days?|weeks?|months?|years?))/gi;
   return (text.match(re) || []).map((m) => canonicalFigure(m));
 }
 

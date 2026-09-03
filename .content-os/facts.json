@@ -464,6 +464,14 @@
     {
       "figure": "0%",
       "why": "Duty rate below the nil-rate threshold and a zero in several cost tables; carries no independent claim"
+    },
+    {
+      "figure": "R500",
+      "why": "A round bracket edge, not a claim. Carries five articles only as the low end of unrelated ranges: deeds-office search fees (R500 to R1,500), Observatory rent spreads (R500 to R1,200), an instalment delta at a 25bp move, and a fixed-charge illustration. Register the specific fee, never the edge."
+    },
+    {
+      "figure": "R800",
+      "why": "Same shape as R500, in nine articles. It is the endpoint of ranges for scheme water charges (R800 to R1,500), courier to Cape Town, cleaning per turnover (R350 to R800), parking-bay levy lines (R800 to R1,800) and a gas compliance certificate. Nine unrelated cost categories that happen to bracket at the same round number."
     }
   ]
 }

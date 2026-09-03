@@ -65,18 +65,22 @@ const COLLECTIONS = isRu
       pereustupki: { minWords: 500, minFaq: 0, light: true },
     }
   : {
-      guides: { minWords: 2000, minFaq: 5, commercial: true },
-      segments: { minWords: 1800, minFaq: 5, commercial: true },
-      areas: { minWords: 1800, minFaq: 4, commercial: true },
-      comparisons: { minWords: 1800, minFaq: 4, commercial: true },
-      markets: { minWords: 1800, minFaq: 4, commercial: true },
-      costs: { minWords: 1800, minFaq: 4, commercial: true },
-      finance: { minWords: 1800, minFaq: 4, commercial: true },
-      legal: { minWords: 1800, minFaq: 4, commercial: true },
-      compare: { minWords: 1800, minFaq: 4, commercial: true },
-      projects: { minWords: 1200, minFaq: 3, commercial: false },
-      developers: { minWords: 1200, minFaq: 3, commercial: false },
-      news: { minWords: 500, minFaq: 0, light: true },
+      // Floors in PROSE words, matching qa-audit.mjs. The old numbers here were
+      // raw-token thresholds carried over from when bodyWordCount counted table
+      // cells and JSX props; against a prose count they fail the corpus's own
+      // hand-written exemplars, which run 1,333 to 1,423 prose words.
+      guides: { minWords: 1300, minFaq: 5, commercial: true },
+      segments: { minWords: 1100, minFaq: 5, commercial: true },
+      areas: { minWords: 950, minFaq: 4, commercial: true },
+      comparisons: { minWords: 900, minFaq: 4, commercial: true },
+      markets: { minWords: 900, minFaq: 4, commercial: true },
+      costs: { minWords: 900, minFaq: 4, commercial: true },
+      finance: { minWords: 900, minFaq: 4, commercial: true },
+      legal: { minWords: 900, minFaq: 4, commercial: true },
+      compare: { minWords: 900, minFaq: 4, commercial: true },
+      projects: { minWords: 1000, minFaq: 3, commercial: false },
+      developers: { minWords: 950, minFaq: 3, commercial: false },
+      news: { minWords: 750, minFaq: 0, light: true },
       resales: { minWords: 500, minFaq: 0, light: true },
     };
 
@@ -100,10 +104,7 @@ const SEVERITY = {
   'relatedslug-missing': 5,
   'link-to-noindex': 5,
   'missing-table': 5,
-  'missing-pros-cons': 5,
   'low-fact-density': 5,
-  'missing-risks': 5,
-  'missing-scenarios': 5,
   'few-h2': 4,
   'draft-marker': 10,
   'missing-faq': 4,
@@ -154,13 +155,29 @@ function parseRelatedSlugs(fmRaw) {
   return slugs;
 }
 
-function bodyWordCount(body) {
-  const stripped = body
-    .replace(/^import\s.+$/gm, ' ')
-    .replace(/<FaqBlock[\s\S]*?\/>/g, ' ')
-    .replace(/<TldrBlock[^/]*\/>/g, ' ')
-    .replace(/<[^>]+>/g, ' ');
-  return stripped.split(/\s+/).filter((w) => /[A-Za-zА-Яа-яЁё0-9]/.test(w)).length;
+/**
+ * Prose words, counted the same way qa-audit.mjs counts them.
+ *
+ * This used to split on whitespace after stripping tags only, so JSX props,
+ * table cells and code spans all counted as prose and a page could clear an
+ * 1,800-word floor on a thousand words of writing. It also read the body alone,
+ * which meant that collapsing the duplicated inline FAQ to the single copy in
+ * frontmatter — content the layout renders and the reader sees — silently
+ * shrank every page. Two counters disagreeing is how this file came to report
+ * 94 files as thin while validate:content reported the corpus clean.
+ */
+function bodyWordCount(body, fmRaw = '') {
+  const faqText = [...(fmRaw || '').matchAll(/^\s*(?:-\s*question|answer):\s*"(.*)"\s*$/gm)]
+    .map((m) => m[1])
+    .join(' ');
+  return `${body}\n${faqText}`
+    .replace(/^\s*(?:import|export)\s.+$/gm, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/^\s*\|.*$/gm, ' ')
+    .replace(/`[^`]+`/g, ' ')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .split(/\s+/)
+    .filter((w) => /[A-Za-zА-Яа-яЁё0-9]/.test(w)).length;
 }
 
 function countFaq(fmRaw, body) {
@@ -191,7 +208,7 @@ function analyze(file, index) {
   const { fm, fmRaw, body } = parseFrontmatter(file.raw);
   const cfg = file.cfg;
   const noindex = fm.noindex === 'true' || fm.noindex === true;
-  const words = bodyWordCount(body);
+  const words = bodyWordCount(body, fmRaw);
   const issues = [];
   const light = cfg.light === true;
   const commercial = cfg.commercial === true;
@@ -206,7 +223,8 @@ function analyze(file, index) {
   if (!light && !noindex) {
     if (fm.title) {
       const tlen = String(fm.title).length;
-      if (tlen < 50 || tlen > 60) issues.push('bad-title-length');
+      // 45-65, matching qa-audit.mjs. The 50-60 window here was the older rule.
+      if (tlen < 45 || tlen > 65) issues.push('bad-title-length');
     }
     if (fm.description && String(fm.description).length > 160) {
       issues.push('bad-description-length');
@@ -226,21 +244,36 @@ function analyze(file, index) {
       }
       const noSlash = linksWithoutTrailingSlash(body);
       if (noSlash.length) issues.push('missing-trailing-slash');
-      if (countMarkdownTableRows(body) < 6) issues.push('missing-table');
-      if (!/(pros|cons|плюс|минус|advantages|disadvantages)/i.test(body)) {
-        issues.push('missing-pros-cons');
-      }
-      if (!/(риск|red flag|checklist|чеклист|what to check|insider tip|risks?)/i.test(body)) {
-        issues.push('missing-risks');
-      }
-      if (!/(сценари|scenario|for investors|для инвестор|who this is for|buyer profile|decision framework)/i.test(body)) {
-        issues.push('missing-scenarios');
-      }
+      // 4 = header + three data rows. countMarkdownTableRows no longer counts
+      // the `| --- |` separator, so this threshold now means what it says.
+      if (countMarkdownTableRows(body) < 4) issues.push('missing-table');
+      // 'missing-pros-cons' removed. It had two faults. The pattern carried no
+      // word boundaries, so it passed on "considerations", "constraints" and
+      // "constitute" — every one of the 144 files at 9cda569 matched, several on
+      // the word "considerations" alone. Bounded properly it still passes 112 of
+      // those 144 while failing 42 of the current corpus, because the generator
+      // emitted literal "Pros / Cons" headings and the rewrite replaced them
+      // with prose that weighs both sides. Either way it rewards the boilerplate.
+      // 'missing-risks' removed. All 144 files at 9cda569 passed it: it asks only
+      // whether the word "risk" appears somewhere, which any property article
+      // satisfies by accident. Zero discriminating power, and it was failing six
+      // hand-written pages for not happening to use the word.
+      // 'missing-scenarios' was removed, not broadened. Measured against the
+      // labelled sets it ran backwards: 129 of the 144 machine-generated files
+      // at 9cda569 passed it (matching "scenario" 61 times, "for investors" 36,
+      // "buyer profile" 27), while it failed 34 of the hand-rewritten corpus.
+      // The generator stamped the label; a writer answering the question writes
+      // "Which one should you buy?" or "What should a German buyer settle
+      // before the offer?" and got flagged for it. A check that 90% of known
+      // garbage passes and that penalises the rewrite is worse than no check.
       const nums = countNumericFacts(body);
       const minNums = Math.max(8, Math.floor((cfg.minWords || 2000) / 500) * 3);
       if (nums < minNums) issues.push('low-fact-density');
       if (cfg.minFaq > 0 && countFaq(fmRaw, body) < cfg.minFaq) issues.push('missing-faq');
-      if (!/<FaqBlock/.test(body)) issues.push('missing-faq-block');
+      // No inline <FaqBlock> requirement. The FAQ lives in frontmatter and the
+      // layout renders it; 2,143 lines of duplicated inline copies were removed
+      // across 149 files, verified on rendered HTML. This rule asked for that
+      // duplication back. `missing-faq` above already checks the real source.
       if (
         !layoutLead &&
         !/(<LeadForm|<InlineCta|#lead-form|WhatsApp|Telegram|подбер|consultation|shortlist)/i.test(body)

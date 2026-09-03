@@ -171,6 +171,62 @@ Coverage went 30% → 61% → 75% → **100%**, and the gate is armed for the fi
 from 53.1 to 57.3, which is the provenance reward finally being measured against a denominator that means
 something rather than an unreachable one.
 
+## The instrument was misreading a third of the corpus's money
+
+Every gate and penalty that compares figures across articles rests on one
+function, `canonicalFigure`, which reduces a written amount to a key so that
+`R2 million`, `R2,000,000` and `R2m` count as the same number. It handled the
+first two. It did not handle the third.
+
+The extraction regex accepted `million`, `bn` and `k` as magnitude suffixes and
+nothing else, so `R18m` matched only as far as `R18` and the `m` was dropped on
+the floor. Two consequences, both silent:
+
+| Written | Extracted as | Meaning assigned |
+|---|---|---|
+| `R18m` average transaction | `r18` | merged with the R18/USD exchange rate |
+| `R2.695m` off-plan ticket | `r3` | rounded to R3 |
+| `R3.4m` flat | `r3` | same key as the R2.695m ticket |
+| `R25.8m` residence | `r26` | R26 |
+
+Two failures at once. Amounts three orders of magnitude apart were merged, and
+`R2.695m` and `R3.4m` — genuinely different prices — became one figure. The
+corpus writes `R…m` 631 times, so this was not an edge case: it was most of the
+money on the site.
+
+The visible symptom was the registry gate firing on 37 files for figures that
+did not exist. `r18` looked load-bearing "in 5 articles" because an exchange
+rate and four transaction prices had been stacked on one key, and no amount of
+sourcing could clear it, because there was nothing there to source.
+
+Fixing the suffix took gated files from 42 to 13 and left calibration exactly
+where it was: separation 68.1, bad set still 0/59. That is the signature of an
+instrument defect rather than a signal change — correcting it moved the corpus
+and moved neither labelled set.
+
+## A penalty that charged for work already done
+
+`notClaims` is the reviewer's written finding that a figure is not a claim at
+all. "5%" appears in 39 articles as the edge of unrelated ranges — yield bands,
+commission rates, a deposit tier — and is not one assertion repeated. A reviewer
+examined it, wrote down why, and the registry gate honoured that.
+
+The `stamped-figure` penalty did not. It filtered on the fact registry alone, so
+an article that correctly wrote "5% to 7%" lost four points for a figure that had
+already been cleared, and the writer had no move available: the figure cannot be
+registered, because it is not a claim. The two mechanisms disagreed about the
+same declaration.
+
+Aligning them cost nothing on the labelled sets — separation stayed 68.1, the bad
+set stayed at 0/59, because those files are gated to zero and a penalty below a
+gate rescues nobody. The corpus mean moved 58.1 to 59.3.
+
+The rule this leaves: a reviewer's finding binds every part of the scorer, or it
+binds none of them. A declaration that only some rules honour is worse than no
+declaration, because it looks like relief and is not.
+
+Both changes together: corpus mean 57.6 to 59.3, gated files 42 to 3.
+
 ## What was tried and rejected
 
 Every rule here had to earn its place on the labelled sets. These did not, and are recorded so nobody
@@ -187,8 +243,17 @@ re-adds them on intuition:
 | opener of 18–70 words | 90.5% of sections | 90.3% of sections | shipped for weeks inside the openers component and separated nothing: it paid for a shape, which is the exact failure of the July rubric |
 | opener not starting with a pronoun | 99.9% | 100.0% | both classes pass essentially always, so the rule was 5 free points for everyone |
 | a figure in the opening sentence | 89.6% | 58.1% | separates, but *backwards*: machine text front-loads numbers. Not usable as a reward, and too imprecise to be a penalty |
+| page must contain a "scenarios" block | 129 of 144 pass | failed 34 of the rewrite | backwards. The generator stamped the label — "scenario" 61 times, "for investors" 36, "buyer profile" 27 — while a writer answering the question writes "Which one should you buy?" and got flagged |
+| page must mention risks | 144 of 144 pass | failed 6 | asks only whether the word "risk" appears anywhere, which any property article satisfies by accident |
+| page must have a pros/cons section | 144 of 144 pass | failed 42 when bounded | the pattern had no word boundaries and matched "considerations" and "constraints"; bounded it still passes 112 of 144 garbage, because "Pros / Cons" is generator boilerplate |
 
 The first rubric was built entirely out of rules like these: plausible, untested, and wrong.
+
+The last three were still live in `fix-batch-queue.mjs` and `lib/more-content-gate.mjs` long after the
+scorer was rebuilt, and `more-content-gate.mjs` runs against **new** articles. Left alone they would
+have told the next wave of writing to reinstate the boilerplate the rewrite had just removed — a gate
+whose net effect is to push writing back toward the machine that failed. A checklist gate is only ever
+as good as its worst rule, because a writer clears it by satisfying every one of them.
 
 ### The openers component, rebuilt on measurement
 
