@@ -10,6 +10,7 @@
  * come from the judge stage (scripts/geo-judge.mjs), which no pattern edit can reach.
  */
 import fs from 'node:fs';
+import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import { loadCorpus, scoreDocument, factRegistryReport, DETERMINISTIC_MAX, ABSOLUTE_MAX } from './lib/geo/score.mjs';
 
@@ -76,8 +77,28 @@ function printOne(r, explain) {
 const args = process.argv.slice(2);
 const explain = args.includes('--explain');
 const asJson = args.includes('--json');
-const target = args.find((a) => !a.startsWith('--'));
+// --min-score N exits non-zero when any scored file is below N, so this scorer
+// can stand in a gate rather than only being read by a human. --changed narrows
+// to MDX touched against origin/HEAD, which is what a pre-push hook wants.
+const minIdx = args.indexOf('--min-score');
+const minScore = minIdx !== -1 ? Number(args[minIdx + 1]) : null;
+const changedOnly = args.includes('--changed');
+const target = args.find((a, i) => !a.startsWith('--') && !(minIdx !== -1 && i === minIdx + 1));
 const files = corpusFiles();
+
+function changedFiles() {
+  const run = (a) => {
+    try { return execFileSync('git', a, { encoding: 'utf8' }); } catch { return ''; }
+  };
+  // Committed-but-unpushed work counts: a --changed gate that only sees the
+  // working tree passes trivially once the author commits, which makes it
+  // vacuous exactly when it matters.
+  const out = [run(['diff', '--name-only', 'HEAD', '--', 'src/content']),
+               run(['diff', '--name-only', '--cached', '--', 'src/content']),
+               run(['diff', '--name-only', 'origin/HEAD...HEAD', '--', 'src/content'])].join('\n');
+  const set = new Set(out.split('\n').map((l) => l.trim()).filter((l) => l.endsWith('.mdx')));
+  return files.filter((f) => set.has(f));
+}
 
 if (target) {
   const abs = path.resolve(target);
@@ -95,7 +116,12 @@ if (target) {
   console.log(JSON.stringify(rows, null, 1));
 } else {
   const index = loadCorpus(files);
-  const rows = files.map((f) => scoreDocument(path.basename(f), index)).sort((a, b) => a.deterministic - b.deterministic);
+  const scope = changedOnly ? changedFiles() : files;
+  if (changedOnly && !scope.length) {
+    console.log('GEO: no changed MDX to score.');
+    process.exit(0);
+  }
+  const rows = scope.map((f) => scoreDocument(path.basename(f), index)).sort((a, b) => a.deterministic - b.deterministic);
   const cov = rows[0]?.registryCoverage;
   const mean = rows.reduce((a, r) => a + r.deterministic, 0) / rows.length;
   console.log(`=== GEO deterministic scores (max ${DETERMINISTIC_MAX}, ceiling ${ABSOLUTE_MAX} with judge) ===`);
@@ -121,4 +147,15 @@ if (target) {
   }
   const worst = rows.filter((r) => r.gates.length);
   console.log(`\n${worst.length} file(s) hit a gate; ${rows.filter((r) => r.unregistered.length).length} carry unregistered shared figures.`);
+
+  if (minScore !== null && Number.isFinite(minScore)) {
+    const below = rows.filter((r) => r.deterministic < minScore);
+    if (below.length) {
+      console.log(`\n❌ ${below.length}/${rows.length} file(s) below the ${minScore}/${DETERMINISTIC_MAX} threshold:`);
+      for (const r of below.slice(0, 20)) console.log(`   ${String(r.deterministic).padStart(3)}  ${r.id}`);
+      if (below.length > 20) console.log(`   ... and ${below.length - 20} more`);
+      process.exit(1);
+    }
+    console.log(`\n✅ all ${rows.length} scored file(s) at or above ${minScore}/${DETERMINISTIC_MAX}.`);
+  }
 }

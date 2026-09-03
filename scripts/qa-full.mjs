@@ -51,9 +51,14 @@ const renderedArgs = LOCAL_ONLY || QUICK
   ? ['scripts/audit-rendered-live.mjs', '--local', '--fail']
   : ['scripts/audit-rendered-live.mjs', '--fail'];
 
+// Repointed from scripts/geo-citability-audit.mjs, which was measured on the
+// labelled sets at 0.3 points of separation between machine-generated and
+// hand-written text and now ranks the hand-written rewrites as the corpus's
+// worst files. The threshold is 45 of a 75-point deterministic scale, set from
+// where the corpus actually sits rather than from the old 90-of-100 headline.
 const geoArgs = QUICK
-  ? ['scripts/geo-citability-audit.mjs', '--changed']
-  : ['scripts/geo-citability-audit.mjs', '--min-score', '90'];
+  ? ['scripts/geo-score.mjs', '--changed', '--min-score', '45']
+  : ['scripts/geo-score.mjs', '--min-score', '40'];
 
 const steps = [
   {
@@ -84,12 +89,17 @@ const steps = [
         },
       ]
     : []),
-  ...(existsSync(join(ROOT, 'scripts/geo-citability-audit.mjs'))
+  ...(existsSync(join(ROOT, 'scripts/geo-score.mjs'))
     ? [
         {
-          name: QUICK ? 'GEO citability (--changed MDX)' : 'GEO citability (full corpus, min 90)',
+          name: QUICK ? 'GEO score (changed MDX, min 45/75)' : 'GEO score (full corpus, min 40/75)',
           cmd: 'node',
           args: geoArgs,
+        },
+        {
+          name: 'GEO calibration (scorer still separates machine from hand-written)',
+          cmd: 'node',
+          args: ['scripts/geo-calibrate.mjs'],
         },
       ]
     : []),

@@ -324,6 +324,54 @@
       "statement": "Portugal AIMI annual rate for individuals on property value from EUR 600,000, rising to 1% above EUR 1 million",
       "source": "Portugal AIMI rates, 2026",
       "asOf": "2026-08-27"
+    },
+    {
+      "figure": "R107,356",
+      "statement": "Transfer duty on the site's standard R3,000,000 worked example, 3.58% of price, computed on the SARS scale effective 1 April 2025",
+      "source": "SARS transfer duty table effective 1 April 2025",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "3.58%",
+      "statement": "Effective transfer duty rate on a R3,000,000 purchase, being R107,356 of price",
+      "source": "SARS transfer duty table effective 1 April 2025",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "R217,356",
+      "statement": "Transfer duty on a R4,000,000 purchase, 5.43% of price, on the SARS scale effective 1 April 2025",
+      "source": "SARS transfer duty table effective 1 April 2025",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "R327,356",
+      "statement": "Transfer duty on a R5,000,000 purchase, being the R106,784 band amount plus 11% of R2,005,200",
+      "source": "SARS transfer duty table effective 1 April 2025",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "R877,356",
+      "statement": "Transfer duty on a R10,000,000 purchase, being the R106,784 band amount plus 11% of R7,005,200",
+      "source": "SARS transfer duty table effective 1 April 2025",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "R1,461,156",
+      "statement": "Transfer duty on a R15,000,000 purchase, 9.74% of price, with the top slice in the 13% band",
+      "source": "SARS transfer duty table effective 1 April 2025",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "R106,784",
+      "statement": "Fixed band amount for the R2,994,801 to R13,310,000 transfer duty bracket, to which 11% of the excess is added; it is never the total duty on a R3,000,000 purchase",
+      "source": "SARS transfer duty table effective 1 April 2025",
+      "asOf": "2026-08-27"
+    },
+    {
+      "figure": "R33,786",
+      "statement": "Transfer duty on a R2,000,000 purchase on the SARS scale effective 1 April 2025",
+      "source": "SARS transfer duty table effective 1 April 2025",
+      "asOf": "2026-08-27"
     }
   ]
 }

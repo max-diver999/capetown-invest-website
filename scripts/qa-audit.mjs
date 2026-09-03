@@ -11,6 +11,12 @@ import { runExtendedChecks } from './lib/more-content-gate.mjs';
 
 const ROOT = decodeURIComponent(new URL('../src/content/', import.meta.url).pathname);
 const COLLECTIONS = ['guides', 'segments', 'compare', 'areas', 'projects', 'developers', 'news'];
+// Top-level pages under src/pages/. Kept explicit rather than globbed so that a
+// deleted page fails the gate instead of quietly becoming an accepted target.
+const STATIC_ROUTES = new Set([
+  'about', 'consultation', 'contact', 'get-shortlist', 'methodology',
+  'privacy-policy', 'site-report', 'terms', 'thanks',
+]);
 
 const BANNED_PHRASES = [
   'Regional diversification',
@@ -214,11 +220,29 @@ function auditFile(c, slug) {
     if (bad.length) prob.push(`relatedSlugsBad:${bad.join('|')}`);
   }
 
-  const bodySlugs = [
-    ...body.matchAll(/\]\(\/(?:guides|compare|areas|projects|developers|news)\/([a-z0-9\-]+)\/?\)/gi),
-  ].map((m) => m[1]);
-  const badLinks = [...new Set(bodySlugs.filter((s) => !allSlugs.has(s)))];
-  if (badLinks.length) prob.push(`brokenInternalLinks:${badLinks.join('|')}`);
+  // Every internal link is validated against the real route set, not against a
+  // hand-listed subset of collections. The previous version omitted `segments`
+  // and ignored any path without a collection prefix, so a live 404 on a
+  // rewritten page — /cape-town-property-for-uk-retirees/ instead of
+  // /segments/cape-town-property-for-uk-retirees/ — passed the gate silently.
+  const badLinks = [];
+  for (const m of body.matchAll(/\]\((\/[^)#\s]*)\)/g)) {
+    const href = m[1];
+    if (href.startsWith('/api/') || href.startsWith('/_') || href.includes('.')) continue;
+    const parts = href.split('/').filter(Boolean);
+    if (!parts.length) continue;
+    if (COLLECTIONS.includes(parts[0])) {
+      if (parts.length !== 2 || !allSlugs.has(parts[1])) badLinks.push(href);
+    } else if (STATIC_ROUTES.has(parts[0])) {
+      if (parts.length !== 1) badLinks.push(href);
+    } else {
+      // A first segment that is neither a collection nor a static route is
+      // almost always a collection prefix someone forgot.
+      badLinks.push(href);
+    }
+  }
+  const uniqueBad = [...new Set(badLinks)];
+  if (uniqueBad.length) prob.push(`brokenInternalLinks:${uniqueBad.join('|')}`);
 
   reportRows.push({ coll: c, slug, words, faq: fm.__faqCount, prob });
   if (prob.length) issues.push(`[${c}/${slug}] (${words}w) ${prob.join(', ')}`);
