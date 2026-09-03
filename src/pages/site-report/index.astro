@@ -1,21 +1,21 @@
 ---
 export const prerender = true;
 
-const reportDate = '1 September 2026';
-const reportVersion = 'v2.5';
+const reportDate = '3 September 2026';
+const reportVersion = 'v2.6';
 const launchDate = '10 June 2026';
 const dataThrough = '31 August 2026';
 
 const monthlyGsc = [
   { month: 'Jun 2026', label: 'Jun', clicks: 4, impressions: 432, position: 15.7, note: '18 Jun first impressions · avg pos improving late month' },
-  { month: 'Jul 2026', label: 'Jul', clicks: 18, impressions: 1327, position: 8.7, note: 'Full month · GSC lag 2–3 days' },
-  { month: 'Aug 2026', label: 'Aug', clicks: 27, impressions: 2161, position: 9.2, note: 'Full month · Aug clicks +50% vs Jul · rates-taxes + century-city guides' },
+  { month: 'Jul 2026', label: 'Jul', clicks: 28, impressions: 1698, position: 9.3, note: 'Full month · GSC lag 2–3 days · MCP revision' },
+  { month: 'Aug 2026', label: 'Aug', clicks: 29, impressions: 2392, position: 15.2, note: 'Full month · Aug clicks +4% vs Jul · rates-taxes + century-city guides' },
 ];
 
 const monthlyGa4 = [
   { month: 'Jun', sessions: 69 },
-  { month: 'Jul', sessions: 108 },
-  { month: 'Aug', sessions: 242 },
+  { month: 'Jul', sessions: 152 },
+  { month: 'Aug', sessions: 248 },
 ];
 
 const contentBreakdown = [
@@ -38,6 +38,8 @@ const weeklyMetrics = [
   { week: '14–20 Jul', gscClicks: 4, gscImp: 283, gscPos: '9.1', ga4: 35, bingC: 2, aeoQueries: 3, aeoTop10: 1, geoScore: '90', geoMdx: '144' },
   { week: '21–27 Jul', gscClicks: 6, gscImp: 172, gscPos: '9.6', ga4: 35, bingC: 3, aeoQueries: 3, aeoTop10: 0, geoScore: '90', geoMdx: '144' },
 ];
+
+const gsc28d = { clicks: 29, impressions: 2245, ctr: 1.29, position: 15.3 };
 
 const totalClicks = monthlyGsc.reduce((s, m) => s + m.clicks, 0);
 const totalImp = monthlyGsc.reduce((s, m) => s + m.impressions, 0);
@@ -493,7 +495,7 @@ const chartPayload = JSON.stringify({
   <div class="header-meta">
     <div class="label">Last updated</div>
     <div class="value">{reportDate} · {reportVersion} (live)</div>
-    <div class="live-badge"><span class="live-dot"></span> 152 MDX · 159 sitemap · corpus rebuilt · hubs + content graph live</div>
+    <div class="live-badge"><span class="live-dot"></span> 152 MDX · GSC refresh 3 Sep</div>
     <div style="margin-top:10px;font-size:12px;"><a href="https://capetown-invest.com/" style="color:#9dbfb3;text-decoration:none;">← Live site</a></div>
   </div>
 </div>
@@ -533,9 +535,9 @@ const chartPayload = JSON.stringify({
       <div class="sublabel">3,920 imp · CTR 1.25% · Aug 27 clk</div>
     </div>
     <div class="stat-card">
-      <div class="num teal">419</div>
+      <div class="num teal">469</div>
       <div class="label">GA4 sessions</div>
-      <div class="sublabel">Jun 69 · Jul 108 · Aug 242 · lead API 200</div>
+      <div class="sublabel">Jun 69 · Jul 152 · Aug 248 · lead API 200</div>
     </div>
   </div>
 
@@ -558,9 +560,9 @@ const chartPayload = JSON.stringify({
     </div>
     <div class="kpi-card">
       <div class="kpi-label">GA4 Sessions</div>
-      <div class="kpi-value">419</div>
-      <span class="kpi-delta up">↑ Aug 242</span>
-      <div class="kpi-sub">Jun 69 · Jul 108 · Aug 242</div>
+      <div class="kpi-value">469</div>
+      <span class="kpi-delta up">↑ Aug 248</span>
+      <div class="kpi-sub">Jun 69 · Jul 152 · Aug 248</div>
     </div>
     <div class="kpi-card">
       <div class="kpi-label">Content corpus</div>
@@ -777,24 +779,24 @@ const chartPayload = JSON.stringify({
         <div class="kpi-trend trend-up">↑ Aug +50%</div>
         <div class="kpi-label">Total Clicks</div>
         <div class="kpi-val">{totalClicks}</div>
-        <div class="kpi-sub">Aug 27 clk · rates-taxes + century-city guides lead</div>
+        <div class="kpi-sub">Aug {monthlyGsc[2].clicks} clk · rates-taxes + century-city guides lead</div>
       </div>
       <div class="pulse-kpi kpi-blue">
         <div class="kpi-trend trend-up">↑ Scale</div>
         <div class="kpi-label">Impressions</div>
         <div class="kpi-val">{(totalImp / 1000).toFixed(1)}k</div>
-        <div class="kpi-sub">Aug 2,161 imp · peak 105 on 5 Jul · short-term-rental + rates guides</div>
+        <div class="kpi-sub">Aug {monthlyGsc[2].impressions.toLocaleString('en-US')} imp · 28d {gsc28d.impressions.toLocaleString('en-US')} imp · short-term-rental + rates guides</div>
       </div>
       <div class="pulse-kpi kpi-amber">
         <div class="kpi-trend trend-up">↑ Page 1</div>
         <div class="kpi-label">Avg. Position</div>
-        <div class="kpi-val">10.4</div>
-        <div class="kpi-sub">Jul avg 8.7 · claremont area pos 5.3 · compare vs Dubai pos 4.2</div>
+        <div class="kpi-val">{gsc28d.position}</div>
+        <div class="kpi-sub">28d avg · Jul full month {monthlyGsc[1].position}</div>
       </div>
       <div class="pulse-kpi kpi-purple">
         <div class="kpi-label">Avg. CTR</div>
-        <div class="kpi-val">1.25%</div>
-        <div class="kpi-sub">Head terms still building · project + area pages 4–15% CTR</div>
+        <div class="kpi-val">{gsc28d.ctr}%</div>
+        <div class="kpi-sub">28d CTR · {gsc28d.clicks} clk / {gsc28d.impressions.toLocaleString('en-US')} imp</div>
       </div>
     </div>
 
@@ -822,7 +824,7 @@ const chartPayload = JSON.stringify({
         <div class="pulse-insight" style="margin-top:16px;">
           <div class="pulse-insight-icon">📈</div>
           <div class="pulse-insight-text">
-            <strong>Growth phase:</strong> 49 clicks and 3,920 impressions lifetime (through 31 Aug). Tax and STR guides drive volume; 20 URLs earned clicks. Bing 5 clicks from mid-July. Lead spam gate live without blocking real enquiries.
+            <strong>Growth phase:</strong> {totalClicks} clicks and {totalImp.toLocaleString('en-US')} impressions lifetime (through 31 Aug). GSC 28d: {gsc28d.clicks} clk / {gsc28d.impressions.toLocaleString('en-US')} imp. Tax and STR guides drive volume; 20 URLs earned clicks. Bing 5 clicks from mid-July. Lead spam gate live without blocking real enquiries.
           </div>
         </div>
       </div>
@@ -1123,6 +1125,15 @@ const chartPayload = JSON.stringify({
   <div class="changelog">
         <div class="changelog-item">
               <div class="changelog-item">
+      <div class="changelog-date">3 Sep 2026 (v2.6)</div>
+      <div class="changelog-content">
+        <div class="changelog-title">Site-report v2.6 · MCP analytics refresh through 31 Aug</div>
+        <div class="changelog-desc">GSC 28d: {gsc28d.clicks} clk / {gsc28d.impressions.toLocaleString('en-US')} imp · Aug full month: 29 clk / 2,392 imp · Jul revised: 28 clk / 1,698 imp. GA4 Aug: 248 sessions (469 cumulative). Updated via GSC + GA4 MCP.</div>
+        <div class="changelog-tags"><span class="tag green">Report v2.6</span><span class="tag blue">GSC MCP</span><span class="tag amber">GA4 MCP</span></div>
+      </div>
+    </div>
+
+        <div class="changelog-item">
       <div class="changelog-date">1 Sep 2026 (v2.5)</div>
       <div class="changelog-content">
         <div class="changelog-title">Site-report v2.5 · MoM table + chartPayload sync</div>
@@ -1276,7 +1287,7 @@ const chartPayload = JSON.stringify({
 </div>
 
   <div class="footer">
-  <strong>Cape Town Invest</strong> · capetown-invest.com · Report updated {reportDate} {reportVersion} · 159 sitemap · 152 MDX · GSC Aug 27 clk / 2,161 imp · GA4 419 sessions (Aug 242)<br>
+  <strong>Cape Town Invest</strong> · capetown-invest.com · Report updated {reportDate} {reportVersion} · 159 sitemap · 152 MDX · GSC Aug 29 clk / 2,392 imp · GA4 469 sessions (Aug 248)<br>
   <a href="https://capetown-invest.com/site-report/" style="color:#2d7a5e;text-decoration:none;">Live report URL</a> ·
   To update: edit <code>src/pages/site-report/index.astro</code> in capetown-invest-website
 </div>
