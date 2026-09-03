@@ -93,9 +93,14 @@ export function runStructuralChecks(opts) {
       collection,
     );
 
+  // 45-65, matching the live rule in qa-audit.mjs. This function is currently
+  // uncalled — nothing in scripts/ invokes runStructuralChecks — so the 50-60
+  // range it previously asserted was never enforced anywhere while still
+  // reading like the site's contract. Real titles at 47 and 49 characters pass
+  // the gate that actually runs.
   if (!legacyExempt && data.title) {
     const tlen = String(data.title).replace(/^["']|["']$/g, '').length;
-    if (tlen < 50 || tlen > 60) errors.push(`${prefix} title length ${tlen}; expected 50-60 chars`);
+    if (tlen < 45 || tlen > 65) errors.push(`${prefix} title length ${tlen}; expected 45-65 chars`);
   }
   if (!legacyExempt && data.description && String(data.description).length > 160) {
     errors.push(`${prefix} description length ${data.description.length}; expected <=160 chars`);

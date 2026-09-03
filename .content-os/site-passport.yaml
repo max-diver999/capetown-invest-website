@@ -29,11 +29,18 @@ full_audit:
     - segments
     - developers
   geo_baseline:
-    commercial_avg: 90
-    commercial_below_min: 0
-    grade: A
-    rubric_weak: [self, unique]
+    # The old 90/A baseline was produced by a rubric that did not discriminate:
+    # measured on labelled sets it separated machine-generated from hand-written
+    # text by 0.3 points, and the 90 was earned by injected boilerplate. Replaced
+    # 2026-08-27. Scale is now 0-75 deterministic, 95 with the judge stage.
+    scorer: scripts/geo-score.mjs
+    scale: 0-75 deterministic, ceiling 95 with judge
+    corpus_mean: 53.5
+    corpus_min: 10
+    zero_scoring_pages: 0
+    calibration: bad max 0, hand-written min 59, separation 68.1
     command: npm run geo:audit
+    gate: npm run geo:gate
   forbid:
     - mass regex delete across corpus
     - Astro/layout changes without code roadmap ok
