@@ -372,6 +372,12 @@
       "statement": "Transfer duty on a R2,000,000 purchase on the SARS scale effective 1 April 2025",
       "source": "SARS transfer duty table effective 1 April 2025",
       "asOf": "2026-08-27"
+    },
+    {
+      "figure": "9.2%",
+      "statement": "Upper bound of the modelled gross yield range in Observatory, whose lower bound is 7.8%",
+      "source": "Cape Town Invest model from listed prices against observed long-let rents",
+      "asOf": "2026-09-03"
     }
   ]
 }
