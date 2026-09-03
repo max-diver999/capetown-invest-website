@@ -23,8 +23,12 @@ export const BANNED_PHRASES = [
   'in today\'s rapidly evolving',
 ];
 
+// `not just .+ but` was unbounded and greedy, so on any text without sentence
+// breaks — the frontmatter FAQ joined into one line, for instance — it matched
+// across hundreds of characters and flagged "not just a residential suburb"
+// against a "but" three sentences later. Bounded to a clause.
 export const AI_FLUFF_RE =
-  /\b(moreover|furthermore|in conclusion|it is important to note|unlock the potential|not just .+ but)\b/i;
+  /\b(moreover|furthermore|in conclusion|it is important to note|unlock the potential|not just [^.]{1,60} but)\b/i;
 
 export const DRAFT_MARKERS_RE =
   /\[VERIFY\b|\*\*VERIFY:\*\*|Knowledge base|KB §|\bTODO\b|source needed/i;
@@ -184,7 +188,7 @@ export function runStructuralChecks(opts) {
     if (nums < minNums) errors.push(`${prefix} low fact density: ${nums} numeric facts, need >=${minNums} (GEO)`);
     const bold = countBoldSpans(body);
     if (bold > 35) errors.push(`${prefix} over-bold: ${bold} ** spans (max 35)`);
-    if (!/<FaqBlock/.test(body)) errors.push(`${prefix} missing <FaqBlock items={...} /> in body`);
+    // Frontmatter is the single FAQ source; see qa-audit's faq count check.
   }
 
   const noSlash = linksWithoutTrailingSlash(body);
@@ -202,7 +206,8 @@ export function runExtendedChecks(opts) {
 
   if (AI_FLUFF_RE.test(body)) errors.push(`${prefix} AI fluff`);
   if (!/<TldrBlock\b/.test(body)) errors.push(`${prefix} missing TldrBlock`);
-  if (!/<FaqBlock/.test(body)) errors.push(`${prefix} missing FaqBlock in body`);
+  // The FAQ now lives in frontmatter only and the layout renders it, so there
+  // is nothing to require in the body. qa-audit checks the frontmatter count.
   if (!/(pros|cons|плюс|минус|advantages|disadvantages)/i.test(body)) {
     errors.push(`${prefix} missing pros/cons`);
   }

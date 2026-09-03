@@ -126,8 +126,17 @@ function auditFile(c, slug) {
   // measure and why a page could pass an 1,800-word gate on ~1,000 words of
   // prose: JSX props, table cells, import lines and code spans all counted.
   // `words` is prose only, so the floor below means what it says.
-  const rawWords = body.split(/\s+/).filter(Boolean).length;
-  const words = body
+  // The FAQ lives in frontmatter and the layout renders it, so it is real,
+  // visible content on the page. It has to be measured, or collapsing the
+  // duplicate copy would silently shrink every page's word count, fact density
+  // and pros/cons detection — the gates would tighten as a side effect of a
+  // structural cleanup rather than by decision.
+  const faqText = [...(fmRaw || '').matchAll(/^\s*(?:-\s*question|answer):\s*"(.*)"\s*$/gm)]
+    .map((m) => m[1])
+    .join(' ');
+  const measured = `${body}\n${faqText}`;
+  const rawWords = measured.split(/\s+/).filter(Boolean).length;
+  const words = measured
     .replace(/^\s*(?:import|export)\s.+$/gm, ' ')
     .replace(/<[^>]+>/g, ' ')
     .replace(/^\s*\|.*$/gm, ' ')
@@ -204,7 +213,7 @@ function auditFile(c, slug) {
   const extErr = [];
   runExtendedChecks({
     prefix: `[${c}/${slug}]`,
-    body,
+    body: measured,
     cfg: {
       minWords: minW,
       label: c,
@@ -267,26 +276,11 @@ function auditFile(c, slug) {
   const uniqueBad = [...new Set(badLinks)];
   if (uniqueBad.length) prob.push(`brokenInternalLinks:${uniqueBad.join('|')}`);
 
-  // The FAQPage JSON-LD is built from the frontmatter `faq`, while the visible
-  // accordion comes from the inline block. Authored twice, they drift: seven
-  // pages were serving structured questions that never appeared on the page,
-  // which is exactly what Google's FAQ policy forbids. Frontmatter is the
-  // source of truth; the inline block must mirror it question for question.
-  const norm = (x) => x.replace(/\s+/g, ' ').replace(/[\u201c\u201d]/g, '"').trim().toLowerCase();
-  const fmQuestions = [...(fmRaw || '').matchAll(/^\s*-\s*question:\s*"(.*)"\s*$/gm)].map((m) => norm(m[1]));
-  if (fmQuestions.length) {
-    const inlineSrc =
-      body.match(/export const faqItems\s*=\s*\[([\s\S]*?)\n\]/) ||
-      body.match(/<FaqBlock\s+items=\{\[([\s\S]*?)\]\}\s*\/>/);
-    if (inlineSrc) {
-      const inlineQuestions = [...inlineSrc[1].matchAll(/question:\s*"((?:[^"\\]|\\.)*)"/g)].map((m) => norm(m[1]));
-      const a = new Set(fmQuestions);
-      const b = new Set(inlineQuestions);
-      const onlyFm = [...a].filter((x) => !b.has(x)).length;
-      const onlyInline = [...b].filter((x) => !a.has(x)).length;
-      if (onlyFm || onlyInline) prob.push(`faqMismatch:frontmatter-only=${onlyFm},visible-only=${onlyInline}`);
-    }
-  }
+  // The FAQ was authored twice — frontmatter for the JSON-LD, an inline block
+  // for the visible accordion — and the two drifted on seven pages, serving
+  // structured questions that never appeared. The inline blocks are gone and
+  // the layout renders from frontmatter, so there is one copy and nothing to
+  // keep in step.
 
   reportRows.push({ coll: c, slug, words, rawWords, faq: fm.__faqCount, prob });
   if (prob.length) issues.push(`[${c}/${slug}] (${words} prose / ${rawWords} raw) ${prob.join(', ')}`);
