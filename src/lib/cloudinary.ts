@@ -89,3 +89,54 @@ export function responsiveCloudinary(src: string) {
     height: intrinsic?.h,
   };
 }
+
+type HeroBand = { narrow: string; wide: string };
+
+function heroBandFor(ratio: number | undefined): HeroBand {
+  if (ratio === undefined) return { narrow: '16:10', wide: '21:9' };
+  if (ratio >= 1.6) return { narrow: '16:10', wide: '21:9' };
+  if (ratio >= 1.2) return { narrow: '16:10', wide: '2:1' };
+  if (ratio >= 0.95) return { narrow: '4:3', wide: '16:9' };
+  return { narrow: '4:3', wide: '3:2' };
+}
+
+const HERO_WIDTHS = [640, 960, 1280, 1600];
+
+export function heroCloudinary(src: string) {
+  const parsed = parseCloudinaryUrl(src);
+  if (!parsed) return null;
+
+  const intrinsic = (dimensions as Record<string, ImageDimensions>)[parsed.publicId];
+  const ratio = intrinsic?.w && intrinsic?.h ? intrinsic.w / intrinsic.h : undefined;
+  const band = heroBandFor(ratio);
+
+  const widths = intrinsic?.w
+    ? (HERO_WIDTHS.filter((w) => w <= intrinsic.w).length
+        ? HERO_WIDTHS.filter((w) => w <= intrinsic.w)
+        : [intrinsic.w])
+    : HERO_WIDTHS;
+
+  const variants = (ar: string) => {
+    const url = (width: number) =>
+      cloudinaryDeliveryUrl(src, `c_fill,g_auto,ar_${ar},w_${width},q_auto,f_auto`);
+    return {
+      src: url(widths[widths.length - 1]),
+      srcset: widths.map((w) => `${url(w)} ${w}w`).join(', '),
+      ar,
+    };
+  };
+
+  const narrow = variants(band.narrow);
+  const wide = variants(band.wide);
+  const [nw, nh] = band.narrow.split(':').map(Number);
+
+  return {
+    narrow,
+    wide,
+    sizes: '(max-width: 899px) 100vw, min(68rem, 100vw)',
+    narrowRatio: band.narrow.replace(':', ' / '),
+    wideRatio: band.wide.replace(':', ' / '),
+    width: 1600,
+    height: Math.round((1600 * nh) / nw),
+  };
+}

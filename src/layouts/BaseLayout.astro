@@ -1,5 +1,7 @@
 ---
-import '../styles/global.css';
+import globalStyles from '../styles/global.css?url';
+import archivo400 from '@fontsource/archivo/files/archivo-latin-400-normal.woff2?url';
+import sourceSerif400 from '@fontsource/source-serif-4/files/source-serif-4-latin-400-normal.woff2?url';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import GoogleAnalytics from '../components/GoogleAnalytics.astro';
@@ -16,6 +18,9 @@ interface Props {
   type?: 'website' | 'article';
   noindex?: boolean;
   schemas?: object[];
+  preloadImage?: string;
+  preloadImageSrcset?: string;
+  preloadImageSizes?: string;
 }
 
 const {
@@ -26,13 +31,11 @@ const {
   type = 'website',
   noindex = false,
   schemas = [],
+  preloadImage,
+  preloadImageSrcset,
+  preloadImageSizes,
 } = Astro.props;
 
-/**
- * Brand suffix only when it still fits Google's ~60-character SERP budget.
- * Page titles are already written to stand alone, so truncating them to bolt
- * the brand on costs more clicks than the brand earns.
- */
 const BRAND_SUFFIX = ' | Cape Town Invest';
 const fullTitle =
   title.includes('Cape Town Invest') || title.length + BRAND_SUFFIX.length > 60
@@ -70,7 +73,6 @@ const orgSchema = {
   ],
 };
 
-/** Social scrapers need an absolute URL, and several ignore SVG entirely. */
 const absoluteOg = ogImage?.startsWith('http') ? ogImage : `${SITE.url}${ogImage ?? '/og-default.png'}`;
 
 const websiteSchema = {
@@ -90,6 +92,7 @@ const allSchemas = [orgSchema, websiteSchema, ...schemas];
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#1e3a47" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   {noindex
@@ -112,13 +115,96 @@ const allSchemas = [orgSchema, websiteSchema, ...schemas];
   <link rel="icon" href="/favicon-16.png?v=3" type="image/png" sizes="16x16" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=3" sizes="180x180" />
   <link rel="manifest" href="/site.webmanifest" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Source+Serif+4:opsz,wght@8..60,400..600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="preload" href={archivo400} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={sourceSerif400} as="font" type="font/woff2" crossorigin />
+
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+  <link rel="dns-prefetch" href="https://res.cloudinary.com" />
+  <link rel="preconnect" href="https://upload.wikimedia.org" crossorigin />
+
+  {preloadImage && (
+    <link
+      rel="preload"
+      as="image"
+      href={preloadImage}
+      fetchpriority="high"
+      {...(preloadImageSrcset ? { imagesrcset: preloadImageSrcset, imagesizes: preloadImageSizes } : {})}
+    />
+  )}
+
+  <style is:inline>
+    :root {
+      --color-page: #e8e4dc;
+      --color-surface: #f2efe8;
+      --color-ink: #22303a;
+      --color-muted: #4d5a62;
+      --color-deep: #1e3a47;
+      --color-accent: #35606d;
+      --font-sans: 'Archivo', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+      --font-mono: 'Space Mono', ui-monospace, 'SFMono-Regular', monospace;
+    }
+    html { -webkit-font-smoothing: antialiased; }
+    body {
+      margin: 0;
+      background: var(--color-page);
+      color: var(--color-muted);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      font-size: 1rem;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+    body > main { flex: 1 0 auto; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--color-deep);
+      border-bottom: 1px solid #162c37;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      color: var(--color-ink);
+      font-weight: 400;
+      line-height: 1.1;
+    }
+    .home-hero__photo {
+      position: relative;
+      overflow: hidden;
+      max-height: 26rem;
+    }
+    .home-hero__photo img {
+      display: block;
+      width: 100%;
+      height: 26rem;
+      object-fit: cover;
+      object-position: 50% 52%;
+    }
+    @media (max-width: 640px) {
+      .home-hero__photo, .home-hero__photo img { height: 15rem; max-height: 15rem; }
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-accent);
+      color: #f2efe8;
+      font-weight: 600;
+      border-radius: 2px;
+      text-decoration: none;
+    }
+  </style>
+
+  <link rel="preload" href={globalStyles} as="style" />
+  <link rel="stylesheet" href={globalStyles} media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href={globalStyles} /></noscript>
+
   {allSchemas.map((s) => (
     <script type="application/ld+json" set:html={JSON.stringify(s)} />
   ))}
-  <GoogleAnalytics />
 </head>
 <body>
   <Header />
@@ -129,5 +215,6 @@ const allSchemas = [orgSchema, websiteSchema, ...schemas];
   <WhatsAppFloat />
   <CurrencyEngine />
   <WhatsAppIntentTracker />
+  <GoogleAnalytics />
 </body>
 </html>

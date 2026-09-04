@@ -4,7 +4,7 @@ import LeadForm from '../components/LeadForm.astro';
 import { getCollection } from 'astro:content';
 import { SITE } from '../data/site';
 import { HOMEPAGE_HERO_IMAGE, HOMEPAGE_HERO_CREDIT } from '../data/featured';
-import { getCardImageUrl } from '../lib/cardImage';
+import { wikimediaResponsiveHero } from '../lib/wikimediaHero';
 
 const [guides, projects, areas] = await Promise.all([
   getCollection('guides'),
@@ -16,11 +16,14 @@ const publishedGuides = guides.filter((g) => !g.data.noindex);
 const publishedProjects = projects.filter((p) => !p.data.noindex);
 const publishedAreas = areas.filter((a) => !a.data.noindex);
 
-const heroImage = getCardImageUrl(HOMEPAGE_HERO_IMAGE, 'band');
+const heroImage = wikimediaResponsiveHero(HOMEPAGE_HERO_IMAGE);
 ---
 <BaseLayout
   title="Cape Town Property Investment for Foreign Buyers — 2026"
   description="Independent Cape Town property research for foreign buyers: no surcharge, 50% bond, Atlantic Seaboard yields, project reviews. Free shortlist within one business day."
+  preloadImage={heroImage.preloadSrc}
+  preloadImageSrcset={heroImage.srcset}
+  preloadImageSizes={heroImage.sizes}
 >
   <!--
     The hero is one stack of horizontal bands: copy on limewash, then the
@@ -70,12 +73,15 @@ const heroImage = getCardImageUrl(HOMEPAGE_HERO_IMAGE, 'band');
 
     <div class="home-hero__photo">
       <img
-        src={heroImage}
+        src={heroImage.src}
+        srcset={heroImage.srcset}
+        sizes={heroImage.sizes}
         alt="The tablecloth cloud spilling over the sandstone strata of Table Mountain, Cape Town"
         loading="eager"
         fetchpriority="high"
-        width="1920"
-        height="1283"
+        decoding="async"
+        width={heroImage.width}
+        height={heroImage.height}
       />
       <p class="home-hero__credit">
         <span>{HOMEPAGE_HERO_CREDIT.place}</span>

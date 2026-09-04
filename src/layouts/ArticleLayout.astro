@@ -6,7 +6,7 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import { SITE } from '../data/site';
 import { resolveRelatedSlugs, resolveRelatedEntities, type GraphCollection } from '../lib/content-graph';
-import { responsiveCloudinary } from '../lib/cloudinary';
+import { heroCloudinary, responsiveCloudinary } from '../lib/cloudinary';
 
 interface Props {
   title: string;
@@ -133,7 +133,8 @@ const breadcrumbSchema = {
 
 const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : []), ...extraSchemas];
 const resolvedHeroAlt = heroAlt || `${title} — Cape Town property research`;
-const responsiveHero = heroImage ? responsiveCloudinary(heroImage) : null;
+const cloudinaryHero = heroImage ? heroCloudinary(heroImage) : null;
+const inlineHero = heroImage && !cloudinaryHero ? responsiveCloudinary(heroImage) : null;
 ---
 <BaseLayout
   title={title}
@@ -141,6 +142,9 @@ const responsiveHero = heroImage ? responsiveCloudinary(heroImage) : null;
   canonical={pageUrl}
   ogImage={heroImage}
   type="article"
+  preloadImage={cloudinaryHero?.narrow.src}
+  preloadImageSrcset={cloudinaryHero?.narrow.srcset}
+  preloadImageSizes={cloudinaryHero?.sizes}
   {noindex}
   {schemas}
 >
@@ -156,15 +160,47 @@ const responsiveHero = heroImage ? responsiveCloudinary(heroImage) : null;
       </p>
     </header>
 
-    {responsiveHero && (
+    {cloudinaryHero && (
+      <figure class="article-hero-figure">
+        <picture>
+          <source
+            media="(min-width: 900px)"
+            srcset={cloudinaryHero.wide.srcset}
+            sizes={cloudinaryHero.sizes}
+          />
+          <img
+            src={cloudinaryHero.narrow.src}
+            srcset={cloudinaryHero.narrow.srcset}
+            sizes={cloudinaryHero.sizes}
+            alt={resolvedHeroAlt}
+            class="article-hero"
+            style={`--hero-ar-narrow:${cloudinaryHero.narrowRatio};--hero-ar-wide:${cloudinaryHero.wideRatio};`}
+            loading="eager"
+            fetchpriority="high"
+            width={cloudinaryHero.width}
+            height={cloudinaryHero.height}
+            data-hero-img
+          />
+        </picture>
+        {heroCredit && (
+          <figcaption class="article-hero-credit">
+            Photo <a href={heroCredit.authorUrl ?? heroCredit.sourceUrl} rel="noopener nofollow" target="_blank">{heroCredit.author}</a>,
+            <a href={heroCredit.licenceUrl} rel="license noopener nofollow" target="_blank">{heroCredit.licence}</a>,
+            via <a href={heroCredit.sourceUrl} rel="noopener nofollow" target="_blank">Wikimedia Commons</a>
+          </figcaption>
+        )}
+      </figure>
+    )}
+
+    {inlineHero && (
       <figure class="article-hero-figure">
       <img
-        src={responsiveHero.src}
-        srcset={responsiveHero.srcset}
-        sizes={responsiveHero.sizes}
+        src={inlineHero.src}
+        srcset={inlineHero.srcset}
+        sizes={inlineHero.sizes}
         alt={resolvedHeroAlt}
-        width={responsiveHero.width || 1280}
-        height={responsiveHero.height || 720}
+        width={inlineHero.width || 1280}
+        height={inlineHero.height || 720}
         class="article-hero"
         loading="eager"
         fetchpriority="high"
