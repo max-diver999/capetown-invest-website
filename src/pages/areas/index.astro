@@ -9,10 +9,17 @@ const areas = (await getCollection('areas'))
 
 const bySlug = new Map(areas.map((a) => [a.id, a]));
 
-const REGIONS: { label: string; note: string; slugs: string[] }[] = [
+// Each corridor has a guide that covers it whole, and those guides live in
+// /guides/ rather than here. Without a link from this page the section that
+// owns geography never reaches them, so the corridor guide leads its own group.
+const guides = await getCollection('guides');
+const guideBySlug = new Map(guides.map((g) => [g.id, g]));
+
+const REGIONS: { label: string; note: string; hub?: string; slugs: string[] }[] = [
   {
     label: 'Atlantic Seaboard',
     note: 'Beachfront and slope suburbs. Capital preservation and scarcity rather than headline income.',
+    hub: 'atlantic-seaboard-property-investment-guide',
     slugs: [
       'camps-bay-property-investment',
       'clifton-property-investment',
@@ -27,6 +34,7 @@ const REGIONS: { label: string; note: string; slugs: string[] }[] = [
   {
     label: 'City Bowl and Waterfront',
     note: 'Walkable central stock with the deepest short-let and corporate tenant demand.',
+    hub: 'cape-town-city-bowl-property-investment',
     slugs: [
       'v-and-a-waterfront-property-investment',
       'de-waterkant-property-investment',
@@ -38,6 +46,7 @@ const REGIONS: { label: string; note: string; slugs: string[] }[] = [
   {
     label: 'Southern Suburbs',
     note: 'School catchments and family long-let demand under the mountain.',
+    hub: 'southern-suburbs-cape-town-property',
     slugs: [
       'constantia-property-investment',
       'newlands-property-investment',
@@ -48,6 +57,7 @@ const REGIONS: { label: string; note: string; slugs: string[] }[] = [
   {
     label: 'Northern suburbs and West Coast',
     note: 'Lower entry tickets, newer stock, and beach demand north of the city.',
+    hub: 'northern-suburbs-cape-town-property',
     slugs: [
       'blouberg-property-investment',
       'table-view-property-investment',
@@ -58,6 +68,7 @@ const REGIONS: { label: string; note: string; slugs: string[] }[] = [
   {
     label: 'Winelands and Helderberg',
     note: 'Estate living, semigration families and wine-tourism rental demand.',
+    hub: 'stellenbosch-property-investment-guide',
     slugs: [
       'somerset-west-property-investment',
       'paarl-property-investment',
@@ -90,6 +101,19 @@ for (const region of REGIONS) {
     .map((slug) => bySlug.get(slug))
     .filter((a): a is NonNullable<typeof a> => Boolean(a))
     .map(toCard);
+
+  const hub = region.hub ? guideBySlug.get(region.hub) : undefined;
+  if (hub) {
+    cards.unshift({
+      href: `/guides/${hub.id}/`,
+      title: hub.data.title,
+      description: hub.data.description,
+      image: hub.data.heroImage,
+      badges: ['Corridor guide'],
+      meta: `${hub.data.readingTime ?? 8} min read`,
+    });
+  }
+
   if (cards.length) groups.push({ label: region.label, note: region.note, cards });
 }
 
@@ -124,7 +148,7 @@ const faq = [
   title="Cape Town Suburbs: Property Prices and Yields by Area"
   description="Suburb-by-suburb Cape Town property research: prices per square metre, modelled gross and net yields, tenant demand and foreign buyer notes across 26 areas."
   h1="Cape Town areas and suburbs"
-  intro={`Independent suburb research grouped by corridor, so you can compare like with like. Each page carries price bands, modelled yields, tenant profile and the local risks that move net income. If you are still choosing a corridor, start with <a href="/guides/best-areas-invest-cape-town-2026/">best areas to invest</a> or the <a href="/guides/cape-town-property-prices-by-suburb-2026/">prices by suburb table</a>.`}
+  intro={`Independent suburb research grouped by corridor, so you can compare like with like. Each page carries price bands, modelled yields, tenant profile and the local risks that move net income. If you do not yet know which corridor is which, the <a href="/guides/cape-town-suburb-map/">suburb map</a> places every area and says what each band costs. From there, <a href="/guides/best-areas-invest-cape-town-2026/">best areas to invest</a> and the <a href="/guides/cape-town-property-prices-by-suburb-2026/">prices by suburb table</a> narrow it down.`}
   sectionSlug="areas"
   sectionName="Areas"
   groups={groups}
