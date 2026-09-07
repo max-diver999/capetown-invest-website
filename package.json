@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "prebuild": "node scripts/build-llms-txt.mjs",
     "build": "astro build",
     "postbuild": "node scripts/audit-rendered-live.mjs --local --fail",
     "preview": "astro preview",
@@ -41,7 +42,8 @@
     "aeo:robots": "node scripts/reference-infra/generate-robots.mjs --config reference-infra.config.json",
     "aeo:llms": "node scripts/reference-infra/generate-agent-markdown.mjs --config reference-infra.config.json --output-dir public",
     "speed:dims": "node scripts/build-cloudinary-dims.mjs",
-    "speed:verify": "node scripts/verify-responsive-images.mjs"
+    "speed:verify": "node scripts/verify-responsive-images.mjs",
+    "gen:llms": "node scripts/build-llms-txt.mjs"
   },
   "dependencies": {
     "@astrojs/mdx": "5.0.2",
