@@ -157,6 +157,20 @@ export function generateRobots(config) {
   if (contentSignal) {
     blocks.push(`Content-Signal: ${contentSignal}`)
   }
+  // Answer engines read the corpus index rather than crawling every URL, so the
+  // pointer is emitted whenever llms is enabled. It is a comment: robots.txt has
+  // no directive for this, and a crawler that ignores it loses nothing.
+  if (config.llms?.enabled) {
+    const llmsPath = config.llms.path ?? '/llms.txt'
+    const fullPath = llmsPath.replace(/\.txt$/, '-full.txt')
+    blocks.push(
+      [
+        '# Corpus index for answer engines',
+        `# ${new URL(llmsPath, config.siteUrl).href}`,
+        `# ${new URL(fullPath, config.siteUrl).href}`,
+      ].join('\n'),
+    )
+  }
   blocks.push(`Sitemap: ${new URL('/sitemap-index.xml', config.siteUrl).href}`)
   return `${blocks.join('\n\n')}\n`
 }
