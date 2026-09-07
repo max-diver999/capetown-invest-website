@@ -90,6 +90,16 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
       <label for={`${uid}-website`}>Company website</label>
       <input type="text" tabindex="-1" autocomplete="off" id={`${uid}-website`} name="website" />
     </div>
+    <p data-lf-error role="alert" class="hidden lf-status lf-status--err text-sm text-center">Something went wrong. Email {SITE.email} or{' '}
+      <a
+        href={SITE.whatsapp}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-wa-placement="inline_cta"
+        data-cta="whatsapp_form_error"
+      >
+        WhatsApp us
+      </a>.</p>
     <button type="submit" class="btn-primary w-full py-3">{submitLabel}</button>
 
     <p class="text-center text-sm text-[var(--color-muted)]">
@@ -106,16 +116,6 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
       </a>
     </p>
     <p data-lf-success class="hidden lf-status lf-status--ok text-sm font-semibold text-center">Thank you — redirecting…</p>
-    <p data-lf-error class="hidden lf-status lf-status--err text-sm text-center">Something went wrong. Email {SITE.email} or{' '}
-      <a
-        href={SITE.whatsapp}
-        target="_blank"
-        rel="noopener noreferrer"
-        data-wa-placement="inline_cta"
-        data-cta="whatsapp_form_error"
-      >
-        WhatsApp us
-      </a>.</p>
   </form>
 </section>
 
@@ -134,10 +134,41 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
 </style>
 
 <script>
+  import { track } from '../lib/track';
+
+  function pageIdentity() {
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    return {
+      collection: parts.length > 1 ? parts[0] : 'root',
+      slug: parts.length > 0 ? parts[parts.length - 1] : 'home',
+    };
+  }
+
   document.querySelectorAll<HTMLFormElement>('form.ig-lead-form').forEach((form) => {
     const formLoadedAt = Date.now();
     const successEl = form.querySelector<HTMLElement>('[data-lf-success]');
     const errorEl = form.querySelector<HTMLElement>('[data-lf-error]');
+    let started = false;
+
+    // A real field, not any focusin: the consent label carries a privacy link.
+    form.querySelectorAll('input:not([tabindex="-1"]), select, textarea').forEach((field) => {
+      field.addEventListener(
+        'focus',
+        () => {
+          if (started) return;
+          started = true;
+          const { collection, slug } = pageIdentity();
+          track('form_start', {
+            form_context: form.dataset.context || '',
+            form_location: 'article',
+            page_path: window.location.pathname,
+            collection,
+            slug,
+          });
+        },
+        { once: true },
+      );
+    });
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -145,12 +176,32 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
       const phone = String(fd.get('phone') || '');
       const email = String(fd.get('email') || '');
       const digits = phone.replace(/\D/g, '');
+      const { collection, slug } = pageIdentity();
 
-      if (digits.length < 8 && !email.includes('@')) {
+      /* A rejected submit used to return in silence, so the gap between a
+       * form_start and a submission could not be read. */
+      const fail = (reason: string, message: string) => {
         if (errorEl) {
-          errorEl.textContent = 'Please enter a phone number with at least 8 digits, or a valid email address.';
+          errorEl.textContent = message;
           errorEl.classList.remove('hidden');
         }
+        track('form_validation_error', {
+          form_location: 'article',
+          reason,
+          page_path: window.location.pathname,
+          collection,
+          slug,
+        });
+      };
+
+      if (digits.length < 8 && !email.includes('@')) {
+        fail('no-contact', 'Please enter a phone number with at least 8 digits, or a valid email address.');
+        return;
+      }
+      /* `novalidate` turns off the browser check, so the required consent box
+       * was never enforced by anything. */
+      if (!fd.get('consent')) {
+        fail('no-consent', 'Please tick the box so we know we may reply to you.');
         return;
       }
       errorEl?.classList.add('hidden');
@@ -170,6 +221,15 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
         source: form.dataset.context || 'lead-form',
         page: window.location.pathname,
       };
+
+      track('form_submit_attempt', {
+        form_location: 'article',
+        market: payload.market || 'not_set',
+        budget: payload.budget || 'not_set',
+        page_path: window.location.pathname,
+        collection,
+        slug,
+      });
 
       try {
         const res = await fetch('/api/lead/', {
@@ -214,6 +274,12 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
         }
       } catch {
         errorEl?.classList.remove('hidden');
+        track('form_submit_error', {
+          form_location: 'article',
+          page_path: window.location.pathname,
+          collection,
+          slug,
+        });
       }
     });
   });

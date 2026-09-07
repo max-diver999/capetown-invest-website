@@ -19,13 +19,17 @@ const isLead = Astro.url.searchParams.get('lead') === '1';
     </p>
     <a href="/guides/" class="btn-primary px-6 py-3">Browse guides</a>
   </section>
-  {isLead && (
-    <script is:inline>
-      if (typeof window.capeTownTrack === 'function') {
-        window.capeTownTrack('generate_lead', { lead_type: 'shortlist_form', value: 1, currency: 'ZAR' });
-      } else if (typeof window.gtag === 'function') {
-        window.gtag('event', 'generate_lead', { lead_type: 'shortlist_form', value: 1, currency: 'ZAR' });
-      }
-    </script>
-  )}
+  {/* This was an is:inline script inside `{isLead && …}`. `isLead` reads
+      Astro.url.searchParams, which is empty when a static page is prerendered,
+      so the script was never emitted: the live page contained no conversion at
+      all. It is unconditional now, checks `?lead=1` in the browser, and reports
+      through `track`, which queues until GoogleAnalytics.astro defines gtag
+      three seconds after load. */}
+  <script>
+    import { track } from '../../lib/track';
+
+    if (new URLSearchParams(window.location.search).get('lead') === '1') {
+      track('generate_lead', { lead_type: 'shortlist_form', value: 1, currency: 'ZAR' });
+    }
+  </script>
 </BaseLayout>
