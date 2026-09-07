@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "balwin-properties",
+    "collection": "developers",
+    "borrowed_from": "somerset-west-property-investment",
+    "current_url": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356439/more-group/capetown/areas/somerset-west-property-investment.jpg",
+    "wanted_path": "more-group/capetown/developers/balwin-properties.jpg"
+  },
+  {
+    "slug": "berman-brothers",
+    "collection": "developers",
+    "borrowed_from": "sea-point-property-investment",
+    "current_url": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356200/more-group/capetown/areas/sea-point-property-investment.jpg",
+    "wanted_path": "more-group/capetown/developers/berman-brothers.jpg"
+  },
+  {
+    "slug": "buy-a-house-in-cape-town",
+    "collection": "guides",
+    "borrowed_from": "constantia-property-investment",
+    "current_url": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356439/more-group/capetown/areas/constantia-property-investment.jpg",
+    "wanted_path": "more-group/capetown/guides/buy-a-house-in-cape-town.jpg"
+  },
+  {
+    "slug": "cape-town-suburb-map",
+    "collection": "guides",
+    "borrowed_from": "sea-point-property-investment",
+    "current_url": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356200/more-group/capetown/areas/sea-point-property-investment.jpg",
+    "wanted_path": "more-group/capetown/guides/cape-town-suburb-map.jpg"
+  },
+  {
+    "slug": "commercial-property-cape-town",
+    "collection": "guides",
+    "borrowed_from": "new-developments-cape-town-2026",
+    "current_url": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356346/more-group/capetown/guides/new-developments-cape-town-2026.jpg",
+    "wanted_path": "more-group/capetown/guides/commercial-property-cape-town.jpg"
+  },
+  {
+    "slug": "farm-and-land-western-cape",
+    "collection": "guides",
+    "borrowed_from": "franschhoek-property-investment",
+    "current_url": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356439/more-group/capetown/areas/franschhoek-property-investment.jpg",
+    "wanted_path": "more-group/capetown/guides/farm-and-land-western-cape.jpg"
+  },
+  {
+    "slug": "holiday-home-cape-town",
+    "collection": "guides",
+    "borrowed_from": "camps-bay-property-investment",
+    "current_url": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356200/more-group/capetown/areas/camps-bay-property-investment.jpg",
+    "wanted_path": "more-group/capetown/guides/holiday-home-cape-town.jpg"
+  },
+  {
+    "slug": "northern-suburbs-cape-town-property",
+    "collection": "guides",
+    "borrowed_from": "durbanville-property-investment",
+    "current_url": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356439/more-group/capetown/areas/durbanville-property-investment.jpg",
+    "wanted_path": "more-group/capetown/guides/northern-suburbs-cape-town-property.jpg"
+  },
+  {
+    "slug": "property-valuation-cape-town",
+    "collection": "guides",
+    "borrowed_from": "cape-town-property-market-data-lightstone",
+    "current_url": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356312/more-group/capetown/guides/cape-town-property-market-data-lightstone.jpg",
+    "wanted_path": "more-group/capetown/guides/property-valuation-cape-town.jpg"
+  },
+  {
+    "slug": "retirement-village-cape-town",
+    "collection": "guides",
+    "borrowed_from": "somerset-west-property-investment",
+    "current_url": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356439/more-group/capetown/areas/somerset-west-property-investment.jpg",
+    "wanted_path": "more-group/capetown/guides/retirement-village-cape-town.jpg"
+  },
+  {
+    "slug": "transfer-duty-calculator",
+    "collection": "guides",
+    "borrowed_from": "cape-town-rates-taxes-property",
+    "current_url": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356308/more-group/capetown/guides/cape-town-rates-taxes-property.jpg",
+    "wanted_path": "more-group/capetown/guides/transfer-duty-calculator.jpg"
+  }
+]
