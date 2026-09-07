@@ -508,6 +508,10 @@
     {
       "figure": "R300",
       "why": "Cape Town ring-road number, not a rand amount."
+    },
+    {
+      "figure": "R736",
+      "why": "Derived arithmetic, not an asserted figure: the monthly rates bill on a R2,000,000 property after the R620,000 relief at the residential tariff. Both files that carry it show the derivation."
     }
   ]
 }

@@ -6,7 +6,7 @@
 - Contact: info@capetown-invest.com
 - Wikidata: https://www.wikidata.org/wiki/Q140810037
 - Editorial stance: research-first. Not a developer, agency or listing portal. Enquiries may be referred to licensed South African professionals.
-- Corpus: 154 pages across 7 collections
+- Corpus: 163 pages across 7 collections
 
 ## Start here
 - [Cape Town Property Investment Guide 2026 for Foreign Buyers](https://capetown-invest.com/guides/cape-town-property-investment-guide/)
@@ -18,12 +18,12 @@
 - [Cape Town Property Prices by Suburb 2026: R/m² Table](https://capetown-invest.com/guides/cape-town-property-prices-by-suburb-2026/)
 
 ## Collections
-- [Guides](https://capetown-invest.com/guides/) — Buying process, tax, yields, visas, due diligence (69)
+- [Guides](https://capetown-invest.com/guides/) — Buying process, tax, yields, visas, due diligence (76)
 - [Areas](https://capetown-invest.com/areas/) — Suburb-level prices, modelled yields, tenant demand (26)
 - [Developments](https://capetown-invest.com/projects/) — Independent reviews of new and off-plan schemes (28)
 - [Comparisons](https://capetown-invest.com/compare/) — Cape Town against other markets and suburb head-to-heads (15)
 - [Buyer guides](https://capetown-invest.com/segments/) — Country-specific tax, currency and paperwork (4)
-- [Developers](https://capetown-invest.com/developers/) — Track record and warranty checks (7)
+- [Developers](https://capetown-invest.com/developers/) — Track record and warranty checks (9)
 - [Market news](https://capetown-invest.com/news/) — Dated market updates with investor implications (5)
 
 ## Ask us

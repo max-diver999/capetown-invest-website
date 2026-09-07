@@ -1,8 +1,10 @@
 {
   "generated": "node scripts/hero-images-manifest.mjs",
-  "total": 152,
-  "external": 0,
-  "byHost": {},
+  "total": 163,
+  "external": 28,
+  "byHost": {
+    "commons.wikimedia.org": 28
+  },
   "images": [
     {
       "collection": "areas",
@@ -190,120 +192,134 @@
       "collection": "compare",
       "slug": "atlantic-seaboard-vs-winelands-investment",
       "file": "src/content/compare/atlantic-seaboard-vs-winelands-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356218/more-group/capetown/compare/atlantic-seaboard-vs-winelands-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Franschhoek_Valley_in_Cape_Winelands.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "cape-town-vs-dubai-property-investment",
       "file": "src/content/compare/cape-town-vs-dubai-property-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356221/more-group/capetown/compare/cape-town-vs-dubai-property-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Clifton_Beachs.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "cape-town-vs-durban-property-investment",
       "file": "src/content/compare/cape-town-vs-durban-property-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356223/more-group/capetown/compare/cape-town-vs-durban-property-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Camps_Bay_%E2%80%93_Cape_Town_suburbs%2C_beach%2C_Lion%27s_Head%2C_Twelve_Apostles.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "cape-town-vs-johannesburg-property-investment",
       "file": "src/content/compare/cape-town-vs-johannesburg-property-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356227/more-group/capetown/compare/cape-town-vs-johannesburg-property-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/2013-02-16_09-30-19_South_Africa_-_Cape_Town_Sea_Point_4h.JPG?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "cape-town-vs-lisbon-property-investment",
       "file": "src/content/compare/cape-town-vs-lisbon-property-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356229/more-group/capetown/compare/cape-town-vs-lisbon-property-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_%2811270372184%29.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "cape-town-vs-mauritius-property-investment",
       "file": "src/content/compare/cape-town-vs-mauritius-property-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356576/more-group/capetown/compare/cape-town-vs-mauritius-property-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Le_Morne_Beach_Mauritius_%2853698222865%29.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "cape-town-vs-portugal-property-investment",
       "file": "src/content/compare/cape-town-vs-portugal-property-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356235/more-group/capetown/compare/cape-town-vs-portugal-property-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/View_of_the_Glenn_Beach_north_of_Camps_Bay.JPG?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "cape-town-vs-stellenbosch-property",
       "file": "src/content/compare/cape-town-vs-stellenbosch-property.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356237/more-group/capetown/compare/cape-town-vs-stellenbosch-property.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Vineyards_in_Stellenbosch_II.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "century-city-vs-durbanville-investment",
       "file": "src/content/compare/century-city-vs-durbanville-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356239/more-group/capetown/compare/century-city-vs-durbanville-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Century_View-_Cape_Town_-_panoramio.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "century-city-vs-sea-point-investment",
       "file": "src/content/compare/century-city-vs-sea-point-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356243/more-group/capetown/compare/century-city-vs-sea-point-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Saunders'_Rocks_Beach,_with_Lion's_Head_on_the_left_-_Flickr_-_chris.rycroft.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "off-plan-vs-resale-cape-town-investment",
       "file": "src/content/compare/off-plan-vs-resale-cape-town-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356245/more-group/capetown/compare/off-plan-vs-resale-cape-town-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Sunset_from_Signal_Hill_2019.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "paarl-vs-stellenbosch-property-investment",
       "file": "src/content/compare/paarl-vs-stellenbosch-property-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356247/more-group/capetown/compare/paarl-vs-stellenbosch-property-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Paarl-panorama_300dpi.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "sea-point-vs-camps-bay-investment",
       "file": "src/content/compare/sea-point-vs-camps-bay-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356250/more-group/capetown/compare/sea-point-vs-camps-bay-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Camps_Bay_beach_1.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "somerset-west-vs-constantia-investment",
       "file": "src/content/compare/somerset-west-vs-constantia-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356253/more-group/capetown/compare/somerset-west-vs-constantia-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Helderberg_Mountain_in_Somerset_West.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "compare",
       "slug": "western-cape-vs-gauteng-property-investment",
       "file": "src/content/compare/western-cape-vs-gauteng-property-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356256/more-group/capetown/compare/western-cape-vs-gauteng-property-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Hermanus%2C_7200%2C_South_Africa_-_panoramio.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "developers",
       "slug": "amdec-property-investments",
       "file": "src/content/developers/amdec-property-investments.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356259/more-group/capetown/developers/amdec-property-investments.jpg",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Downtown_and_Harbour%2C_Cape_Town_%28P1050212%29.jpg?width=1600",
+      "external": true
+    },
+    {
+      "collection": "developers",
+      "slug": "balwin-properties",
+      "file": "src/content/developers/balwin-properties.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356439/more-group/capetown/areas/somerset-west-property-investment.jpg",
+      "external": false
+    },
+    {
+      "collection": "developers",
+      "slug": "berman-brothers",
+      "file": "src/content/developers/berman-brothers.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356200/more-group/capetown/areas/sea-point-property-investment.jpg",
       "external": false
     },
     {
       "collection": "developers",
       "slug": "blok-urban-developers",
       "file": "src/content/developers/blok-urban-developers.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356263/more-group/capetown/developers/blok-urban-developers.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_%28ZA%29%2C_Sea_Point%2C_Nachtansicht_--_2024_--_1867-70_-_2.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "developers",
@@ -316,29 +332,29 @@
       "collection": "developers",
       "slug": "growthpoint-waterfront",
       "file": "src/content/developers/growthpoint-waterfront.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356267/more-group/capetown/developers/growthpoint-waterfront.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_harbor%2C_Devil%27s_Peak_and_Table_Mountain_in_late_winter_afternoon_light.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "developers",
       "slug": "prospekt-property-development",
       "file": "src/content/developers/prospekt-property-development.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356269/more-group/capetown/developers/prospekt-property-development.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Chiappini_Street%2C_Bo_Kaap%2C_Cape_Town.JPG?width=1600",
+      "external": true
     },
     {
       "collection": "developers",
       "slug": "rabie-property-developers",
       "file": "src/content/developers/rabie-property-developers.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356272/more-group/capetown/developers/rabie-property-developers.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Century_City_Table_Mountain.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "developers",
       "slug": "val-de-vie-estate",
       "file": "src/content/developers/val-de-vie-estate.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356274/more-group/capetown/developers/val-de-vie-estate.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Afternoon_Sun_Over_The_Golf_Course_01_-_panoramio.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "guides",
@@ -358,8 +374,8 @@
       "collection": "guides",
       "slug": "atlantic-seaboard-property-investment-guide",
       "file": "src/content/guides/atlantic-seaboard-property-investment-guide.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356279/more-group/capetown/guides/atlantic-seaboard-property-investment-guide.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_coastal_suburbs_-_CapeTowncoastal4192.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "guides",
@@ -380,6 +396,13 @@
       "slug": "body-corporate-due-diligence-cape-town",
       "file": "src/content/guides/body-corporate-due-diligence-cape-town.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356283/more-group/capetown/guides/body-corporate-due-diligence-cape-town.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
+      "slug": "buy-a-house-in-cape-town",
+      "file": "src/content/guides/buy-a-house-in-cape-town.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356439/more-group/capetown/areas/constantia-property-investment.jpg",
       "external": false
     },
     {
@@ -414,8 +437,8 @@
       "collection": "guides",
       "slug": "cape-town-city-bowl-property-investment",
       "file": "src/content/guides/cape-town-city-bowl-property-investment.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356291/more-group/capetown/guides/cape-town-city-bowl-property-investment.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Oranjezicht_From_the_summit_of_Table_Mountain.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "guides",
@@ -435,8 +458,8 @@
       "collection": "guides",
       "slug": "cape-town-property-investment-guide",
       "file": "src/content/guides/cape-town-property-investment-guide.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356296/more-group/capetown/guides/cape-town-property-investment-guide.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_Town_from_Table_Mountain.jpg?width=1280",
+      "external": true
     },
     {
       "collection": "guides",
@@ -510,6 +533,13 @@
     },
     {
       "collection": "guides",
+      "slug": "cape-town-suburb-map",
+      "file": "src/content/guides/cape-town-suburb-map.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356200/more-group/capetown/areas/sea-point-property-investment.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
       "slug": "cape-town-utilities-costs-owners-2026",
       "file": "src/content/guides/cape-town-utilities-costs-owners-2026.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428364/more-group/capetown/guides/cape-town-utilities-costs-owners-2026.jpg",
@@ -534,6 +564,13 @@
       "slug": "century-city-property-investment-guide",
       "file": "src/content/guides/century-city-property-investment-guide.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356320/more-group/capetown/guides/century-city-property-investment-guide.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
+      "slug": "commercial-property-cape-town",
+      "file": "src/content/guides/commercial-property-cape-town.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356346/more-group/capetown/guides/new-developments-cape-town-2026.jpg",
       "external": false
     },
     {
@@ -575,7 +612,14 @@
       "collection": "guides",
       "slug": "eu-citizens-buying-cape-town-property",
       "file": "src/content/guides/eu-citizens-buying-cape-town-property.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356329/more-group/capetown/guides/eu-citizens-buying-cape-town-property.jpg",
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Cape_of_Good_Hope%2C_Platboom_Beach%2C_South_Africa11.jpg?width=1600",
+      "external": true
+    },
+    {
+      "collection": "guides",
+      "slug": "farm-and-land-western-cape",
+      "file": "src/content/guides/farm-and-land-western-cape.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356439/more-group/capetown/areas/franschhoek-property-investment.jpg",
       "external": false
     },
     {
@@ -611,6 +655,13 @@
       "slug": "highest-rental-yield-suburbs-cape-town",
       "file": "src/content/guides/highest-rental-yield-suburbs-cape-town.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356337/more-group/capetown/guides/highest-rental-yield-suburbs-cape-town.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
+      "slug": "holiday-home-cape-town",
+      "file": "src/content/guides/holiday-home-cape-town.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356200/more-group/capetown/areas/camps-bay-property-investment.jpg",
       "external": false
     },
     {
@@ -671,6 +722,13 @@
     },
     {
       "collection": "guides",
+      "slug": "northern-suburbs-cape-town-property",
+      "file": "src/content/guides/northern-suburbs-cape-town-property.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356439/more-group/capetown/areas/durbanville-property-investment.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
       "slug": "off-plan-property-cape-town-guide",
       "file": "src/content/guides/off-plan-property-cape-town-guide.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356352/more-group/capetown/guides/off-plan-property-cape-town-guide.jpg",
@@ -699,9 +757,23 @@
     },
     {
       "collection": "guides",
+      "slug": "property-valuation-cape-town",
+      "file": "src/content/guides/property-valuation-cape-town.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356312/more-group/capetown/guides/cape-town-property-market-data-lightstone.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
       "slug": "repatriating-property-sale-proceeds",
       "file": "src/content/guides/repatriating-property-sale-proceeds.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787428593/more-group/capetown/guides/repatriating-property-sale-proceeds.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
+      "slug": "retirement-village-cape-town",
+      "file": "src/content/guides/retirement-village-cape-town.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356439/more-group/capetown/areas/somerset-west-property-investment.jpg",
       "external": false
     },
     {
@@ -800,6 +872,13 @@
       "slug": "stellenbosch-property-investment-guide",
       "file": "src/content/guides/stellenbosch-property-investment-guide.mdx",
       "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356380/more-group/capetown/guides/stellenbosch-property-investment-guide.jpg",
+      "external": false
+    },
+    {
+      "collection": "guides",
+      "slug": "transfer-duty-calculator",
+      "file": "src/content/guides/transfer-duty-calculator.mdx",
+      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356308/more-group/capetown/guides/cape-town-rates-taxes-property.jpg",
       "external": false
     },
     {
@@ -1051,22 +1130,22 @@
       "collection": "segments",
       "slug": "german-buyers-cape-town-property",
       "file": "src/content/segments/german-buyers-cape-town-property.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356458/more-group/capetown/segments/german-buyers-cape-town-property.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Ciudad_del_Cabo%2C_Kirstenbosch_NBG_29.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "segments",
       "slug": "uk-buyers-cape-town-property",
       "file": "src/content/segments/uk-buyers-cape-town-property.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356460/more-group/capetown/segments/uk-buyers-cape-town-property.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/BeachCapTownSouthAfrica.jpg?width=1600",
+      "external": true
     },
     {
       "collection": "segments",
       "slug": "us-buyers-cape-town-property",
       "file": "src/content/segments/us-buyers-cape-town-property.mdx",
-      "source": "https://res.cloudinary.com/dlrrtf6bq/image/upload/v1787356461/more-group/capetown/segments/us-buyers-cape-town-property.jpg",
-      "external": false
+      "source": "https://commons.wikimedia.org/wiki/Special:FilePath/Boulders_Beach_in_July_2018_44.jpg?width=1600",
+      "external": true
     }
   ]
 }

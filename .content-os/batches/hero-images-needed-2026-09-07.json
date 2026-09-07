@@ -1,0 +1,22 @@
+{
+  "status": "resolved",
+  "resolved": "2026-09-07",
+  "was": "Eleven pages created this week reused another article's heroImage, which content-quality-10 lists as a stop condition. The handoff assumed no Cloudinary credentials were reachable from this session.",
+  "correction": "Credentials were reachable all along, in 99_Системное/.env.cloudinary-niche-active (cloud bwppi9gc). The earlier check looked at the shell env, .secrets/ and the site .env.example only.",
+  "done": "Each page now has its own Wikimedia Commons original, re-encoded to 1920px JPEG q78, uploaded to bwppi9gc under more-group/capetown/{collection}/{slug} and delivered with the w_1200,q_85,f_webp hero transform. heroAlt rewritten per image; heroCredit added for the licence.",
+  "record": "scripts/capetown-hero-credits.json",
+  "script": "scripts/upload-borrowed-heroes.py",
+  "pages": [
+    "balwin-properties",
+    "berman-brothers",
+    "buy-a-house-in-cape-town",
+    "cape-town-suburb-map",
+    "commercial-property-cape-town",
+    "farm-and-land-western-cape",
+    "holiday-home-cape-town",
+    "northern-suburbs-cape-town-property",
+    "property-valuation-cape-town",
+    "retirement-village-cape-town",
+    "transfer-duty-calculator"
+  ]
+}
