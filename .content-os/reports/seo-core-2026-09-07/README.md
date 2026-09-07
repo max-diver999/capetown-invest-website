@@ -1,0 +1,540 @@
+# capetown-invest.com: полное исследование спроса и план вывода в топ
+
+Срез: **7 сентября 2026**. Метод: SEO Standup.
+Источники: Semrush (za, uk, us, de, nl, au, ae, ca), XMLRiver Google top-10 (ЮАР, Британия, США, Германия), Google Search Console 2026-06-09…2026-09-04, Bing Webmaster, GA4, инвентаризация корпуса.
+
+Потрачено: Semrush **18 350 юнитов** (1 835 строк), XMLRiver **4,79 руб** (~192 среза, из них 101 уникальный запрос), Topvisor **0 руб** (проект и ядро загружены, съём не запускался).
+
+---
+
+## 1. Ёмкость рынка
+
+Собрано **599 сидов**: 340 комбинаций «пригород × тип» по 68 районам, 53 проекта, 16 застройщиков, 13 фраз странового уровня отдельно от регионального, 60 макрорайонов, процесс, визы, жизнь, доходность, сравнения. Плюс discovery по органике четырёх конкурентов (property24, privateproperty, pamgolding, seeff), который дал вокабуляр, которого в сетке не было.
+
+### Три фильтра
+
+| Слой | Показов/мес | Доля | Фраз |
+|---|---:|---:|---:|
+| Весь сырой спрос | 1 473 220 | 100 % | 401 |
+| Минус туризм и голые топонимы | −1 241 080 | 84,2 % | 87 |
+| Минус чужие бренды (порталы, агентства) | −14 210 | 1,0 % | 15 |
+| **Деловой спрос** | **217 930** | **14,8 %** | 299 |
+
+Туризм тут не мелочь, а основная масса. Голое имя пригорода в базе ЮАР весит огромно (`v&a waterfront` 201 000, `stellenbosch` 110 000, `hout bay` 60 500, `hermanus` 49 500, `camps bay` 49 500), но выдача по ним состоит из Wikipedia, TripAdvisor, capetown.travel, винных маршрутов и университета. Ни одного из этих 46 запросов брать нельзя.
+
+### По странам покупателей
+
+| База | Деловой спрос/мес | Доля |
+|---|---:|---:|
+| **za (ЮАР)** | **217 640** | **90,3 %** |
+| uk | 8 190 | 3,4 % |
+| us | 7 740 | 3,2 % |
+| de | 3 610 | 1,5 % |
+| au | 1 760 | 0,7 % |
+| ca | 980 | 0,4 % |
+| nl | 630 | 0,3 % |
+| ae | 550 | 0,2 % |
+
+Сумма всех иностранных рынков **23 460/мес**, это 9,7 %. Сайт написан для иностранного инвестора, а спрос на девять десятых внутренний.
+
+`za` в брифе не было. Я её добавил, потому что GSC уже показывал ЮАР первой строкой (1 627 показов из 4 300). `sg` и `hk` не снимал: для Кейптауна они пустые, в отличие от Таиланда, юниты ушли на `za` и `nl`.
+
+### По уровням географии (внутри ЮАР)
+
+| Уровень | Показов/мес | Доля | Фраз |
+|---|---:|---:|---:|
+| пригород | 92 930 | 42,7 % | 83 |
+| метро (Кейптаун) | 55 290 | 25,4 % | 47 |
+| бренд (проекты, застройщики) | 39 610 | 18,2 % | 19 |
+| макрорайон | 10 920 | 5,0 % | 10 |
+| страна (ЮАР) | 9 680 | 4,4 % | 40 |
+| регион (Западный Кейп) | 9 210 | 4,2 % | 8 |
+
+Проверка странового уровня отдельно сделана. **В Кейптауне русская история не повторилась**: там 79 % спроса сидело на «Таиланде», здесь на «Южной Африке» всего 4,4 %. Спрос локальный и пригородный. Стягивать сайт на страновой уровень не надо.
+
+### Четвёртый фильтр: кто держит выдачу
+
+Снято 101 срез топ-10 по 4 странам. Частота говорит размер, выдача говорит, чей он.
+
+| Вердикт | Показов/мес | Доля всего спроса |
+|---|---:|---:|
+| НАШ: выдача редакционная | 58 080 | 3,9 % |
+| Частично: можно взять нижнюю половину топа | 5 230 | 0,4 % |
+| **ЗАКРЫТ: топ держат листинги** | **154 620** | **10,5 %** |
+| НЕ НАШ: топ держит travel | 1 241 080 | 84,2 % |
+| Чужие бренды | 14 210 | 1,0 % |
+
+**Адресуемо без собственной базы объектов: 63 310 показов/мес.**
+
+Это главный вывод. Крупнейший чистый кластер, «property for sale in {пригород}» на 92 930 показов, полностью закрыт: в топ-10 по всем 13 снятым запросам стоят Property24 (#1), PrivateProperty (#2) и дальше листинговые страницы агентств. Ни одной редакционной страницы. Без своей базы объектов туда не зайти.
+
+Адресуемое по кластерам:
+
+| Кластер | Показов/мес | Фраз |
+|---|---:|---:|
+| застройщики | 24 130 | 8 |
+| проекты | 15 480 | 11 |
+| фермы и земля | 4 590 | 3 |
+| право, налоги, процесс | 4 550 | 28 |
+| новостройки | 3 650 | 6 |
+| переезд | 2 520 | 24 |
+| визы | 2 050 | 13 |
+| инвестиционный фрейм | 1 900 | 11 |
+| коммерческий метро-уровень | 1 680 | 9 |
+| страновой уровень | 980 | 6 |
+| коммерческая недвижимость | 590 | 1 |
+| доходность и управление | 560 | 9 |
+| пенсионные посёлки | 320 | 1 |
+| право для иностранца | 310 | 9 |
+
+---
+
+## 2. Наша доля
+
+### Search Console, 90 дней
+
+| | |
+|---|---|
+| Показы | ~4 300 |
+| Клики | 65 |
+| CTR | 1,5 % |
+| Органические сессии GA4 | 175 |
+| Ключевые события GA4 | **0** |
+
+### Накрутка: 31 % показов не люди
+
+Нидерланды дают 942 показа, Германия 387. Обе страны: только десктоп, позиция стабильно 6,2 и 6,4 весь период без единого дня отклонения, кликов почти ноль. В разрезе «страна × страница» от этих 1 329 показов остаётся 2. Ежедневный ряд по Нидерландам ровный, от 3 до 54 показов в день, позиция не двигается.
+
+Это рангтрекер, а не покупатели. Любая оценка доли рынка без вычета этих 1 329 показов завышена на треть.
+
+### Названные запросы: 207 показов из 4 300
+
+GSC называет только 85 запросов на 207 показов. Остальные 4 093 (95 %) анонимизированы: сайт получает по одному-два показа на тысячи разных редких фраз. Это профиль молодого сайта без опорных позиций, а не сайта с провалом по CTR.
+
+### По кластерам
+
+| Кластер | Клики | Показы | Запросов | Вердикт |
+|---|---:|---:|---:|---|
+| бренды проектов и застройщиков | 2 | 75 | 26 | **работает**: единственные клики сайта |
+| новостройки | 0 | 37 | 1 | **показы без кликов**: позиция 68,5 |
+| ставки и налоги | 0 | 23 | 14 | показы без кликов, позиции 9-90 |
+| инвестиционный фрейм | 0 | 20 | 7 | показы без кликов, позиция 42-78 |
+| краткосрочная аренда | 0 | 12 | 8 | показы без кликов, позиции 60-89 |
+| доверенность | 0 | 11 | 9 | показы без кликов, позиции 78-95 |
+| гео-инфо (Stellenbosch) | 0 | 7 | 6 | **не наш**: туристические запросы |
+| визы | 0 | 7 | 2 | показы без кликов, позиция 79-82 |
+| аренда | 0 | 4 | 2 | не наш кластер |
+| цены и рынок | 0 | 3 | 3 | показы без кликов |
+| деньги | 0 | 3 | 2 | показы без кликов, позиция 89-91 |
+| FICA | 0 | 2 | 2 | показы без кликов |
+| выбор | 0 | 1 | 1 | показы без кликов |
+
+Каннибализации (3+ страницы на один кластер) в данных GSC не видно: показов слишком мало, чтобы она проявилась.
+
+### Bing: то, чего не показывает Google
+
+369 уникальных запросов, **781 показ, 59 кликов, CTR 7,6 %** против 1,5 % в Google. 178 запросов длиной 8 слов и больше, то есть это промпты Copilot, а не набор в строку.
+
+| Кластер в Bing | Запросов | Показов |
+|---|---:|---:|
+| право и налоги | 89 | 190 |
+| покупка и цены | 70 | 152 |
+| доходность | 32 | 73 |
+| проекты и застройщики | 30 | 60 |
+| деньги | 10 | 25 |
+| визы | 11 | 15 |
+
+География внутри промптов: cape town 473, south africa 88, atlantic seaboard 36, western cape 21, southern suburbs 20. Отдельных пригородов почти нет: **в AI-поиске спрашивают про город и макрорайон, а не про Camps Bay**. Это ещё один довод за хабы макрорайонов и против 26 страниц по пригородам в текущем виде.
+
+### GA4
+
+Direct 318 сессий, Organic Search 175, AI Assistant 10, Referral 1. Ключевых событий ноль по всем каналам. Топ посадочных: `/` 135, `/guides/cape-town-property-market-data-lightstone/` 38, `/guides/cape-town-rates-taxes-property/` 31, `/guides/short-term-rental-rules-cape-town/` 27.
+
+---
+
+## 3. Корпус
+
+152 MDX, 446 543 слова, 167 URL в sitemap, покрытие полное, ни одной страницы не в индексе не заявлено (`noindex` нет нигде). Сайт живёт с 17 июня 2026, три месяца.
+
+**Шаблонного долга нет.** Восьмисловные шинглы, повторяющиеся минимум в половине файлов коллекции:
+
+| Коллекция | Файлов | Уникальных шинглов | Повторов | Доля шаблона в средней карточке |
+|---|---:|---:|---:|---:|
+| projects | 28 | 45 859 | 8 | 0,3 % |
+| areas | 26 | 39 708 | 6 | 0,4 % |
+| compare | 15 | 17 079 | 5 | 0,3 % |
+| guides | 67 | 156 198 | 1 | 0,0 % |
+| developers | 7 | 9 157 | 28 | 1,2 % |
+| segments | 4 | 6 156 | 33 | 1,8 % |
+
+Для сравнения: на русском сайте было 9 919 повторов и 20 % шаблона в средней карточке, из-за чего 136 карточек пришлось закрыть. Здесь этой проблемы нет. **Тексты написаны хорошо. Они написаны не подо что.**
+
+Коммерческие страницы из sitemap не выпали: `/`, `/contact/`, `/consultation/`, `/get-shortlist/` на месте.
+
+---
+
+## 4. Диагноз
+
+Весь сайт построен на фрейме «property investment». Проверено явно, по 40 фразам:
+
+| Паттерн | Показов/мес в za |
+|---|---:|
+| `{пригород} property investment` × 26 пригородов | **0 по всем 26** |
+| `cape town property investment` | **0** |
+| `western cape property investment` | **0** |
+| `atlantic seaboard property investment` | **0** |
+| `southern suburbs property investment` | **0** |
+| `invest in cape town property` | **0** |
+| `cape town real estate investment` | **0** |
+| `best areas to invest in cape town` | **0** |
+| `is cape town property a good investment` | **0** |
+| `cape town property investment guide` | **0** |
+| `south africa property investment` | 720 |
+| `property investment south africa` | 720 |
+| `property investment cape town` | 140 |
+| `investment property cape town` | 140 |
+| `south africa real estate investment` | 50 |
+| **Весь инвестиционный фрейм** | **1 790** |
+
+Против него, на тех же 26 пригородах:
+
+| Паттерн | Показов/мес |
+|---|---:|
+| `property for sale in {пригород}` | 19 810 |
+| `houses for sale in {пригород}` | 33 390 |
+| **Итого** | **53 200** |
+
+**Соотношение 1 к 30.** 26 страниц `/areas/{пригород}-property-investment/`, 15 страниц `/compare/{X}-vs-{Y}-property-investment/` и 4 страницы `/segments/{страна}-buyers-cape-town-property/` целятся суммарно в ноль. Проверено: `uk buyers south africa property` = 0, `german buyers south africa property` = 0, `foreign buyers south africa property` = 0, `expats buying property in south africa` = 0.
+
+Из 15 страниц `/compare/` целевую частоту имеют три: `cape town vs johannesburg` 170, `cape town vs durban` 50, `paarl vs stellenbosch` 30. Остальные двенадцать целятся в ноль.
+
+Вторая проверка: если не investment, то что? Проверено ещё 90 фраз.
+
+| Паттерн по пригородам | Результат |
+|---|---|
+| `{пригород} property prices` | 0 у 14 из 22, максимум 30 |
+| `living in {пригород}` | 0 или 20-30 |
+| `house prices in {пригород}` | 0 |
+| `{пригород} property` | **живой**: hermanus 880, somerset west 720, durbanville 590, stellenbosch 590, paarl 480, constantia 320, hout bay 320, camps bay 260, blouberg 210, sea point 170, rondebosch 170 |
+| `{пригород} apartments` | sea point 880, camps bay 390, century city 210, green point 170 |
+
+Итого паттерн `{пригород} property` даёт около 5 000/мес и это единственная реальная цель для страниц пригородов, которая не требует базы объектов.
+
+---
+
+## 5. Иерархия: было и стало
+
+### Было (167 URL)
+
+```
+/                                     главная, позиция 48
+├── /areas/                           хаб, позиция 34,2
+│   └── {26 пригородов}-property-investment/      цель = 0 показов
+├── /compare/                         хаб, позиция 66,4
+│   └── {15 пар}-property-investment/             12 из 15 целятся в 0
+├── /developers/                      хаб, позиция 33,7
+│   └── {7 застройщиков}/                         спрос есть
+├── /guides/                          хаб, позиция 42,9
+│   └── {67 гайдов}/                              смешанно
+├── /news/  {5}
+├── /projects/                        хаб
+│   └── {28 проектов}/                            лучший CTR сайта
+├── /segments/                        хаб, позиция 65,2
+│   └── {4 страны}-buyers-cape-town-property/     цель = 0 показов
+└── /about /contact /consultation /get-shortlist /methodology /privacy /terms
+```
+
+Три уровня географии в структуре нет: есть метро (главная) и пригород (26 страниц), макрорайон отсутствует полностью, хотя весит 10 920 показов и именно им оперирует AI-поиск.
+
+### Стало (185 URL)
+
+```
+/                                     цель: «cape town property» 1 600 + «property cape town» 1 600
+├── /new-developments/                НОВЫЙ ХАБ, цель 3 630
+│   └── {28 проектов}/                перенос из /projects/, 301
+├── /areas/                           цель: «cape town suburb map» 1 000
+│   ├── /southern-suburbs/            НОВЫЙ, цель 6 400
+│   ├── /northern-suburbs/            НОВЫЙ, цель 3 110
+│   ├── /atlantic-seaboard/           НОВЫЙ, цель 800
+│   ├── /city-bowl/                   НОВЫЙ, цель 480, поглощает 3 страницы
+│   └── {23 пригорода}/               переписаны под «{пригород} property»
+│                                     и «property for sale in {пригород}»
+├── /developers/  {7 + 2 новых}       balwin, berman brothers
+├── /guides/
+│   ├── /transfer-duty-calculator/    НОВЫЙ, цель 3 140, инструмент а не текст
+│   ├── /cape-town-suburb-map/        НОВЫЙ, цель 1 600
+│   ├── /farm-and-land-western-cape/  НОВЫЙ, цель 6 170
+│   ├── /holiday-home-cape-town/      НОВЫЙ, цель 1 020
+│   ├── /buy-a-house-in-cape-town/    НОВЫЙ, цель 870
+│   ├── /cape-town-vs-johannesburg/   НОВЫЙ, цель 580, поглощает 12 /compare/
+│   ├── /moving-to-south-africa-from-uk/   НОВЫЙ, цель 650
+│   ├── /moving-to-south-africa-from-usa/  НОВЫЙ, цель 350
+│   ├── /commercial-property-cape-town/    НОВЫЙ, цель 590
+│   ├── /property-valuation-cape-town/     НОВЫЙ, цель 480
+│   ├── /retirement-village-cape-town/     НОВЫЙ, цель 320
+│   ├── /cape-town-price-per-sqm/     НОВЫЙ, данные для всех гео-страниц
+│   └── {59 сохранённых + 5 переписанных}
+├── /compare/  {3}                    cape-town-vs-johannesburg, -durban, paarl-vs-stellenbosch
+├── /segments/ {4}                    переписаны в визовые и правовые страницы по странам
+├── /news/     {5}
+└── статика
+```
+
+Изменения по счёту: **+19 создать, −19 склеить, 43 переписать, 98 оставить.** Сеть вырастает со 167 до 185 URL, то есть на 11 %. Никакой сотни новых страниц рынок не оправдывает.
+
+---
+
+## 6. Постраничный план
+
+Полная таблица: [`data/page-plan.csv`](data/page-plan.csv), 179 строк, каждая с целью, спросом и обоснованием.
+
+| Действие | Штук |
+|---|---:|
+| **оставить** | **98** |
+| **переделать** | **43** |
+| **создать** | **19** |
+| **склеить** | **19** |
+| закрыть | 0 |
+| **Итого затронуто** | **81 из 167** |
+
+Закрывать нечего: `noindex` нигде нет, шаблонного долга нет, ни одна страница не вредит. Плохо нацеленные страницы дешевле перенацелить, чем выбросить, тем более что 26 страниц `/areas/` уже стоят на позициях 5-9 по неизвестному длинному хвосту.
+
+### По волнам
+
+| Волна | Создать | Переписать | Склеить | Всего |
+|---|---:|---:|---:|---:|
+| **1. Каркас: хабы и то, что ранжируется ниже 30** | 5 | 35 | 0 | 40 |
+| **2. Добор спроса и склейка мёртвого** | 9 | 8 | 15 | 32 |
+| **3. Хвост** | 5 | 0 | 4 | 9 |
+
+### Волна 1 (40 страниц)
+
+**Создать 5:** `/new-developments/`, `/areas/southern-suburbs/`, `/areas/northern-suburbs/`, `/guides/transfer-duty-calculator/`, `/guides/cape-town-suburb-map/`.
+
+**Переписать 35:**
+- 23 страницы `/areas/` : URL сохранить, H1 и title сменить с «{Suburb} Property Investment 2026» на формулу выдачи, добавить ценовой блок и таблицу «что покупает R2m / R5m / R10m».
+- 7 индексов разделов: все стоят ниже 33-й позиции.
+- 5 гайдов, которые ранжируются ниже 30 при живом спросе: `new-developments-cape-town-2026` (позиция 61,4 при 44 показах), `power-of-attorney-property-south-africa` (34,6 при 57), `non-resident-mortgage-cape-town` (55,9), `south-africa-transfer-duty-explained` (34,2), `cape-town-municipal-valuation-objection-gv`.
+
+Три страницы `/areas/` из 26 в переписывание не идут: `gardens` (150 показов на всех паттернах), `v-and-a-waterfront` (40), `de-waterkant` (20). Их спрос не отделим от туристического, они уходят в хабы во второй волне.
+
+### Волна 2 (32 страницы)
+
+**Создать 9:** `/guides/farm-and-land-western-cape/`, `/developers/balwin-properties/`, `/guides/holiday-home-cape-town/`, `/guides/buy-a-house-in-cape-town/`, `/areas/atlantic-seaboard/`, `/areas/city-bowl/`, `/guides/moving-to-south-africa-from-uk/`, `/guides/commercial-property-cape-town/`, `/guides/cape-town-vs-johannesburg/`.
+
+**Склеить 15:** 12 страниц `/compare/` с нулевой целью в `/guides/cape-town-vs-johannesburg/` и сравнительную таблицу внутри `/areas/`; 3 страницы `/areas/` в хабы City Bowl и Atlantic Seaboard. Все 15 через 301.
+
+**Переписать 8:** 3 уцелевшие страницы `/compare/` под фразу без хвоста «property investment», 4 страницы `/segments/` в визово-правовые страницы по странам, 1 страница `/developers/devmco-group/` (36 показов на собственном бренде при позиции 30-41).
+
+### Волна 3 (9 страниц)
+
+**Создать 5:** `/guides/property-valuation-cape-town/`, `/guides/moving-to-south-africa-from-usa/`, `/guides/retirement-village-cape-town/`, `/developers/berman-brothers/`, `/guides/cape-town-price-per-sqm/`.
+
+**Склеить 4:** гайды с нулевой целью в опорную процессную `/guides/how-to-buy-property-cape-town-step-by-step/`: `best-areas-invest-cape-town-2026`, `is-cape-town-property-good-investment-2026`, `cape-town-property-investment-guide`, `cape-town-property-investment-checklist`.
+
+---
+
+## 7. Новые страницы в порядке написания
+
+Полная таблица: [`data/new-pages.csv`](data/new-pages.csv). Суммарный подтверждённый спрос 19 страниц: **35 800 показов/мес**.
+
+| # | URL | Заголовок по формуле из выдачи | Спрос | Тип |
+|---:|---|---|---:|---|
+| 1 | `/new-developments/` | New Developments in Cape Town 2026: Every Launch, Priced | 3 630 | хаб |
+| 2 | `/areas/southern-suburbs/` | Cape Town Southern Suburbs: Prices, Schools, What R4m Buys | 6 400 | хаб макрорайона |
+| 3 | `/guides/transfer-duty-calculator/` | South Africa Transfer Duty and Bond Cost Calculator 2026 | 3 140 | калькулятор |
+| 4 | `/areas/northern-suburbs/` | Cape Town Northern Suburbs: Durbanville to Brackenfell, Priced | 3 110 | хаб макрорайона |
+| 5 | `/guides/farm-and-land-western-cape/` | Buying a Farm or Plot in the Western Cape: Process and Costs | 6 170 | статья |
+| 6 | `/developers/balwin-properties/` | Balwin Properties in the Western Cape: Investor Review | 5 400 | застройщик |
+| 7 | `/guides/cape-town-suburb-map/` | Cape Town Suburb Map: Every Area, Price Band and Safety Rating | 1 600 | инструмент |
+| 8 | `/guides/holiday-home-cape-town/` | Buying a Holiday Home in Cape Town: Costs and Letting Rules | 1 020 | статья |
+| 9 | `/guides/buy-a-house-in-cape-town/` | How to Buy a House in Cape Town: 2026 Step-by-Step | 870 | статья |
+| 10 | `/areas/atlantic-seaboard/` | Atlantic Seaboard Property: Clifton to Bantry Bay, Priced | 800 | хаб макрорайона |
+| 11 | `/guides/moving-to-south-africa-from-uk/` | Moving to South Africa from the UK: Visa, Money, Property | 650 | статья |
+| 12 | `/guides/commercial-property-cape-town/` | Commercial Property for Sale in Cape Town: Yields and Rules | 590 | статья |
+| 13 | `/guides/cape-town-vs-johannesburg/` | Cape Town vs Johannesburg Property: The Semigration Maths | 580 | сравнение |
+| 14 | `/areas/city-bowl/` | Cape Town City Bowl: Gardens, Tamboerskloof, De Waterkant | 480 | хаб макрорайона |
+| 15 | `/guides/property-valuation-cape-town/` | What Is My Cape Town Property Worth? Valuation in 2026 | 480 | статья |
+| 16 | `/guides/moving-to-south-africa-from-usa/` | Moving to South Africa from the US: Visa, Tax, Property | 350 | статья |
+| 17 | `/guides/retirement-village-cape-town/` | Retirement Villages in Cape Town: Buy, Life Right or Rent | 320 | статья |
+| 18 | `/developers/berman-brothers/` | Berman Brothers Group: Cape Town Developer Review | 210 | застройщик |
+| 19 | `/guides/cape-town-price-per-sqm/` | Cape Town Price per Square Metre by Suburb, 2026 | хвост | данные |
+
+Формула заголовков взята из выдачи, а не из головы. У победителей по коммерческим запросам в ЮАР в title стоит: число объектов («26 Residential New Developments in Constantia»), гео на двух уровнях («in Cape Town, Western Cape»), год («2026»), цена «от» в рандах. По правовым запросам: год вступления ставки в силу («on rates applicable from 1 Apr 2026») и слово Calculator.
+
+---
+
+## 8. ТЗ из выдачи для верхних 10 страниц
+
+Сырые срезы: [`data/serp_briefs.md`](data/serp_briefs.md) и [`data/serp_snapshot.json`](data/serp_snapshot.json).
+
+### 1. `/new-developments/` → «new developments cape town» 1 600, «property developments cape town» 260
+
+Топ-10 (ЮАР): newdevelopments.co.za, balwin.co.za, insideguide.co.za, capetown.gov.za, riverlands.capetown, ooba.co.za, dgproperties.co.za, upton.co.za, rabie.co.za.
+
+Ни одного портала на первых двух местах. **Это самый незащищённый коммерческий кластер во всём исследовании.**
+
+| Что есть у топа | Есть ли у нас |
+|---|---|
+| Счётчик объектов в title («12 New developments in Cape Town», «26 Residential New Developments in Constantia») | нет |
+| Фильтр по цене «от R…» и по району прямо на странице | нет |
+| Список застройщиков со ссылками | частично, `/developers/` не связан с `/projects/` |
+| Дата обновления списка | нет |
+| Редакционный формат «The Hottest New Developments» (insideguide на 3-м месте) | нет |
+
+Чего нет ни у кого в топе и что можем дать мы: **28 карточек проектов с моделируемой доходностью и разбором для иностранного покупателя**. У newdevelopments.co.za и balwin это листинги без цифр, у insideguide это статья без данных.
+
+Наша текущая страница `/guides/new-developments-cape-town-2026/` стоит на позиции 61,4 при 44 показах: она есть, но не хаб.
+
+### 2. `/areas/southern-suburbs/` → «southern suburbs cape town» 5 400
+
+Топ-10: en.wikipedia.org, property24.com (`/for-sale/alias/all-areas/cape-town-southern-suburbs/`), privateproperty.co.za (`/neighbourhoods/cape-town-southern-suburbs/`), sa-venues.com, capetownmagazine.com, sahistory.org.za, swindon.co.za, capetown.travel, en.wikipedia.org (List of Cape Town suburbs).
+
+| Что есть у топа | Есть ли у нас |
+|---|---|
+| Список всех пригородов внутри макрорайона со ссылками (Wikipedia, Property24, PrivateProperty) | нет, `/areas/` не сгруппирован |
+| Формат «neighbourhood» с ценой, школами, транспортом (privateproperty на 3-м) | нет |
+| Карта | нет |
+| Историко-описательная часть (sahistory, capetownmagazine) | нет |
+
+Выдача пополам туристическая, поэтому цель тут не первое место, а места 3-6, где стоит privateproperty со своим `/neighbourhoods/`. Формат для копирования именно этот.
+
+### 3. `/guides/transfer-duty-calculator/` → «transfer duty calculator» 2 400, «transfer duty south africa» 880
+
+Топ-10: sars.gov.za, ooba.co.za, accounter.co.za, capetownlawyer.co.za, bermanbros.co.za, sars.gov.za, evohomeloans.co.za, ewsattorneys.co.za, ooba.co.za (Transfer Cost Calculator).
+
+| Что есть у топа | Есть ли у нас |
+|---|---|
+| **Рабочий калькулятор на странице** (accounter, capetownlawyer, ooba) | нет, только текст |
+| Дата вступления ставки в силу прямо в title («from 1 Apr 2026») | нет |
+| Таблица ставок по диапазонам | есть в `/guides/south-africa-transfer-duty-explained/` |
+| Отдельный расчёт затрат на передачу помимо пошлины | частично |
+
+Наша страница стоит на позиции 34,2. В топе три калькулятора и один официальный источник. Без калькулятора туда не зайти.
+
+### 4. `/areas/northern-suburbs/` → «northern suburbs cape town» 2 900
+
+Топ-10: property24.com (`/for-sale/alias/northern-suburbs/`), sa-venues.com, en.wikipedia.org, capetown.travel, reddit.com, cape-town.photos.
+
+Слабее защищено, чем южные пригороды: на 5-м месте reddit, на 6-м фотогалерея. Нужен тот же формат «список пригородов + ценовые диапазоны + чем отличается от южных».
+
+### 5. `/guides/farm-and-land-western-cape/` → «farm for sale western cape» 4 400, «plot for sale cape town» 880, «land for sale cape town» 720
+
+Топ смешанный: порталы 33 %, редакция 33 %, агентства 22 %. Единственный кластер среди листинговых, где редакционная страница держит треть топа.
+
+| Что есть у топа | Есть ли у нас |
+|---|---|
+| Листинги ферм с гектарами и ценой | нет и не будет |
+| Разбор процесса покупки сельхозземли (право собственности иностранцем, водные права, лицензия на виноградник) | **нет ни у кого в топе целиком** |
+
+Это заход через процесс, а не через листинг.
+
+### 6. `/developers/balwin-properties/` → «balwin properties» 5 400
+
+Balwin стоит вторым и по «new developments cape town», и по «off plan property cape town», и по «property developments cape town». Собственный сайт держит первое место по своему бренду. Наша задача не бренд, а места 3-6 с обзором: сколько проектов в Западном Кейпе, цены, что говорят покупатели, чем отличается от Rabie.
+
+### 7. `/guides/cape-town-suburb-map/` → «cape town suburb map» 1 000, «safest suburbs in cape town» 170
+
+Инструментальный запрос без единой сильной страницы в выдаче. Нужна карта с ценовыми диапазонами и оценкой безопасности по каждому пригороду. Сюда же переезжает безопасность: `is woodstock cape town safe` 170, `is muizenberg safe` 90.
+
+### 8. `/guides/holiday-home-cape-town/` → «holiday home cape town» 1 000
+
+Коммерческое намерение (intent 3), собственной страницы нет ни у нас, ни у большинства конкурентов. Обязательные блоки по выдаче: правила краткосрочной сдачи по байлоу 2026, расчёт окупаемости при сдаче 120-180 ночей, налог на доход нерезидента.
+
+### 9. `/guides/buy-a-house-in-cape-town/` → «buy a house in cape town» 390, «cape town homes for sale» 480
+
+Перехват общего покупательского запроса. Топ листинговый, но intent 3 у «cape town homes for sale» и intent 3 у «buy a house in cape town»: место 5-8 берётся пошаговым разбором с ценами.
+
+### 10. `/areas/atlantic-seaboard/` → «atlantic seaboard» 590, «atlantic seaboard property for sale» 210
+
+Топ: property24.com, capetown.travel, en.wikipedia.org, sa-venues.com, perfecthideaways.co.za, privateproperty.co.za. Выдача пополам туристическая (38 %). Берём нижнюю половину топа тем же форматом, что и южные пригороды. Поглощает `/areas/v-and-a-waterfront-property-investment/`.
+
+---
+
+## 9. Честный блок
+
+**Крупнейший кластер рынка нам закрыт.** 92 930 показов в месяц на «property for sale in {пригород}» и ещё 55 290 на метро-уровне держат Property24, PrivateProperty и листинговые страницы агентств. Проверено 13 срезами выдачи в ЮАР: на первых двух местах всегда портал, дальше листинги агентств, редакционных страниц нет вообще. **Без собственной базы объектов на сайте туда не зайти никаким текстом.** Это 10,5 % всего спроса и 68 % делового.
+
+**Сайт написан не для того рынка.** 90,3 % делового спроса это ЮАР. Все иностранные рынки вместе дают 23 460 показов в месяц, из них после фильтра выдачи адресуемо 6 060. Британия даёт 8 190 показов, но её коммерческая часть заперта Rightmove, Zoopla, Savills и Property24. Крупнейший британский и американский запрос про Кейптаун это «is cape town safe» (2 400 и 2 900), и он туристический: в топе reddit TravelNoPics, brokebackpacker, TripAdvisor, travel advisory. Я снял эту страницу с плана по собственному правилу, хотя 7 220 показов выглядели соблазнительно.
+
+**Инвестиционный фрейм, на котором стоит весь сайт, стоит 1 790 показов в месяц.** Это 0,8 % делового спроса. Все 26 страниц пригородов, 12 из 15 сравнений и все 4 страницы сегментов целятся ровно в ноль. Это не ошибка исполнения, это ошибка проектирования, сделанная до написания текстов.
+
+**Немецкий спрос есть, но он немецкий.** `haus kaufen kapstadt` 480, `immobilien kapstadt` 390, `immobilien südafrika` 320, `haus kaufen südafrika` 320, `kapstadt wohnung kaufen` 170, всего около 2 300 в месяц с коммерческим намерением. Англоязычная часть немецкого рынка вчетверо меньше. Сайт англоязычный, и без немецкой версии эти 2 300 недоступны. Отдельная страница на английском их не возьмёт.
+
+**Нидерланды это не рынок.** Весь голландский деловой спрос 630 показов в месяц. При этом в GSC Нидерланды на втором месте по показам с 942. Разница объясняется рангтрекером, а не покупателями.
+
+**Цифра «застройщики 24 130» завышена.** В неё входит `signatura` 14 800, а это слово в базе ЮАР неотделимо от общего употребления, и `balwin properties` 5 400, а Balwin в основном йоханнесбургский. Реально относящегося к Кейптауну спроса на застройщиков около 4 000, плюс `val de vie` 6 600 в кластере проектов.
+
+**Что не обещаем.** Ключевых событий в GA4 ноль за 90 дней при 175 органических сессиях. Ни одна цифра этого исследования не говорит, сколько будет лидов. Она говорит только, сколько показов существует и кто их сейчас держит. Первые позиции по адресуемым кластерам это 63 310 показов потолка на весь сайт, реалистичный захват в первый год при среднем CTR 3-5 % на позициях 4-8 даёт порядок 2-3 тысячи кликов в месяц, а не десятки тысяч.
+
+**Что не проверено.** `repo rate south africa` 8 100 и `prime lending rate south africa` 3 600 я нашёл, но выдачу по ним не снимал: это запросы к Резервному банку и деловым СМИ, агентству недвижимости там делать нечего. Два среза выдачи вернулись пустыми (`property for sale in woodstock`, `silo district`), три попытки. Топ-10 по 42 пригородам из 68 не снимался: паттерн подтверждён на 13 срезах, дальше это повторение.
+
+---
+
+## 10. Topvisor
+
+Проект создан: **id 32866281**, `capetown-invest.com EN core 2026-09`, поисковик Google, регионы ЮАР (key 10021), Британия (102), США (84), Германия (96).
+
+Загружено **512 запросов** в 17 групп по кластерам:
+
+| Группа | Запросов |
+|---|---:|
+| ZA suburb for-sale | 185 |
+| Bing AI-retrieval queries | 70 |
+| UK core | 52 |
+| ZA bare place names (control) | 46 |
+| ZA legacy investment frame | 37 |
+| DE core | 26 |
+| ZA legal money process | 22 |
+| ZA projects developers | 18 |
+| ZA yield STR market | 11 |
+| ZA region and macro | 10 |
+| ZA choice and life | 9 |
+| ZA commercial metro | 9 |
+| ZA adjacent assets | 6 |
+| ZA visa relocation | 4 |
+| ZA new developments | 3 |
+| ZA country level | 3 |
+| US core | 1 |
+
+Отправлено было 523, Topvisor схлопнул 11 дублей между группами. Группы `ZA legacy investment frame` и `ZA bare place names` служат контролем: первая должна остаться на нуле после переделки, вторая должна остаться туристической.
+
+**Съём позиций не запускался.** Ключ API отдаёт только `add`, `get` и `del`, метод запуска проверки (`add/positions_2/checkers`) и `edit/projects_2/projects` возвращают «undefined method». Все девять существующих проектов Максима тоже стоят с `on: 0`. Базовый съём нужно запустить одним нажатием в интерфейсе Topvisor. Бюджет в 50 руб не потрачен.
+
+---
+
+## 11. Файлы
+
+```
+scripts/
+  demand.py         454 строки спроса: фраза, база, частота, CPC, намерение, кластер, уровень гео
+  serp_ct.py        сборщик выдачи через XMLRiver, 101 запрос, 4 страны
+  serp_an.py        разбор выдачи: кто в топ-10 по каждому запросу
+  serp_verdict.py   классификатор выдачи: портал / агентство / travel / медиа / гос / редакция
+  capacity.py       ёмкость рынка после трёх фильтров
+  gsc.py            классификатор запросов Search Console
+  suburb_score.py   спрос за каждой страницей /areas/
+  page_plan.py      генератор постраничного плана
+data/
+  serp_snapshot.json   101 срез топ-10, сырой
+  serp_verdict.json    вердикт по 40 связкам «страна × кластер»
+  serp_briefs.md       ТЗ из выдачи, 20 запросов
+  bing_queries_raw.json 382 строки Bing Webmaster
+  seeds.json           599 сидов по 12 группам
+  capacity_rows.json   каждая фраза с вердиктом выдачи
+  page-plan.csv        179 строк постраничного плана
+  new-pages.csv        19 новых страниц в порядке написания
+  pages.tsv            инвентаризация 152 MDX
+  tv_groups.json       ядро, загруженное в Topvisor
+```
+
+### Как воспроизвести
+
+```bash
+set -a; source ~/.config/more-group/seo-keys.env; set +a
+cd .content-os/reports/seo-core-2026-09-07/scripts
+python3 capacity.py        # ёмкость, бесплатно, читает demand.py и serp_verdict.json
+python3 suburb_score.py    # спрос за страницами /areas/, бесплатно
+python3 page_plan.py       # постраничный план, бесплатно
+python3 serp_ct.py         # доснять выдачу, 0,025 руб за запрос
+```

@@ -1,0 +1,180 @@
+wave,action,url,collection,target,demand,note
+-,keep,/developers/amdec-property-investments/,developers,«amdec property investments»,320,"бренд с реальным спросом, страница ранжируется"
+-,keep,/developers/blok-urban-developers/,developers,«blok urban developers»,90,"бренд с реальным спросом, страница ранжируется"
+-,keep,/developers/growthpoint-waterfront/,developers,«growthpoint waterfront»,2400,"бренд с реальным спросом, страница ранжируется"
+-,keep,/developers/prospekt-property-development/,developers,«prospekt property development»,20,"бренд с реальным спросом, страница ранжируется"
+-,keep,/developers/rabie-property-developers/,developers,«rabie property developers»,590,"бренд с реальным спросом, страница ранжируется"
+-,keep,/developers/val-de-vie-estate/,developers,«val de vie estate»,6600,"бренд с реальным спросом, страница ранжируется"
+-,keep,/guides/airbnb-investment-cape-town-guide/,guides,83 показа,,кластер подтверждён выдачей или GSC
+-,keep,/guides/airbnb-yields-by-suburb-cape-town/,guides,21 показ,,кластер подтверждён выдачей или GSC
+-,keep,/guides/atlantic-seaboard-property-investment-guide/,guides,«atlantic seaboard» 590,,кластер подтверждён выдачей или GSC
+-,keep,/guides/body-corporate-airbnb-ban-rules/,guides,STR-кластер,,кластер подтверждён выдачей или GSC
+-,keep,/guides/body-corporate-due-diligence-cape-town/,guides,"21 показ, позиция 4,4",,кластер подтверждён выдачей или GSC
+-,keep,/guides/buy-cape-town-property-foreigner/,guides,иностранный покупатель,,кластер подтверждён выдачей или GSC
+-,keep,/guides/buy-cape-town-property-remotely/,guides,дистанционная покупка,,кластер подтверждён выдачей или GSC
+-,keep,/guides/buy-to-let-cape-town-mortgage/,guides,«buy to let cape town» 20,,кластер подтверждён выдачей или GSC
+-,keep,/guides/can-foreigners-buy-property-south-africa/,guides,"uk 20 + us 50 + za 140, выдача без порталов",,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-city-bowl-property-investment/,guides,«city bowl cape town» 480,,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-digital-nomad-property-guide/,guides,«south africa digital nomad visa» us 140 + uk 70,,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-property-market-data-lightstone/,guides,«lightstone» 6 600 + «lightstone property report» 260,,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-property-market-forecast-2026-2027/,guides,"293 показа, позиция 7,7",,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-property-prices-by-suburb-2026/,guides,«cape town property prices» 140 + suburb-хвост,,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-property-scams-avoid/,guides,мошенничество,,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-property-under-500k-usd/,guides,ценовой порог,,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-rates-taxes-property/,guides,«city of cape town rates» 390 + «rates and taxes cape town» 140,,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-remote-work-visa-property/,guides,тот же кластер,,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-rental-yield-guide/,guides,"«cape town rental yield», выдача редакционная",,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-semigration-property-guide/,guides,«semigration» 210 + «best place to live in south africa» 390,,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-str-bylaw-2026-registration/,guides,"49 показов, позиция 6,1",,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-utilities-costs-owners-2026/,guides,стоимость владения,,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-vacancy-rates-rental/,guides,"12,5% CTR",,кластер подтверждён выдачей или GSC
+-,keep,/guides/cape-town-water-security-property/,guides,водный риск,,кластер подтверждён выдачей или GSC
+-,keep,/guides/century-city-property-investment-guide/,guides,"4 клика, CTR 4,5%",,кластер подтверждён выдачей или GSC
+-,keep,/guides/conveyancing-fees-cape-town/,guides,«conveyancing fees calculator» 90 + «conveyancing fees south africa» 70,,кластер подтверждён выдачей или GSC
+-,keep,/guides/cost-of-buying-property-cape-town/,guides,стоимость покупки,,кластер подтверждён выдачей или GSC
+-,keep,/guides/cost-of-selling-compliance-certificates/,guides,"сертификаты соответствия, «electrical compliance certificate cape town» 40",,кластер подтверждён выдачей или GSC
+-,keep,/guides/does-buying-property-give-residency-south-africa/,guides,"92 показа, позиция 11",,кластер подтверждён выдачей или GSC
+-,keep,/guides/due-diligence-cape-town-property/,guides,процесс,,кластер подтверждён выдачей или GSC
+-,keep,/guides/eu-citizens-buying-cape-town-property/,guides,европейский покупатель,,кластер подтверждён выдачей или GSC
+-,keep,/guides/fica-requirements-foreign-property-buyers/,guides,"70 показов, GSC подтверждает запросы",,кластер подтверждён выдачей или GSC
+-,keep,/guides/financially-independent-visa-south-africa/,guides,"визовый кластер, выдача из иммиграционных консультантов",,кластер подтверждён выдачей или GSC
+-,keep,/guides/foreigner-property-tax-south-africa-hub/,guides,хаб налогов для иностранца,,кластер подтверждён выдачей или GSC
+-,keep,/guides/gross-vs-net-yield-cape-town/,guides,методология доходности,,кластер подтверждён выдачей или GSC
+-,keep,/guides/highest-rental-yield-suburbs-cape-town/,guides,"«best rental yield suburbs cape town», выдача редакционная",,кластер подтверждён выдачей или GSC
+-,keep,/guides/how-to-buy-property-cape-town-step-by-step/,guides,опорная процессная,,кластер подтверждён выдачей или GSC
+-,keep,/guides/load-shedding-property-cape-town/,guides,«load shedding cape town» 1 000,,кластер подтверждён выдачей или GSC
+-,keep,/guides/long-term-rental-cape-town-guide/,guides,«long term rentals cape town» в GSC,,кластер подтверждён выдачей или GSC
+-,keep,/guides/nhbrc-warranty-south-africa-new-build/,guides,67 показов,,кластер подтверждён выдачей или GSC
+-,keep,/guides/non-resident-rental-income-tax-south-africa/,guides,42 показа,,кластер подтверждён выдачей или GSC
+-,keep,/guides/off-plan-property-cape-town-guide/,guides,офф-план,,кластер подтверждён выдачей или GSC
+-,keep,/guides/property-management-cape-town-cost/,guides,«property management cape town» 320,,кластер подтверждён выдачей или GSC
+-,keep,/guides/property-transfer-timeline-delays/,guides,сроки передачи,,кластер подтверждён выдачей или GSC
+-,keep,/guides/repatriating-property-sale-proceeds/,guides,вывод денег после продажи,,кластер подтверждён выдачей или GSC
+-,keep,/guides/retirement-visa-south-africa-property/,guides,«south africa retirement visa» us 170 + uk 70 + za 70,,кластер подтверждён выдачей или GSC
+-,keep,/guides/returning-south-african-expat-property/,guides,"«returning to south africa» au 20, ниша",,кластер подтверждён выдачей или GSC
+-,keep,/guides/section-35a-withholding-tax-explained/,guides,уникальный для нерезидента вопрос,,кластер подтверждён выдачей или GSC
+-,keep,/guides/sectional-title-levies-cape-town/,guides,«sectional title levies» 20,,кластер подтверждён выдачей или GSC
+-,keep,/guides/sectional-title-vs-freehold-cape-town/,guides,«sectional title vs freehold» 20,,кластер подтверждён выдачей или GSC
+-,keep,/guides/security-estates-cape-town-foreign-buyers/,guides,охраняемые эстейты,,кластер подтверждён выдачей или GSC
+-,keep,/guides/selling-property-south-africa-non-resident/,guides,продажа нерезидентом,,кластер подтверждён выдачей или GSC
+-,keep,/guides/short-term-rental-rules-cape-town/,guides,"STR-байлоу, 535 показов в GSC",,кластер подтверждён выдачей или GSC
+-,keep,/guides/snagging-inspection-new-build-cape-town/,guides,30 показов,,кластер подтверждён выдачей или GSC
+-,keep,/guides/south-africa-capital-gains-tax-property/,guides,налоговый кластер,,кластер подтверждён выдачей или GSC
+-,keep,/guides/south-africa-exchange-control-property/,guides,валютный контроль,,кластер подтверждён выдачей или GSC
+-,keep,/guides/southern-suburbs-cape-town-property/,guides,«southern suburbs cape town» 5 400,,кластер подтверждён выдачей или GSC
+-,keep,/guides/stellenbosch-property-investment-guide/,guides,«property for sale in stellenbosch» 2 400 + «houses for sale in stellenbosch» 2 900,,кластер подтверждён выдачей или GSC
+-,keep,/guides/uk-tax-south-africa-rental-property/,guides,британский налоговый угол,,кластер подтверждён выдачей или GSC
+-,keep,/news/cape-town-interest-rates-property-2026/,news,новостной поток,,"ссылочная поддержка кластеров, отдельного спроса нет"
+-,keep,/news/cape-town-luxury-sales-record-2025/,news,новостной поток,,"ссылочная поддержка кластеров, отдельного спроса нет"
+-,keep,/news/foreign-buyers-atlantic-seaboard-2025/,news,новостной поток,,"ссылочная поддержка кластеров, отдельного спроса нет"
+-,keep,/news/va-waterfront-granger-bay-development/,news,новостной поток,,"ссылочная поддержка кластеров, отдельного спроса нет"
+-,keep,/news/western-cape-property-forecast-2026/,news,новостной поток,,"ссылочная поддержка кластеров, отдельного спроса нет"
+-,keep,/projects/acacia-house-woodstock/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/amdec-hout-bay-project/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/azure-camps-bay-beach/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/camps-bay-infinity/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/chestercourt-redevelopment/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/foreshore-place-cape-town/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/granger-bay-waterfront/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/green-village-val-de-vie/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/harbour-arch-amdec-foreshore/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/infinity-milnerton/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/makers-landing-waterfront/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/nine-palms-century-city/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/nineons-green-point/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/observatory-green/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/on-park-century-city/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/onehundredonm-sea-point/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/oneonr-de-waterkant/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/pearl-valley-nova/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/rhapsody-burgundy-estate/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/rockwell-tower-cape-town/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/silo-district-residences/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/skywater-century-city/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/the-charlotte-cape-town/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/the-ridge-clifton/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/three43onb-sea-point/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/two-oceans-beach/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/venice-house-cbd/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+-,keep,/projects/zero2one-sea-point/,projects,имя проекта,,"лучший по CTR раздел сайта: 15% на the-ridge-clifton, 8% на silo-district"
+1,create,/areas/northern-suburbs/,NEW,«northern suburbs cape town» 2 900 + «property for sale in northern suburbs cape town» 210,3110,"Property24 #1, дальше sa-venues, Wikipedia, reddit"
+1,create,/areas/southern-suburbs/,NEW,«southern suburbs cape town» 5 400 + «property for sale in southern suburbs cape town» 1 000,6400,"в топ-10 Wikipedia #1, Property24 #2, privateproperty /neighbourhoods/ #3: редакционный формат берёт места"
+1,create,/guides/cape-town-suburb-map/,NEW,«cape town suburb map» 1 000 + «safest suburbs in cape town» 170 + «is woodstock cape town safe» 170 + «is muizenberg safe» 90,1600,нет ни одной страницы под навигационный запрос по пригородам
+1,create,/guides/transfer-duty-calculator/,NEW,«transfer duty calculator» 2 400 + «bond costs calculator» 720 + «transfer cost calculator south africa» 20,3140,"калькулятор, а не текст; сейчас есть только объяснительная статья на позиции 34"
+1,create,/new-developments/,NEW,«new developments cape town» 1 600 + «new developments in cape town» 1 600 + «property developments cape town» 260 + «new developments western cape» 170,3630,"в топ-10 нет ни одного портала: newdevelopments.co.za, balwin.co.za, insideguide.co.za, riverlands.capetown"
+1,rewrite,/,index,хаб раздела,,«cape town property» 1 600 / «property cape town» 1 600; сейчас позиция 48 при 20 показах
+1,rewrite,/areas/,index,хаб раздела,,"«cape town suburb map» 1 000; сейчас позиция 34,2 при 44 показах"
+1,rewrite,/areas/bantry-bay-property-investment/,areas,«property for sale in bantry bay» + «bantry bay property»,820,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/blouberg-property-investment/,areas,«property for sale in blouberg» + «blouberg property»,690,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/camps-bay-property-investment/,areas,«property for sale in camps bay» + «camps bay property»,1300,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/claremont-property-investment/,areas,«property for sale in claremont» + «claremont property»,1710,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/clifton-property-investment/,areas,«property for sale in clifton» + «clifton property»,1420,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/constantia-property-investment/,areas,«property for sale in constantia» + «constantia property»,1210,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/durbanville-property-investment/,areas,«property for sale in durbanville» + «durbanville property»,10090,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/franschhoek-property-investment/,areas,«property for sale in franschhoek» + «franschhoek property»,1760,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/fresnaye-property-investment/,areas,«property for sale in fresnaye» + «fresnaye property»,610,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/green-point-property-investment/,areas,«property for sale in green point» + «green point property»,230,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/hermanus-property-investment/,areas,«property for sale in hermanus» + «hermanus property»,7380,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/hout-bay-property-investment/,areas,«property for sale in hout bay» + «hout bay property»,2920,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/kalk-bay-false-bay-property-investment/,areas,«property for sale in kalk bay false bay» + «kalk bay false bay property»,1020,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/llandudno-property-investment/,areas,«property for sale in llandudno» + «llandudno property»,590,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/milnerton-property-investment/,areas,«property for sale in milnerton» + «milnerton property»,1310,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/newlands-property-investment/,areas,«property for sale in newlands» + «newlands property»,1990,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/paarl-property-investment/,areas,«property for sale in paarl» + «paarl property»,8780,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/rondebosch-property-investment/,areas,«property for sale in rondebosch» + «rondebosch property»,3070,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/sea-point-property-investment/,areas,«property for sale in sea point» + «sea point property»,1970,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/somerset-west-property-investment/,areas,«property for sale in somerset west» + «somerset west property»,8020,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/table-view-property-investment/,areas,«property for sale in table view» + «table view property»,690,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/tamboerskloof-property-investment/,areas,«property for sale in tamboerskloof» + «tamboerskloof property»,830,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/areas/woodstock-property-investment/,areas,«property for sale in woodstock» + «woodstock property»,940,URL и H1 под investment-фрейм с нулём спроса; переписать в профиль пригорода с ценами
+1,rewrite,/compare/,index,хаб раздела,,"39 показов, позиция 66,4"
+1,rewrite,/developers/,index,хаб раздела,,"9 показов, позиция 33,7"
+1,rewrite,/guides/,index,хаб раздела,,"95 показов, позиция 42,9"
+1,rewrite,/guides/cape-town-municipal-valuation-objection-gv/,guides,«property valuation cape town» 480,,ранжируется ниже 30 при живом спросе
+1,rewrite,/guides/new-developments-cape-town-2026/,guides,"«new developments cape town» 1 600, но позиция 61",,ранжируется ниже 30 при живом спросе
+1,rewrite,/guides/non-resident-mortgage-cape-town/,guides,"позиция 55,9, есть что чинить",,ранжируется ниже 30 при живом спросе
+1,rewrite,/guides/power-of-attorney-property-south-africa/,guides,"57 показов, позиция 34,6, есть что чинить",,ранжируется ниже 30 при живом спросе
+1,rewrite,/guides/south-africa-transfer-duty-explained/,guides,«transfer duty south africa» 880,,ранжируется ниже 30 при живом спросе
+1,rewrite,/projects/,index,хаб раздела,,18 показов
+1,rewrite,/segments/,index,хаб раздела,,"4 показа, позиция 65,2"
+2,create,/areas/atlantic-seaboard/,NEW,«atlantic seaboard» 590 + «atlantic seaboard property for sale» 210,800,"Property24 #1, capetown.travel #2: наполовину туристическая, брать нижнюю половину"
+2,create,/areas/city-bowl/,NEW,«city bowl cape town» 480,480,поглощает gardens и de waterkant
+2,create,/developers/balwin-properties/,NEW,«balwin properties» 5 400,5400,в топ-10 по «new developments cape town» и «off plan property cape town» стоит вторым; своей страницы у нас нет
+2,create,/guides/buy-a-house-in-cape-town/,NEW,«buy a house in cape town» 390 + «cape town homes for sale» 480,870,перехват общего покупательского запроса под редакционный формат
+2,create,/guides/cape-town-vs-johannesburg/,NEW,«cape town vs johannesburg» 170 + «cape town or johannesburg» 20 + «best place to live in south africa» 390,580,поглощает 12 склеенных страниц /compare/
+2,create,/guides/farm-and-land-western-cape/,NEW,«farm for sale western cape» 4 400 + «plot for sale cape town» 880 + «land for sale cape town» 720 + «wine farm for sale western cape» 170,6170,"выдача листинговая, но покупка фермы это процесс, которого никто не объясняет"
+2,create,/guides/holiday-home-cape-town/,NEW,«holiday home cape town» 1 000 + «buying a holiday home in south africa» 20,1020,"коммерческое намерение, отдельной страницы нет"
+2,create,/guides/moving-to-south-africa-from-uk/,NEW,«moving to south africa from uk» 260 + «moving to south africa» uk 320 + «relocating to south africa» uk 70,650,"в топе reddit, gov.uk, перевозчики; ни одного агентства недвижимости"
+2,create,/guides/property-valuation-cape-town/,NEW,«property valuation cape town» 480 + «how much is my house worth south africa»,480,в GSC уже 5 показов на «cape town property valuations» при позиции 59
+2,merge,/areas/de-waterkant-property-investment/,areas,/areas/city-bowl/,20,цель «{X} property investment» = 0; собственного спроса тоже нет
+2,merge,/areas/gardens-property-investment/,areas,/areas/city-bowl/,150,цель «{X} property investment» = 0; собственного спроса тоже нет
+2,merge,/areas/v-and-a-waterfront-property-investment/,areas,/areas/atlantic-seaboard/,40,цель «{X} property investment» = 0; собственного спроса тоже нет
+2,merge,/compare/atlantic-seaboard-vs-winelands-investment/,compare,/areas/ (сравнительная таблица в хабе),0,целевая фраза = 0 показов в za
+2,merge,/compare/cape-town-vs-dubai-property-investment/,compare,/areas/ (сравнительная таблица в хабе),0,целевая фраза = 0 показов в za
+2,merge,/compare/cape-town-vs-lisbon-property-investment/,compare,/areas/ (сравнительная таблица в хабе),0,целевая фраза = 0 показов в za
+2,merge,/compare/cape-town-vs-mauritius-property-investment/,compare,/areas/ (сравнительная таблица в хабе),0,целевая фраза = 0 показов в za
+2,merge,/compare/cape-town-vs-portugal-property-investment/,compare,/areas/ (сравнительная таблица в хабе),0,целевая фраза = 0 показов в za
+2,merge,/compare/cape-town-vs-stellenbosch-property/,compare,/areas/ (сравнительная таблица в хабе),0,целевая фраза = 0 показов в za
+2,merge,/compare/century-city-vs-durbanville-investment/,compare,/areas/ (сравнительная таблица в хабе),0,целевая фраза = 0 показов в za
+2,merge,/compare/century-city-vs-sea-point-investment/,compare,/areas/ (сравнительная таблица в хабе),0,целевая фраза = 0 показов в za
+2,merge,/compare/off-plan-vs-resale-cape-town-investment/,compare,/areas/ (сравнительная таблица в хабе),0,целевая фраза = 0 показов в za
+2,merge,/compare/sea-point-vs-camps-bay-investment/,compare,/areas/ (сравнительная таблица в хабе),0,целевая фраза = 0 показов в za
+2,merge,/compare/somerset-west-vs-constantia-investment/,compare,/areas/ (сравнительная таблица в хабе),0,целевая фраза = 0 показов в za
+2,merge,/compare/western-cape-vs-gauteng-property-investment/,compare,/areas/ (сравнительная таблица в хабе),0,целевая фраза = 0 показов в za
+2,rewrite,/compare/cape-town-vs-durban-property-investment/,compare,«cape town vs durban»,50,заголовок под реальную фразу без хвоста «property investment»
+2,rewrite,/compare/cape-town-vs-johannesburg-property-investment/,compare,«cape town vs johannesburg»,170,заголовок под реальную фразу без хвоста «property investment»
+2,rewrite,/compare/paarl-vs-stellenbosch-property-investment/,compare,«paarl vs stellenbosch»,30,заголовок под реальную фразу без хвоста «property investment»
+2,rewrite,/developers/devmco-group/,developers,«devmco group»,320,в GSC 36 показов на своём же бренде при позиции 30-41: страница не отвечает на «who is devmco group»
+2,rewrite,/segments/cape-town-property-for-uk-retirees/,segments,"визы, право и деньги для покупателя из Британия, пенсионеры",,«{страна} buyers cape town property» = 0 показов; переписать под визовый и правовой кластер этой страны
+2,rewrite,/segments/german-buyers-cape-town-property/,segments,"визы, право и деньги для покупателя из Германия",,«{страна} buyers cape town property» = 0 показов; переписать под визовый и правовой кластер этой страны
+2,rewrite,/segments/uk-buyers-cape-town-property/,segments,"визы, право и деньги для покупателя из Британия",,«{страна} buyers cape town property» = 0 показов; переписать под визовый и правовой кластер этой страны
+2,rewrite,/segments/us-buyers-cape-town-property/,segments,"визы, право и деньги для покупателя из США",,«{страна} buyers cape town property» = 0 показов; переписать под визовый и правовой кластер этой страны
+3,create,/developers/berman-brothers/,NEW,«berman brothers» 210,210,встречается в выдаче по правовому кластеру
+3,create,/guides/cape-town-property-prices-per-square-metre/,NEW,«average house price cape town» 20 + хвост по пригородам,,кормит все 23 переписанные страницы пригородов ценовой таблицей
+3,create,/guides/commercial-property-cape-town/,NEW,«commercial property for sale cape town» 590,590,"смежный актив, страницы нет"
+3,create,/guides/moving-to-south-africa-from-usa/,NEW,«moving to south africa» us 210 + «retire in south africa» us 50 + «relocating to south africa» us 90,350,тот же паттерн для США
+3,create,/guides/retirement-village-cape-town/,NEW,«retirement village cape town» 320,320,пересекается с визовым кластером для британских пенсионеров
+3,merge,/guides/best-areas-invest-cape-town-2026/,guides,/guides/how-to-buy-property-cape-town-step-by-step/,0,«best areas to invest in cape town» = 0; склеить в опорную процессную
+3,merge,/guides/cape-town-property-investment-checklist/,guides,/guides/how-to-buy-property-cape-town-step-by-step/,0,"чек-лист, спроса нет; склеить в опорную процессную"
+3,merge,/guides/cape-town-property-investment-guide/,guides,/guides/how-to-buy-property-cape-town-step-by-step/,0,«cape town property investment» = 0; склеить в опорную процессную
+3,merge,/guides/is-cape-town-property-good-investment-2026/,guides,/guides/how-to-buy-property-cape-town-step-by-step/,0,«is cape town property a good investment» = 0; склеить в опорную процессную
