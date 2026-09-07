@@ -1,0 +1,183 @@
+---
+/**
+ * Capital gains tax calculator for a South African property sale.
+ *
+ * Rates come from the corpus and the fact registry rather than from anywhere
+ * new: 40% inclusion for natural persons and special trusts, 80% for companies
+ * and other trusts, the R40,000 annual exclusion, the R2,000,000 primary
+ * residence exclusion, 45% top marginal for individuals, 27% corporate, and
+ * section 35A withholding at 7.5%, 10% and 15% above the R2,000,000 threshold.
+ *
+ * Defaults reproduce the worked example published in
+ * south-africa-capital-gains-tax-property, so the static no-JavaScript view is
+ * the same case a reader meets in the prose.
+ */
+---
+
+<div class="cgt" data-cgt>
+  <div class="cgt-head">
+    <h3>What the sale costs in capital gains tax</h3>
+    <p>Rand amounts, 2026 rates. Defaults are the worked example below: a R3m flat sold for R4.5m by a non-resident individual.</p>
+  </div>
+
+  <div class="cgt-inputs">
+    <label><span>Purchase price</span>
+      <input type="number" data-cgt-buy value="3000000" min="0" step="50000" inputmode="numeric" /></label>
+    <label><span>Costs added to base cost</span>
+      <input type="number" data-cgt-buycosts value="217356" min="0" step="1000" inputmode="numeric" /></label>
+    <label><span>Sale price</span>
+      <input type="number" data-cgt-sell value="4500000" min="0" step="50000" inputmode="numeric" /></label>
+    <label><span>Selling costs</span>
+      <input type="number" data-cgt-sellcosts value="250000" min="0" step="1000" inputmode="numeric" /></label>
+    <label><span>Seller</span>
+      <select data-cgt-type>
+        <option value="individual">Natural person</option>
+        <option value="company">Company</option>
+        <option value="trust">Other trust</option>
+      </select></label>
+    <label><span>Marginal income tax rate</span>
+      <select data-cgt-rate>
+        <option value="0.18">18%</option><option value="0.26">26%</option>
+        <option value="0.31">31%</option><option value="0.36">36%</option>
+        <option value="0.39">39%</option><option value="0.41">41%</option>
+        <option value="0.45" selected>45%</option>
+      </select></label>
+  </div>
+
+  <div class="cgt-toggles">
+    <label><input type="checkbox" data-cgt-primary /> <span>This was my primary residence</span></label>
+    <label><input type="checkbox" data-cgt-nonres checked /> <span>I am a non-resident seller</span></label>
+  </div>
+
+  <table class="cgt-out">
+    <tbody>
+      <tr><th scope="row">Net proceeds</th><td data-cgt-proceeds>R4,250,000</td></tr>
+      <tr><th scope="row">Base cost</th><td data-cgt-base>R3,217,356</td></tr>
+      <tr><th scope="row">Capital gain</th><td data-cgt-gain>R1,032,644</td></tr>
+      <tr><th scope="row">Less exclusions</th><td data-cgt-excl>R40,000</td></tr>
+      <tr><th scope="row">Included in income</th><td data-cgt-included>R397,058</td></tr>
+      <tr class="cgt-total"><th scope="row">Capital gains tax</th><td data-cgt-tax>R178,676</td></tr>
+      <tr><th scope="row">Effective rate on the gain</th><td data-cgt-eff>17.3%</td></tr>
+      <tr class="cgt-wh"><th scope="row">Section 35A withheld at transfer</th><td data-cgt-wh>R337,500</td></tr>
+    </tbody>
+  </table>
+
+  <p class="cgt-working" data-cgt-working>
+    The buyer's conveyancer withholds R337,500 and pays it to SARS within 21 days, which is R158,824 more than the tax actually due. A non-resident recovers the difference on assessment rather than at transfer.
+  </p>
+
+  <p class="cgt-note">
+    Indicative only. Your marginal rate depends on your other income in the year of sale, base cost depends on what you can document, and the primary residence exclusion has occupancy conditions. Section 35A is a prepayment against the liability rather than an extra tax. Take advice before you sign.
+  </p>
+</div>
+
+<style>
+  .cgt { border-top: 2px solid var(--color-ink); background: var(--color-surface); padding: 18px 20px 20px; margin: 0 0 28px; }
+  .cgt-head h3 { margin: 0 0 4px; font-size: 17px; }
+  .cgt-head p { margin: 0 0 16px; font-size: 13px; color: var(--color-muted); }
+  .cgt-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin-bottom: 12px; }
+  .cgt-inputs label { display: flex; flex-direction: column; gap: 5px; font-size: 13px; }
+  .cgt-inputs span { font-weight: 600; }
+  .cgt-inputs input, .cgt-inputs select {
+    padding: 9px 10px; border: 1px solid var(--color-border, #cfcbc4); border-radius: 4px;
+    font: inherit; font-size: 15px; background: #fff; color: var(--color-ink); min-height: 44px;
+  }
+  .cgt-inputs input:focus-visible, .cgt-inputs select:focus-visible,
+  .cgt-toggles input:focus-visible { outline: 2px solid var(--color-ink); outline-offset: 1px; }
+  .cgt-toggles { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-bottom: 18px; font-size: 13.5px; }
+  .cgt-toggles label { display: flex; align-items: center; gap: 7px; min-height: 32px; }
+  .cgt-toggles input { width: 18px; height: 18px; }
+  .cgt-out { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .cgt-out th { text-align: left; font-weight: 400; padding: 8px 0; border-bottom: 1px solid var(--color-border, #e4e1dc); }
+  .cgt-out td { text-align: right; padding: 8px 0; border-bottom: 1px solid var(--color-border, #e4e1dc); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .cgt-out .cgt-total th, .cgt-out .cgt-total td { font-weight: 700; border-bottom-width: 2px; }
+  .cgt-out .cgt-wh th, .cgt-out .cgt-wh td { border-bottom: 0; }
+  .cgt-working { font-size: 13px; color: var(--color-muted); margin: 14px 0 0; }
+  .cgt-note { font-size: 12.5px; color: var(--color-muted); margin: 10px 0 0; line-height: 1.55; }
+</style>
+
+<script>
+  (function () {
+    var root = document.querySelector('[data-cgt]');
+    if (!root) return;
+
+    var ANNUAL_EXCLUSION = 40000;      // individuals and special trusts only
+    var PRIMARY_EXCLUSION = 2000000;   // owner-occupied homes
+    var S35A_THRESHOLD = 2000000;
+    var CORPORATE_RATE = 0.27;
+    var RULES = {
+      individual: { inclusion: 0.40, annual: true, withhold: 0.075 },
+      company:    { inclusion: 0.80, annual: false, withhold: 0.10 },
+      trust:      { inclusion: 0.80, annual: false, withhold: 0.15 }
+    };
+
+    function group(n) { return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+    function rand(n) { return 'R' + group(n); }
+    function q(s) { return root.querySelector(s); }
+    function num(s) { return Math.max(0, Number(q(s).value) || 0); }
+
+    function render() {
+      var buy = num('[data-cgt-buy]'), buyCosts = num('[data-cgt-buycosts]');
+      var sell = num('[data-cgt-sell]'), sellCosts = num('[data-cgt-sellcosts]');
+      var type = q('[data-cgt-type]').value;
+      var marginal = Number(q('[data-cgt-rate]').value) || 0.45;
+      var isPrimary = q('[data-cgt-primary]').checked;
+      var isNonRes = q('[data-cgt-nonres]').checked;
+      var rule = RULES[type] || RULES.individual;
+
+      // The marginal-rate control only means anything for a natural person; a
+      // company is taxed at the corporate rate and a trust at the top rate.
+      var applied = type === 'company' ? CORPORATE_RATE : (type === 'trust' ? 0.45 : marginal);
+      q('[data-cgt-rate]').disabled = type !== 'individual';
+
+      var proceeds = Math.max(0, sell - sellCosts);
+      var base = buy + buyCosts;
+      var gain = proceeds - base;
+
+      var excl = 0;
+      if (gain > 0) {
+        if (isPrimary && type === 'individual') excl += Math.min(gain, PRIMARY_EXCLUSION);
+        if (rule.annual) excl += Math.min(Math.max(gain - excl, 0), ANNUAL_EXCLUSION);
+      }
+      var net = Math.max(0, gain - excl);
+      var included = net * rule.inclusion;
+      var tax = included * applied;
+      var eff = gain > 0 ? (tax / gain) * 100 : 0;
+      var withheld = (isNonRes && sell > S35A_THRESHOLD) ? sell * rule.withhold : 0;
+
+      q('[data-cgt-proceeds]').textContent = rand(proceeds);
+      q('[data-cgt-base]').textContent = rand(base);
+      q('[data-cgt-gain]').textContent = gain < 0 ? 'A loss of ' + rand(-gain) : rand(gain);
+      q('[data-cgt-excl]').textContent = rand(excl);
+      q('[data-cgt-included]').textContent = rand(included);
+      q('[data-cgt-tax]').textContent = rand(tax);
+      q('[data-cgt-eff]').textContent = (Math.round(eff * 10) / 10) + '%';
+      q('[data-cgt-wh]').textContent = withheld > 0 ? rand(withheld) : 'None';
+
+      var w;
+      if (gain <= 0) {
+        w = 'The sale produces no capital gain, so no capital gains tax arises, and the loss can be set against other capital gains in the same year or carried forward.';
+        if (withheld > 0) {
+          w += ' Section 35A still withholds ' + rand(withheld) +
+            ' at transfer, because the withholding is calculated on the sale price rather than on the gain. All of it is recoverable on assessment, and none of it is available to you in the meantime.';
+        }
+      } else if (withheld > 0) {
+        var d = withheld - tax;
+        w = d > 0
+          ? "The buyer's conveyancer withholds " + rand(withheld) + ' and pays it to SARS within 21 days, which is ' + rand(d) + ' more than the tax actually due. A non-resident recovers the difference on assessment rather than at transfer.'
+          : "The buyer's conveyancer withholds " + rand(withheld) + ' within 21 days, which is ' + rand(-d) + ' short of the tax due. The balance falls due on assessment.';
+      } else if (isNonRes) {
+        w = 'Section 35A withholding applies only where the sale price exceeds ' + rand(S35A_THRESHOLD) + ', so nothing is withheld at transfer and the full liability falls due on assessment.';
+      } else {
+        w = 'A South African resident pays the tax on assessment. Section 35A withholding applies to non-resident sellers only.';
+      }
+      q('[data-cgt-working]').textContent = w;
+    }
+
+    Array.prototype.forEach.call(
+      root.querySelectorAll('input, select'),
+      function (el) { el.addEventListener('input', render); el.addEventListener('change', render); }
+    );
+    render();
+  })();
+</script>
