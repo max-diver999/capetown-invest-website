@@ -1,0 +1,217 @@
+---
+/**
+ * Purchase-cost calculator for a Cape Town transfer.
+ *
+ * Every rate is the same one the corpus states in prose, so the tool and the
+ * guides cannot drift: transfer duty bands from south-africa-transfer-duty-explained,
+ * attorney and Deeds Office anchors from conveyancing-fees-cape-town, VAT at 15%.
+ * The component renders a working result server-side, so a reader with no
+ * JavaScript still sees a real answer rather than an empty form.
+ */
+const DEFAULT_PRICE = 3_000_000;
+const DEFAULT_BOND = 1_500_000;
+---
+
+<div class="tcc" data-tcc>
+  <div class="tcc-head">
+    <h3>What this purchase costs on transfer</h3>
+    <p>Rand amounts, 2026 rates. Change the three inputs and the working updates.</p>
+  </div>
+
+  <div class="tcc-inputs">
+    <label>
+      <span>Purchase price</span>
+      <input type="number" data-tcc-price value={DEFAULT_PRICE} min="0" step="50000" inputmode="numeric" />
+    </label>
+    <label>
+      <span>Bond amount, 0 if cash</span>
+      <input type="number" data-tcc-bond value={DEFAULT_BOND} min="0" step="50000" inputmode="numeric" />
+    </label>
+    <label>
+      <span>Seller</span>
+      <select data-tcc-type>
+        <option value="resale">Private seller, resale</option>
+        <option value="newbuild">VAT-registered developer, new build</option>
+      </select>
+    </label>
+  </div>
+
+  <table class="tcc-out">
+    <tbody>
+      <tr><th scope="row">Transfer duty</th><td data-tcc-duty>R107,356</td></tr>
+      <tr><th scope="row">Transfer attorney, incl VAT</th><td data-tcc-conv>R34,500</td></tr>
+      <tr><th scope="row">Deeds Office and disbursements</th><td data-tcc-deeds>R2,500</td></tr>
+      <tr><th scope="row">Bond registration, incl VAT and bank fee</th><td data-tcc-bondcost>R27,312</td></tr>
+      <tr class="tcc-total"><th scope="row">Costs above the price</th><td data-tcc-total>R171,668</td></tr>
+      <tr class="tcc-cash"><th scope="row">Cash needed at transfer</th><td data-tcc-cash>R1,671,668</td></tr>
+    </tbody>
+  </table>
+
+  <p class="tcc-working" data-tcc-working>
+    Duty is R106,784 plus 11% of the R5,200 above R2,994,800, within the band that ends at R13,310,000.
+  </p>
+
+  <p class="tcc-note">
+    Indicative only. Attorney fees are a guideline rather than a tariff and vary by firm,
+    and the Deeds Office line moves with the documents lodged. Get a written quote from
+    the transferring attorney before you budget. A new build from a VAT-registered
+    developer carries 15% VAT inside the price and no transfer duty; the two never
+    apply together.
+  </p>
+</div>
+
+<style>
+  .tcc {
+    border-top: 2px solid var(--color-ink);
+    background: var(--color-surface);
+    padding: 18px 20px 20px;
+    margin: 0 0 28px;
+  }
+  .tcc-head h3 { margin: 0 0 4px; font-size: 17px; }
+  .tcc-head p { margin: 0 0 16px; font-size: 13px; color: var(--color-muted); }
+  .tcc-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+  .tcc-inputs label { display: flex; flex-direction: column; gap: 5px; font-size: 13px; }
+  .tcc-inputs span { font-weight: 600; }
+  .tcc-inputs input, .tcc-inputs select {
+    padding: 9px 10px;
+    border: 1px solid var(--color-border, #cfcbc4);
+    border-radius: 4px;
+    font: inherit;
+    font-size: 15px;
+    background: #fff;
+    color: var(--color-ink);
+    min-height: 44px;
+  }
+  .tcc-inputs input:focus-visible, .tcc-inputs select:focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 1px;
+  }
+  .tcc-out { width: 100%; border-collapse: collapse; font-size: 15px; }
+  .tcc-out th {
+    text-align: left;
+    font-weight: 400;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-border, #e4e1dc);
+  }
+  .tcc-out td {
+    text-align: right;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--color-border, #e4e1dc);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .tcc-out .tcc-total th, .tcc-out .tcc-total td { font-weight: 700; border-bottom-width: 2px; }
+  .tcc-out .tcc-cash th, .tcc-out .tcc-cash td { font-weight: 700; border-bottom: 0; }
+  .tcc-working { font-size: 13px; color: var(--color-muted); margin: 14px 0 0; }
+  .tcc-note { font-size: 12.5px; color: var(--color-muted); margin: 10px 0 0; line-height: 1.55; }
+</style>
+
+<script>
+  (function () {
+    var root = document.querySelector('[data-tcc]');
+    if (!root) return;
+
+    // Transfer duty scale effective 1 April 2025. Each band carries the fixed
+    // amount for everything below it plus a marginal rate on the slice above.
+    var BANDS = [
+      { from: 0, fixed: 0, rate: 0 },
+      { from: 1210000, fixed: 0, rate: 0.03 },
+      { from: 1663800, fixed: 13614, rate: 0.06 },
+      { from: 2329300, fixed: 53544, rate: 0.08 },
+      { from: 2994800, fixed: 106784, rate: 0.11 },
+      { from: 13310000, fixed: 1241456, rate: 0.13 }
+    ];
+    // Attorney and Deeds Office anchors from the conveyancing guide, interpolated
+    // between the stated points and held flat as a percentage outside them.
+    var CONV = [
+      { price: 1000000, fee: 13000, deeds: 1500 },
+      { price: 2000000, fee: 23000, deeds: 2000 },
+      { price: 3000000, fee: 30000, deeds: 2500 },
+      { price: 5000000, fee: 42000, deeds: 3000 },
+      { price: 10000000, fee: 68000, deeds: 4000 }
+    ];
+    var BOND = [
+      { amount: 1000000, fee: 14000 },
+      { amount: 2000000, fee: 23000 },
+      { amount: 3000000, fee: 30000 }
+    ];
+    var BANK_INIT = 6037; // incl VAT
+    var VAT = 0.15;
+
+    function duty(price) {
+      var band = BANDS[0];
+      for (var i = 0; i < BANDS.length; i++) if (price > BANDS[i].from) band = BANDS[i];
+      if (band.rate === 0) return 0;
+      return band.fixed + (price - band.from) * band.rate;
+    }
+
+    function interpolate(table, key, valueKey, x) {
+      if (x <= table[0][key]) return table[0][valueKey] * (x / table[0][key]);
+      for (var i = 0; i < table.length - 1; i++) {
+        var a = table[i], b = table[i + 1];
+        if (x <= b[key]) {
+          var t = (x - a[key]) / (b[key] - a[key]);
+          return a[valueKey] + t * (b[valueKey] - a[valueKey]);
+        }
+      }
+      var last = table[table.length - 1];
+      return last[valueKey] * (x / last[key]);
+    }
+
+    function group(n) {
+      return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+    function rand(n) { return 'R' + group(n); }
+
+    function bandLabel(price) {
+      var band = BANDS[0], next = null;
+      for (var i = 0; i < BANDS.length; i++) {
+        if (price > BANDS[i].from) { band = BANDS[i]; next = BANDS[i + 1] || null; }
+      }
+      if (band.rate === 0) return 'Below the R1,210,000 threshold, so no transfer duty is payable.';
+      var top = next ? 'R' + group(next.from) : 'the top of the scale';
+      return 'Duty is R' + group(band.fixed) + ' plus ' +
+        Math.round(band.rate * 100) + '% of the R' + group(price - band.from) +
+        ' above R' + group(band.from) + ', within the band that ends at ' + top + '.';
+    }
+
+    function render() {
+      var price = Math.max(0, Number(root.querySelector('[data-tcc-price]').value) || 0);
+      var bond = Math.max(0, Number(root.querySelector('[data-tcc-bond]').value) || 0);
+      var isNew = root.querySelector('[data-tcc-type]').value === 'newbuild';
+      if (bond > price) bond = price;
+
+      var d = isNew ? 0 : duty(price);
+      var convEx = interpolate(CONV, 'price', 'fee', price);
+      var conv = convEx * (1 + VAT);
+      var deeds = interpolate(CONV, 'price', 'deeds', price);
+      var bondCost = 0;
+      if (bond > 0) bondCost = interpolate(BOND, 'amount', 'fee', bond) * (1 + VAT) + BANK_INIT;
+
+      var total = d + conv + deeds + bondCost;
+      var cash = (price - bond) + total;
+
+      root.querySelector('[data-tcc-duty]').textContent =
+        isNew ? 'None, 15% VAT applies instead' : rand(d);
+      root.querySelector('[data-tcc-conv]').textContent = rand(conv);
+      root.querySelector('[data-tcc-deeds]').textContent = rand(deeds);
+      root.querySelector('[data-tcc-bondcost]').textContent = bond > 0 ? rand(bondCost) : 'None, cash purchase';
+      root.querySelector('[data-tcc-total]').textContent = rand(total);
+      root.querySelector('[data-tcc-cash]').textContent = rand(cash);
+      root.querySelector('[data-tcc-working]').textContent = isNew
+        ? 'A new build from a VAT-registered developer carries 15% VAT inside the price, so no transfer duty arises. Confirm in writing that the quoted price is VAT-inclusive.'
+        : bandLabel(price);
+    }
+
+    Array.prototype.forEach.call(
+      root.querySelectorAll('input, select'),
+      function (el) { el.addEventListener('input', render); }
+    );
+    render();
+  })();
+</script>
