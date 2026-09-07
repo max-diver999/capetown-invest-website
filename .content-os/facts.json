@@ -496,6 +496,18 @@
     {
       "figure": "R800",
       "why": "Same shape as R500, in nine articles. It is the endpoint of ranges for scheme water charges (R800 to R1,500), courier to Cape Town, cleaning per turnover (R350 to R800), parking-bay levy lines (R800 to R1,800) and a gas compliance certificate. Nine unrelated cost categories that happen to bracket at the same round number."
+    },
+    {
+      "figure": "6.6%",
+      "why": "Two unrelated derived results that happen to round the same: rates as a share of gross rent on a R5m home in cape-town-rates-taxes-property, and net yield after a 10% management fee in cape-town-rental-yield-guide. Neither is an asserted market figure, so it carries no independent claim."
+    },
+    {
+      "figure": "R27",
+      "why": "The West Coast road number, not a rand amount. Appears wherever the Blaauwberg commute is described."
+    },
+    {
+      "figure": "R300",
+      "why": "Cape Town ring-road number, not a rand amount."
     }
   ]
 }
