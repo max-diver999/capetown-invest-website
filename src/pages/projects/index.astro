@@ -40,19 +40,25 @@ const regionOf = (p: (typeof projects)[number]) => {
   return AREA_TO_REGION[key] ?? 'More developments';
 };
 
+// Labels match the westernCapeRegion enum in the content schema, so a card's
+// own region field groups it directly rather than falling through the area map.
 const ORDER = [
   'Atlantic Seaboard',
   'City Bowl',
-  'Northern suburbs and West Coast',
+  'Southern Suburbs',
+  'Northern Suburbs',
+  'West Coast',
   'Winelands',
   'Helderberg',
-  'Southern Suburbs',
+  'Northern suburbs and West Coast',
   'More developments',
 ];
 
 const NOTES: Record<string, string> = {
   'Atlantic Seaboard': 'Trophy and beachfront stock. Scarcity-led resale, lower modelled net yields.',
   'City Bowl': 'Central apartments with the deepest short-let and corporate tenant demand.',
+  'Northern Suburbs': 'The Tygerberg belt along the N1, freehold family stock at the metro\'s lowest entry tickets.',
+  'West Coast': 'Milnerton, Century City and the Blaauwberg coast. Newer precinct stock, usually the strongest modelled income.',
   'Northern suburbs and West Coast': 'Newer precinct stock at lower entry tickets, usually the strongest modelled income.',
   Winelands: 'Estate living, security and semigration family demand outside the metro.',
   Helderberg: 'Gated estates and coastal towns favoured by European buyers.',
