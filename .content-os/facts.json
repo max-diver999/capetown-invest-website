@@ -462,6 +462,16 @@
       "statement": "SARS transfer duty on a R2,900,000 residential purchase, 2026/27 sliding scale",
       "source": "SARS transfer duty rates, 2026/27 year of assessment",
       "asOf": "2026-09-03"
+    },
+    {
+      "figure": "R250,000",
+      "statement": "Ceiling for the purchaser's cooling-off right under section 29A of the Alienation of Land Act 68 of 1981. Above this price the five-day right to revoke an offer does not exist, and it never applies where the purchaser is not a natural person or where the sale is at a publicly advertised auction.",
+      "source": "Alienation of Land Act 68 of 1981 s29A; Property Practitioners Regulatory Authority, Purchaser's Cooling Off Right; MacRobert Attorneys, Cooling-off Period: Your Right To Revoke Your Offer To Purchase"
+    },
+    {
+      "figure": "section 67",
+      "statement": "Property Practitioners Act 22 of 2019 requires a property practitioner to obtain a completed and signed mandatory disclosure form from the seller before accepting the mandate, provide it to the buyer before an offer is made, and attach it to the sale agreement. Where no form is attached, the agreement is interpreted as if the seller disclosed no defects.",
+      "source": "Property Practitioners Act 22 of 2019 s67; PPRA Practice Note on the Mandatory Disclosure Form; Cliffe Dekker Hofmeyr, The Property Practitioners Act unpacked: Mandatory disclosure forms"
     }
   ],
   "notClaims": [
