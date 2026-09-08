@@ -119,9 +119,15 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true", help="fetch and size only")
     parser.add_argument("--slug", help="restrict to one slug")
+    parser.add_argument(
+        "--credits",
+        default=str(CREDITS),
+        help="credits file to work from; defaults to the borrowed-hero list",
+    )
     args = parser.parse_args()
 
-    entries = json.loads(CREDITS.read_text(encoding="utf-8"))
+    credits_path = Path(args.credits)
+    entries = json.loads(credits_path.read_text(encoding="utf-8"))
     if args.slug:
         entries = [row for row in entries if row["slug"] == args.slug]
         if not entries:
@@ -158,7 +164,7 @@ def main() -> int:
         print(f"{row['slug']:38} {size[0]}x{size[1]:<5} {kb:>4}KB -> {result['public_id']}")
 
     if not args.dry_run:
-        CREDITS.write_text(
+        credits_path.write_text(
             json.dumps(entries, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
 

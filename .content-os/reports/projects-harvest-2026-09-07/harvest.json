@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-07",
+  "method": "списки проектов взяты с сайтов самих застройщиков (rabie.co.za, blok.co.za sitemap, balwin через страницу застройщика, bermanbros.co.za, oasislife.co.za). Спрос проверен подсказками Google gl=za, потому что баланс юнитов Semrush исчерпан.",
+  "existing_cards": 28,
+  "waves": [
+    {"wave": 1, "developer": "Oasis Life", "count": 5, "signal": "сильный коммерческий: подсказки дают price list, for sale by, reviews",
+     "projects": ["Oasis Life Burgundy Estate", "Oasis Life Clara Anna Fontein", "Oasis Life Constantia", "Oasis Life Sunningdale", "Oasis Life (бренд-хаб)"],
+     "note": "смыкается с guides/retirement-village-cape-town, life rights, не freehold"},
+    {"wave": 1, "developer": "Balwin Properties", "count": 6, "signal": "сильный: reviews, address, estate; цены уже есть в карточке застройщика",
+     "projects": ["De Aan-Zicht Lifestyle Centre", "De Buurt", "De Kuile", "Suikerbos", "The Huntsman", "Greenbay"]},
+    {"wave": 2, "developer": "Rabie", "count": 7, "signal": "сильный: prices, rental, estate",
+     "projects": ["Ashmere", "Finwood", "The Bridges", "Le Boutonne", "Park Place", "Umberwood", "Stonepine Crescent"]},
+    {"wave": 2, "developer": "Berman Brothers", "count": 3, "signal": "умеренный, но реальный: for sale",
+     "projects": ["Mont Reve", "Station House", "The Estate"]},
+    {"wave": 3, "developer": "Blok", "count": 8, "signal": "слабый и смешанный: 7 из 17 имён не дают подсказок вообще, ещё 2 дают чужие результаты",
+     "projects": ["ELEVENONB", "TENONV", "ONE26ONM", "SIXONN", "FORTYONL", "TENONQ", "EIGHTY2ONM", "ONE46ONM"],
+     "rejected": ["TWENTY2ONW", "FOURONO", "FIFTY8ONV", "SEVENONT", "SIXTY6ONK", "TWEVLEONV", "TWO16ONHL", "SEVENONS", "FOURONC"],
+     "note": "нейминг Blok нечитаем на слух и плохо набирается; SEVENONS отдаёт seven sport, FOURONC отдаёт fouronce mma"}
+  ],
+  "total_new": 29,
+  "dropped": 9
+}
