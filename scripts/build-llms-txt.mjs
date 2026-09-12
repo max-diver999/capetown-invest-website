@@ -76,7 +76,7 @@ const short = [
   }).filter(Boolean),
   '',
   '## Collections',
-  ...COLLECTIONS.map(([id, label, note]) => `- [${label}](${SITE}/${id}/) — ${note} (${byCollection.get(id).length})`),
+  ...COLLECTIONS.map(([id, label, note]) => `- [${label}](${SITE}/${id}/): ${note} (${byCollection.get(id).length})`),
   '',
   '## Ask us',
   `- [Free shortlist](${SITE}/get-shortlist/)`,
@@ -89,7 +89,7 @@ const short = [
 ];
 
 const full = [
-  '# Cape Town Invest — full page index',
+  '# Cape Town Invest: full page index',
   '',
   'Independent research on Cape Town and Western Cape property for foreign buyers. Every page below is public and indexable.',
   '',
