@@ -1,0 +1,95 @@
+{
+  "siteUrl": "https://capetown-invest.com",
+  "host": "capetown-invest.com",
+  "brand": "Cape Town Invest",
+  "language": "en",
+  "title": "Cape Town Invest",
+  "tagline": "independent research on Cape Town property",
+  "summary": "Independent research on Cape Town property for local and foreign buyers: transfer duty and closing costs, sectional title and freehold, rental yields and short-term letting rules by suburb, load shedding and water risk, and named developments. Not an agency, not a listings portal.",
+  "entity": "Cape Town Invest is an independent research publisher on Cape Town property, part of the MORE Group network. It sells no listings and represents no developer. Wikidata: https://www.wikidata.org/wiki/Q140810037",
+  "contact": {
+    "email": "info@capetown-invest.com",
+    "page": "/contact/"
+  },
+  "collections": [
+    {
+      "dir": "guides",
+      "urlPrefix": "/guides",
+      "label": "Guides"
+    },
+    {
+      "dir": "areas",
+      "urlPrefix": "/areas",
+      "label": "Suburbs and areas"
+    },
+    {
+      "dir": "projects",
+      "urlPrefix": "/projects",
+      "label": "Project reviews"
+    },
+    {
+      "dir": "compare",
+      "urlPrefix": "/compare",
+      "label": "Comparisons"
+    },
+    {
+      "dir": "developers",
+      "urlPrefix": "/developers",
+      "label": "Developers"
+    },
+    {
+      "dir": "segments",
+      "urlPrefix": "/segments",
+      "label": "Market segments"
+    },
+    {
+      "dir": "news",
+      "urlPrefix": "/news",
+      "label": "Market notes"
+    }
+  ],
+  "keyPages": [
+    {
+      "url": "/guides/",
+      "label": "Guides: legal, tax, due diligence"
+    },
+    {
+      "url": "/areas/",
+      "label": "Suburbs and areas"
+    },
+    {
+      "url": "/projects/",
+      "label": "Project reviews, independent, not listings"
+    },
+    {
+      "url": "/segments/",
+      "label": "Market segments"
+    },
+    {
+      "url": "/compare/",
+      "label": "Comparisons"
+    },
+    {
+      "url": "/methodology/",
+      "label": "How the numbers are produced"
+    },
+    {
+      "url": "/about/",
+      "label": "About"
+    },
+    {
+      "url": "/contact/",
+      "label": "Contact"
+    }
+  ],
+  "contentPolicy": {
+    "search": "yes",
+    "aiInput": "yes",
+    "aiTrain": "no"
+  },
+  "writeLlmsFull": false,
+  "llms": {
+    "generated": true,
+    "note": "llms.txt is built by the generator this repo already has and is left alone."
+  }
+}
