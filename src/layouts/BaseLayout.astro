@@ -180,18 +180,23 @@ const allSchemas = [orgSchema, websiteSchema, ...schemas, ...(webPageSchema ? [w
       flex-direction: column;
     }
     body > main { flex: 1 0 auto; }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: var(--color-deep);
-      border-bottom: 1px solid #162c37;
-    }
-    h1 {
-      font-family: var(--font-serif);
-      color: var(--color-ink);
-      font-weight: 400;
-      line-height: 1.1;
+
+    /* В @layer base: правило вне слоя бьёт любую утилиту Tailwind независимо от веса селектора,
+       и класс цвета в разметке до экрана не доходит. Замер и разбор в scripts/test-css-layers.mjs. */
+    @layer base {
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--color-deep);
+        border-bottom: 1px solid #162c37;
+      }
+      h1 {
+        font-family: var(--font-serif);
+        color: var(--color-ink);
+        font-weight: 400;
+        line-height: 1.1;
+      }
     }
     .home-hero__photo {
       position: relative;
@@ -218,6 +223,7 @@ const allSchemas = [orgSchema, websiteSchema, ...schemas, ...(webPageSchema ? [w
       border-radius: 2px;
       text-decoration: none;
     }
+  
   </style>
   <link rel="stylesheet" href={globalStyles} />
 
