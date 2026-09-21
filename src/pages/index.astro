@@ -4,7 +4,7 @@ import LeadForm from '../components/LeadForm.astro';
 import { getCollection } from 'astro:content';
 import { SITE } from '../data/site';
 import { HOMEPAGE_HERO_IMAGE, HOMEPAGE_HERO_CREDIT } from '../data/featured';
-import { wikimediaResponsiveHero } from '../lib/wikimediaHero';
+import { r2Responsive, r2NarrowSrc } from '../lib/r2Image';
 
 const [guides, projects, areas] = await Promise.all([
   getCollection('guides'),
@@ -16,12 +16,19 @@ const publishedGuides = guides.filter((g) => !g.data.noindex);
 const publishedProjects = projects.filter((p) => !p.data.noindex);
 const publishedAreas = areas.filter((a) => !a.data.noindex);
 
-const heroImage = wikimediaResponsiveHero(HOMEPAGE_HERO_IMAGE);
+/**
+ * Главное фото главной страницы. Раньше оно жило на Викимедии и строилось функцией под её адреса:
+ * та подставляла ширину в путь вида /640px-. После переезда на R2 таких путей нет, и функция
+ * возвращала один и тот же файл на все ширины, поэтому телефон качал 211 КБ вместо 12 КБ.
+ * Плюс сама Викимедиа отвечала на запрос ширины 640 ошибкой 400, и на телефоне фото не грузилось.
+ */
+const heroImage = r2Responsive(HOMEPAGE_HERO_IMAGE, 'band') ?? { src: HOMEPAGE_HERO_IMAGE };
+const heroPreloadSrc = r2NarrowSrc(HOMEPAGE_HERO_IMAGE) ?? HOMEPAGE_HERO_IMAGE;
 ---
 <BaseLayout
   title="Cape Town Property: Prices, Yields and Buying Costs"
   description="Independent Cape Town property research: suburb prices per square metre, modelled yields, transfer duty and rates, 28 new developments and the foreign buyer rules."
-  preloadImage={heroImage.preloadSrc}
+  preloadImage={heroPreloadSrc}
   preloadImageSrcset={heroImage.srcset}
   preloadImageSizes={heroImage.sizes}
 >

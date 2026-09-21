@@ -1,0 +1,1438 @@
+{
+  "more-group/capetown/areas/bantry-bay-property-investment.webp": {
+    "w": 1024,
+    "h": 768,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/blouberg-property-investment.webp": {
+    "w": 1200,
+    "h": 801,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/camps-bay-property-investment.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/cape-town-wale-street.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/claremont-property-investment.webp": {
+    "w": 1024,
+    "h": 768,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/clifton-property-investment.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/constantia-property-investment.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/de-waterkant-property-investment.webp": {
+    "w": 1200,
+    "h": 1600,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/durbanville-property-investment.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/durbanville-sonstraal-dam.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/franschhoek-property-investment.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/fresnaye-property-investment.webp": {
+    "w": 1200,
+    "h": 675,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/gardens-property-investment.webp": {
+    "w": 1200,
+    "h": 824,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/green-point-property-investment.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/hermanus-property-investment.webp": {
+    "w": 1200,
+    "h": 795,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/hout-bay-property-investment.webp": {
+    "w": 1200,
+    "h": 675,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/kalk-bay-false-bay-property-investment.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/kalk-bay-harbour.webp": {
+    "w": 1200,
+    "h": 602,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/kalk-bay-main-road.webp": {
+    "w": 1200,
+    "h": 901,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/llandudno-property-investment.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/milnerton-property-investment.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/newlands-property-investment.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/paarl-property-investment.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/rondebosch-property-investment.webp": {
+    "w": 1200,
+    "h": 797,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/sea-point-property-investment.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/somerset-west-property-investment.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/table-view-property-investment.webp": {
+    "w": 1200,
+    "h": 806,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/tamboerskloof-property-investment.webp": {
+    "w": 850,
+    "h": 638,
+    "variants": [
+      360,
+      640
+    ]
+  },
+  "more-group/capetown/areas/v-and-a-waterfront-property-investment.webp": {
+    "w": 1200,
+    "h": 1605,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/areas/woodstock-property-investment.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/developers/balwin-properties.webp": {
+    "w": 1200,
+    "h": 853,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/developers/berman-brothers.webp": {
+    "w": 1200,
+    "h": 675,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/developers/devmco-group.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/developers/fwjk.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/developers/oasis-life.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/airbnb-investment-cape-town-guide.webp": {
+    "w": 1200,
+    "h": 1800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/airbnb-yields-by-suburb-cape-town.webp": {
+    "w": 1200,
+    "h": 755,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/best-areas-invest-cape-town-2026.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/body-corporate-airbnb-ban-rules.webp": {
+    "w": 1200,
+    "h": 674,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/body-corporate-due-diligence-cape-town.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/buy-a-house-in-cape-town.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/buy-cape-town-property-foreigner.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/buy-cape-town-property-remotely.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/buy-to-let-cape-town-mortgage.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/can-foreigners-buy-property-south-africa.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-digital-nomad-property-guide.webp": {
+    "w": 1200,
+    "h": 1500,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-municipal-valuation-objection-gv.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-property-market-data-lightstone.webp": {
+    "w": 1200,
+    "h": 870,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-property-market-forecast-2026-2027.webp": {
+    "w": 1200,
+    "h": 870,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-property-prices-by-suburb-2026.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-property-scams-avoid.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-property-under-500k-usd.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-rates-taxes-property.webp": {
+    "w": 1200,
+    "h": 1797,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-remote-work-visa-property.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-rental-yield-guide.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-semigration-property-guide.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-str-bylaw-2026-registration.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-suburb-map.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-utilities-costs-owners-2026.webp": {
+    "w": 1200,
+    "h": 711,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-vacancy-rates-rental.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cape-town-water-security-property.webp": {
+    "w": 1200,
+    "h": 785,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/century-city-property-investment-guide.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/commercial-property-cape-town.webp": {
+    "w": 1200,
+    "h": 842,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/conveyancing-fees-cape-town.webp": {
+    "w": 1200,
+    "h": 1797,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cost-of-buying-property-cape-town.webp": {
+    "w": 1200,
+    "h": 890,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/cost-of-selling-compliance-certificates.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/does-buying-property-give-residency-south-africa.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/due-diligence-cape-town-property.webp": {
+    "w": 1200,
+    "h": 785,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/farm-and-land-western-cape.webp": {
+    "w": 1200,
+    "h": 675,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/fica-requirements-foreign-property-buyers.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/financially-independent-visa-south-africa.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/foreigner-property-tax-south-africa-hub.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/gross-vs-net-yield-cape-town.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/highest-rental-yield-suburbs-cape-town.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/holiday-home-cape-town.webp": {
+    "w": 1200,
+    "h": 675,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/how-to-buy-property-cape-town-step-by-step.webp": {
+    "w": 1200,
+    "h": 785,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/is-cape-town-property-good-investment-2026.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/load-shedding-property-cape-town.webp": {
+    "w": 1200,
+    "h": 785,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/long-term-rental-cape-town-guide.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/new-developments-cape-town-2026.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/nhbrc-warranty-south-africa-new-build.webp": {
+    "w": 1200,
+    "h": 785,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/non-resident-mortgage-cape-town.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/non-resident-rental-income-tax-south-africa.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/northern-suburbs-cape-town-property.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/off-plan-property-cape-town-guide.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/power-of-attorney-property-south-africa.webp": {
+    "w": 1200,
+    "h": 785,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/property-management-cape-town-cost.webp": {
+    "w": 1200,
+    "h": 1800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/property-transfer-timeline-delays.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/property-valuation-cape-town.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/repatriating-property-sale-proceeds.webp": {
+    "w": 1200,
+    "h": 1800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/retirement-village-cape-town.webp": {
+    "w": 1200,
+    "h": 674,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/retirement-visa-south-africa-property.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/returning-south-african-expat-property.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/section-35a-withholding-tax-explained.webp": {
+    "w": 1200,
+    "h": 759,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/sectional-title-levies-cape-town.webp": {
+    "w": 1000,
+    "h": 1918,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/sectional-title-vs-freehold-cape-town.webp": {
+    "w": 1000,
+    "h": 1918,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/security-estates-cape-town-foreign-buyers.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/selling-property-south-africa-non-resident.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/short-term-rental-rules-cape-town.webp": {
+    "w": 1200,
+    "h": 785,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/snagging-inspection-new-build-cape-town.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/south-africa-capital-gains-tax-property.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/south-africa-exchange-control-property.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/south-africa-transfer-duty-explained.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/southern-suburbs-cape-town-property.webp": {
+    "w": 1200,
+    "h": 685,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/stellenbosch-property-investment-guide.webp": {
+    "w": 1200,
+    "h": 841,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/transfer-duty-calculator.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/guides/uk-tax-south-africa-rental-property.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/hero/table-mountain-table-cloth.webp": {
+    "w": 1200,
+    "h": 802,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/news/cape-town-interest-rates-property-2026.webp": {
+    "w": 1200,
+    "h": 785,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/news/cape-town-luxury-sales-record-2025.webp": {
+    "w": 1200,
+    "h": 797,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/news/foreign-buyers-atlantic-seaboard-2025.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/news/va-waterfront-granger-bay-development.webp": {
+    "w": 1200,
+    "h": 1605,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/news/western-cape-property-forecast-2026.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/acacia-house-woodstock.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/amdec-hout-bay-project.webp": {
+    "w": 1200,
+    "h": 675,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/ashmere-burgundy-estate.webp": {
+    "w": 1200,
+    "h": 390,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/azure-camps-bay-beach.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/camps-bay-infinity.webp": {
+    "w": 876,
+    "h": 584,
+    "variants": [
+      360,
+      640
+    ]
+  },
+  "more-group/capetown/projects/chestercourt-redevelopment.webp": {
+    "w": 1200,
+    "h": 546,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/clara-anna-fontein-estate.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/de-aan-zicht-balwin.webp": {
+    "w": 1200,
+    "h": 506,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/de-buurt-richwood.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/de-kuile-kuils-river.webp": {
+    "w": 1200,
+    "h": 643,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/finwood-burgundy-estate.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/foreshore-place-cape-town.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/granger-bay-waterfront.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/green-village-val-de-vie.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/greenbay-balwin.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/harbour-arch-amdec-foreshore.webp": {
+    "w": 1200,
+    "h": 546,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/infinity-milnerton.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/le-boutonne-paarl.webp": {
+    "w": 1200,
+    "h": 803,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/makers-landing-waterfront.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/mont-reve-sea-point.webp": {
+    "w": 1200,
+    "h": 709,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/nine-palms-century-city.webp": {
+    "w": 1200,
+    "h": 1600,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/nineons-green-point.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/oasis-life-burgundy-estate.webp": {
+    "w": 1200,
+    "h": 653,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/observatory-green.webp": {
+    "w": 433,
+    "h": 599,
+    "variants": [
+      360
+    ]
+  },
+  "more-group/capetown/projects/on-park-century-city.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/onehundredonm-sea-point.webp": {
+    "w": 1200,
+    "h": 1500,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/oneonr-de-waterkant.webp": {
+    "w": 1200,
+    "h": 890,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/park-place-century-city.webp": {
+    "w": 1200,
+    "h": 674,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/pearl-valley-nova.webp": {
+    "w": 1200,
+    "h": 803,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/rhapsody-burgundy-estate.webp": {
+    "w": 1200,
+    "h": 750,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/rockwell-tower-cape-town.webp": {
+    "w": 1200,
+    "h": 1600,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/silo-district-residences.webp": {
+    "w": 1200,
+    "h": 1605,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/skywater-century-city.webp": {
+    "w": 1200,
+    "h": 1600,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/station-house-fresnaye.webp": {
+    "w": 1200,
+    "h": 675,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/stonepine-crescent-kuils-river.webp": {
+    "w": 1200,
+    "h": 196,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/suikerbos-balwin.webp": {
+    "w": 1200,
+    "h": 527,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/tenonq-sea-point.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/the-bridges-century-city.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/the-charlotte-cape-town.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/the-estate-fresnaye.webp": {
+    "w": 1200,
+    "h": 698,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/the-huntsman-somerset-west.webp": {
+    "w": 1200,
+    "h": 674,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/the-ridge-clifton.webp": {
+    "w": 1200,
+    "h": 800,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/three43onb-sea-point.webp": {
+    "w": 1200,
+    "h": 1500,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/two-oceans-beach.webp": {
+    "w": 1200,
+    "h": 801,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/venice-house-cbd.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/projects/zero2one-sea-point.webp": {
+    "w": 1200,
+    "h": 900,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  },
+  "more-group/capetown/segments/cape-town-property-for-uk-retirees.webp": {
+    "w": 1200,
+    "h": 850,
+    "variants": [
+      360,
+      640,
+      960
+    ]
+  }
+}

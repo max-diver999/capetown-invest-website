@@ -2,6 +2,21 @@
  * Card thumbnail URLs — Cloudinary crop when available; external CDN as-is.
  */
 import { cloudinaryDeliveryUrl } from './cloudinary';
+import { r2Responsive, isR2Url, type ResponsiveImage } from './r2Image';
+
+/**
+ * Карточка списка с выбором размера. Раньше карточки на R2 получали полноразмерный файл героя:
+ * в плитку 640 на 360 приезжала картинка на 1200 пикселей, потому что обрезку делал Cloudinary, а
+ * на чужом адресе функция молча отдавала ссылку как есть.
+ */
+export function getCardImage(
+  src: string | undefined,
+  size: 'card' | 'hero' | 'band' = 'card',
+): ResponsiveImage | null {
+  if (!src?.trim()) return null;
+  if (isR2Url(src)) return r2Responsive(src, size === 'card' ? 'card' : size === 'band' ? 'band' : 'hero');
+  return { src: getCardImageUrl(src, size) };
+}
 
 export function getCardImageUrl(src: string | undefined, size: 'card' | 'hero' | 'band' = 'card'): string {
   if (!src?.trim()) return '';

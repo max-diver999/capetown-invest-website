@@ -1,4 +1,5 @@
 import dimensions from '../../scripts/data/capetown-cloudinary-image-dims.json';
+import { r2Responsive } from './r2Image';
 
 const CLOUDINARY_PATTERN =
   /^https:\/\/res\.cloudinary\.com\/([a-z0-9]+)\/image\/upload\/(.+)$/;
@@ -127,9 +128,16 @@ function heroFromStaticUrl(src: string) {
   const band = heroBandFor(ratio);
   const url = src.trim();
 
+  /**
+   * Здесь раньше стояло srcset: `${url} 1280w`, то есть один-единственный кандидат. Формально
+   * атрибут был, а выбора у браузера не было: телефон качал тот же файл, что и компьютер.
+   * Теперь список ширин берётся из манифеста, где записано, что реально залито на R2.
+   */
+  const responsive = r2Responsive(url, 'hero');
+
   const variants = (ar: string) => ({
     src: url,
-    srcset: `${url} 1280w`,
+    srcset: responsive?.srcset ?? `${url} 1280w`,
     ar,
   });
 
@@ -140,11 +148,11 @@ function heroFromStaticUrl(src: string) {
   return {
     narrow,
     wide,
-    sizes: '(max-width: 899px) 100vw, min(68rem, 100vw)',
+    sizes: responsive?.sizes ?? '(max-width: 899px) 100vw, min(68rem, 100vw)',
     narrowRatio: band.narrow.replace(':', ' / '),
     wideRatio: band.wide.replace(':', ' / '),
-    width: intrinsic?.w ?? 1280,
-    height: intrinsic?.h ?? Math.round((1280 * nh) / nw),
+    width: responsive?.width ?? intrinsic?.w ?? 1280,
+    height: responsive?.height ?? intrinsic?.h ?? Math.round((1280 * nh) / nw),
   };
 }
 
