@@ -30,7 +30,7 @@ export const FEATURED_DEVELOPER_SLUGS = [
  * licence condition, not decoration: it must stay visible on every breakpoint.
  */
 export const HOMEPAGE_HERO_IMAGE =
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Cape_Town%2C_Table_Mountain%2C_Table_Cloth.jpg/1920px-Cape_Town%2C_Table_Mountain%2C_Table_Cloth.jpg';
+  'https://pub-2855c73eea384110b510f25966292c37.r2.dev/more-group/capetown/hero/table-mountain-table-cloth.webp';
 
 export const HOMEPAGE_HERO_CREDIT = {
   place: 'Table Mountain · the tablecloth',
