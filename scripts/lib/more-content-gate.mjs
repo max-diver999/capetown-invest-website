@@ -11,6 +11,7 @@ import {
   analyzeHumanSignals,
 } from './human-signals.mjs';
 import { runCloudinaryDeliveryChecks } from './cloudinary-gate.mjs';
+import { readFileSync as readDebtFile } from 'node:fs';
 
 export const BANNED_PHRASES = [
   'Regional diversification',
@@ -79,6 +80,36 @@ export function internalLinks(body) {
 
 export function linksWithoutTrailingSlash(body) {
   return internalLinks(body).filter((l) => !l.endsWith('/') && !l.includes('.'));
+}
+
+/**
+ * Pros/cons block. Whole words only: until 22.09.2026 these were substrings, so any
+ * "construction", "consider" or "inconsistent" passed and on English pages the check
+ * checked nothing. Trade-offs, drawbacks, downsides and strengths/weaknesses are the same
+ * section under another name.
+ */
+export const PROS_CONS_RE = /(?:\bpros\b|\bcons\b|плюс|минус|\badvantages\b|\bdisadvantages\b|\btrade-?offs?\b|\bdrawbacks?\b|\bdownsides?\b|\bstrengths and weaknesses\b)/i;
+
+/**
+ * Old articles that passed only because of the substring bug are listed in
+ * structure-debt.json (key: collection/slug). For them a missing block stays a non-error,
+ * as it was, so editing an old page never blocks a deploy; a new article is not on the list
+ * and must have the block. fix-batch-queue.mjs still reports each of them as missing-pros-cons.
+ */
+const STRUCTURE_DEBT = (() => {
+  try {
+    const raw = JSON.parse(readDebtFile(new URL('./structure-debt.json', import.meta.url), 'utf8'));
+    return Object.fromEntries(Object.entries(raw).filter(([, v]) => Array.isArray(v)).map(([k, v]) => [k, new Set(v)]));
+  } catch {
+    return {};
+  }
+})();
+
+/** prefix is "[guides/slug]" (qa-audit) or "src/content/guides/slug.mdx:" (validators). */
+export function isKnownDebt(kind, prefix) {
+  const s = String(prefix || '');
+  const m = s.match(/\[([^\]]+)\]/) || s.match(/src\/content\/(.+?)\.mdx?\b/);
+  return Boolean(m && STRUCTURE_DEBT[kind]?.has(m[1]));
 }
 
 /**
@@ -224,7 +255,7 @@ export function runExtendedChecks(opts) {
   if (!/<TldrBlock\b/.test(body)) errors.push(`${prefix} missing TldrBlock`);
   // The FAQ now lives in frontmatter only and the layout renders it, so there
   // is nothing to require in the body. qa-audit checks the frontmatter count.
-  if (!/(pros|cons|плюс|минус|advantages|disadvantages)/i.test(body)) {
+  if (!PROS_CONS_RE.test(body) && !isKnownDebt('pros-cons', prefix)) {
     errors.push(`${prefix} missing pros/cons`);
   }
   // Explicit, not derived from the word floor. It used to be
