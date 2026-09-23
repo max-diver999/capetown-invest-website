@@ -56,7 +56,7 @@
       "/site-report/"
     ],
     "allowSearchCrawlers": true,
-    "allowTrainingCrawlers": false
+    "allowTrainingCrawlers": true
   },
   "markdownStructure": {
     "prefixes": []
