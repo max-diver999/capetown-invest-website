@@ -133,7 +133,7 @@ const breadcrumbSchema = {
 };
 
 const schemas = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : []), ...extraSchemas];
-const resolvedHeroAlt = heroAlt || `${title} — Cape Town property research`;
+const resolvedHeroAlt = heroAlt || `${title}, Cape Town property research`;
 const cloudinaryHero = heroImage ? heroCloudinary(heroImage) : null;
 const inlineHero = heroImage && !cloudinaryHero ? responsiveCloudinary(heroImage) : null;
 ---
@@ -250,7 +250,7 @@ const inlineHero = heroImage && !cloudinaryHero ? responsiveCloudinary(heroImage
 
     <aside class="max-w-3xl mt-10 surface-card p-5 text-sm text-[var(--color-muted)]">
       <strong>Disclaimer:</strong> Cape Town Invest is an independent editorial resource. We are not a developer or licensed broker.
-      Enquiries may be referred to licensed South African property professionals. Transfer duty, exchange control, and visa rules change — verify with your conveyancer and immigration adviser before any transaction.
+      Enquiries may be referred to licensed South African property professionals. Transfer duty, exchange control, and visa rules change, so verify with your conveyancer and immigration adviser before any transaction.
     </aside>
   </article>
 </BaseLayout>
