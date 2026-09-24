@@ -10,7 +10,7 @@ interface Props {
 
 const {
   title = 'Get your Cape Town property shortlist',
-  subtitle = 'Share your budget and target area — we respond within one business day.',
+  subtitle = 'Share your budget and target area. We respond within one business day.',
   context = '',
   submitLabel = 'Request shortlist →',
 } = Astro.props;
@@ -46,7 +46,7 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
       <div>
         <label class="block text-xs font-medium mb-1" for={`${uid}-market`}>Target area</label>
         <select id={`${uid}-market`} name="market">
-          <option value="">— Select —</option>
+          <option value="">Select</option>
           <option value="atlantic-seaboard">Atlantic Seaboard (Sea Point, Camps Bay, Clifton)</option>
           <option value="city-bowl">City Bowl / Waterfront</option>
           <option value="southern-suburbs">Southern Suburbs</option>
@@ -58,7 +58,7 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
       <div>
         <label class="block text-xs font-medium mb-1" for={`${uid}-budget`}>Budget (ZAR, all-in)</label>
         <select id={`${uid}-budget`} name="budget">
-          <option value="">— Select —</option>
+          <option value="">Select</option>
           <option value="under-3m">Under R3M</option>
           <option value="3-5m">R3M – R5M</option>
           <option value="5-10m">R5M – R10M</option>
@@ -70,7 +70,7 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
     <div>
       <label class="block text-xs font-medium mb-1" for={`${uid}-goal`}>Your goal</label>
       <select id={`${uid}-goal`} name="goal">
-        <option value="">— Select —</option>
+        <option value="">Select</option>
         <option value="investment">Rental yield / investment</option>
         <option value="own-stay">Own stay / relocation / semigration</option>
         <option value="holiday-home">Holiday home</option>
@@ -115,7 +115,7 @@ const uid = `lf-${Math.random().toString(36).slice(2, 8)}`;
         Message us on WhatsApp
       </a>
     </p>
-    <p data-lf-success class="hidden lf-status lf-status--ok text-sm font-semibold text-center">Thank you — redirecting…</p>
+    <p data-lf-success class="hidden lf-status lf-status--ok text-sm font-semibold text-center">Thank you, redirecting…</p>
   </form>
 </section>
 

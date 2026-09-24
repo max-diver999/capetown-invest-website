@@ -3,7 +3,7 @@ export const SITE = {
   tagline: 'Independent Cape Town property research for foreign buyers',
   url: 'https://capetown-invest.com',
   description:
-    'Independent guides to Cape Town property — Atlantic Seaboard, City Bowl, foreign ownership, transfer costs, rental yields, and new developments. Advisory only; transactions via licensed SA partner.',
+    'Independent guides to Cape Town property: Atlantic Seaboard, City Bowl, foreign ownership, transfer costs, rental yields, and new developments. Advisory only; transactions via licensed SA partner.',
   email: 'info@capetown-invest.com',
   phone: '',
   whatsapp: 'https://wa.me/66651195327',
