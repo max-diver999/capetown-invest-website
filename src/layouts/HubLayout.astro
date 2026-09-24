@@ -13,6 +13,8 @@ export interface HubCard {
   image?: string;
   badges?: string[];
   meta?: string;
+  /** Слова только для поиска по странице (теги статьи): на карточке не показываются. */
+  search?: string;
 }
 
 export interface HubGroup {
@@ -144,7 +146,7 @@ const anchor = (label: string) => label.toLowerCase().replace(/[^a-z0-9]+/g, '-'
         {group.note && <p class="text-sm text-[var(--color-muted)] mb-5">{group.note}</p>}
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-4">
           {group.cards.map((card) => (
-            <div data-hub-card data-search={`${card.title} ${card.description ?? ''} ${(card.badges ?? []).join(' ')}`.toLowerCase()}>
+            <div data-hub-card data-search={`${card.title} ${card.description ?? ''} ${(card.badges ?? []).join(' ')} ${card.search ?? ''}`.toLowerCase()}>
               <ContentCard
                 href={card.href}
                 title={card.title}
