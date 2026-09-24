@@ -58,7 +58,8 @@ const toCard = (c: NonNullable<ReturnType<typeof bySlug.get>>) => {
     title: c.data.title,
     description: c.data.description,
     image: c.data.heroImage,
-    badges: c.data.tags?.slice(0, 2) ?? [],
+    badges: [],
+    search: (c.data.tags ?? []).join(' '),
     meta: `${c.data.readingTime ?? 8} min read`,
   };
 };

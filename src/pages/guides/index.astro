@@ -156,7 +156,8 @@ for (const cluster of CLUSTERS) {
         title: g.data.title,
         description: g.data.description,
         image: g.data.heroImage,
-        badges: g.data.tags?.slice(0, 2) ?? [],
+        badges: [],
+        search: (g.data.tags ?? []).join(' '),
         meta: `${g.data.readingTime ?? 8} min read`,
       };
     });
@@ -174,7 +175,8 @@ if (leftovers.length) {
       title: g.data.title,
       description: g.data.description,
       image: g.data.heroImage,
-      badges: g.data.tags?.slice(0, 2) ?? [],
+      badges: [],
+      search: (g.data.tags ?? []).join(' '),
       meta: `${g.data.readingTime ?? 8} min read`,
     })),
   });
