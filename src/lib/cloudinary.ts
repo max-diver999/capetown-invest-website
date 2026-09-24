@@ -3,7 +3,7 @@ import { r2Responsive } from './r2Image';
 
 const CLOUDINARY_PATTERN =
   /^https:\/\/res\.cloudinary\.com\/([a-z0-9]+)\/image\/upload\/(.+)$/;
-const R2_PATTERN = /^https:\/\/pub-[a-f0-9]+\.r2\.dev\/(.+?)(?:[?#].*)?$/i;
+const R2_PATTERN = /^https:\/\/(?:pub-[a-f0-9]+\.r2\.dev|media\.oper-stack\.com)\/(.+?)(?:[?#].*)?$/i;
 const CLOUDINARY_BASE = 'https://res.cloudinary.com';
 const ARTICLE_WIDTHS = [640, 960, 1200];
 const ARTICLE_SIZES = '(max-width: 768px) calc(100vw - 2rem), 72ch';
