@@ -33,3 +33,54 @@
 
 ## Full index
 - [llms-full.txt](https://capetown-invest.com/llms-full.txt) lists every page with its summary.
+
+## Project catalog with prices
+
+One line per project: name, area, property type, status, entry price, page. Append `.md` to any page URL for its full markdown review.
+
+- [Azure Camps Bay](https://capetown-invest.com/projects/azure-camps-bay-beach/): Atlantic Seaboard, house, completed, price on request
+- [Granger Bay Waterfront](https://capetown-invest.com/projects/granger-bay-waterfront/): Atlantic Seaboard, apartment, pipeline, price on request
+- [Makers Landing V&A 2026, Food Hub, Not Apartments](https://capetown-invest.com/projects/makers-landing-waterfront/): Atlantic Seaboard, commercial, completed, price on request
+- [NINEONS Green Point 2026, Blok Resale & Yield Guide](https://capetown-invest.com/projects/nineons-green-point/): Atlantic Seaboard, apartment, completed, price on request
+- [ONEHUNDREDONM Sea Point](https://capetown-invest.com/projects/onehundredonm-sea-point/): Atlantic Seaboard, apartment, under construction, price on request
+- [ONEONR De Waterkant](https://capetown-invest.com/projects/oneonr-de-waterkant/): Atlantic Seaboard, apartment, off-plan, price on request
+- [The Ridge Clifton](https://capetown-invest.com/projects/the-ridge-clifton/): Atlantic Seaboard, villa, completed, price on request
+- [THREE43ONB Sea Point](https://capetown-invest.com/projects/three43onb-sea-point/): Atlantic Seaboard, apartment, completed, price on request
+- [La'Mare Hout Bay](https://capetown-invest.com/projects/amdec-hout-bay-project/): Atlantic Seaboard fringe, apartment, off-plan, price on request
+- [Suikerbos Balwin Sandown](https://capetown-invest.com/projects/suikerbos-balwin/): Blouberg, apartment, new phase releasing, from R1,229,900
+- [Two Oceans Beach Blouberg](https://capetown-invest.com/projects/two-oceans-beach/): Blouberg, apartment, active, price on request
+- [Finwood Burgundy Estate](https://capetown-invest.com/projects/finwood-burgundy-estate/): Burgundy Estate, apartment, final phase coming, from R1,820,000
+- [Ashmere Burgundy Estate](https://capetown-invest.com/projects/ashmere-burgundy-estate/): Burgundy Estate, house, from R3,450,000
+- [Oasis Life Burgundy Estate](https://capetown-invest.com/projects/oasis-life-burgundy-estate/): Burgundy Estate, retirement, selling, price on request
+- [Infinity Bakoven](https://capetown-invest.com/projects/camps-bay-infinity/): Camps Bay, apartment, completed, price on request
+- [De Aan-Zicht Balwin](https://capetown-invest.com/projects/de-aan-zicht-balwin/): Cape Town, apartment, final units, from R2,749,900
+- [Cape Town CBD Rental Pipeline](https://capetown-invest.com/projects/chestercourt-redevelopment/): City Bowl, apartment, pipeline, price on request
+- [Foreshore Place Cape Town](https://capetown-invest.com/projects/foreshore-place-cape-town/): City Bowl, apartment, completed, price on request
+- [Harbour Arch Cape Town](https://capetown-invest.com/projects/harbour-arch-amdec-foreshore/): City Bowl, apartment, completed, price on request
+- [Rockwell Tower Cape Town](https://capetown-invest.com/projects/rockwell-tower-cape-town/): City Bowl, apartment, completed, price on request
+- [The Charlotte Cape Town](https://capetown-invest.com/projects/the-charlotte-cape-town/): City Bowl, apartment, near completion, price on request
+- [Venice House Cape Town](https://capetown-invest.com/projects/venice-house-cbd/): City Bowl, apartment, completed, price on request
+- [Zero2One Cape Town](https://capetown-invest.com/projects/zero2one-sea-point/): City Bowl, apartment, under construction, price on request
+- [WEX1 Woodstock](https://capetown-invest.com/projects/acacia-house-woodstock/): City Bowl fringe, apartment, completed, price on request
+- [Clara Anna Fontein Durbanville](https://capetown-invest.com/projects/clara-anna-fontein-estate/): Durbanville, estate, selling, price on request
+- [Station House Fresnaye](https://capetown-invest.com/projects/station-house-fresnaye/): Fresnaye, apartment, completed, from R1,595,000
+- [The Estate Fresnaye](https://capetown-invest.com/projects/the-estate-fresnaye/): Fresnaye, apartment, completed, price on request
+- [Greenbay Gordon's Bay](https://capetown-invest.com/projects/greenbay-balwin/): Gordon's Bay, apartment, selling, from R754,900
+- [De Kuile Kuils River](https://capetown-invest.com/projects/de-kuile-kuils-river/): Kuils River, apartment, selling, from R1,429,900
+- [Stonepine Crescent Kuils River](https://capetown-invest.com/projects/stonepine-crescent-kuils-river/): Kuils River, house, from R2,250,000
+- [The Bridges Century City](https://capetown-invest.com/projects/the-bridges-century-city/): Milnerton, apartment, from R2,000,000
+- [Park Place Century City](https://capetown-invest.com/projects/park-place-century-city/): Milnerton, apartment, final units, from R6,800,000
+- [Nine Palms Century City](https://capetown-invest.com/projects/nine-palms-century-city/): Milnerton, apartment, completed, price on request
+- [On Park Century City](https://capetown-invest.com/projects/on-park-century-city/): Milnerton, apartment, completed, price on request
+- [Royal Ascot Milnerton](https://capetown-invest.com/projects/infinity-milnerton/): Milnerton, apartment, completed, price on request
+- [SkyWater Century City](https://capetown-invest.com/projects/skywater-century-city/): Milnerton, apartment, under construction, price on request
+- [Rhapsody Burgundy Estate](https://capetown-invest.com/projects/rhapsody-burgundy-estate/): Northern Suburbs, apartment, completed, price on request
+- [Observatory Apartments](https://capetown-invest.com/projects/observatory-green/): Observatory, apartment, pipeline, price on request
+- [Le Boutonne Paarl](https://capetown-invest.com/projects/le-boutonne-paarl/): Paarl, house, final release, from R4,880,000
+- [Pearl Valley Val de Vie](https://capetown-invest.com/projects/pearl-valley-nova/): Paarl Winelands, house, completed, price on request
+- [Vivante Village Val de Vie](https://capetown-invest.com/projects/green-village-val-de-vie/): Paarl Winelands, apartment, near completion, price on request
+- [De Buurt Richwood](https://capetown-invest.com/projects/de-buurt-richwood/): Richwood, apartment, new phase releasing, from R1,479,900
+- [Mont Reve Sea Point](https://capetown-invest.com/projects/mont-reve-sea-point/): Sea Point, apartment, completed, price on request
+- [TENONQ Sea Point](https://capetown-invest.com/projects/tenonq-sea-point/): Sea Point, apartment, completed, price on request
+- [The Huntsman Somerset West](https://capetown-invest.com/projects/the-huntsman-somerset-west/): Somerset West, apartment, new phase released, from R1,179,900
+- [Silo District Residences](https://capetown-invest.com/projects/silo-district-residences/): V&A Waterfront, apartment, completed, price on request
